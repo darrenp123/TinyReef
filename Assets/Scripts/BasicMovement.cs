@@ -19,7 +19,7 @@ public class BasicMovement : MonoBehaviour
         timeCounter += Time.deltaTime*speed;
 
         float x = Mathf.Cos(timeCounter)*width;
-        float y = 0;
+        float y = height;
         float z = Mathf.Sin(timeCounter)*width;
 
         transform.position = new Vector3(x, y, z);
