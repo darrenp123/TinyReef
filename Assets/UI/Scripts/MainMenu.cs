@@ -6,22 +6,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
     [SerializeField]
-    GameObject instructionsPage, mainMenuPage, gameplayPage, TraitsPage, controlsPage;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    GameObject instructionsPage, mainMenuPage, gamemodeSelectionPage, gameplayPage, TraitsPage, controlsPage, challengeModeText, sandboxModeText, gamemodeSelectionPlayButton;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    #region InstructionsPage
 
     public void OpenInstructionsPage()
     {
@@ -35,8 +27,6 @@ public class MainMenu : MonoBehaviour
         mainMenuPage.SetActive(true);
     }
 
-    #region InstructionsPage
-
     public void OpenGameplayInstructions()
     {
         gameplayPage.SetActive(true);
@@ -45,6 +35,19 @@ public class MainMenu : MonoBehaviour
     {
         TraitsPage.SetActive(true);
     }
+
+    public void OpenTraitMoreInfoMenu(GameObject moreInfoScreen)
+    {
+        //instructionsPage.SetActive(false);
+        moreInfoScreen.SetActive(true);
+    }
+
+    public void CloseTraitMoreInfoMenu(GameObject moreInfoScreen)
+    {
+        moreInfoScreen.SetActive(false);
+        //instructionsPage.SetActive(true);
+    }
+
     public void OpenControlsInstructions()
     {
         controlsPage.SetActive(true);
@@ -56,6 +59,38 @@ public class MainMenu : MonoBehaviour
         TraitsPage.SetActive(false);
         controlsPage.SetActive(false);
     }
+    #endregion
+
+    #region GamemodeSelection
+
+    public void OpenGamemodeSelectionPage()
+    {
+        mainMenuPage.SetActive(false);
+        gamemodeSelectionPage.SetActive(true);
+    }
+
+    public void CloseGamemodeSelectionPage()
+    {
+        gamemodeSelectionPage.SetActive(false);
+        mainMenuPage.SetActive(true);
+    }
+
+    public void SelectedSandboxMode()
+    {
+        challengeModeText.SetActive(false);
+        sandboxModeText.SetActive(true);
+        //TODO set gamemode
+        gamemodeSelectionPlayButton.GetComponent<Button>().interactable = true;
+    }
+
+    public void SelectedChallengeMode()
+    {
+        sandboxModeText.SetActive(false);
+        challengeModeText.SetActive(true);
+        //TODO set gamemode
+        gamemodeSelectionPlayButton.GetComponent<Button>().interactable = true;
+    }
+
     #endregion
 
     public void QuitGame()

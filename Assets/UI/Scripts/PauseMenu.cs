@@ -11,8 +11,9 @@ public class PauseMenu : MonoBehaviour
 {
     public static bool isPaused;
     [SerializeField]
-    GameObject pauseMenu, quitOptions;
+    GameObject pauseMenu, quitMenu, instructionsMenu;
     // Start is called before the first frame update
+
     void Start()
     {
         isPaused = false;
@@ -43,7 +44,7 @@ public class PauseMenu : MonoBehaviour
     }
     public void UnPauseGame()
     {
-        if (quitOptions.activeInHierarchy == true)
+        if (quitMenu.activeInHierarchy == true)
         {
             CloseQuitOptions();
         }
@@ -54,10 +55,21 @@ public class PauseMenu : MonoBehaviour
 
     public void OpenQuitOptions()
     {
-        quitOptions.SetActive(true);
+        quitMenu.SetActive(true);
     }
     public void CloseQuitOptions()
     {
-        quitOptions.SetActive(false);
+        quitMenu.SetActive(false);
+    }
+
+    //public void OpenInstructionsMenu()
+    //{
+    //    GameObject menu = Instantiate(instructionsMenu);
+    //    menu.transform.GetChild(0).gameObject.SetActive(true);
+    //}
+
+    public void CloseInstructionsMenu()
+    {
+        Destroy(instructionsMenu);
     }
 }
