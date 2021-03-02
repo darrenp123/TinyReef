@@ -243,8 +243,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Pros:'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: c08e3881e2c3bbe49a6b5fc5d6266713, type: 2}
+  m_sharedMaterial: {fileID: -2695272430952164003, guid: c08e3881e2c3bbe49a6b5fc5d6266713, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -477,8 +477,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Back
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: c08e3881e2c3bbe49a6b5fc5d6266713, type: 2}
+  m_sharedMaterial: {fileID: -2695272430952164003, guid: c08e3881e2c3bbe49a6b5fc5d6266713, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -812,8 +812,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Lifespan
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: c08e3881e2c3bbe49a6b5fc5d6266713, type: 2}
+  m_sharedMaterial: {fileID: -2695272430952164003, guid: c08e3881e2c3bbe49a6b5fc5d6266713, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -946,8 +946,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Cons:'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: c08e3881e2c3bbe49a6b5fc5d6266713, type: 2}
+  m_sharedMaterial: {fileID: -2695272430952164003, guid: c08e3881e2c3bbe49a6b5fc5d6266713, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1080,8 +1080,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: A fish living longer means it can potentially produce more offspring.
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: c08e3881e2c3bbe49a6b5fc5d6266713, type: 2}
+  m_sharedMaterial: {fileID: -2695272430952164003, guid: c08e3881e2c3bbe49a6b5fc5d6266713, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1412,8 +1412,8 @@ MonoBehaviour:
   m_text: "Putting gene points into lifespan may be wasted if the fish is easily
     eaten anyway.\r"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: c08e3881e2c3bbe49a6b5fc5d6266713, type: 2}
+  m_sharedMaterial: {fileID: -2695272430952164003, guid: c08e3881e2c3bbe49a6b5fc5d6266713, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1833,8 +1833,8 @@ MonoBehaviour:
   m_text: 'Each point in the lifespan stat will increase how long a fish exists by
     one minute, with the minimum being one minute. '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: c08e3881e2c3bbe49a6b5fc5d6266713, type: 2}
+  m_sharedMaterial: {fileID: -2695272430952164003, guid: c08e3881e2c3bbe49a6b5fc5d6266713, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

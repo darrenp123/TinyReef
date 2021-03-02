@@ -9,6 +9,9 @@ using UnityEngine;
 
 public class PauseMenu : MonoBehaviour
 {
+    [SerializeField]
+    InstructionsMenu instructionsMenuScript;
+
     public static bool isPaused;
     [SerializeField]
     GameObject pauseMenu, quitMenu, instructionsMenu;
@@ -26,7 +29,7 @@ public class PauseMenu : MonoBehaviour
         {
             if(isPaused)
             {
-                
+                CloseAllMenus();
                 UnPauseGame();
             }
             else
@@ -34,6 +37,12 @@ public class PauseMenu : MonoBehaviour
                 PauseGame();
             }
         }
+    }
+
+    void CloseAllMenus()
+    {
+        instructionsMenuScript.CloseAllMenus();
+        CloseInstructionsMenu();
     }
 
     public void PauseGame()
@@ -62,14 +71,13 @@ public class PauseMenu : MonoBehaviour
         quitMenu.SetActive(false);
     }
 
-    //public void OpenInstructionsMenu()
-    //{
-    //    GameObject menu = Instantiate(instructionsMenu);
-    //    menu.transform.GetChild(0).gameObject.SetActive(true);
-    //}
+    public void OpenInstructionsMenu()
+    {
+        instructionsMenu.SetActive(true);
+    }
 
     public void CloseInstructionsMenu()
     {
-        Destroy(instructionsMenu);
+        instructionsMenu.SetActive(false);
     }
 }

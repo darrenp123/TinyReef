@@ -11,9 +11,7 @@ using UnityEngine.UI;
 public class MainMenu : MonoBehaviour
 {
     [SerializeField]
-    GameObject instructionsPage, mainMenuPage, gamemodeSelectionPage, gameplayPage, TraitsPage, controlsPage, challengeModeText, sandboxModeText, gamemodeSelectionPlayButton;
-
-    #region InstructionsPage
+    GameObject instructionsPage, mainMenuPage, gamemodeSelectionPage, challengeModeText, sandboxModeText, gamemodeSelectionPlayButton;
 
     public void OpenInstructionsPage()
     {
@@ -26,40 +24,6 @@ public class MainMenu : MonoBehaviour
         instructionsPage.SetActive(false);
         mainMenuPage.SetActive(true);
     }
-
-    public void OpenGameplayInstructions()
-    {
-        gameplayPage.SetActive(true);
-    }
-    public void OpenTraitsInstructions()
-    {
-        TraitsPage.SetActive(true);
-    }
-
-    public void OpenTraitMoreInfoMenu(GameObject moreInfoScreen)
-    {
-        //instructionsPage.SetActive(false);
-        moreInfoScreen.SetActive(true);
-    }
-
-    public void CloseTraitMoreInfoMenu(GameObject moreInfoScreen)
-    {
-        moreInfoScreen.SetActive(false);
-        //instructionsPage.SetActive(true);
-    }
-
-    public void OpenControlsInstructions()
-    {
-        controlsPage.SetActive(true);
-    }
-
-    public void BackToInstructionsPage()
-    {
-        gameplayPage.SetActive(false);
-        TraitsPage.SetActive(false);
-        controlsPage.SetActive(false);
-    }
-    #endregion
 
     #region GamemodeSelection
 

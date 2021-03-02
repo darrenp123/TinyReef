@@ -566,8 +566,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8443321239528787469}
   m_HandleRect: {fileID: 8443321239528787468}
   m_Direction: 2
-  m_Value: 1.0000001
-  m_Size: 0.70239115
+  m_Value: 0.9999996
+  m_Size: 0.7023911
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -715,8 +715,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Editable Traits
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: c08e3881e2c3bbe49a6b5fc5d6266713, type: 2}
+  m_sharedMaterial: {fileID: -2695272430952164003, guid: c08e3881e2c3bbe49a6b5fc5d6266713, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -925,8 +925,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Sardine
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: c08e3881e2c3bbe49a6b5fc5d6266713, type: 2}
+  m_sharedMaterial: {fileID: -2695272430952164003, guid: c08e3881e2c3bbe49a6b5fc5d6266713, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1332,8 +1332,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Chauncey
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: c08e3881e2c3bbe49a6b5fc5d6266713, type: 2}
+  m_sharedMaterial: {fileID: -2695272430952164003, guid: c08e3881e2c3bbe49a6b5fc5d6266713, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1466,8 +1466,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Uneditable Traits
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: c08e3881e2c3bbe49a6b5fc5d6266713, type: 2}
+  m_sharedMaterial: {fileID: -2695272430952164003, guid: c08e3881e2c3bbe49a6b5fc5d6266713, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2014,10 +2014,6 @@ PrefabInstance:
     - target: {fileID: 4022295308683649182, guid: 80cf042aaf1d0864eb19744248cbe482, type: 3}
       propertyPath: m_Name
       value: UneditableTrait
-      objectReference: {fileID: 0}
-    - target: {fileID: 4022295309263252211, guid: 80cf042aaf1d0864eb19744248cbe482, type: 3}
-      propertyPath: m_text
-      value: Hunger
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 80cf042aaf1d0864eb19744248cbe482, type: 3}

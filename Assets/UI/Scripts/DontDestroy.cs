@@ -1,12 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
+/*  
+ *  AUTHOR: Jon Munro 
+ *  CREATED: 02/03/2021 
+ */
+
 using UnityEngine;
 
 public class DontDestroy : MonoBehaviour
 {
     void Awake()
     {
-        GameObject[] objs = GameObject.FindGameObjectsWithTag(transform.tag);
+        GameObject[] objs = GameObject.FindGameObjectsWithTag("UISoundManager");
 
         if (objs.Length > 1)
         {
