@@ -20,6 +20,7 @@ public class Fish : MonoBehaviour
         
     }
 
+    #region FishStats
     public void SetFishName(string name) {
         FishName = name;
     }
@@ -91,4 +92,5 @@ public class Fish : MonoBehaviour
     public float GetCamouflage() {
         return Camouflage;
     }
+    #endregion
 }

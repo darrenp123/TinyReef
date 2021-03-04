@@ -29,6 +29,8 @@ public class RotateAndZoom : MonoBehaviour
     private GameObject Center;
     [SerializeField]
     private GameObject[] FishList;
+    [SerializeField]
+    private Player PlayerState;
     private int CurrentFish;
 
     private void Awake() {
@@ -62,12 +64,10 @@ public class RotateAndZoom : MonoBehaviour
             Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit)) {
-                Debug.Log(hit.transform.tag);
                 if (hit.transform.tag == "Fish") {
-                    Debug.Log("This is a Fish");
                     FreeLookCamera.m_Follow = hit.transform.gameObject.transform;
                     FreeLookCamera.m_LookAt = hit.transform.gameObject.transform;
-                    FocusFish(true);
+                    FocusFish(true, hit.transform.gameObject.GetComponent<Fish>());
                 }
             }
         }
@@ -79,7 +79,7 @@ public class RotateAndZoom : MonoBehaviour
             if (CurrentFish < 0) CurrentFish = FishList.Length - 1;
             FreeLookCamera.m_Follow = FishList[CurrentFish].transform;
             FreeLookCamera.m_LookAt = FishList[CurrentFish].transform;
-            FocusFish(true);
+            FocusFish(true, FishList[CurrentFish].GetComponent<Fish>());
         }
     }
 
@@ -89,7 +89,7 @@ public class RotateAndZoom : MonoBehaviour
             if (CurrentFish >= FishList.Length) CurrentFish = 0;
             FreeLookCamera.m_Follow = FishList[CurrentFish].transform;
             FreeLookCamera.m_LookAt = FishList[CurrentFish].transform;
-            FocusFish(true);
+            FocusFish(true, FishList[CurrentFish].GetComponent<Fish>());
         }
     }
 
@@ -97,7 +97,7 @@ public class RotateAndZoom : MonoBehaviour
         if (context.performed) {
             FreeLookCamera.m_Follow = Center.transform;
             FreeLookCamera.m_LookAt = Center.transform;
-            FocusFish(false);
+            FocusFish(false, null);
         }
     }
 
@@ -113,15 +113,17 @@ public class RotateAndZoom : MonoBehaviour
     }
 
 
-    public void FocusFish(bool state) {
+    public void FocusFish(bool state, Fish fish) {
         if (state) {
             FreeLookCamera.m_Orbits[0].m_Radius = FishFocusTopBottomRadious;
             FreeLookCamera.m_Orbits[1].m_Radius = FishFocusMiddleRadious;
             FreeLookCamera.m_Orbits[2].m_Radius = FishFocusTopBottomRadious;
+            PlayerState.IsLookingAtFishState(true, fish);
         } else {
             FreeLookCamera.m_Orbits[0].m_Radius = TankFocusTopBottomRadious;
             FreeLookCamera.m_Orbits[1].m_Radius = TankFocusMiddleRadious;
             FreeLookCamera.m_Orbits[2].m_Radius = TankFocusTopBottomRadious;
+            PlayerState.IsLookingAtFishState(false, fish);
         }
     }
 }
