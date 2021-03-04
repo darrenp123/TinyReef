@@ -9,10 +9,14 @@ using UnityEngine;
 
 public class PauseMenu : MonoBehaviour
 {
+    [SerializeField]
+    InstructionsMenu instructionsMenuScript;
+
     public static bool isPaused;
     [SerializeField]
-    GameObject pauseMenu, quitOptions;
+    GameObject pauseMenu, quitMenu, instructionsMenu;
     // Start is called before the first frame update
+
     void Start()
     {
         isPaused = false;
@@ -25,7 +29,7 @@ public class PauseMenu : MonoBehaviour
         {
             if(isPaused)
             {
-                
+                CloseAllMenus();
                 UnPauseGame();
             }
             else
@@ -33,6 +37,12 @@ public class PauseMenu : MonoBehaviour
                 PauseGame();
             }
         }
+    }
+
+    void CloseAllMenus()
+    {
+        instructionsMenuScript.CloseAllMenus();
+        CloseInstructionsMenu();
     }
 
     public void PauseGame()
@@ -43,7 +53,7 @@ public class PauseMenu : MonoBehaviour
     }
     public void UnPauseGame()
     {
-        if (quitOptions.activeInHierarchy == true)
+        if (quitMenu.activeInHierarchy == true)
         {
             CloseQuitOptions();
         }
@@ -54,10 +64,20 @@ public class PauseMenu : MonoBehaviour
 
     public void OpenQuitOptions()
     {
-        quitOptions.SetActive(true);
+        quitMenu.SetActive(true);
     }
     public void CloseQuitOptions()
     {
-        quitOptions.SetActive(false);
+        quitMenu.SetActive(false);
+    }
+
+    public void OpenInstructionsMenu()
+    {
+        instructionsMenu.SetActive(true);
+    }
+
+    public void CloseInstructionsMenu()
+    {
+        instructionsMenu.SetActive(false);
     }
 }

@@ -4,8 +4,9 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Fish
-  - test
+  - ButtonManager
+  - InstructionsMenu
+  - UISoundManager
   layers:
   - Default
   - TransparentFX

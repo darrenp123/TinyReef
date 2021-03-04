@@ -6,22 +6,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
     [SerializeField]
-    GameObject instructionsPage, mainMenuPage, gameplayPage, TraitsPage, controlsPage;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    GameObject instructionsPage, mainMenuPage, gamemodeSelectionPage, challengeModeText, sandboxModeText, gamemodeSelectionPlayButton;
 
     public void OpenInstructionsPage()
     {
@@ -35,27 +25,36 @@ public class MainMenu : MonoBehaviour
         mainMenuPage.SetActive(true);
     }
 
-    #region InstructionsPage
+    #region GamemodeSelection
 
-    public void OpenGameplayInstructions()
+    public void OpenGamemodeSelectionPage()
     {
-        gameplayPage.SetActive(true);
-    }
-    public void OpenTraitsInstructions()
-    {
-        TraitsPage.SetActive(true);
-    }
-    public void OpenControlsInstructions()
-    {
-        controlsPage.SetActive(true);
+        mainMenuPage.SetActive(false);
+        gamemodeSelectionPage.SetActive(true);
     }
 
-    public void BackToInstructionsPage()
+    public void CloseGamemodeSelectionPage()
     {
-        gameplayPage.SetActive(false);
-        TraitsPage.SetActive(false);
-        controlsPage.SetActive(false);
+        gamemodeSelectionPage.SetActive(false);
+        mainMenuPage.SetActive(true);
     }
+
+    public void SelectedSandboxMode()
+    {
+        challengeModeText.SetActive(false);
+        sandboxModeText.SetActive(true);
+        //TODO set gamemode
+        gamemodeSelectionPlayButton.GetComponent<Button>().interactable = true;
+    }
+
+    public void SelectedChallengeMode()
+    {
+        sandboxModeText.SetActive(false);
+        challengeModeText.SetActive(true);
+        //TODO set gamemode
+        gamemodeSelectionPlayButton.GetComponent<Button>().interactable = true;
+    }
+
     #endregion
 
     public void QuitGame()
