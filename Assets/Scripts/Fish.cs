@@ -5,7 +5,9 @@ using UnityEngine;
 public class Fish : MonoBehaviour
 {
 
+    [SerializeField]
     string FishName, FishType;
+    [SerializeField]
     float Hunger, Desirability, Lifespan, Size, Speed, SensoryRadious, Camouflage;
 
     // Start is called before the first frame update
@@ -38,7 +40,7 @@ public class Fish : MonoBehaviour
     }
 
     public void SetHunger(float hunger) {
-        Hunger = hunger;
+        Hunger += hunger;
     }
 
     public float GetHunger() {
@@ -46,7 +48,7 @@ public class Fish : MonoBehaviour
     }
 
     public void SetDesirability(float desire) {
-        Desirability = desire;
+        Desirability += desire;
     }
 
     public float GetDesirability() {
@@ -54,7 +56,7 @@ public class Fish : MonoBehaviour
     }
 
     public void SetLifespan(float life) {
-        Lifespan = life;
+        Lifespan += life;
     }
 
     public float GetLifespan() {
@@ -62,7 +64,7 @@ public class Fish : MonoBehaviour
     }
 
     public void SetSize(float size) {
-        Size = size;
+        Size += size;
     }
 
     public float GetSize() {
@@ -70,7 +72,7 @@ public class Fish : MonoBehaviour
     }
 
     public void SetSpeed(float speed) {
-        Speed = speed;
+        Speed += speed;
     }
 
     public float GetSpeed() {
@@ -78,7 +80,7 @@ public class Fish : MonoBehaviour
     }
 
     public void SetSensoryRadious(float sensoryRadious) {
-        SensoryRadious = sensoryRadious;
+        SensoryRadious += sensoryRadious;
     }
 
     public float GetSensoryRadious() {
@@ -86,7 +88,7 @@ public class Fish : MonoBehaviour
     }
 
     public void SetCamouflage(float camouflage) {
-        Camouflage = camouflage;
+        Camouflage += camouflage;
     }
 
     public float GetCamouflage() {

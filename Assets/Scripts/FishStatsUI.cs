@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
+using TMPro;
 
 
 public class FishStatsUI : MonoBehaviour
@@ -10,23 +12,39 @@ public class FishStatsUI : MonoBehaviour
     [SerializeField]
     GameObject FishStats;
     [SerializeField]
-    TextMesh FishName;
+    TMP_Text FishName;
     [SerializeField]
-    TextMesh Fishtype;
+    TMP_Text Fishtype;
     [SerializeField]
-    TextMesh Hunger;
+    TMP_Text Hunger;
     [SerializeField]
-    TextMesh Desirability;
+    Slider HungerSlider;
     [SerializeField]
-    TextMesh Lifespan;
+    TMP_Text Desirability;
     [SerializeField]
-    TextMesh Size;
+    Slider DesirabilitySlider;
     [SerializeField]
-    TextMesh Speed;
+    TMP_Text Lifespan;
     [SerializeField]
-    TextMesh SensoryRadious;
+    Slider LifespanSlider;
     [SerializeField]
-    TextMesh Camouflage;
+    TMP_Text Size;
+    [SerializeField]
+    Slider SizeSlider;
+    [SerializeField]
+    TMP_Text Speed;
+    [SerializeField]
+    Slider SpeedSlider;
+    [SerializeField]
+    TMP_Text SensoryRadious;
+    [SerializeField]
+    Slider SensoryRaidousSlider;
+    [SerializeField]
+    TMP_Text Camouflage;
+    [SerializeField]
+    Slider CamouflageSlider;
+    [SerializeField]
+    TMP_Text GenePoints;
 
     // Start is called before the first frame update
     void Start()
@@ -44,6 +62,7 @@ public class FishStatsUI : MonoBehaviour
 
     public void SetCurrentFish(Fish fish) {
         CurrentFish = fish;
+        UpdateAllFishStats();
     }
     public bool IsFishStatsActive() {
         return FishStats.activeSelf;
@@ -65,6 +84,7 @@ public class FishStatsUI : MonoBehaviour
     }
 
     void UpdateChangeableStats(Fish fish) {
+        UpdateHunger(fish);
         UpdateDesirability(fish);
         UpdateLifespan(fish);
         UpdateSize(fish);
@@ -73,28 +93,50 @@ public class FishStatsUI : MonoBehaviour
         UpdateCamouflage(fish);
     }
 
+    void UpdateHunger(Fish fish) {
+        float value = fish.GetHunger();
+        Hunger.text = value.ToString();
+        HungerSlider.value = value;
+    }
+
     void UpdateDesirability(Fish fish) {
-        Desirability.text = fish.GetDesirability().ToString();
+        float value = fish.GetDesirability();
+        Desirability.text = value.ToString();
+        DesirabilitySlider.value = value;
     }
 
     void UpdateLifespan(Fish fish) {
-        Lifespan.text = fish.GetLifespan().ToString();
+        float value = fish.GetLifespan();
+        Lifespan.text = value.ToString();
+        LifespanSlider.value = value;
     }
 
     void UpdateSize(Fish fish) {
-        Size.text = fish.GetSize().ToString();
+        float value = fish.GetSize();
+        Size.text = value.ToString();
+        SizeSlider.value = value;
     }
 
     void UpdateSpeed(Fish fish) {
-        Speed.text = fish.GetSpeed().ToString();
+        float value = fish.GetSpeed();
+        Speed.text = value.ToString();
+        SpeedSlider.value = value;
     }
 
     void UpdateSensoryRadious(Fish fish) {
-        SensoryRadious.text = fish.GetSensoryRadious().ToString();
+        float value = fish.GetSensoryRadious();
+        SensoryRadious.text = value.ToString();
+        SensoryRaidousSlider.value = value;
     }
 
     void UpdateCamouflage(Fish fish) {
-        Camouflage.text = fish.GetCamouflage().ToString();
+        float value = fish.GetCamouflage();
+        Camouflage.text = value.ToString();
+        CamouflageSlider.value = value;
+    }
+
+    public void UpdateGenePoints(int points) {
+        GenePoints.text = points.ToString();
     }
     #endregion
 }

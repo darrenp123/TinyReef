@@ -19,30 +19,36 @@ public class Player : MonoBehaviour
     {
         IsLookingAtFish = false;
         Timer = 0f;
+        FishStats.UpdateGenePoints(GenePoints);
     }
 
     // Update is called once per frame
     void Update()
     {
         Timer += Time.deltaTime;
-        if(Timer >= 120f) {
-            GenePoints++;
+        if(Timer >= 2f) {
+            UpdateGenePoints(1);
             Timer = 0f;
         }
     }
 
-    public void UpdateGenePoints(int updateValue) {
-        GenePoints = updateValue;
+    void UpdateGenePoints(int updateValue) {
+        GenePoints += updateValue;
+        FishStats.UpdateGenePoints(GenePoints);
+    }
+
+    int GetGenePoints() {
+        return GenePoints;
     }
 
     public void SeeFishStats(InputAction.CallbackContext context) {
         if (context.performed) {
             if (FishStats.IsFishStatsActive()) {
                 FishStats.TurnOnOffFishStats(false);
-                FishStats.SetCurrentFish(null);
+                //FishStats.SetCurrentFish(null);
             } else if (IsLookingAtFish) {
                 FishStats.TurnOnOffFishStats(true);
-                FishStats.SetCurrentFish(CurrentFish);
+                //FishStats.SetCurrentFish(CurrentFish);
             }
         }
     }
@@ -50,20 +56,68 @@ public class Player : MonoBehaviour
     public void IsLookingAtFishState(bool state, Fish fish) {
         if (state) {
             IsLookingAtFish = true;
-            CurrentFish = fish;
+            SetCurrentFish(fish);
         } else {
-            CurrentFish = null;
+            SetCurrentFish(null);
             IsLookingAtFish = false;
             FishStats.TurnOnOffFishStats(false);
-            FishStats.SetCurrentFish(null);
         }
     }
 
     public void SetCurrentFish(Fish fish) {
         CurrentFish = fish;
+        FishStats.SetCurrentFish(fish);
     }
 
     public Fish GetCurrentFish() {
         return CurrentFish;
+    }
+
+    bool IsPurchasePossible() {
+        return GenePoints >= 5;
+    }
+
+    public void PurchasePoints(int trait, int value) {
+        if (IsPurchasePossible()) {
+            switch (trait) {
+                //Lifespan
+                case 1:
+                    if(CurrentFish.GetLifespan() > 0 && CurrentFish.GetLifespan() < 10) {
+                        CurrentFish.SetLifespan(value);
+                        UpdateGenePoints(-5);
+                    }         
+                    break;
+                //Size
+                case 2:
+                    if (CurrentFish.GetSize() > 0 && CurrentFish.GetSize() < 10) { 
+                        CurrentFish.SetSize(value);
+                        UpdateGenePoints(-5);
+                    }
+            break;
+                //Speed
+                case 3:
+                    if (CurrentFish.GetSpeed() > 0 && CurrentFish.GetSpeed() < 10) {
+                        CurrentFish.SetSpeed(value);
+                        UpdateGenePoints(-5);
+                    }
+                    break;
+                //SensoryRadious
+                case 4:
+                    if (CurrentFish.GetSensoryRadious() > 0 && CurrentFish.GetSensoryRadious() < 10) {
+                        CurrentFish.SetSensoryRadious(value);
+                        UpdateGenePoints(-5);
+                    }
+                    break;
+                //Camouflage
+                case 5:
+                    if (CurrentFish.GetCamouflage() > 0 && CurrentFish.GetCamouflage() < 10) {
+                        CurrentFish.SetCamouflage(value);
+                        UpdateGenePoints(-5);
+                    }
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 }
