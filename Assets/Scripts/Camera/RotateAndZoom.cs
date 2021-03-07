@@ -64,10 +64,11 @@ public class RotateAndZoom : MonoBehaviour
             Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit)) {
-                if (hit.transform.tag == "Fish") {
-                    FreeLookCamera.m_Follow = hit.transform.gameObject.transform;
-                    FreeLookCamera.m_LookAt = hit.transform.gameObject.transform;
-                    FocusFish(true, hit.transform.gameObject.GetComponent<Fish>());
+                var fish = hit.transform.GetComponent<Fish>();
+                if (fish) {
+                    FreeLookCamera.m_Follow = hit.transform;
+                    FreeLookCamera.m_LookAt = hit.transform;
+                    FocusFish(true, fish);
                 }
             }
         }

@@ -7,6 +7,8 @@ public class SFlockUnit : MonoBehaviour
     [SerializeField] private int numViewDirections;
     [SerializeField] private float killBoxDistance;
     [SerializeField] private float hungerThreshold;
+    [SerializeField] private string unitType;
+    [SerializeField] private string unitName;
 
     public UnitEventSigniture OnUnitRemove;
     public UnitEventSigniture OnUnitTraitsValueChanged;
@@ -14,6 +16,7 @@ public class SFlockUnit : MonoBehaviour
     public Transform MyTransform { get; set; }
     public int CurrentWaypoint { get; set; }
     public Vector3[] Directions { get; set; }
+    public int Size { get; set; }
 
     public float FOVAngle => fovAngle;
     public int NumViewDirections => numViewDirections;
@@ -24,6 +27,8 @@ public class SFlockUnit : MonoBehaviour
     public Vector3 CurrentVelocity { get => _currentVelocity; set => _currentVelocity = value; }
     public float MaxSpeed => _maxSpeed;
     public float SightDistance => _sightDistance;
+    public string UnitType => unitType;
+    public string UnitName { get => unitName; set => unitName = value; }
 
     public delegate void UnitEventSigniture(SFlockUnit unitToRemove);
 
@@ -66,15 +71,15 @@ public class SFlockUnit : MonoBehaviour
         _unitSate = UnitStates.PATROLING;
     }
 
-    public void SetMaxSpeed()
+    public void SetMaxSpeed(int deltaValue)
     {
-        _maxSpeed++;
+        _maxSpeed += deltaValue;
         OnUnitTraitsValueChanged?.Invoke(this);
     }
 
-    public void SetSightDistance()
+    public void SetSightDistance(int deltaValue)
     {
-        _sightDistance++;
+        _sightDistance += deltaValue;
         OnUnitTraitsValueChanged?.Invoke(this);
     }
 
