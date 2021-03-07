@@ -9,17 +9,38 @@ public class Fish : MonoBehaviour
     string FishName, FishType;
     [SerializeField]
     float Hunger, Desirability, Lifespan, Size, Speed, SensoryRadious, Camouflage;
+    float InitialSize;
+
+    Fish(string name, string type, float lifespan, float size, float speed, float sensoryRadious, float camouflage, Vector3 fishScale) {
+        FishName = name;
+        FishType = type;
+        Hunger = 0f;
+        Desirability = 3f;
+        Lifespan = lifespan;
+        Size = size;
+        Speed = speed;
+        SensoryRadious = sensoryRadious;
+        Camouflage = camouflage;
+        this.gameObject.transform.localScale = fishScale;
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        InitialSize = Size;
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    //Set Fish scale
+    void ScaleFish() {    
+        float sizeChange = (Size - InitialSize) / 10;
+        Vector3 scaleChange = new Vector3(sizeChange, sizeChange, sizeChange);
+        this.gameObject.transform.localScale = Vector3.one + scaleChange;
     }
 
     #region FishStats
@@ -65,6 +86,7 @@ public class Fish : MonoBehaviour
 
     public void SetSize(float size) {
         Size += size;
+        ScaleFish();
     }
 
     public float GetSize() {
