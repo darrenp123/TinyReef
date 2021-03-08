@@ -77,21 +77,27 @@ public class RotateAndZoom : MonoBehaviour
 
     public void CycleLeft(InputAction.CallbackContext context) {
         if (context.performed) {
+            //TODO
+            /*
             CurrentFish--;
             if (CurrentFish < 0) CurrentFish = FishList.Length - 1;
             FreeLookCamera.m_Follow = FishList[CurrentFish].transform;
             FreeLookCamera.m_LookAt = FishList[CurrentFish].transform;
             FocusFish(true, FishList[CurrentFish].GetComponent<SFlockUnit>());
+            */
         }
     }
 
     public void CycleRight(InputAction.CallbackContext context) {
         if (context.performed) {
+            //TODO
+            /*
             CurrentFish++;
             if (CurrentFish >= FishList.Length) CurrentFish = 0;
             FreeLookCamera.m_Follow = FishList[CurrentFish].transform;
             FreeLookCamera.m_LookAt = FishList[CurrentFish].transform;
             FocusFish(true, FishList[CurrentFish].GetComponent<SFlockUnit>());
+            */
         }
     }
 
