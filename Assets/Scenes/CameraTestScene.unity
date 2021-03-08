@@ -494,6 +494,7 @@ GameObject:
   - component: {fileID: 56322215}
   - component: {fileID: 56322214}
   - component: {fileID: 56322213}
+  - component: {fileID: 56322217}
   m_Layer: 5
   m_Name: PauseMenuCanvas
   m_TagString: Untagged
@@ -598,6 +599,84 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 1
   m_TargetDisplay: 0
+--- !u!114 &56322217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 56322211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 318d648b9950e2b4f900d3c15495b2a2, type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: c2b66fb3-1a47-4d91-bcde-7c00826563a3
+    m_ActionName: Camera/Mouse[/Mouse/delta,/Keyboard/s,/Keyboard/w,/Keyboard/d,/Keyboard/a]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 1f8f898c-446b-4a1e-8e56-73b709f5a90d
+    m_ActionName: Camera/Zoom[/Mouse/scroll/y]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 70926f4e-5cfd-4cb3-8a14-d4274bbb425e
+    m_ActionName: Camera/Enable Rotation[/Mouse/rightButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: a420d731-bdb7-43c3-adab-54b2c2453fb1
+    m_ActionName: Camera/Select[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: a88b3aa2-3ad2-4aba-a5b7-e67981b4fac3
+    m_ActionName: Camera/Cycle Left[/Keyboard/q]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: bbec37c9-e834-4220-ac0d-51d4623329f1
+    m_ActionName: Camera/Cycle Right[/Keyboard/e]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: a41fb8c6-be15-43bf-886f-f54333fb7449
+    m_ActionName: Camera/Return[/Keyboard/r]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 59bcb45d-7821-42dc-aad5-8d30903bc945
+    m_ActionName: Player/SeeFishStats[/Keyboard/tab]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 56322213}
+        m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
+        m_MethodName: OpenPauseMenu
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 8da56da9-6eff-4337-961c-6ce76b9c63c2
+    m_ActionName: Player/PauseMenu[/Keyboard/escape]
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Player
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!1 &61900602
 GameObject:
   m_ObjectHideFlags: 0
@@ -680,8 +759,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 521909377}
   m_HandleRect: {fileID: 521909376}
   m_Direction: 2
-  m_Value: 0.000000041098307
-  m_Size: 0.3472997
+  m_Value: -0.00000020549157
+  m_Size: 0.34729975
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -3484,7 +3563,7 @@ MonoBehaviour:
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 0}
   m_Lens:
-    FieldOfView: 38.43676
+    FieldOfView: 34.25599
     OrthographicSize: 10
     NearClipPlane: 0.1
     FarClipPlane: 5000
@@ -3505,8 +3584,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 291990267}
-  m_LocalRotation: {x: 0.0075563565, y: 0.000000019531242, z: -1.4758926e-10, w: 0.99997145}
-  m_LocalPosition: {x: 0, y: -0.000000059604645, z: 0}
+  m_LocalRotation: {x: 0.055516094, y: -0, z: -0, w: 0.9984578}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1434015925}
@@ -5870,7 +5949,7 @@ MonoBehaviour:
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 0}
   m_Lens:
-    FieldOfView: 38.43676
+    FieldOfView: 34.25599
     OrthographicSize: 10
     NearClipPlane: 0.1
     FarClipPlane: 5000
@@ -5891,8 +5970,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 586992194}
-  m_LocalRotation: {x: -0.010305744, y: -0.000000012574313, z: -1.2959454e-10, w: 0.9999469}
-  m_LocalPosition: {x: 0, y: -0.000000059604645, z: 0}
+  m_LocalRotation: {x: 0.03973311, y: -0, z: -0, w: 0.99921036}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1099184609}
@@ -7075,7 +7154,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 1
-  m_FollowOffset: {x: 0, y: 1, z: -20}
+  m_FollowOffset: {x: 0, y: 1, z: -7}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
@@ -9393,11 +9472,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8443321239559813077, guid: 439ce7327cff9ca4086acc4a8afa5de2, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 246
+      value: 376
       objectReference: {fileID: 0}
     - target: {fileID: 8443321239559813077, guid: 439ce7327cff9ca4086acc4a8afa5de2, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 133
+      value: 76
       objectReference: {fileID: 0}
     - target: {fileID: 8443321239559813077, guid: 439ce7327cff9ca4086acc4a8afa5de2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -11100,7 +11179,7 @@ MonoBehaviour:
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 0}
   m_Lens:
-    FieldOfView: 38.43676
+    FieldOfView: 34.25599
     OrthographicSize: 10
     NearClipPlane: 0.1
     FarClipPlane: 5000
@@ -11121,8 +11200,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1037578443}
-  m_LocalRotation: {x: 0.021032417, y: 4.253879e-15, z: -1.9265829e-17, w: 0.9997788}
-  m_LocalPosition: {x: 0, y: -0.15852529, z: 0.0090408325}
+  m_LocalRotation: {x: 0.07088901, y: -0.000000018227157, z: 0.0000000012953638, w: 0.9974842}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 710187751}
@@ -11572,7 +11651,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 1
-  m_FollowOffset: {x: 0, y: 1, z: -20}
+  m_FollowOffset: {x: 0, y: 1, z: -7}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
@@ -14462,7 +14541,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 1
-  m_FollowOffset: {x: 0, y: 1, z: -20}
+  m_FollowOffset: {x: 0, y: 1, z: -7}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
@@ -17650,7 +17729,7 @@ Camera:
     height: 1
   near clip plane: 0.1
   far clip plane: 5000
-  field of view: 38.43676
+  field of view: 34.25599
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -17675,8 +17754,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1748742465}
-  m_LocalRotation: {x: 0.00755636, y: 0.000000035634454, z: -2.692744e-10, w: 0.99997145}
-  m_LocalPosition: {x: 0, y: 1, z: -20}
+  m_LocalRotation: {x: 0.0555161, y: 0, z: 0, w: 0.9984578}
+  m_LocalPosition: {x: 0, y: 1, z: -7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -17907,7 +17986,7 @@ AudioSource:
   m_GameObject: {fileID: 1760709053}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 329e6a4f339e7924b9284a070f6139e0, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -18127,7 +18206,7 @@ MonoBehaviour:
   m_Follow: {fileID: 94362887}
   m_CommonLens: 1
   m_Lens:
-    FieldOfView: 38.43676
+    FieldOfView: 34.25599
     OrthographicSize: 10
     NearClipPlane: 0.1
     FarClipPlane: 5000
@@ -18196,11 +18275,11 @@ MonoBehaviour:
   m_SplineCurvature: 0.343
   m_Orbits:
   - m_Height: 1.5
-    m_Radius: 18
+    m_Radius: 5
   - m_Height: 1
-    m_Radius: 20
+    m_Radius: 7
   - m_Height: -1.5
-    m_Radius: 18
+    m_Radius: 5
   m_LegacyHeadingBias: 3.4028235e+38
   m_Rigs:
   - {fileID: 1037578444}
@@ -18214,7 +18293,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1774847368}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -20}
+  m_LocalPosition: {x: 0, y: 1, z: -7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1037578445}
@@ -18928,6 +19007,10 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 59bcb45d-7821-42dc-aad5-8d30903bc945
     m_ActionName: Player/SeeFishStats[/Keyboard/tab]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 8da56da9-6eff-4337-961c-6ce76b9c63c2
+    m_ActionName: Player/PauseMenu[/Keyboard/escape]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player

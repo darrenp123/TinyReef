@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
     [SerializeField]
     int TraitCost;
     float Timer;
+    bool UION;
 
 
     // Start is called before the first frame update
@@ -22,6 +23,7 @@ public class Player : MonoBehaviour
         IsLookingAtFish = false;
         Timer = 0f;
         FishStats.UpdateGenePoints(GenePoints);
+        UION = false;
     }
 
     // Update is called once per frame
@@ -47,9 +49,11 @@ public class Player : MonoBehaviour
         if (context.performed) {
             if (FishStats.IsFishStatsActive()) {
                 FishStats.TurnOnOffFishStats(false);
+                UION = false;
                 //FishStats.SetCurrentFish(null);
             } else if (IsLookingAtFish) {
                 FishStats.TurnOnOffFishStats(true);
+                UION = true;
                 //FishStats.SetCurrentFish(CurrentFish);
             }
         }
@@ -77,6 +81,10 @@ public class Player : MonoBehaviour
 
     bool IsPurchasePossible() {
         return GenePoints >= TraitCost;
+    }
+
+    public bool IsUION() {
+        return UION;
     }
 
     public void PurchasePoints(int trait, int value) {

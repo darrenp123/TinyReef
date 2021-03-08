@@ -60,7 +60,7 @@ public class RotateAndZoom : MonoBehaviour
     }
 
     public void OnLeftClick(InputAction.CallbackContext context) {
-        if (context.performed) {
+        if (!PlayerState.IsUION() && context.performed) {
             Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit)) {
