@@ -63,7 +63,8 @@ public class RotateAndZoom : MonoBehaviour
         if (!PlayerState.IsUION() && context.performed) {
             Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
             RaycastHit hit;
-            if (Physics.Raycast(ray, out hit)) {
+            int layer_mask = LayerMask.GetMask("Tier1", "Tier2", "Tier3");
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity,layer_mask)) {
                 var fish = hit.transform.GetComponent<SFlockUnit>();
                 if (fish) {
                     FreeLookCamera.m_Follow = hit.transform;

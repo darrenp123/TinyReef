@@ -3563,7 +3563,7 @@ MonoBehaviour:
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 0}
   m_Lens:
-    FieldOfView: 34.25599
+    FieldOfView: 39.36831
     OrthographicSize: 10
     NearClipPlane: 0.1
     FarClipPlane: 5000
@@ -3584,8 +3584,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 291990267}
-  m_LocalRotation: {x: 0.055516094, y: -0, z: -0, w: 0.9984578}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0.05304426, y: -0.000000012259633, z: 6.512198e-10, w: 0.9985922}
+  m_LocalPosition: {x: 0, y: -0.000000059604645, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1434015925}
@@ -5949,7 +5949,7 @@ MonoBehaviour:
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 0}
   m_Lens:
-    FieldOfView: 34.25599
+    FieldOfView: 39.36831
     OrthographicSize: 10
     NearClipPlane: 0.1
     FarClipPlane: 5000
@@ -5970,8 +5970,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 586992194}
-  m_LocalRotation: {x: 0.03973311, y: -0, z: -0, w: 0.99921036}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0.034734126, y: -0.0000000018615215, z: 6.469736e-11, w: 0.9993966}
+  m_LocalPosition: {x: 0, y: -0.000000059604645, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1099184609}
@@ -11179,7 +11179,7 @@ MonoBehaviour:
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 0}
   m_Lens:
-    FieldOfView: 34.25599
+    FieldOfView: 39.36831
     OrthographicSize: 10
     NearClipPlane: 0.1
     FarClipPlane: 5000
@@ -11200,8 +11200,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1037578443}
-  m_LocalRotation: {x: 0.07088901, y: -0.000000018227157, z: 0.0000000012953638, w: 0.9974842}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0.053347375, y: 0.000000018095628, z: -9.667308e-10, w: 0.99857605}
+  m_LocalPosition: {x: 0, y: -0.2546571, z: 0.044106007}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 710187751}
@@ -17729,7 +17729,7 @@ Camera:
     height: 1
   near clip plane: 0.1
   far clip plane: 5000
-  field of view: 34.25599
+  field of view: 39.36831
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -17754,7 +17754,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1748742465}
-  m_LocalRotation: {x: 0.0555161, y: 0, z: 0, w: 0.9984578}
+  m_LocalRotation: {x: 0.053044267, y: -0.000000032400884, z: 0.0000000017211038, w: 0.9985922}
   m_LocalPosition: {x: 0, y: 1, z: -7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -18206,7 +18206,7 @@ MonoBehaviour:
   m_Follow: {fileID: 94362887}
   m_CommonLens: 1
   m_Lens:
-    FieldOfView: 34.25599
+    FieldOfView: 39.36831
     OrthographicSize: 10
     NearClipPlane: 0.1
     FarClipPlane: 5000
@@ -18490,6 +18490,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 59bcb45d-7821-42dc-aad5-8d30903bc945
     m_ActionName: Player/SeeFishStats[/Keyboard/tab]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 8da56da9-6eff-4337-961c-6ce76b9c63c2
+    m_ActionName: Player/PauseMenu[/Keyboard/escape]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Camera
