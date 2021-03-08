@@ -8,7 +8,7 @@ using TMPro;
 public class FishStatsUI : MonoBehaviour
 {
 
-    Fish CurrentFish;
+    SFlockUnit CurrentFish;
     [SerializeField]
     GameObject FishStats;
     [SerializeField]
@@ -60,9 +60,9 @@ public class FishStatsUI : MonoBehaviour
         }
     }
 
-    public void SetCurrentFish(Fish fish) {
+    public void SetCurrentFish(SFlockUnit fish) {
         CurrentFish = fish;
-        UpdateAllFishStats();
+        if(fish != null) UpdateAllFishStats();
     }
     public bool IsFishStatsActive() {
         return FishStats.activeSelf;
@@ -78,12 +78,12 @@ public class FishStatsUI : MonoBehaviour
 
     #region UpdateUI
     public void UpdateAllFishStats() {
-        FishName.text = CurrentFish.GetFishName();
-        Fishtype.text = CurrentFish.GetFishType();
+        FishName.text = CurrentFish.UnitName;
+        Fishtype.text = CurrentFish.UnitType;
         UpdateChangeableStats(CurrentFish);
     }
 
-    void UpdateChangeableStats(Fish fish) {
+    void UpdateChangeableStats(SFlockUnit fish) {
         UpdateHunger(fish);
         UpdateDesirability(fish);
         UpdateLifespan(fish);
@@ -93,46 +93,56 @@ public class FishStatsUI : MonoBehaviour
         UpdateCamouflage(fish);
     }
 
-    void UpdateHunger(Fish fish) {
-        float value = fish.GetHunger();
+    void UpdateHunger(SFlockUnit fish) {
+        float value = Mathf.RoundToInt(fish.CurrrentHunger);
+        if (value < 0) value = 0;
         Hunger.text = value.ToString();
         HungerSlider.value = value;
     }
 
-    void UpdateDesirability(Fish fish) {
+    void UpdateDesirability(SFlockUnit fish) {
+        //TODO
+        /*
         float value = fish.GetDesirability();
         Desirability.text = value.ToString();
         DesirabilitySlider.value = value;
+        */
     }
 
-    void UpdateLifespan(Fish fish) {
+    void UpdateLifespan(SFlockUnit fish) {
+        //TODO
+        /*
         float value = fish.GetLifespan();
         Lifespan.text = value.ToString();
         LifespanSlider.value = value;
+        */
     }
 
-    void UpdateSize(Fish fish) {
-        float value = fish.GetSize();
+    void UpdateSize(SFlockUnit fish) {
+        float value = fish.Size;
         Size.text = value.ToString();
         SizeSlider.value = value;
     }
 
-    void UpdateSpeed(Fish fish) {
-        float value = fish.GetSpeed();
+    void UpdateSpeed(SFlockUnit fish) {
+        int value = Mathf.RoundToInt(fish.MaxSpeed);
         Speed.text = value.ToString();
         SpeedSlider.value = value;
     }
 
-    void UpdateSensoryRadious(Fish fish) {
-        float value = fish.GetSensoryRadious();
+    void UpdateSensoryRadious(SFlockUnit fish) {
+        float value = Mathf.RoundToInt(fish.SightDistance);
         SensoryRadious.text = value.ToString();
         SensoryRaidousSlider.value = value;
     }
 
-    void UpdateCamouflage(Fish fish) {
+    void UpdateCamouflage(SFlockUnit fish) {
+        //TODO
+        /*
         float value = fish.GetCamouflage();
         Camouflage.text = value.ToString();
         CamouflageSlider.value = value;
+        */
     }
 
     public void UpdateGenePoints(int points) {

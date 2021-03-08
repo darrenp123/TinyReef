@@ -9,6 +9,8 @@ public class SFlockUnit : MonoBehaviour
     [SerializeField] private float hungerThreshold;
     [SerializeField] private string unitType;
     [SerializeField] private string unitName;
+    [SerializeField] private float size;
+    [SerializeField] Transform fishTransform;
 
     public UnitEventSigniture OnUnitRemove;
     public UnitEventSigniture OnUnitTraitsValueChanged;
@@ -16,8 +18,8 @@ public class SFlockUnit : MonoBehaviour
     public Transform MyTransform { get; set; }
     public int CurrentWaypoint { get; set; }
     public Vector3[] Directions { get; set; }
-    public int Size { get; set; }
 
+    public float Size { get => size; set => size = value; }
     public float FOVAngle => fovAngle;
     public int NumViewDirections => numViewDirections;
     public float KillBoxDistance => killBoxDistance;
@@ -37,6 +39,7 @@ public class SFlockUnit : MonoBehaviour
     private Vector3 _currentVelocity;
     private float _currrentHunger;
     private float _sightDistance;
+    private float _initialSize;
 
     private void Awake()
     {
@@ -69,6 +72,7 @@ public class SFlockUnit : MonoBehaviour
         _sightDistance = sightDistance;
         _currentVelocity = MyTransform.forward * speed;
         _unitSate = UnitStates.PATROLING;
+        _initialSize = Size;
     }
 
     public void SetMaxSpeed(int deltaValue)
@@ -81,6 +85,15 @@ public class SFlockUnit : MonoBehaviour
     {
         _sightDistance += deltaValue;
         OnUnitTraitsValueChanged?.Invoke(this);
+    }
+
+    public void ScaleFish() {
+        Debug.Log(Size);
+        float sizeChange = (Size - _initialSize) / 10f;
+        Debug.Log(sizeChange);
+        Vector3 scaleChange = new Vector3(sizeChange, sizeChange, sizeChange);
+        Debug.Log(Vector3.one + scaleChange);
+        fishTransform.localScale = Vector3.one + scaleChange;
     }
 
     public void RemoveUnit()

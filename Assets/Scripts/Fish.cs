@@ -37,7 +37,7 @@ public class Fish : MonoBehaviour
     }
 
     //Set Fish scale
-    void ScaleFish() {    
+    void ScaleFish() {
         float sizeChange = (Size - InitialSize) / 10;
         Vector3 scaleChange = new Vector3(sizeChange, sizeChange, sizeChange);
         this.gameObject.transform.localScale = Vector3.one + scaleChange;
