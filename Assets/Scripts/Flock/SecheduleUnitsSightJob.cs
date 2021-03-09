@@ -27,6 +27,9 @@ public struct SecheduleUnitsSightJob : IJobParallelFor
     public NativeArray<SpherecastCommand> UnitsPredatorsChecks;
     [NativeDisableParallelForRestriction]
     [WriteOnly]
+    public NativeArray<SpherecastCommand> UnitsPreysChecks;
+    [NativeDisableParallelForRestriction]
+    [WriteOnly]
     public NativeArray<SpherecastCommand> UnitsPredatorsPreyObstackleChecks;
     [NativeDisableParallelForRestriction]
     [WriteOnly]
@@ -34,8 +37,9 @@ public struct SecheduleUnitsSightJob : IJobParallelFor
 
     public float ObstacleDistance;
     public LayerMask ObstacleMask;
-    public float PredatorDistance;
+    public float PredatorPreyDistance;
     public LayerMask PredatorMask;
+    public LayerMask PreyMask;
     public float SphereCastRadius;
 
     public void Execute(int index)
@@ -56,10 +60,13 @@ public struct SecheduleUnitsSightJob : IJobParallelFor
                currentUnitPosition, SphereCastRadius, dir, ObstacleDistance, ObstacleMask);
 
             UnitsPredatorsChecks[i + IndexStart] = new SpherecastCommand(
-                currentUnitPosition, SphereCastRadius, dir, PredatorDistance, PredatorMask);
+                currentUnitPosition, SphereCastRadius, dir, PredatorPreyDistance, PredatorMask);
+
+            UnitsPreysChecks[i + IndexStart] = new SpherecastCommand(
+                currentUnitPosition, SphereCastRadius, dir, PredatorPreyDistance, PreyMask);
 
             UnitsPredatorsPreyObstackleChecks[i + IndexStart] = new SpherecastCommand(
-                currentUnitPosition, SphereCastRadius, dir, PredatorDistance, ObstacleMask);
+                currentUnitPosition, SphereCastRadius, dir, PredatorPreyDistance, ObstacleMask);
         }
     }
 }

@@ -205,11 +205,9 @@ MonoBehaviour:
   fovAngle: 150
   numViewDirections: 100
   killBoxDistance: 0
-  hungerThreshold: 10
-  unitType: Deap sea fish
-  unitName: Baramundi
-  size: 1
-  fishTransform: {fileID: 7011556563540327464}
+  hungerThreshold: 5
+  unitType: 
+  unitName: 
 --- !u!1 &1530038206603865180
 GameObject:
   m_ObjectHideFlags: 0
