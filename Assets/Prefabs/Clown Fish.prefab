@@ -132,6 +132,8 @@ MonoBehaviour:
   hungerThreshold: 5
   unitType: Coral Fish
   unitName: Clown Fish
+  size: 0
+  fishTransform: {fileID: 7897027409579362614}
 --- !u!136 &4058379608722347350
 CapsuleCollider:
   m_ObjectHideFlags: 0

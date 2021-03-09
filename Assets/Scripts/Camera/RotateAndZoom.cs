@@ -42,7 +42,9 @@ public class RotateAndZoom : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        FreeLookCamera.m_Follow = Center.transform;
+        FreeLookCamera.m_LookAt = Center.transform;
+        FocusFish(false, null);
     }
 
     // Update is called once per frame

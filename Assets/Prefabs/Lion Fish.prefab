@@ -51,6 +51,8 @@ MonoBehaviour:
   hungerThreshold: 20
   unitType: Coral Fish
   unitName: Lion Fish
+  size: 5
+  fishTransform: {fileID: 825789154934025519}
 --- !u!136 &2343105838067639095
 CapsuleCollider:
   m_ObjectHideFlags: 0

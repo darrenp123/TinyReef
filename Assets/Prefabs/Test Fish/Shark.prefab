@@ -63,8 +63,10 @@ MonoBehaviour:
   numViewDirections: 150
   killBoxDistance: 1.5
   hungerThreshold: 20
-  unitType: 
-  unitName: 
+  unitType: Bull Shark
+  unitName: Shark
+  size: 9
+  fishTransform: {fileID: 302282928492755595}
 --- !u!1001 &302282928151719339
 PrefabInstance:
   m_ObjectHideFlags: 0
