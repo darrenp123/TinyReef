@@ -88,6 +88,8 @@ public class IndependentFlock : MonoBehaviour
         var unitsSightDirectionsCheks = new NativeArray<SpherecastCommand>(numberOfSightDirections, Allocator.TempJob);
         var unitsObstacleSightResults = new NativeArray<RaycastHit>(numberOfSightDirections, Allocator.TempJob);
 
+        var unitsFakeChecks = new NativeArray<SpherecastCommand>(numberOfSightDirections, Allocator.TempJob);
+
         var unitsPreyChecks = new NativeArray<SpherecastCommand>(numberOfSightDirections, Allocator.TempJob);
         var unitsPreyResults = new NativeArray<RaycastHit>(numberOfSightDirections, Allocator.TempJob);
 
@@ -113,6 +115,7 @@ public class IndependentFlock : MonoBehaviour
             SightDirections = _sightDirections,
 
             ObstacleChecks = _obstacleChecks,
+            UnitsPreysChecks = unitsFakeChecks,
             UnitSightDirectionsChecks = unitsSightDirectionsCheks,
             UnitsPredatorsChecks = unitsPreyChecks,
             UnitsPredatorsPreyObstackleChecks = unitsPreyObtacleChecks,
@@ -120,7 +123,7 @@ public class IndependentFlock : MonoBehaviour
 
             ObstacleDistance = obstacleDistance,
             ObstacleMask = obstacleMask,
-            PredatorDistance = preyDistance,
+            PredatorPreyDistance = preyDistance,
             PredatorMask = preyMask,
             SphereCastRadius = sphereCastRadius
         };
@@ -195,6 +198,7 @@ public class IndependentFlock : MonoBehaviour
         unitsPreyResults.Dispose();
         unitsPreyObtacleChecks.Dispose();
         unitsPreyObtacleResults.Dispose();
+        unitsFakeChecks.Dispose();
     }
 
     private void GenerateUnits()

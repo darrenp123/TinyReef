@@ -7,6 +7,8 @@ TagManager:
   - ButtonManager
   - InstructionsMenu
   - UISoundManager
+  - Fish
+  - test
   layers:
   - Default
   - TransparentFX
@@ -19,7 +21,7 @@ TagManager:
   - Tier1
   - Tier2
   - Tier3
-  - 
+  - Coral
   - 
   - 
   - 

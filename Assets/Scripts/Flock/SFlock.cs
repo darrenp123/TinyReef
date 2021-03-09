@@ -81,8 +81,10 @@ public class SFlock : MonoBehaviour
     private NativeList<RaycastHit> _unitsObstacleSightResults;
     private NativeList<SpherecastCommand> _unitsPredatorsChecks;
     private NativeList<RaycastHit> _unitsPredatorsResults;
+    private NativeList<SpherecastCommand> _unitsPreyChecks;
+    private NativeList<RaycastHit> _unitsPreyResults;
     private NativeList<SpherecastCommand> _unitsPredatorPreysObtacleChecks;
-    private NativeList<RaycastHit> _unitsPredatorsObtacleResults;
+    private NativeList<RaycastHit> _unitsPredatorPreysObtacleResults;
     private NativeList<float3> _unitsSightDirections;
 
     // used for debugging and testing
@@ -137,21 +139,24 @@ public class SFlock : MonoBehaviour
             ObstacleChecks = _unitsObstacleChecks,
             UnitSightDirectionsChecks = _unitsSightDirectionsCheks,
             UnitsPredatorsChecks = _unitsPredatorsChecks,
+            UnitsPreysChecks = _unitsPreyChecks,
             UnitsPredatorsPreyObstackleChecks = _unitsPredatorPreysObtacleChecks,
             UnitsSightDirections = _unitsSightDirections,
 
             ObstacleDistance = obstacleDistance,
             ObstacleMask = obstacleMask,
-            PredatorDistance = initPredatorPreyDistance,
+            PredatorPreyDistance = initPredatorPreyDistance,
             PredatorMask = predatorMask,
+            PreyMask = preyMask,
             SphereCastRadius = sphereCastRadius
         };
 
         JobHandle secheduleHandle = secheduleRaysJob.Schedule(totalUnitAmought, unitBatchCount, default);
         JobHandle sightSchedulingHandle = SpherecastCommand.ScheduleBatch(_unitsSightDirectionsCheks, _unitsObstacleSightResults, sightBatchCount, secheduleHandle);
-        JobHandle checkObstacleHandle = SpherecastCommand.ScheduleBatch(_unitsObstacleChecks, _unitsObstacleResults, sightBatchCount, sightSchedulingHandle);
+        JobHandle checkObstacleHandle = SpherecastCommand.ScheduleBatch(_unitsObstacleChecks, _unitsObstacleResults, unitBatchCount, sightSchedulingHandle);
         JobHandle checkPredatorsHandle = SpherecastCommand.ScheduleBatch(_unitsPredatorsChecks, _unitsPredatorsResults, sightBatchCount, checkObstacleHandle);
-        JobHandle checkPredatorPreyObstacleHandle = SpherecastCommand.ScheduleBatch(_unitsPredatorPreysObtacleChecks, _unitsPredatorsObtacleResults, sightBatchCount, checkPredatorsHandle);
+        JobHandle checkPreyHandle = SpherecastCommand.ScheduleBatch(_unitsPreyChecks, _unitsPreyResults, sightBatchCount, checkPredatorsHandle);
+        JobHandle checkPredatorPreyObstacleHandle = SpherecastCommand.ScheduleBatch(_unitsPredatorPreysObtacleChecks, _unitsPredatorPreysObtacleResults, sightBatchCount, checkPreyHandle);
 
         SMoveJobTest moveJob = new SMoveJobTest
         {
@@ -159,14 +164,15 @@ public class SFlock : MonoBehaviour
             UnitsCurrentVelocities = _unitsCurrentVelocities,
             UnitsPositions = _unitsPositions,
             UnitsCurrentWaypoints = _unitsCurrentWaypoints,
-            //UnitsHungerTimer = _unitsHungerTimer,
+            UnitsHungerTimer = _unitsHungerTimer,
 
             UnitsMaxSpeed = _unitsMaxSpeed,
             UnitsSightDistance = _unitsSightDistance,
             UnitsObstacleResults = _unitsObstacleResults,
             UnitsObstacleSightResults = _unitsObstacleSightResults,
             UnitsPredatorsResults = _unitsPredatorsResults,
-            UnitsPredatorsObtacleResults = _unitsPredatorsObtacleResults,
+            UnitsPreyResults = _unitsPreyResults,
+            UnitsPredatorPreyObtacleResults = _unitsPredatorPreysObtacleResults,
             UnitSightDirections = _unitsSightDirections,
             FlockWaypoints = _flockWaypoints,
 
@@ -183,6 +189,7 @@ public class SFlock : MonoBehaviour
             PatrolWaypointWeight = patrolWaypointWeight,
             ObstacleAvoidanceWeight = obstacleAvoidanceWeight,
             PredatorFleeWeight = predatorFleeWeight,
+            PreyPersuitWeight = preyPersuitWeight,
             BoundsWeight = boundsWeight,
 
             FovAngle = flockUnitPrefab.FOVAngle,
@@ -203,6 +210,7 @@ public class SFlock : MonoBehaviour
             currentUnit.MyTransform.position = moveJob.UnitsPositions[i];
             currentUnit.CurrentVelocity = moveJob.UnitsCurrentVelocities[i];
             currentUnit.CurrrentHunger = _unitsHungerTimer[i];
+            // might not be needed.
             currentUnit.CurrentWaypoint = moveJob.UnitsCurrentWaypoints[i];
 
             if (currentUnit.CurrrentHunger <= 0 && Physics.SphereCast(currentUnit.MyTransform.position,
@@ -213,6 +221,7 @@ public class SFlock : MonoBehaviour
                 {
                     killedUnit.RemoveUnit();
                     _unitsHungerTimer[i] = currentUnit.HungerThreshold;
+                    Debug.Log("Fish consumed!");
                 }
             }
         }
@@ -262,8 +271,10 @@ public class SFlock : MonoBehaviour
         _unitsObstacleSightResults = new NativeList<RaycastHit>(numberOfSightDirections, Allocator.Persistent);
         _unitsPredatorsChecks = new NativeList<SpherecastCommand>(numberOfSightDirections, Allocator.Persistent);
         _unitsPredatorsResults = new NativeList<RaycastHit>(numberOfSightDirections, Allocator.Persistent);
+        _unitsPreyChecks = new NativeList<SpherecastCommand>(numberOfSightDirections, Allocator.Persistent);
+        _unitsPreyResults = new NativeList<RaycastHit>(numberOfSightDirections, Allocator.Persistent);
         _unitsPredatorPreysObtacleChecks = new NativeList<SpherecastCommand>(numberOfSightDirections, Allocator.Persistent);
-        _unitsPredatorsObtacleResults = new NativeList<RaycastHit>(numberOfSightDirections, Allocator.Persistent);
+        _unitsPredatorPreysObtacleResults = new NativeList<RaycastHit>(numberOfSightDirections, Allocator.Persistent);
         _unitsSightDirections = new NativeList<float3>(numberOfSightDirections, Allocator.Persistent);
 
         for (int i = 0; i < numberOfSightDirections; i++)
@@ -272,8 +283,10 @@ public class SFlock : MonoBehaviour
             _unitsObstacleSightResults.Add(emptyRay);
             _unitsPredatorsChecks.Add(emptyCommand);
             _unitsPredatorsResults.Add(emptyRay);
+            _unitsPreyChecks.Add(emptyCommand);
+            _unitsPreyResults.Add(emptyRay);
             _unitsPredatorPreysObtacleChecks.Add(emptyCommand);
-            _unitsPredatorsObtacleResults.Add(emptyRay);
+            _unitsPredatorPreysObtacleResults.Add(emptyRay);
             _unitsSightDirections.Add(float3.zero);
         }
     }
@@ -301,8 +314,10 @@ public class SFlock : MonoBehaviour
         _unitsObstacleSightResults.RemoveRangeWithBeginEnd(from, to);
         _unitsPredatorsChecks.RemoveRangeWithBeginEnd(from, to);
         _unitsPredatorsResults.RemoveRangeWithBeginEnd(from, to);
+        _unitsPreyChecks.RemoveRangeWithBeginEnd(from, to);
+        _unitsPreyResults.RemoveRangeWithBeginEnd(from, to);
         _unitsPredatorPreysObtacleChecks.RemoveRangeWithBeginEnd(from, to);
-        _unitsPredatorsObtacleResults.RemoveRangeWithBeginEnd(from, to);
+        _unitsPredatorPreysObtacleResults.RemoveRangeWithBeginEnd(from, to);
         _unitsSightDirections.RemoveRangeWithBeginEnd(from, to);
 
         //is there a need for this?
@@ -341,8 +356,10 @@ public class SFlock : MonoBehaviour
         _unitsObstacleSightResults.Dispose();
         _unitsPredatorsChecks.Dispose();
         _unitsPredatorsResults.Dispose();
+        _unitsPreyChecks.Dispose();
+        _unitsPreyResults.Dispose();
         _unitsPredatorPreysObtacleChecks.Dispose();
-        _unitsPredatorsObtacleResults.Dispose();
+        _unitsPredatorPreysObtacleResults.Dispose();
         _unitsSightDirections.Dispose();
         _unitsMaxSpeed.Dispose();
         _unitsSightDistance.Dispose();
@@ -373,9 +390,13 @@ public struct SMoveJobTest : IJobParallelFor
     [ReadOnly]
     public NativeArray<RaycastHit> UnitsPredatorsResults;
     [ReadOnly]
-    public NativeArray<RaycastHit> UnitsPredatorsObtacleResults;
+    public NativeArray<RaycastHit> UnitsPreyResults;
+    [ReadOnly]
+    public NativeArray<RaycastHit> UnitsPredatorPreyObtacleResults;
     [ReadOnly]
     public NativeArray<float3> UnitSightDirections;
+    [ReadOnly]
+    public NativeArray<float> UnitsHungerTimer;
     [ReadOnly]
     public NativeArray<float3> FlockWaypoints;
 
@@ -392,6 +413,7 @@ public struct SMoveJobTest : IJobParallelFor
     public float PatrolWaypointWeight;
     public float ObstacleAvoidanceWeight;
     public float PredatorFleeWeight;
+    public float PreyPersuitWeight;
     public float BoundsWeight;
 
     public float3 FlockPosition;
@@ -481,11 +503,22 @@ public struct SMoveJobTest : IJobParallelFor
         }
 
         float3 predatorAvoidanceVector = float3.zero;
-        float targetDist = HasPredatorInSight(index, out float3 fleeDir);
-        if (targetDist > 0)
+        float predatorDist = HasPredatorInSight(index, out float3 fleeDir);
+        if (predatorDist > 0)
         {
-            float distancePercentage = 1 - targetDist / UnitsSightDistance[index];
+            float distancePercentage = 1 - predatorDist / UnitsSightDistance[index];
             predatorAvoidanceVector = SteerTowards(fleeDir, index) * PredatorFleeWeight * distancePercentage;
+        }
+
+        float3 preyPersuitVector = float3.zero;
+        if (UnitsHungerTimer[index] <= 0)
+        {
+            float targetDist = HasPreyInSight(index, out float3 persuitDir);
+            if (targetDist > 0)
+            {
+                float distancePercentage = 1 - targetDist / UnitsSightDistance[index];
+                preyPersuitVector = SteerTowards(persuitDir, index) * PreyPersuitWeight * distancePercentage;
+            }
         }
 
         int waypointIndex = UnitsCurrentWaypoints[index];
@@ -514,8 +547,21 @@ public struct SMoveJobTest : IJobParallelFor
             alignmnentVector = SteerTowards(alignmnentVector, index) * AligementWeight;
         }
 
+        if(!predatorAvoidanceVector.Equals(float3.zero))
+        {
+            preyPersuitVector = float3.zero;
+           // waypointVector = float3.zero;
+            boundsVector = float3.zero;
+        }
+
+        if (!preyPersuitVector.Equals(float3.zero))
+        {
+            waypointVector = float3.zero;
+            boundsVector = float3.zero;
+        }
+
         float3 acceleration = cohesionVector + avoidanceVector + alignmnentVector + boundsVector
-            + obstacleAvoidanceVector + predatorAvoidanceVector + waypointVector;
+            + obstacleAvoidanceVector + predatorAvoidanceVector + preyPersuitVector + waypointVector;
 
         float3 currVel = UnitsCurrentVelocities[index] + (acceleration * DeltaTime);
         float speed = math.length(currVel);
@@ -608,7 +654,7 @@ public struct SMoveJobTest : IJobParallelFor
             RaycastHit currentCheck = UnitsPredatorsResults[i];
             float distanceTotarget = currentCheck.distance;
             float3 targetPosition = currentCheck.point;
-            if (IsInFov(index, targetPosition) && UnitsPredatorsObtacleResults[i].distance == 0 && distanceTotarget > 0
+            if (IsInFov(index, targetPosition) && UnitsPredatorPreyObtacleResults[i].distance == 0 && distanceTotarget > 0
                 && distanceTotarget < minDistance)
             {
                 minDistance = distanceTotarget;
@@ -619,6 +665,37 @@ public struct SMoveJobTest : IJobParallelFor
         if (!closestPredator.Equals(float3.zero))
         {
             fleeDir = UnitsPositions[index] - closestPredator;
+            targetDist = minDistance;
+        }
+
+        return targetDist;
+    }
+
+    private float HasPreyInSight(int index, out float3 persuitDir)
+    {
+        // test with calculating prey future position
+        float minDistance = float.MaxValue;
+        float3 closestPrey = float3.zero;
+        float targetDist = 0;
+        int particion = UnitsPreyResults.Length / UnitsPositions.Length;
+        persuitDir = UnitsForwardDirections[index];
+
+        for (int i = particion * index; i < particion * (index + 1); i++)
+        {
+            RaycastHit currentCheck = UnitsPreyResults[i];
+            float distanceTotarget = currentCheck.distance;
+            float3 targetPosition = currentCheck.point;
+            if (IsInFov(index, targetPosition) && UnitsPredatorPreyObtacleResults[i].distance == 0 && distanceTotarget > 0
+                && distanceTotarget < minDistance)
+            {
+                minDistance = distanceTotarget;
+                closestPrey = targetPosition;
+            }
+        }
+
+        if (!closestPrey.Equals(float3.zero))
+        {
+            persuitDir = closestPrey - UnitsPositions[index];
             targetDist = minDistance;
         }
 
