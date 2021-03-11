@@ -51,6 +51,8 @@ MonoBehaviour:
   hungerThreshold: 35
   unitType: Coral Fish
   unitName: Moorish Idol
+  size: 1
+  fishTransform: {fileID: 2715837242141673809}
 --- !u!136 &4448728451723551481
 CapsuleCollider:
   m_ObjectHideFlags: 0

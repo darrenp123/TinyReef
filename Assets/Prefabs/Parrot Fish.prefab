@@ -51,6 +51,8 @@ MonoBehaviour:
   hungerThreshold: 35
   unitType: Coral Fish
   unitName: Parrot Fish
+  size: 5
+  fishTransform: {fileID: 3545241237358212309}
 --- !u!136 &666774840887320126
 CapsuleCollider:
   m_ObjectHideFlags: 0

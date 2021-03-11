@@ -3,9 +3,8 @@
  *  CREATED: 23/02/2021 
  */
 
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -25,20 +24,18 @@ public class PauseMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /*
-        if(Input.GetButtonDown("Pause"))
-        {
-            if(isPaused)
-            {
+
+    }
+
+    public void OpenPauseMenu(InputAction.CallbackContext context) {
+        if (context.performed) {
+            if (isPaused) {
                 CloseAllMenus();
                 UnPauseGame();
-            }
-            else
-            {
+            } else {
                 PauseGame();
             }
         }
-        */
     }
 
     void CloseAllMenus()

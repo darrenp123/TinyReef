@@ -42,7 +42,9 @@ public class RotateAndZoom : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        FreeLookCamera.m_Follow = Center.transform;
+        FreeLookCamera.m_LookAt = Center.transform;
+        FocusFish(false, null);
     }
 
     // Update is called once per frame
@@ -60,11 +62,12 @@ public class RotateAndZoom : MonoBehaviour
     }
 
     public void OnLeftClick(InputAction.CallbackContext context) {
-        if (context.performed) {
+        if (!PlayerState.IsUION() && context.performed) {
             Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
             RaycastHit hit;
-            if (Physics.Raycast(ray, out hit)) {
-                var fish = hit.transform.GetComponent<Fish>();
+            int layer_mask = LayerMask.GetMask("Tier1", "Tier2", "Tier3");
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity,layer_mask)) {
+                var fish = hit.transform.GetComponent<SFlockUnit>();
                 if (fish) {
                     FreeLookCamera.m_Follow = hit.transform;
                     FreeLookCamera.m_LookAt = hit.transform;
@@ -76,21 +79,27 @@ public class RotateAndZoom : MonoBehaviour
 
     public void CycleLeft(InputAction.CallbackContext context) {
         if (context.performed) {
+            //TODO
+            /*
             CurrentFish--;
             if (CurrentFish < 0) CurrentFish = FishList.Length - 1;
             FreeLookCamera.m_Follow = FishList[CurrentFish].transform;
             FreeLookCamera.m_LookAt = FishList[CurrentFish].transform;
-            FocusFish(true, FishList[CurrentFish].GetComponent<Fish>());
+            FocusFish(true, FishList[CurrentFish].GetComponent<SFlockUnit>());
+            */
         }
     }
 
     public void CycleRight(InputAction.CallbackContext context) {
         if (context.performed) {
+            //TODO
+            /*
             CurrentFish++;
             if (CurrentFish >= FishList.Length) CurrentFish = 0;
             FreeLookCamera.m_Follow = FishList[CurrentFish].transform;
             FreeLookCamera.m_LookAt = FishList[CurrentFish].transform;
-            FocusFish(true, FishList[CurrentFish].GetComponent<Fish>());
+            FocusFish(true, FishList[CurrentFish].GetComponent<SFlockUnit>());
+            */
         }
     }
 
@@ -114,7 +123,7 @@ public class RotateAndZoom : MonoBehaviour
     }
 
 
-    public void FocusFish(bool state, Fish fish) {
+    public void FocusFish(bool state, SFlockUnit fish) {
         if (state) {
             FreeLookCamera.m_Orbits[0].m_Radius = FishFocusTopBottomRadious;
             FreeLookCamera.m_Orbits[1].m_Radius = FishFocusMiddleRadious;

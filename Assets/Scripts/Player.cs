@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 public class Player : MonoBehaviour
 {
 
-    Fish CurrentFish;
+    SFlockUnit CurrentFish;
     [SerializeField]
     FishStatsUI FishStats;
     bool IsLookingAtFish;
@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
     [SerializeField]
     int TraitCost;
     float Timer;
+    bool UION;
 
 
     // Start is called before the first frame update
@@ -22,6 +23,7 @@ public class Player : MonoBehaviour
         IsLookingAtFish = false;
         Timer = 0f;
         FishStats.UpdateGenePoints(GenePoints);
+        UION = false;
     }
 
     // Update is called once per frame
@@ -47,15 +49,17 @@ public class Player : MonoBehaviour
         if (context.performed) {
             if (FishStats.IsFishStatsActive()) {
                 FishStats.TurnOnOffFishStats(false);
+                UION = false;
                 //FishStats.SetCurrentFish(null);
             } else if (IsLookingAtFish) {
                 FishStats.TurnOnOffFishStats(true);
+                UION = true;
                 //FishStats.SetCurrentFish(CurrentFish);
             }
         }
     }
 
-    public void IsLookingAtFishState(bool state, Fish fish) {
+    public void IsLookingAtFishState(bool state, SFlockUnit fish) {
         if (state) {
             IsLookingAtFish = true;
             SetCurrentFish(fish);
@@ -66,12 +70,12 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void SetCurrentFish(Fish fish) {
+    public void SetCurrentFish(SFlockUnit fish) {
         CurrentFish = fish;
         FishStats.SetCurrentFish(fish);
     }
 
-    public Fish GetCurrentFish() {
+    public SFlockUnit GetCurrentFish() {
         return CurrentFish;
     }
 
@@ -79,53 +83,64 @@ public class Player : MonoBehaviour
         return GenePoints >= TraitCost;
     }
 
+    public bool IsUION() {
+        return UION;
+    }
+
     public void PurchasePoints(int trait, int value) {
         if (IsPurchasePossible()) {
             switch (trait) {
                 //Lifespan
                 case 1:
+                    //TODO
+                    /*
                     float lifespan = CurrentFish.GetLifespan();
                     if (value > 0 && lifespan >= 0 && lifespan < 10 || 
                         value < 0 && lifespan > 0 && lifespan <= 10) {
                         CurrentFish.SetLifespan(value);
                         UpdateGenePoints(-TraitCost);
-                    }         
+                    }  
+                    */
                     break;
                 //Size
                 case 2:
-                    float size = CurrentFish.GetSize();
+                    float size = CurrentFish.Size;
                     if (value > 0 && size >= 0 && size < 10 ||
                         value < 0 && size > 0 && size <= 10) {
-                        CurrentFish.SetSize(value);
+                        CurrentFish.Size += value;
+                        CurrentFish.ScaleFish();
                         UpdateGenePoints(-TraitCost);
                     }
             break;
                 //Speed
                 case 3:
-                    float speed = CurrentFish.GetSpeed();
-                    if (value > 0 && speed >= 0 && speed < 10 ||
+                    int speed = Mathf.RoundToInt(CurrentFish.MaxSpeed);
+                    if (value > 0 && speed >= 1 && speed < 10 ||
                         value < 0 && speed > 0 && speed <= 10) {
-                        CurrentFish.SetSpeed(value);
+                        CurrentFish.SetMaxSpeed(value);
                         UpdateGenePoints(-TraitCost);
                     }
                     break;
                 //SensoryRadious
                 case 4:
-                    float sensoryRadious = CurrentFish.GetSensoryRadious();
+                    int sensoryRadious = Mathf.RoundToInt(CurrentFish.SightDistance);
                     if (value > 0 && sensoryRadious >= 0 && sensoryRadious < 10 ||
                         value < 0 && sensoryRadious > 0 && sensoryRadious <= 10) {
-                        CurrentFish.SetSensoryRadious(value);
+                        CurrentFish.SetSightDistance(value);
                         UpdateGenePoints(-TraitCost);
                     }
                     break;
                 //Camouflage
                 case 5:
+                    //TODO
+                    /*
                     float camouflage = CurrentFish.GetCamouflage();
                     if (value > 0 && camouflage >= 0 && camouflage < 10 ||
                         value < 0 && camouflage > 0 && camouflage <= 10) {
                         CurrentFish.SetCamouflage(value);
                         UpdateGenePoints(-TraitCost);
                     }
+                    */
                     break;
                 default:
                     break;
