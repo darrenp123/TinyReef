@@ -13,9 +13,9 @@ Shader "Custom/FishAnimation02" {
         _Distance ("Distance", float) = 0.1
     }
     SubShader {
-        Tags { "RenderType"="Opaque" }
+       // Tags { "RenderType"="Opaque" }
         Cull Off
-        //LOD 200
+        LOD 200
 
         CGPROGRAM
         #pragma surface surf Standard fullforwardshadows  vertex:vert addshadow
@@ -23,7 +23,7 @@ Shader "Custom/FishAnimation02" {
         #pragma multi_compile_instancing
        // #pragma vertex vert
         //#pragma fragment frag
-        #include "UnityCG.cginc"
+        //#include "UnityCG.cginc"
 
         sampler2D _MainTex;
         sampler2D _Tints;
@@ -61,7 +61,7 @@ Shader "Custom/FishAnimation02" {
             o.Albedo = lerp(c.rgb, c.rgb * tintColour, c.a) * _Color;
             o.Metallic =  _Metallic;
             o.Smoothness = g.a * _Glossiness;
-            //o.Alpha = c.a;
+            o.Alpha = c.a;
         }
         ENDCG
     }

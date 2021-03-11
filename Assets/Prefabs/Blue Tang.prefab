@@ -47,8 +47,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fovAngle: 150
   numViewDirections: 100
-  killBoxDistance: 1
-  hungerThreshold: 5
+  killBoxDistance: 0.25
+  hungerThreshold: 35
   unitType: Coral Fish
   unitName: Blue Tang
 --- !u!136 &5607572631374371896
@@ -124,7 +124,7 @@ MeshRenderer:
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5cf874cffd4424341a6a3b9f3f4c0a8b, type: 2}
+  - {fileID: 2100000, guid: eb329099a3721a542aaef68e4a64392d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

@@ -62,7 +62,7 @@ MonoBehaviour:
   fovAngle: 155
   numViewDirections: 150
   killBoxDistance: 1.5
-  hungerThreshold: 20
+  hungerThreshold: 35
   unitType: 
   unitName: 
 --- !u!1001 &302282928151719339

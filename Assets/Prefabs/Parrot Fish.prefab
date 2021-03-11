@@ -47,8 +47,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fovAngle: 150
   numViewDirections: 100
-  killBoxDistance: 0
-  hungerThreshold: 20
+  killBoxDistance: 0.5
+  hungerThreshold: 35
   unitType: Coral Fish
   unitName: Parrot Fish
 --- !u!136 &666774840887320126
@@ -124,7 +124,7 @@ MeshRenderer:
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 75ab7ce41f056c942a6a7efdb36b51bd, type: 2}
+  - {fileID: 2100000, guid: 2b1e784558c81ba449ef872f6043795e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

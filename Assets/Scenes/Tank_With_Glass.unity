@@ -210,20 +210,20 @@ MonoBehaviour:
   sphereCastRadius: 0.35
   flockWaypoints: {fileID: 902565712}
   minSpeed: 2
-  initMaxSpeed: 4
-  maxSteerForce: 3
-  cohesionDistance: 3
-  avoidanceDistance: 1.5
-  aligementDistance: 3
-  patrolWaypointDistance: 2
-  obstacleDistance: 2
-  initPredatorPreyDistance: 5
+  initMaxSpeed: 5
+  maxSteerForce: 2
+  cohesionDistance: 5
+  avoidanceDistance: 2.5
+  aligementDistance: 5
+  patrolWaypointDistance: 2.5
+  obstacleDistance: 3
+  initPredatorPreyDistance: 7
   boundsDistance: 15
   cohesionWeight: 1
-  avoidanceWeight: 1.4
-  aligementWeight: 1
+  avoidanceWeight: 1.3
+  aligementWeight: 1.1
   patrolWaypointWeight: 0.8
-  obstacleAvoidanceWeight: 15
+  obstacleAvoidanceWeight: 20
   predatorFleeWeight: 5
   preyPersuitWeight: 2
   boundsWeight: 1.2
@@ -3497,25 +3497,25 @@ MonoBehaviour:
   preyMask:
     serializedVersion: 2
     m_Bits: 1024
-  sphereCastRadius: 0.35
+  sphereCastRadius: 0.3
   flockWaypoints: {fileID: 902565712}
   minSpeed: 1
   initMaxSpeed: 3
-  maxSteerForce: 2
+  maxSteerForce: 4
   cohesionDistance: 0
-  avoidanceDistance: 1
+  avoidanceDistance: 2
   aligementDistance: 0
   patrolWaypointDistance: 2
   obstacleDistance: 2
-  initPredatorPreyDistance: 5
+  initPredatorPreyDistance: 4
   boundsDistance: 15
-  cohesionWeight: 0
+  cohesionWeight: 1
   avoidanceWeight: 1.3
-  aligementWeight: 0
+  aligementWeight: 1.1
   patrolWaypointWeight: 0.8
-  obstacleAvoidanceWeight: 15
-  predatorFleeWeight: 5
-  preyPersuitWeight: 2
+  obstacleAvoidanceWeight: 20
+  predatorFleeWeight: 7
+  preyPersuitWeight: 3
   boundsWeight: 1.2
   unitIndex: 0
 --- !u!4 &382807535
@@ -3656,24 +3656,24 @@ MonoBehaviour:
   preyMask:
     serializedVersion: 2
     m_Bits: 2048
-  sphereCastRadius: 0.35
+  sphereCastRadius: 0.27
   flockWaypoints: {fileID: 902565712}
   minSpeed: 1
-  initMaxSpeed: 3
+  initMaxSpeed: 4
   maxSteerForce: 3
-  cohesionDistance: 5
-  avoidanceDistance: 1
-  aligementDistance: 5
+  cohesionDistance: 3.5
+  avoidanceDistance: 2.5
+  aligementDistance: 3.5
   patrolWaypointDistance: 2
   obstacleDistance: 2
-  initPredatorPreyDistance: 4
+  initPredatorPreyDistance: 5
   boundsDistance: 15
   cohesionWeight: 1
   avoidanceWeight: 1.3
   aligementWeight: 1.1
   patrolWaypointWeight: 0.8
-  obstacleAvoidanceWeight: 15
-  predatorFleeWeight: 5
+  obstacleAvoidanceWeight: 20
+  predatorFleeWeight: 7
   preyPersuitWeight: 2
   boundsWeight: 1.2
   unitIndex: 0
@@ -5761,7 +5761,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flockUnitPrefab: {fileID: -883737198729347898, guid: 9abe8fe6abb3ccd47a600b0488021f35, type: 3}
   flockSize: 100
-  spawnBounds: {x: 5, y: 1, z: 5}
+  spawnBounds: {x: 5, y: 5, z: 5}
   obstacleMask:
     serializedVersion: 2
     m_Bits: 128
@@ -5771,24 +5771,24 @@ MonoBehaviour:
   preyMask:
     serializedVersion: 2
     m_Bits: 2048
-  sphereCastRadius: 0.25
+  sphereCastRadius: 0.05
   flockWaypoints: {fileID: 1868045185}
   minSpeed: 1
   initMaxSpeed: 1.5
-  maxSteerForce: 4
-  cohesionDistance: 3
-  avoidanceDistance: 0.4
-  aligementDistance: 3
+  maxSteerForce: 3
+  cohesionDistance: 1.5
+  avoidanceDistance: 0.3
+  aligementDistance: 1.5
   patrolWaypointDistance: 1
-  obstacleDistance: 1
-  initPredatorPreyDistance: 3
+  obstacleDistance: 0.6
+  initPredatorPreyDistance: 2
   boundsDistance: 15
   cohesionWeight: 1
   avoidanceWeight: 1.3
   aligementWeight: 1.1
   patrolWaypointWeight: 0.8
-  obstacleAvoidanceWeight: 40
-  predatorFleeWeight: 5
+  obstacleAvoidanceWeight: 30
+  predatorFleeWeight: 8
   preyPersuitWeight: 2
   boundsWeight: 1.2
   unitIndex: 0
@@ -15946,7 +15946,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flockUnitPrefab: {fileID: 2918758009438317830, guid: b7bc5dfa761efce4e82a6554ec53ef25, type: 3}
-  flockSize: 15
+  flockSize: 20
   spawnBounds: {x: 5, y: 1, z: 5}
   obstacleMask:
     serializedVersion: 2
@@ -15957,24 +15957,24 @@ MonoBehaviour:
   preyMask:
     serializedVersion: 2
     m_Bits: 2048
-  sphereCastRadius: 0.25
+  sphereCastRadius: 0.12
   flockWaypoints: {fileID: 1868045185}
   minSpeed: 1
   initMaxSpeed: 2
-  maxSteerForce: 4
-  cohesionDistance: 3
-  avoidanceDistance: 0.4
-  aligementDistance: 3
-  patrolWaypointDistance: 1
+  maxSteerForce: 3.5
+  cohesionDistance: 2
+  avoidanceDistance: 0.5
+  aligementDistance: 2
+  patrolWaypointDistance: 1.5
   obstacleDistance: 1
-  initPredatorPreyDistance: 3
+  initPredatorPreyDistance: 2.5
   boundsDistance: 15
   cohesionWeight: 1
   avoidanceWeight: 1.3
   aligementWeight: 1.1
   patrolWaypointWeight: 0.8
-  obstacleAvoidanceWeight: 40
-  predatorFleeWeight: 5
+  obstacleAvoidanceWeight: 30
+  predatorFleeWeight: 10
   preyPersuitWeight: 2
   boundsWeight: 1.2
   unitIndex: 0
@@ -16171,7 +16171,7 @@ Transform:
   m_GameObject: {fileID: 1360889767}
   m_LocalRotation: {x: -0, y: -0, z: -0.70692617, w: 0.7072874}
   m_LocalPosition: {x: -0.06, y: 14.39, z: 0}
-  m_LocalScale: {x: 0.07471276, y: 14.812175, z: 24.772877}
+  m_LocalScale: {x: 0.07471276, y: 15.572041, z: 24.772877}
   m_Children: []
   m_Father: {fileID: 507186543}
   m_RootOrder: 4
@@ -16274,7 +16274,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 1
+  m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -2432090755550338912, guid: 797541fec079e9b4e9ee94d58c917e91, type: 3}
 --- !u!1001 &1416120578
@@ -17239,7 +17239,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 1
+  m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -2432090755550338912, guid: 21bbea7cbb66b95468c25e435ba7fac8, type: 3}
 --- !u!1001 &1540655905
@@ -20125,7 +20125,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flockUnitPrefab: {fileID: 7619814706457136587, guid: 713cfd47a9415db468fb339356e27124, type: 3}
-  flockSize: 10
+  flockSize: 15
   spawnBounds: {x: 5, y: 1, z: 5}
   obstacleMask:
     serializedVersion: 2
@@ -20136,15 +20136,15 @@ MonoBehaviour:
   preyMask:
     serializedVersion: 2
     m_Bits: 2048
-  sphereCastRadius: 0.25
+  sphereCastRadius: 0.12
   flockWaypoints: {fileID: 1868045185}
   minSpeed: 1
-  initMaxSpeed: 2
+  initMaxSpeed: 2.5
   maxSteerForce: 4
-  cohesionDistance: 3
-  avoidanceDistance: 0.4
-  aligementDistance: 3
-  patrolWaypointDistance: 1
+  cohesionDistance: 1.5
+  avoidanceDistance: 0.8
+  aligementDistance: 1.5
+  patrolWaypointDistance: 1.5
   obstacleDistance: 1
   initPredatorPreyDistance: 3
   boundsDistance: 15
@@ -20152,8 +20152,8 @@ MonoBehaviour:
   avoidanceWeight: 1.3
   aligementWeight: 1.1
   patrolWaypointWeight: 0.8
-  obstacleAvoidanceWeight: 40
-  predatorFleeWeight: 5
+  obstacleAvoidanceWeight: 30
+  predatorFleeWeight: 8
   preyPersuitWeight: 2
   boundsWeight: 1.2
   unitIndex: 0

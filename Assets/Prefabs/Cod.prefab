@@ -59,7 +59,7 @@ MeshRenderer:
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 91fd0359f04a7a246b48bfabe00f4f40, type: 2}
+  - {fileID: 2100000, guid: b8c6281487903674ab1d40a536d286d1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -126,10 +126,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d746ca851849463408e46ee377e65398, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fovAngle: 150
+  fovAngle: 160
   numViewDirections: 100
-  killBoxDistance: 1
-  hungerThreshold: 5
+  killBoxDistance: 0.8
+  hungerThreshold: 35
   unitType: Blue Fish
   unitName: Cod
 --- !u!136 &4756446241294149464

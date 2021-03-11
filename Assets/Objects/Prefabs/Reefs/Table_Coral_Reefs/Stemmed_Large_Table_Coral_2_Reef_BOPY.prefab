@@ -42,6 +42,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6834796613069294100}
     m_Modifications:
+    - target: {fileID: 1857291211354092772, guid: d5120b02589adb84bad322fb7f8143ec, type: 3}
+      propertyPath: m_Convex
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2736460296493735220, guid: d5120b02589adb84bad322fb7f8143ec, type: 3}
       propertyPath: m_Name
       value: Table_Coral_2_Reef_B

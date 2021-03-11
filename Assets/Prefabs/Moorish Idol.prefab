@@ -47,8 +47,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fovAngle: 150
   numViewDirections: 100
-  killBoxDistance: 0
-  hungerThreshold: 5
+  killBoxDistance: 0.15
+  hungerThreshold: 35
   unitType: Coral Fish
   unitName: Moorish Idol
 --- !u!136 &4448728451723551481
@@ -124,7 +124,7 @@ MeshRenderer:
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 117ef2e19962b034e9fc668e20f3c806, type: 2}
+  - {fileID: 2100000, guid: bd8fb76d4255b1d4593d9e66f0e15e57, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

@@ -59,7 +59,7 @@ MeshRenderer:
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1e746c9e1cd8b8b4cbc2c7b19d8372fc, type: 2}
+  - {fileID: 2100000, guid: 93a571a2d9508604faa6d5abbf338ae3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -128,8 +128,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fovAngle: 150
   numViewDirections: 100
-  killBoxDistance: 1
-  hungerThreshold: 5
+  killBoxDistance: 0.1
+  hungerThreshold: 35
   unitType: Coral Fish
   unitName: Clown Fish
 --- !u!136 &4058379608722347350

@@ -47,7 +47,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 1
+  m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -2432090755550338912, guid: 797541fec079e9b4e9ee94d58c917e91, type: 3}
 --- !u!64 &7197469667652602612
@@ -61,7 +61,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 1
+  m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -2432090755550338912, guid: 797541fec079e9b4e9ee94d58c917e91, type: 3}
 --- !u!64 &8066105303343646219
@@ -75,7 +75,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 1
+  m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -2432090755550338912, guid: 797541fec079e9b4e9ee94d58c917e91, type: 3}
 --- !u!1001 &1340917099810494005
@@ -85,6 +85,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3180796301123047673}
     m_Modifications:
+    - target: {fileID: 1059965186654578431, guid: 4a0e55100e1781a40aaafcc398eb2954, type: 3}
+      propertyPath: m_Convex
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3477556462374560628, guid: 4a0e55100e1781a40aaafcc398eb2954, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -163,6 +167,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3180796301123047673}
     m_Modifications:
+    - target: {fileID: 829491366535937811, guid: 591cfbf82cd08c140a1faacfad9c6a10, type: 3}
+      propertyPath: m_Convex
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1149454961765702456, guid: 591cfbf82cd08c140a1faacfad9c6a10, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -498,6 +506,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3180796301123047673}
     m_Modifications:
+    - target: {fileID: 829491366535937811, guid: 591cfbf82cd08c140a1faacfad9c6a10, type: 3}
+      propertyPath: m_Convex
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1149454961765702456, guid: 591cfbf82cd08c140a1faacfad9c6a10, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 

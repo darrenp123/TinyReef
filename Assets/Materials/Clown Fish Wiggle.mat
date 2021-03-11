@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Blue Tang Wiggle
+  m_Name: Clown Fish Wiggle
   m_Shader: {fileID: 4800000, guid: 050cd2ec4cc25ac4aa4842eb72394f5c, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -52,6 +52,14 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _BumpMapD:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Cube:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -68,12 +76,16 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _EmissionTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _Gloss:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 83e472e117df00d4198436571e79a307, type: 3}
+        m_Texture: {fileID: 2800000, guid: bd7c4d8947f54ab44a2df7d4c64a0704, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -90,6 +102,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _SpecGlossMap:
         m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SpecMap:
+        m_Texture: {fileID: 2800000, guid: 83e472e117df00d4198436571e79a307, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Tints:
@@ -121,43 +137,79 @@ Material:
     - Vector1_c1d6a0a38bbd425cb8a92088c08679d6: 4.41
     - Vector1_d849c3b015ab49ba9b35dfa0b98ee344: 3
     - _AlphaClip: 0
-    - _Amount: 2
+    - _Amount: 15
     - _AmplitudeX: 0
     - _AmplitudeY: 0
     - _AmplitudeZ: 0.25
+    - _BiasNormal: 1
     - _Blend: 0
+    - _Brightness: 0.67
+    - _BumpMapDUV: 1
     - _BumpScale: 1
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
+    - _Contrast: 1.32
+    - _ContrastRef: 1.1
     - _Cull: 2
     - _Cutoff: 0.5
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
-    - _Distance: 0.1
+    - _DisplacementAmount: 4.04
+    - _DisplacementSpeed: 1.72
+    - _Distance: 0.015
     - _DstBlend: 0
+    - _EffectRadius: 0.474
     - _EnvironmentReflections: 1
     - _FrequencyX: 0
     - _FrequencyY: 0
     - _FrequencyZ: 1.74
     - _GlossMapScale: 0
-    - _Glossiness: 0
+    - _Glossiness: 0.359
     - _GlossyReflections: 0
     - _HeadLimit: 0.06
-    - _Metallic: 0
+    - _IntensityNm: 1
+    - _IntensityNmD: 1
+    - _IntensityOc: 1
+    - _IntensityRef: 0.8
+    - _MaskOffset: 0.375
+    - _Metallic: 0.221
+    - _MoveOffset: 0
+    - _OcclusionMapUv: 1
     - _OcclusionStrength: 1
     - _Parallax: 0.005
     - _QueueOffset: 0
     - _ReceiveShadows: 1
+    - _Saturation: 2.5
+    - _SaturationRef: 1
+    - _ScriptControl: 0
+    - _Shininess: 0.39
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
+    - _SpecMapInts: 0.36
+    - _SpecMapUV: 1
     - _SpecularHighlights: 1
     - _SpeedX: 0
     - _SpeedY: 0
     - _SpeedZ: 2.68
     - _SrcBlend: 1
+    - _StrideSpeed: 4.54
+    - _StrideStrength: 0.03
     - _Surface: 0
-    - _TimeScale: 1.66
+    - _SwimmingPower: 0
+    - _SwimmingScale: 12.7
+    - _SwimmingSpeed: 2
+    - _Threshold: 13
+    - _TimeScale: 3
+    - _TranslationAmount: 2.16
+    - _WaveBody: 0.3
+    - _WaveDensity: 0.375
+    - _WaveHeight: 14.8
+    - _WaveSpeed: 82.5
+    - _WaveY: 0.3
+    - _WaveYSpeed: 1
+    - _Wobble: 1
     - _WorkflowMode: 1
+    - _Yoffset: 0
     - _ZWrite: 1
     m_Colors:
     - Color_1: {r: 1, g: 0, b: 0, a: 0}
@@ -170,5 +222,6 @@ Material:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
+    - _ReflectColor: {r: 1, g: 1, b: 1, a: 0.5}
+    - _SpecColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
