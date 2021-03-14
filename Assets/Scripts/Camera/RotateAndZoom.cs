@@ -28,15 +28,11 @@ public class RotateAndZoom : MonoBehaviour
     [SerializeField]
     private GameObject Center;
     [SerializeField]
-    private GameObject[] FishList;
-    [SerializeField]
     private Player PlayerState;
-    private int CurrentFish;
 
     private void Awake() {
         InputProvider = GetComponent<CinemachineInputProvider>();
         FreeLookCamera = GetComponent<CinemachineFreeLook>();
-        CurrentFish = 0;
     }
 
     // Start is called before the first frame update
@@ -44,7 +40,7 @@ public class RotateAndZoom : MonoBehaviour
     {
         FreeLookCamera.m_Follow = Center.transform;
         FreeLookCamera.m_LookAt = Center.transform;
-        FocusFish(false, null);
+        FocusFish(false);
     }
 
     // Update is called once per frame
@@ -71,7 +67,8 @@ public class RotateAndZoom : MonoBehaviour
                 if (fish) {
                     FreeLookCamera.m_Follow = hit.transform;
                     FreeLookCamera.m_LookAt = hit.transform;
-                    FocusFish(true, fish);
+                    FocusFish(true);
+                    PlayerState.IsLookingAtFishState(true, fish);
                 }
             }
         }
@@ -79,27 +76,19 @@ public class RotateAndZoom : MonoBehaviour
 
     public void CycleLeft(InputAction.CallbackContext context) {
         if (context.performed) {
-            //TODO
-            /*
-            CurrentFish--;
-            if (CurrentFish < 0) CurrentFish = FishList.Length - 1;
-            FreeLookCamera.m_Follow = FishList[CurrentFish].transform;
-            FreeLookCamera.m_LookAt = FishList[CurrentFish].transform;
-            FocusFish(true, FishList[CurrentFish].GetComponent<SFlockUnit>());
-            */
+            SFlockUnit fish = PlayerState.GoToNextFishInFlock(true);
+            FreeLookCamera.m_Follow = fish.MyTransform;
+            FreeLookCamera.m_LookAt = fish.MyTransform;
+            FocusFish(true);
         }
     }
 
     public void CycleRight(InputAction.CallbackContext context) {
         if (context.performed) {
-            //TODO
-            /*
-            CurrentFish++;
-            if (CurrentFish >= FishList.Length) CurrentFish = 0;
-            FreeLookCamera.m_Follow = FishList[CurrentFish].transform;
-            FreeLookCamera.m_LookAt = FishList[CurrentFish].transform;
-            FocusFish(true, FishList[CurrentFish].GetComponent<SFlockUnit>());
-            */
+            SFlockUnit fish = PlayerState.GoToNextFishInFlock(false);
+            FreeLookCamera.m_Follow = fish.MyTransform;
+            FreeLookCamera.m_LookAt = fish.MyTransform;
+            FocusFish(true);
         }
     }
 
@@ -107,33 +96,30 @@ public class RotateAndZoom : MonoBehaviour
         if (context.performed) {
             FreeLookCamera.m_Follow = Center.transform;
             FreeLookCamera.m_LookAt = Center.transform;
-            FocusFish(false, null);
+            FocusFish(false);
+            PlayerState.IsLookingAtFishState(false, null);
         }
     }
 
     public void DisableEnableCameraInput(InputAction.CallbackContext context) {
         if (context.performed) {
-            Debug.Log("Enable");
             InputProvider.XYAxis = AxisControl;
         }
         else if(context.canceled) {
-            Debug.Log("Disable");
             InputProvider.XYAxis = null;
         }
     }
 
 
-    public void FocusFish(bool state, SFlockUnit fish) {
+    public void FocusFish(bool state) {
         if (state) {
             FreeLookCamera.m_Orbits[0].m_Radius = FishFocusTopBottomRadious;
             FreeLookCamera.m_Orbits[1].m_Radius = FishFocusMiddleRadious;
             FreeLookCamera.m_Orbits[2].m_Radius = FishFocusTopBottomRadious;
-            PlayerState.IsLookingAtFishState(true, fish);
         } else {
             FreeLookCamera.m_Orbits[0].m_Radius = TankFocusTopBottomRadious;
             FreeLookCamera.m_Orbits[1].m_Radius = TankFocusMiddleRadious;
             FreeLookCamera.m_Orbits[2].m_Radius = TankFocusTopBottomRadious;
-            PlayerState.IsLookingAtFishState(false, fish);
         }
     }
 }
