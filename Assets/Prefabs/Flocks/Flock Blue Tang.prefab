@@ -1,0 +1,96 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &310231194867374169
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 310231194867374172}
+  - component: {fileID: 310231194867374175}
+  - component: {fileID: 310231194867374174}
+  m_Layer: 0
+  m_Name: Flock Blue Tang
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &310231194867374172
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 310231194867374169}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 3.141, z: -2.588}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &310231194867374175
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 310231194867374169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff0b0d88e364e2f48a294dbbc40c30d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flockUnitPrefab: {fileID: 7619814706457136587, guid: 713cfd47a9415db468fb339356e27124, type: 3}
+  flockSize: 15
+  spawnBounds: {x: 5, y: 1, z: 5}
+  obstacleMask:
+    serializedVersion: 2
+    m_Bits: 128
+  predatorMask:
+    serializedVersion: 2
+    m_Bits: 768
+  preyMask:
+    serializedVersion: 2
+    m_Bits: 2048
+  sphereCastRadius: 0.12
+  flockWaypoints: {fileID: 0}
+  minSpeed: 1
+  initMaxSpeed: 2.5
+  maxSteerForce: 4
+  cohesionDistance: 1.5
+  avoidanceDistance: 0.8
+  aligementDistance: 1.5
+  patrolWaypointDistance: 1.5
+  obstacleDistance: 1
+  initPredatorPreyDistance: 3
+  boundsDistance: 15
+  cohesionWeight: 1
+  avoidanceWeight: 1.3
+  aligementWeight: 1.1
+  patrolWaypointWeight: 0.8
+  obstacleAvoidanceWeight: 30
+  predatorFleeWeight: 8
+  preyPersuitWeight: 2
+  boundsWeight: 1.2
+  unitIndex: 0
+--- !u!114 &310231194867374174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 310231194867374169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30fd7cf25bebed74ab62cd7e76adf1b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  active: 0
+  unitIndex: 0
+  mask:
+    serializedVersion: 2
+    m_Bits: 128

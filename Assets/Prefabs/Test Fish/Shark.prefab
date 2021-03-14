@@ -62,9 +62,12 @@ MonoBehaviour:
   fovAngle: 155
   numViewDirections: 150
   killBoxDistance: 1.5
-  hungerThreshold: 35
+  hungerThreshold: 120
+  lifeSpan: 180
   unitType: 
   unitName: 
+  size: 0
+  fishTransform: {fileID: 0}
 --- !u!1001 &302282928151719339
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -215,7 +215,7 @@ public struct MoveFlockJob : IJobParallelFor
         neighbourWaypointFrquency.Dispose();
     }
 
-    private float3 GetWaypointDirection(float3 neighboursCenter, ref int waypointIndex)
+    private float3 GetWaypointDirection(in float3 neighboursCenter, ref int waypointIndex)
     {
         float3 dirToWaypoint = FlockWaypoints[waypointIndex] - neighboursCenter;
         float distanceSqr = dirToWaypoint.x * dirToWaypoint.x + dirToWaypoint.y * dirToWaypoint.y + dirToWaypoint.z * dirToWaypoint.z;
@@ -227,7 +227,7 @@ public struct MoveFlockJob : IJobParallelFor
         return FlockWaypoints[waypointIndex] - neighboursCenter;
     }
 
-    private int NeighboursFrequentWaypoint(NativeHashMap<int, int> neighbourWaypointFrquency)
+    private int NeighboursFrequentWaypoint(in NativeHashMap<int, int> neighbourWaypointFrquency)
     {
         int waypointIndex = 0;
         int minCount = 0;
@@ -247,7 +247,7 @@ public struct MoveFlockJob : IJobParallelFor
         return waypointIndex;
     }
 
-    private float3 AvoidObstacleDirection(int index)
+    private float3 AvoidObstacleDirection(in int index)
     {
         float maxDistance = int.MinValue;
         float closestAngle = float.MaxValue;
@@ -276,10 +276,10 @@ public struct MoveFlockJob : IJobParallelFor
         }
 
         return !avialableDirection.Equals(float3.zero) ? avialableDirection :
-            !farthestContestedDirection.Equals(float3.zero) ? farthestContestedDirection : UnitsForwardDirections[index];
+            (!farthestContestedDirection.Equals(float3.zero) ? farthestContestedDirection : UnitsForwardDirections[index]);
     }
 
-    private float HasPredatorInSight(int index, out float3 fleeDir)
+    private float HasPredatorInSight(in int index, out float3 fleeDir)
     {
         // test with calculating predator future position
         float minDistance = float.MaxValue;
@@ -310,7 +310,7 @@ public struct MoveFlockJob : IJobParallelFor
         return targetDist;
     }
 
-    private float HasPreyInSight(int index, out float3 persuitDir)
+    private float HasPreyInSight(in int index, out float3 persuitDir)
     {
         // test with calculating prey future position
         float minDistance = float.MaxValue;
@@ -341,14 +341,14 @@ public struct MoveFlockJob : IJobParallelFor
         return targetDist;
     }
 
-    private bool IsInFov(int index, float3 targetPosition)
+    private bool IsInFov(in int index, in float3 targetPosition)
     {
         return Vector3.Angle(UnitsForwardDirections[index], targetPosition - UnitsPositions[index]) <= FovAngle;
     }
 
-    private float3 SteerTowards(float3 vector, int index)
+    private float3 SteerTowards(in float3 vector, in int index)
     {
-        float3 v = math.normalize(vector) * UnitsMaxSpeed[index] - UnitsCurrentVelocities[index];
+        float3 v = (math.normalize(vector) * UnitsMaxSpeed[index]) - UnitsCurrentVelocities[index];
         return math.length(v) > MaxSteerForce ? math.normalize(v) * MaxSteerForce : v;
     }
 

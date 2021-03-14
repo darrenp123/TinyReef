@@ -7,6 +7,7 @@ public class SFlockUnit : MonoBehaviour
     [SerializeField] private int numViewDirections;
     [SerializeField] private float killBoxDistance;
     [SerializeField] private float hungerThreshold;
+    [SerializeField] private float lifeSpan;
     [SerializeField] private string unitType;
     [SerializeField] private string unitName;
     [SerializeField] private float size;
@@ -31,6 +32,7 @@ public class SFlockUnit : MonoBehaviour
     public float SightDistance => _sightDistance;
     public string UnitType => unitType;
     public string UnitName { get => unitName; set => unitName = value; }
+    public float LifeSpan { get => lifeSpan; set => lifeSpan = value; }
 
     public delegate void UnitEventSigniture(SFlockUnit unitToRemove);
 
@@ -87,7 +89,8 @@ public class SFlockUnit : MonoBehaviour
         OnUnitTraitsValueChanged?.Invoke(this);
     }
 
-    public void ScaleFish() {
+    public void ScaleFish()
+    {
         Debug.Log(Size);
         float sizeChange = (Size - _initialSize) / 10f;
         Debug.Log(sizeChange);

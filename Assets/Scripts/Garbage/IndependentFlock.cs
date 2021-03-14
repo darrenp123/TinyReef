@@ -80,7 +80,7 @@ public class IndependentFlock : MonoBehaviour
         if (debuger) debuger.InitDebugger(AllUnits.ToArray(), obstacleDistance, sphereCastRadius);
     }
 
-    void Update()
+   /* void Update()
     {
         int totalUnitAmought = AllUnits.Count;
         int numberOfSightDirections = flockUnitPrefab.NumViewDirections * totalUnitAmought;
@@ -200,7 +200,7 @@ public class IndependentFlock : MonoBehaviour
         unitsPreyObtacleResults.Dispose();
         unitsFakeChecks.Dispose();
     }
-
+   */
     private void GenerateUnits()
     {
         AllUnits = new List<SFlockUnit>(flockSize);

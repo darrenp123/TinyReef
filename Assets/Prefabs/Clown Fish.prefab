@@ -130,6 +130,7 @@ MonoBehaviour:
   numViewDirections: 100
   killBoxDistance: 0.1
   hungerThreshold: 35
+  lifeSpan: 240
   unitType: Coral Fish
   unitName: Clown Fish
   size: 0

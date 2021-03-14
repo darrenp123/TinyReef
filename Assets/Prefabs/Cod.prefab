@@ -128,8 +128,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fovAngle: 160
   numViewDirections: 100
-  killBoxDistance: 0.8
-  hungerThreshold: 35
+  killBoxDistance: 1.1
+  hungerThreshold: 10
+  lifeSpan: 20
   unitType: Blue Fish
   unitName: Cod
   size: 7
