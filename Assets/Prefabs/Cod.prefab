@@ -130,7 +130,7 @@ MonoBehaviour:
   numViewDirections: 100
   killBoxDistance: 1.1
   hungerThreshold: 10
-  lifeSpan: 20
+  lifeSpan: 30
   unitType: Blue Fish
   unitName: Cod
   size: 7

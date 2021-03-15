@@ -181,7 +181,7 @@ public class SFlock : MonoBehaviour
 
         // For debugging.
         var debuger = GetComponent<FlockDebuger>();
-        if (debuger) debuger.InitDebugger(AllUnits.ToArray(), obstacleDistance, sphereCastRadius);
+        if (debuger) debuger.InitDebugger(AllUnits.ToArray(), initPredatorPreyDistance, sphereCastRadius);
     }
 
     private void Update()
@@ -223,10 +223,10 @@ public class SFlock : MonoBehaviour
             if (currentUnit.CurrrentHunger <= 0 && Physics.SphereCast(currentUnit.MyTransform.position,
            sphereCastRadius * 0.5f, currentUnit.MyTransform.forward, out RaycastHit hit, currentUnit.KillBoxDistance, preyMask))
             {
-                var killedUnit = hit.transform.GetComponent<SFlockUnit>();
-                if (killedUnit)
+                var killedUnit = hit.transform.GetComponent<IFood>();
+                if (killedUnit != null)
                 {
-                    killedUnit.RemoveUnit();
+                    killedUnit.Consume();
                     _unitsHungerTimer[i] = currentUnit.HungerThreshold;
                     Debug.Log("Fish consumed! ");
                 }
@@ -236,10 +236,10 @@ public class SFlock : MonoBehaviour
                 RemoveUnit(currentUnit);
         }
 
-        if (_totalUnitAmought >= 2 && UnityEngine.Random.Range(0, 200) <= 1)
-        {
-            SpawnNewUnit();
-        }
+        //if (_totalUnitAmought >= 2 && UnityEngine.Random.Range(0, 200) <= 1)
+        //{
+        //    SpawnNewUnit();
+        //}
 
         dependencies.Dispose();
     }

@@ -9,7 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1557954819117306646}
-  m_Layer: 0
+  - component: {fileID: 7293067681645291166}
+  - component: {fileID: 8220439812196892534}
+  m_Layer: 11
   m_Name: Large_Fat_Reef_O
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,6 +40,31 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 39.679, z: 0}
+--- !u!65 &7293067681645291166
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1388430671209917231}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 5.8018894, y: 3.0144403, z: 4.1090827}
+  m_Center: {x: -1.2722737, y: 1.0864564, z: -5.0072227}
+--- !u!114 &8220439812196892534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1388430671209917231}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d484edd16d9526a43a4b0ea9e1893227, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &7273446547065671813
 PrefabInstance:
   m_ObjectHideFlags: 0

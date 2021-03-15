@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class SFlockUnit : MonoBehaviour
+public class SFlockUnit : MonoBehaviour, IFood
 {
     [Range(0, 180)]
     [SerializeField] private float fovAngle;
@@ -99,8 +99,13 @@ public class SFlockUnit : MonoBehaviour
         fishTransform.localScale = Vector3.one + scaleChange;
     }
 
-    public void RemoveUnit()
+    private void RemoveUnit()
     {
         OnUnitRemove?.Invoke(this);
+    }
+
+    public void Consume()
+    {
+        RemoveUnit();
     }
 }
