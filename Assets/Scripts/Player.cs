@@ -7,6 +7,8 @@ public class Player : MonoBehaviour
 {
 
     SFlockUnit CurrentFish;
+    List<SFlockUnit> CurrentFishFlock;
+    int CurrentFishFlockCount;
     [SerializeField]
     FishStatsUI FishStats;
     bool IsLookingAtFish;
@@ -21,6 +23,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         IsLookingAtFish = false;
+        CurrentFishFlockCount = 0;
         Timer = 0f;
         FishStats.UpdateGenePoints(GenePoints);
         UION = false;
@@ -34,6 +37,20 @@ public class Player : MonoBehaviour
             UpdateGenePoints(1);
             Timer = 0f;
         }
+    }
+
+    public SFlockUnit GoToNextFishInFlock(bool dir) {
+        if (dir) {
+            //Left
+            CurrentFishFlockCount--;
+            if (CurrentFishFlockCount < 0) CurrentFishFlockCount = CurrentFishFlock.Count - 1;
+        } else {
+            //Right
+            CurrentFishFlockCount++;
+            if (CurrentFishFlockCount >= CurrentFishFlock.Count) CurrentFishFlockCount = 0;
+        }
+        SetCurrentFish(CurrentFishFlock[CurrentFishFlockCount]);
+        return CurrentFishFlock[CurrentFishFlockCount];
     }
 
     void UpdateGenePoints(int updateValue) {
@@ -63,9 +80,13 @@ public class Player : MonoBehaviour
         if (state) {
             IsLookingAtFish = true;
             SetCurrentFish(fish);
+            CurrentFishFlock = CurrentFish.GetComponentInParent<SFlock>().AllUnits;
         } else {
             SetCurrentFish(null);
+            CurrentFishFlock = null;
+            CurrentFishFlockCount = 0;
             IsLookingAtFish = false;
+            UION = false;
             FishStats.TurnOnOffFishStats(false);
         }
     }
