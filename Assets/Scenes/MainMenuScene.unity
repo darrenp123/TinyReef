@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.1210787, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -180,13 +180,13 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla commodo
-    mauris sit amet libero pulvinar, tempus ullamcorper tortor ultrices. Nullam lobortis
-    sodales nisl vitae lobortis. Curabitur consequat diam nec nulla tempus hendrerit.
-    Curabitur fermentum congue tortor, ut ultrices diam molestie nec. Vestibulum
-    in risus ac ligula fringilla aliquam. Integer scelerisque hendrerit nulla at
-    pharetra. Fusce consectetur, tortor in gravida aliquet, purus arcu sagittis orci,
-    id consectetur tortor velit malesuada dolor.
+  m_text: In Sandbox, you may select any of the available tanks to use, which will
+    spawn with the fish they would normally have if it were the objective mode. The
+    sandbox mode features no limits to experimentation, with access to unlimited
+    gene points and unlimited fish that can spawn. You may also remove fish from
+    the tank in this mode. It is possible to drop food pellets into the tank to speed
+    up the game progression in this mode. The sandbox will have no objectives, and
+    you may still reset the tank whenever you like.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c08e3881e2c3bbe49a6b5fc5d6266713, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -765,7 +765,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: IngameUIScene
+          m_StringArgument: Tank_With_Glass
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &234264213
@@ -1741,16 +1741,19 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec ipsum
-    ac quam euismod feugiat in et mi. Morbi auctor risus vitae elit hendrerit, quis
-    accumsan tortor eleifend. Vivamus ut lacinia ante, non convallis nulla. Curabitur
-    faucibus vitae arcu et consequat. Praesent sit amet dui et nisl rutrum gravida
-    lobortis a massa. Quisque sed dictum libero. Fusce lectus magna, lacinia ac risus
-    in, dignissim convallis dolor. Class aptent taciti sociosqu ad litora torquent
-    per conubia nostra, per inceptos himenaeos. Duis non elit ut lorem rhoncus egestas
-    eget eget nisi. Nullam tempus ipsum posuere vehicula efficitur. Curabitur ullamcorper,
-    magna nec bibendum luctus, tellus metus fringilla massa, a ornare ipsum elit
-    at risus. Donec vitae egestas dui, ut lobortis augue.
+  m_text: "In Objective mode, you are presented with a tank which contains a set
+    number of fish species with pre-determined traits represented by a numerical
+    value. For example, a fish might have a speed of 5. The environment will also
+    differ from tank to tank, each tank will feature an objective that must be completed
+    in order to move on. Some levels will have multiple challenges. The level begins
+    with a set amount of \u201Cgene points\u201D which can be spent to alter the
+    traits of individual fish in the tank. For example, spend a point to increase
+    or decrease the speed of a fish by 1. You can only alter individual fish. Once
+    you have run out of gene points, you can no longer alter any traits. It is possible
+    to spend a certain number of points to drop new fish into the tank. If you feel
+    you cannot accomplish your objective, press a button to reset the level, returning
+    your points. This will reset all of the fish back to their original numbers and
+    traits."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c08e3881e2c3bbe49a6b5fc5d6266713, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3133,16 +3136,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 2027364294}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
+  m_Script: {fileID: 11500000, guid: 01614664b831546d2ae94a42149d80ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_HorizontalAxis: Horizontal
-  m_VerticalAxis: Vertical
-  m_SubmitButton: Submit
-  m_CancelButton: Cancel
-  m_InputActionsPerSecond: 10
-  m_RepeatDelay: 0.5
-  m_ForceModuleActive: 0
+  m_MoveRepeatDelay: 0.5
+  m_MoveRepeatRate: 0.1
+  m_ActionsAsset: {fileID: -944628639613478452, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_PointAction: {fileID: 1054132383583890850, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_MoveAction: {fileID: 3710738434707379630, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_SubmitAction: {fileID: 2064916234097673511, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_CancelAction: {fileID: -1967631576421560919, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_LeftClickAction: {fileID: 8056856818456041789, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_MiddleClickAction: {fileID: 3279352641294131588, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_RightClickAction: {fileID: 3837173908680883260, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_ScrollWheelAction: {fileID: 4502412055082496612, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_TrackedDevicePositionAction: {fileID: 4754684134866288074, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_TrackedDeviceOrientationAction: {fileID: 1025543830046995696, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_DeselectOnBackgroundClick: 1
+  m_PointerBehavior: 0
 --- !u!114 &2027364296
 MonoBehaviour:
   m_ObjectHideFlags: 0
