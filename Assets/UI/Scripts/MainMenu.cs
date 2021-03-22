@@ -9,7 +9,7 @@ using UnityEngine.UI;
 public class MainMenu : MonoBehaviour
 {
     [SerializeField]
-    GameObject instructionsPage, mainMenuPage, gamemodeSelectionPage, challengeModeText, sandboxModeText, gamemodeSelectionPlayButton;
+    GameObject instructionsPage, optionsPage, creditsPage, mainMenuPage, gamemodeSelectionPage, challengeModeText, sandboxModeText, gamemodeSelectionPlayButton;
 
     public void OpenInstructionsPage()
     {
@@ -20,6 +20,30 @@ public class MainMenu : MonoBehaviour
     public void CloseInstructionsPage()
     {
         instructionsPage.SetActive(false);
+        mainMenuPage.SetActive(true);
+    }
+
+    public void OpenOptionsPage()
+    {
+        mainMenuPage.SetActive(false);
+        optionsPage.SetActive(true);
+    }
+
+    public void CloseOptionsPage()
+    {
+        optionsPage.SetActive(false);
+        mainMenuPage.SetActive(true);
+    }
+
+    public void OpenCreditsPage()
+    {
+        mainMenuPage.SetActive(false);
+        creditsPage.SetActive(true);
+    }
+
+    public void CloseCreditsPage()
+    {
+        creditsPage.SetActive(false);
         mainMenuPage.SetActive(true);
     }
 
