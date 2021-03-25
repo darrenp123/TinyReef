@@ -207,7 +207,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.8000001, g: 0.7725491, b: 0.7490196, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -283,7 +283,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.7372549, g: 0.7137255, b: 0.69411767, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -569,8 +569,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8443321239528787469}
   m_HandleRect: {fileID: 8443321239528787468}
   m_Direction: 2
-  m_Value: 1.0000006
-  m_Size: 0.7136519
+  m_Value: 1.0000004
+  m_Size: 0.71365196
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -634,7 +634,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.7686275, g: 0.7411765, b: 0.72156864, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -725,8 +725,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -844,7 +844,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.8000001, g: 0.7725491, b: 0.7490196, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1476,8 +1476,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -2344,6 +2344,30 @@ PrefabInstance:
     - target: {fileID: 4022295308683649182, guid: 80cf042aaf1d0864eb19744248cbe482, type: 3}
       propertyPath: m_Name
       value: HungerTrait
+      objectReference: {fileID: 0}
+    - target: {fileID: 4022295309147668189, guid: 80cf042aaf1d0864eb19744248cbe482, type: 3}
+      propertyPath: m_Color.b
+      value: 0.52156866
+      objectReference: {fileID: 0}
+    - target: {fileID: 4022295309147668189, guid: 80cf042aaf1d0864eb19744248cbe482, type: 3}
+      propertyPath: m_Color.g
+      value: 0.53333336
+      objectReference: {fileID: 0}
+    - target: {fileID: 4022295309147668189, guid: 80cf042aaf1d0864eb19744248cbe482, type: 3}
+      propertyPath: m_Color.r
+      value: 0.54901963
+      objectReference: {fileID: 0}
+    - target: {fileID: 4022295309706199014, guid: 80cf042aaf1d0864eb19744248cbe482, type: 3}
+      propertyPath: m_Color.b
+      value: 0.69411767
+      objectReference: {fileID: 0}
+    - target: {fileID: 4022295309706199014, guid: 80cf042aaf1d0864eb19744248cbe482, type: 3}
+      propertyPath: m_Color.g
+      value: 0.7137255
+      objectReference: {fileID: 0}
+    - target: {fileID: 4022295309706199014, guid: 80cf042aaf1d0864eb19744248cbe482, type: 3}
+      propertyPath: m_Color.r
+      value: 0.7372549
       objectReference: {fileID: 0}
     - target: {fileID: 4022295309775107767, guid: 80cf042aaf1d0864eb19744248cbe482, type: 3}
       propertyPath: m_Name
@@ -3870,6 +3894,18 @@ PrefabInstance:
     - target: {fileID: 4022295308683649182, guid: 80cf042aaf1d0864eb19744248cbe482, type: 3}
       propertyPath: m_Name
       value: DesirebilityTrait
+      objectReference: {fileID: 0}
+    - target: {fileID: 4022295309147668189, guid: 80cf042aaf1d0864eb19744248cbe482, type: 3}
+      propertyPath: m_Color.b
+      value: 0.5421111
+      objectReference: {fileID: 0}
+    - target: {fileID: 4022295309147668189, guid: 80cf042aaf1d0864eb19744248cbe482, type: 3}
+      propertyPath: m_Color.g
+      value: 0.5580556
+      objectReference: {fileID: 0}
+    - target: {fileID: 4022295309147668189, guid: 80cf042aaf1d0864eb19744248cbe482, type: 3}
+      propertyPath: m_Color.r
+      value: 0.574
       objectReference: {fileID: 0}
     - target: {fileID: 4022295309263252211, guid: 80cf042aaf1d0864eb19744248cbe482, type: 3}
       propertyPath: m_text
