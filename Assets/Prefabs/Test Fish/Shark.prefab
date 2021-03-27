@@ -64,8 +64,8 @@ MonoBehaviour:
   killBoxDistance: 1.5
   hungerThreshold: 120
   lifeSpan: 180
-  unitType: 
-  unitName: 
+  unitType: HCDHCD08HCD
+  unitName: HXSISHXIS
   size: 0
   fishTransform: {fileID: 0}
 --- !u!1001 &302282928151719339
