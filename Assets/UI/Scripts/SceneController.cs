@@ -12,6 +12,7 @@ public class SceneController : MonoBehaviour
     {
         Scene scene = SceneManager.GetActiveScene();
         SceneManager.LoadSceneAsync(scene.name);
+        Time.timeScale = 1;
     }
 
     public void LoadLevel(string level)

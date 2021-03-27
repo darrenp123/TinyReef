@@ -75,10 +75,17 @@ public class InstructionsMenu : MonoBehaviour
 
     public void CloseAllMenus()
     {
-        BackToInstructionsPage();
         for (int i = 0; i < traitMoreInfoPages.Length; i++)
         {
             traitMoreInfoPages[i].SetActive(false);
         }
+        BackToInstructionsPage();
+    }
+
+    public void BackToGame()
+    {
+        CloseAllMenus();
+        pauseMenu.CloseInstructionsMenu();
+        pauseMenu.UnPauseGame();
     }
 }
