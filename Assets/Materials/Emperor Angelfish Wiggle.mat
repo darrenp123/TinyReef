@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Lion Fish Wiggle
+  m_Name: Emperor Angelfish Wiggle
   m_Shader: {fileID: 4800000, guid: 050cd2ec4cc25ac4aa4842eb72394f5c, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -85,7 +85,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 16f66471435fe2c4ca169c5ad307ea9c, type: 3}
+        m_Texture: {fileID: 2800000, guid: cfee5578e4db76649b185a4f66bb16ac, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -137,7 +137,7 @@ Material:
     - Vector1_c1d6a0a38bbd425cb8a92088c08679d6: 4.41
     - Vector1_d849c3b015ab49ba9b35dfa0b98ee344: 3
     - _AlphaClip: 0
-    - _Amount: 3
+    - _Amount: 8
     - _AmplitudeX: 0
     - _AmplitudeY: 0
     - _AmplitudeZ: 0.25
@@ -156,7 +156,7 @@ Material:
     - _DetailNormalMapScale: 1
     - _DisplacementAmount: 4.04
     - _DisplacementSpeed: 1.72
-    - _Distance: 0.05
+    - _Distance: 0.02
     - _DstBlend: 0
     - _EffectRadius: 0.474
     - _EnvironmentReflections: 1
@@ -164,7 +164,7 @@ Material:
     - _FrequencyY: 0
     - _FrequencyZ: 1.74
     - _GlossMapScale: 0
-    - _Glossiness: 0.359
+    - _Glossiness: 0
     - _GlossyReflections: 0
     - _HeadLimit: 0.06
     - _IntensityNm: 1
@@ -199,7 +199,7 @@ Material:
     - _SwimmingScale: 12.7
     - _SwimmingSpeed: 2
     - _Threshold: 13
-    - _TimeScale: 3
+    - _TimeScale: 5
     - _TranslationAmount: 2.16
     - _WaveBody: 0.3
     - _WaveDensity: 0.375

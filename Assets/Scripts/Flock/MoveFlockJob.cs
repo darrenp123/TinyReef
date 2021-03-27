@@ -4,7 +4,7 @@ using Unity.Collections;
 using Unity.Burst;
 using Unity.Mathematics;
 
-[BurstCompile]
+//[BurstCompile]
 public struct MoveFlockJob : IJobParallelFor
 {
     [NativeDisableParallelForRestriction]
@@ -59,11 +59,11 @@ public struct MoveFlockJob : IJobParallelFor
     public float MinSpeed;
     public float DeltaTime;
 
-    // for testing
+    // for testing between 
     public int TestIndex;
 
     public void Execute(int index)
-    {
+    {       
         float3 cohesionVector = float3.zero;
         int cohesionNeighbours = 0;
         float3 avoidanceVector = float3.zero;
@@ -258,7 +258,7 @@ public struct MoveFlockJob : IJobParallelFor
         for (int i = particion * index; i < particion * (index + 1); i++)
         {
             float3 currentDirection = UnitSightDirections[i];
-            float angle = Vector3.Angle(UnitsForwardDirections[index], currentDirection);
+            float angle = AngleBetween(UnitsForwardDirections[index], currentDirection);
             float distanceToHit = UnitsObstacleSightResults[i].distance;
             if (distanceToHit > 0)
             {
@@ -343,13 +343,19 @@ public struct MoveFlockJob : IJobParallelFor
 
     private bool IsInFov(in int index, in float3 targetPosition)
     {
-        return Vector3.Angle(UnitsForwardDirections[index], targetPosition - UnitsPositions[index]) <= FovAngle;
+        return AngleBetween(UnitsForwardDirections[index], targetPosition - UnitsPositions[index]) <= FovAngle;
     }
 
     private float3 SteerTowards(in float3 vector, in int index)
     {
         float3 v = (math.normalize(vector) * UnitsMaxSpeed[index]) - UnitsCurrentVelocities[index];
         return math.length(v) > MaxSteerForce ? math.normalize(v) * MaxSteerForce : v;
+    }
+
+    private float AngleBetween(float3 from, float3 to)
+    {
+        float angle = math.acos(math.dot(from, to) / (math.length(from) * math.length(to)));
+        return math.degrees(angle);
     }
 
     private bool IsTestIndex(int index) => TestIndex == index;

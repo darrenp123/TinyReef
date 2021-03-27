@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &9107440545818283387
+--- !u!1 &8069508316591609107
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,88 +8,88 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 9107440545818283384}
-  - component: {fileID: 9107440545818283385}
-  - component: {fileID: 9107440545818283386}
+  - component: {fileID: 8069508316591609110}
+  - component: {fileID: 8069508316591609109}
+  - component: {fileID: 8069508316591609108}
   m_Layer: 0
-  m_Name: Flock Lion Fish
+  m_Name: Flock Emperor Angelfish
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &9107440545818283384
+--- !u!4 &8069508316591609110
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9107440545818283387}
+  m_GameObject: {fileID: 8069508316591609107}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 3.141, z: -2.588}
+  m_LocalPosition: {x: -62.05, y: 10.17, z: 27.37}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &9107440545818283385
+--- !u!114 &8069508316591609109
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9107440545818283387}
+  m_GameObject: {fileID: 8069508316591609107}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ff0b0d88e364e2f48a294dbbc40c30d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flockUnitPrefab: {fileID: -7822817268636246769, guid: e3cb7a757cf4c7645bad9fe1b9ca2ce9, type: 3}
-  flockSize: 50
-  spawnBounds: {x: 5, y: 1, z: 5}
+  flockUnitPrefab: {fileID: 941367559866431745, guid: 8aad5ae21f821e243a0dbad4a81a25d7, type: 3}
+  flockSize: 300
+  spawnBounds: {x: 10, y: 5, z: 10}
   obstacleMask:
     serializedVersion: 2
     m_Bits: 128
   predatorMask:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 768
   preyMask:
     serializedVersion: 2
-    m_Bits: 1024
-  sphereCastRadius: 0.18
+    m_Bits: 2048
+  sphereCastRadius: 0.13
   flockWaypoints: {fileID: 0}
   minSpeed: 1
-  initMaxSpeed: 2.5
+  initMaxSpeed: 3
   maxSteerForce: 4
-  cohesionDistance: 0
-  avoidanceDistance: 2
-  aligementDistance: 0
-  patrolWaypointDistance: 1.8
-  obstacleDistance: 1.5
+  cohesionDistance: 1
+  avoidanceDistance: 0.9
+  aligementDistance: 1
+  patrolWaypointDistance: 1.5
+  obstacleDistance: 1.1
   initPredatorPreyDistance: 3.5
   boundsDistance: 15
   cohesionWeight: 1
   avoidanceWeight: 1.3
-  aligementWeight: 1.1
+  aligementWeight: 1.2
   patrolWaypointWeight: 0.8
-  obstacleAvoidanceWeight: 20
-  predatorFleeWeight: 7
-  preyPersuitWeight: 3
+  obstacleAvoidanceWeight: 30
+  predatorFleeWeight: 10
+  preyPersuitWeight: 2
   boundsWeight: 1.2
   unitIndex: 0
---- !u!114 &9107440545818283386
+--- !u!114 &8069508316591609108
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9107440545818283387}
+  m_GameObject: {fileID: 8069508316591609107}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 30fd7cf25bebed74ab62cd7e76adf1b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  active: 0
+  active: 1
   unitIndex: 0
   mask:
     serializedVersion: 2

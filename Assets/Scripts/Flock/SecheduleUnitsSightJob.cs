@@ -50,7 +50,6 @@ public struct SecheduleUnitsSightJob : IJobParallelFor
                  currentUnitPosition, SphereCastRadius, UnitForwardDirections[index], ObstacleDistance * 0.85f, ObstacleMask);
 
         int IndexStart = SightDirections.Length * index;
-
         for (int i = 0; i < SightDirections.Length; i++)
         {
             float3 dir = UnitRotaions[index] * SightDirections[i];
@@ -67,6 +66,53 @@ public struct SecheduleUnitsSightJob : IJobParallelFor
 
             UnitsPredatorsPreyObstackleChecks[i + IndexStart] = new SpherecastCommand(
                 currentUnitPosition, SphereCastRadius, dir, PredatorPreyDistance, ObstacleMask);
+        }
+    }
+}
+
+[BurstCompile]
+public struct PreyPredetorCheksJob : IJobParallelFor
+{
+    [ReadOnly]
+    public NativeArray<float3> UnitPositions;
+    [ReadOnly]
+    public NativeArray<float3> UnitForwardDirections;
+    [ReadOnly]
+    public NativeArray<RaycastHit> UnitsPredatorsResults;
+    [ReadOnly]
+    public NativeArray<RaycastHit> UnitsPreyResults;
+
+    [NativeDisableParallelForRestriction]
+    [WriteOnly]
+    public NativeArray<SpherecastCommand> UnitsPredatorsObstackleChecks;
+    [NativeDisableParallelForRestriction]
+    [WriteOnly]
+    public NativeArray<SpherecastCommand> UnitsPreyObstackleChecks;
+
+    public float SphereCastRadius;
+    public float PredatorPreyDistance;
+    public LayerMask ObstacleMask;
+
+    public void Execute(int index)
+    {
+        float3 unitPosition = UnitPositions[index];
+        UnitsPredatorsObstackleChecks[index] = new SpherecastCommand();
+        UnitsPreyObstackleChecks[index] = new SpherecastCommand();
+
+        RaycastHit predatorHit = UnitsPredatorsResults[index];
+        if (predatorHit.distance > 0)
+        {
+            UnitsPredatorsObstackleChecks[index] = new SpherecastCommand(
+               unitPosition, SphereCastRadius, math.normalizesafe((float3)predatorHit.point - unitPosition),
+               PredatorPreyDistance, ObstacleMask);
+        }
+
+        RaycastHit preyHit = UnitsPreyResults[index];
+        if (preyHit.distance > 0)
+        {
+            UnitsPreyObstackleChecks[index] = new SpherecastCommand(
+               unitPosition, SphereCastRadius, math.normalizesafe((float3)preyHit.point - unitPosition),
+               PredatorPreyDistance, ObstacleMask);
         }
     }
 }

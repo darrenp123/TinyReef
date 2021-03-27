@@ -181,7 +181,7 @@ public class SFlock : MonoBehaviour
 
         // For debugging.
         var debuger = GetComponent<FlockDebuger>();
-        if (debuger) debuger.InitDebugger(AllUnits.ToArray(), initPredatorPreyDistance, sphereCastRadius);
+        if (debuger) debuger.InitDebugger(AllUnits.ToArray(), obstacleDistance, sphereCastRadius);
     }
 
     private void Update()

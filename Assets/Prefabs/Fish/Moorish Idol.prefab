@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2456232386147802614
+--- !u!1 &3385377858243384299
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,38 +8,52 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2980708935320078156}
-  - component: {fileID: 2069639157354766582}
-  - component: {fileID: 405878428090991741}
-  m_Layer: 9
-  m_Name: Tuna
+  - component: {fileID: 2715837242141673809}
+  - component: {fileID: 4448728451723551481}
+  - component: {fileID: 2918758009438317830}
+  m_Layer: 10
+  m_Name: Moorish Idol
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2980708935320078156
+--- !u!4 &2715837242141673809
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2456232386147802614}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.048, y: 1.366, z: 0.459}
+  m_GameObject: {fileID: 3385377858243384299}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 2390759156624340500}
+  - {fileID: 7373828841400175246}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2069639157354766582
+--- !u!136 &4448728451723551481
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3385377858243384299}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.15
+  m_Height: 0
+  m_Direction: 2
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2918758009438317830
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2456232386147802614}
+  m_GameObject: {fileID: 3385377858243384299}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d746ca851849463408e46ee377e65398, type: 3}
@@ -47,28 +61,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fovAngle: 150
   numViewDirections: 100
-  killBoxDistance: 0.9
-  hungerThreshold: 120
+  killBoxDistance: 0.15
+  hungerThreshold: 35
   lifeSpan: 240
-  unitType: Deep Sea
-  unitName: Albacore Tuna
+  unitType: Coral Fish
+  unitName: Moorish Idol
   size: 1
-  fishTransform: {fileID: 2980708935320078156}
---- !u!136 &405878428090991741
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2456232386147802614}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.25
-  m_Height: 1.7
-  m_Direction: 2
-  m_Center: {x: 0, y: 0, z: -0.09}
---- !u!1 &6889242678639535407
+  fishTransform: {fileID: 2715837242141673809}
+--- !u!1 &4344482743511790528
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -76,45 +76,45 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2390759156624340500}
-  - component: {fileID: 719029567892295518}
-  - component: {fileID: 4098059830472354762}
-  m_Layer: 9
-  m_Name: default
+  - component: {fileID: 7373828841400175246}
+  - component: {fileID: 7031374856990273677}
+  - component: {fileID: 3469533872881732704}
+  m_Layer: 10
+  m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2390759156624340500
+--- !u!4 &7373828841400175246
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6889242678639535407}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_GameObject: {fileID: 4344482743511790528}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 2980708935320078156}
+  m_Father: {fileID: 2715837242141673809}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &719029567892295518
+--- !u!33 &7031374856990273677
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6889242678639535407}
-  m_Mesh: {fileID: -2432090755550338912, guid: 01d9ff57394702244bf563f0534cdf26, type: 3}
---- !u!23 &4098059830472354762
+  m_GameObject: {fileID: 4344482743511790528}
+  m_Mesh: {fileID: -462981019419857548, guid: 6f75a920100bd8c43a395a1ae9c4d79f, type: 3}
+--- !u!23 &3469533872881732704
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6889242678639535407}
+  m_GameObject: {fileID: 4344482743511790528}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -127,7 +127,7 @@ MeshRenderer:
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d127c75b0a0fbf443b4f44aca61067e2, type: 2}
+  - {fileID: 2100000, guid: bd8fb76d4255b1d4593d9e66f0e15e57, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

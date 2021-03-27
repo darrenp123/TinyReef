@@ -90,8 +90,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1976696129229876414}
-  - component: {fileID: -4118619304442215633}
   - component: {fileID: 4756446241294149464}
+  - component: {fileID: -4118619304442215633}
   m_Layer: 9
   m_Name: Cod
   m_TagString: Untagged
@@ -114,6 +114,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &4756446241294149464
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1163461442550281732}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.3
+  m_Height: 1.7
+  m_Direction: 2
+  m_Center: {x: 0, y: 0.4, z: 0}
 --- !u!114 &-4118619304442215633
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -130,22 +144,8 @@ MonoBehaviour:
   numViewDirections: 100
   killBoxDistance: 1.1
   hungerThreshold: 10
-  lifeSpan: 30
+  lifeSpan: 240
   unitType: Blue Fish
   unitName: Cod
   size: 7
   fishTransform: {fileID: 1976696129229876414}
---- !u!136 &4756446241294149464
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1163461442550281732}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.3
-  m_Height: 1.7
-  m_Direction: 2
-  m_Center: {x: 0, y: 0.4, z: 0}

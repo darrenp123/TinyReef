@@ -28521,7 +28521,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 459489198}
   m_HandleRect: {fileID: 459489197}
   m_Direction: 2
-  m_Value: -0.00000020549157
+  m_Value: -0.0000002876882
   m_Size: 0.34729975
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -43299,6 +43299,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Flock Blue Tang
       objectReference: {fileID: 0}
+    - target: {fileID: 310231194867374169, guid: 60fd7d73c2632cc44b4aba7d540f2a4a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 310231194867374172, guid: 60fd7d73c2632cc44b4aba7d540f2a4a, type: 3}
       propertyPath: m_RootOrder
       value: 14
@@ -45000,6 +45004,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Flock Parrot Fish
       objectReference: {fileID: 0}
+    - target: {fileID: 3581474779332409853, guid: bccf83bbce0515544a2cbe9c93841f10, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bccf83bbce0515544a2cbe9c93841f10, type: 3}
 --- !u!1001 &3776082651446586632
@@ -45664,6 +45672,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Flock Clown Fish
       objectReference: {fileID: 0}
+    - target: {fileID: 4930066079336723641, guid: 0bd095030cda9e241adc270e1f5a04ae, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4930066079336723646, guid: 0bd095030cda9e241adc270e1f5a04ae, type: 3}
       propertyPath: m_RootOrder
       value: 13
@@ -45942,6 +45954,10 @@ PrefabInstance:
     - target: {fileID: 5638369182917961935, guid: f8ce00f89531fec41a77987c82e6dedc, type: 3}
       propertyPath: m_Name
       value: Flock Moorish Idol
+      objectReference: {fileID: 0}
+    - target: {fileID: 5638369182917961935, guid: f8ce00f89531fec41a77987c82e6dedc, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f8ce00f89531fec41a77987c82e6dedc, type: 3}
@@ -47000,6 +47016,10 @@ PrefabInstance:
     - target: {fileID: 7371807810527790348, guid: 6ab7e483d32ad24468a3d5c0ab61e851, type: 3}
       propertyPath: m_Name
       value: Flock Cod
+      objectReference: {fileID: 0}
+    - target: {fileID: 7371807810527790348, guid: 6ab7e483d32ad24468a3d5c0ab61e851, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6ab7e483d32ad24468a3d5c0ab61e851, type: 3}
@@ -48942,6 +48962,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Flock Shark
       objectReference: {fileID: 0}
+    - target: {fileID: 9010834486002238098, guid: e9367e1447b8d9a43ac38c734226483a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e9367e1447b8d9a43ac38c734226483a, type: 3}
 --- !u!1001 &9107440545586487447
@@ -49002,6 +49026,10 @@ PrefabInstance:
     - target: {fileID: 9107440545818283387, guid: de6629ef5de98e24b802e9d8d7c7c4ac, type: 3}
       propertyPath: m_Name
       value: Flock Lion Fish
+      objectReference: {fileID: 0}
+    - target: {fileID: 9107440545818283387, guid: de6629ef5de98e24b802e9d8d7c7c4ac, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de6629ef5de98e24b802e9d8d7c7c4ac, type: 3}
