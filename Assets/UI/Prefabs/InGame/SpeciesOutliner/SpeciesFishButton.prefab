@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7118469870205644229}
   - component: {fileID: 7118469870205644228}
   - component: {fileID: 7118469870205644231}
+  - component: {fileID: 1364174326986509499}
   m_Layer: 5
   m_Name: SpeciesFishButton
   m_TagString: Untagged
@@ -121,6 +122,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1364174326986509499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7118469870205641273}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e21d0262dd8d234ab3e6d5a8925abcd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7118469871186980966
 GameObject:
   m_ObjectHideFlags: 0
