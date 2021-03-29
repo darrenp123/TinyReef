@@ -113,6 +113,7 @@ public class FactFile : MonoBehaviour
             nextPageButton.SetActive(false);
         }
         contentsPage.SetActive(false);
+        contentsPageButton.SetActive(true);
     }
 
     public void ContentsPage()

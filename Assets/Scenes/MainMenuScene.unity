@@ -587,10 +587,6 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1132655515}
-    - target: {fileID: 907302470649249543, guid: 385a7a0603e7c374cabadaf502fa0075, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -684.97845
-      objectReference: {fileID: 0}
     - target: {fileID: 907302470725908750, guid: 385a7a0603e7c374cabadaf502fa0075, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -639,10 +635,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: MainMenuUI
       objectReference: {fileID: 0}
-    - target: {fileID: 907302471005704555, guid: 385a7a0603e7c374cabadaf502fa0075, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -684.97845
-      objectReference: {fileID: 0}
     - target: {fileID: 907302471426905725, guid: 385a7a0603e7c374cabadaf502fa0075, type: 3}
       propertyPath: m_Camera
       value: 
@@ -659,10 +651,6 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1132655515}
-    - target: {fileID: 2325862624699242118, guid: 385a7a0603e7c374cabadaf502fa0075, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 120.99994
-      objectReference: {fileID: 0}
     - target: {fileID: 2622303380474252433, guid: 385a7a0603e7c374cabadaf502fa0075, type: 3}
       propertyPath: m_Camera
       value: 
