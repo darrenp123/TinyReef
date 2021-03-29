@@ -110,12 +110,9 @@ public class FishStatsUI : MonoBehaviour
     }
 
     void UpdateLifespan(SFlockUnit fish) {
-        //TODO
-        /*
-        float value = fish.GetLifespan();
+        float value = fish.InitialLifespan/60;
         Lifespan.text = value.ToString();
         LifespanSlider.value = value;
-        */
     }
 
     void UpdateSize(SFlockUnit fish) {
@@ -137,6 +134,24 @@ public class FishStatsUI : MonoBehaviour
     }
 
     void UpdateCamouflage(SFlockUnit fish) {
+        //TODO
+        /*
+        float value = fish.GetCamouflage();
+        Camouflage.text = value.ToString();
+        CamouflageSlider.value = value;
+        */
+    }
+
+    void UpdateMatingUrge(SFlockUnit fish) {
+        //TODO
+        /*
+        float value = fish.GetCamouflage();
+        Camouflage.text = value.ToString();
+        CamouflageSlider.value = value;
+        */
+    }
+
+    void UpdateGestationPeriod(SFlockUnit fish) {
         //TODO
         /*
         float value = fish.GetCamouflage();

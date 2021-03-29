@@ -18,6 +18,8 @@ public class SFlockUnit : MonoBehaviour, IFood
     public UnitEventSigniture OnUnitRemove;
     public UnitEventSigniture OnUnitTraitsValueChanged;
 
+    public float InitialLifespan;
+
     private float _maxSpeed;
     private Vector3 _currentVelocity;
     private float _currrentHunger;
@@ -48,6 +50,7 @@ public class SFlockUnit : MonoBehaviour, IFood
 
     private void Awake()
     {
+        InitialLifespan = LifeSpan;
         MyTransform = transform;
 
         if (Directions == null)

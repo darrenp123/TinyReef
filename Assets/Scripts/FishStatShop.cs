@@ -2,8 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FishStatShop : MonoBehaviour
-{
+public class FishStatShop : MonoBehaviour {
     [SerializeField]
     Player User;
 
@@ -45,5 +44,21 @@ public class FishStatShop : MonoBehaviour
 
     public void DecreaseCamouflage() {
         User.PurchasePoints(5, -1);
+    }
+
+    public void IncreaseMatingUrge() {
+        User.PurchasePoints(6, 1);
+    }
+
+    public void DecreaseMatingUrge() {
+        User.PurchasePoints(6, -1);
+    }
+
+    public void IncreaseGestationPeriod() {
+        User.PurchasePoints(7, 1);
+    }
+
+    public void DecreaseGestationPeriod() {
+        User.PurchasePoints(7, -1);
     }
 }

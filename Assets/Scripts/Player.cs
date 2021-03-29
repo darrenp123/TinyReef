@@ -12,11 +12,14 @@ public class Player : MonoBehaviour
     [SerializeField]
     FishStatsUI FishStats;
     bool IsLookingAtFish;
+    [SerializeField]
     int GenePoints;
     [SerializeField]
     int TraitCost;
     float Timer;
     bool UION;
+    public SFlock GroupOfFish;
+    public GameObject WinText;
 
 
     // Start is called before the first frame update
@@ -27,16 +30,25 @@ public class Player : MonoBehaviour
         Timer = 0f;
         FishStats.UpdateGenePoints(GenePoints);
         UION = false;
+        WinText.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
+           /*
         Timer += Time.deltaTime;
         if(Timer >= 1f) {
             UpdateGenePoints(1);
             Timer = 0f;
         }
+           */
+        YouWin();
+    }
+
+    //Temp
+    public void YouWin() {
+        if (GroupOfFish.AllUnits.Count > 15) WinText.SetActive(true);
     }
 
     public SFlockUnit GoToNextFishInFlock(bool dir) {
@@ -114,14 +126,12 @@ public class Player : MonoBehaviour
                 //Lifespan
                 case 1:
                     //TODO
-                    /*
-                    float lifespan = CurrentFish.GetLifespan();
+                    float lifespan = CurrentFish.InitialLifespan/60;
                     if (value > 0 && lifespan >= 0 && lifespan < 10 || 
                         value < 0 && lifespan > 0 && lifespan <= 10) {
-                        CurrentFish.SetLifespan(value);
+                        CurrentFish.InitialLifespan += value*60;
                         UpdateGenePoints(-TraitCost);
                     }  
-                    */
                     break;
                 //Size
                 case 2:
@@ -162,6 +172,14 @@ public class Player : MonoBehaviour
                         UpdateGenePoints(-TraitCost);
                     }
                     */
+                    break;
+                //MatingUrge
+                case 6:
+
+                    break;
+                //GestationPeriod
+                case 7:
+
                     break;
                 default:
                     break;
