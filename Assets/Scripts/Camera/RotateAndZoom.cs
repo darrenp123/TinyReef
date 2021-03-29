@@ -16,19 +16,29 @@ public class RotateAndZoom : MonoBehaviour
     [SerializeField]
     private float ZoomOutMax = 40f;
     [SerializeField]
-    private float FishFocusMiddleRadious = 7f;
+    private float MaxZoomFishFocusMiddleRadious = 7f;
     [SerializeField]
-    private float FishFocusTopBottomRadious = 5f;
+    private float MaxZoomFishFocusTopBottomRadious = 5f;
     [SerializeField]
-    private float TankFocusMiddleRadious = 20f;
+    private float MinZoomFishFocusMiddleRadious = 7f;
     [SerializeField]
-    private float TankFocusTopBottomRadious = 18f;
+    private float MinZoomFishFocusTopBottomRadious = 5f;
+    [SerializeField]
+    private float MaxZoomTankFocusMiddleRadious = 20f;
+    [SerializeField]
+    private float MaxZoomTankFocusTopBottomRadious = 18f;
+    [SerializeField]
+    private float MinZoomTankFocusMiddleRadious = 20f;
+    [SerializeField]
+    private float MinZoomTankFocusTopBottomRadious = 18f;
     [SerializeField]
     private InputActionReference AxisControl;
     [SerializeField]
     private GameObject Center;
     [SerializeField]
     private Player PlayerState;
+    bool FishInFocus;
+    float FishZoomDifference, TankZoomDifference;
 
     private void Awake() {
         InputProvider = GetComponent<CinemachineInputProvider>();
@@ -40,6 +50,9 @@ public class RotateAndZoom : MonoBehaviour
     {
         FreeLookCamera.m_Follow = Center.transform;
         FreeLookCamera.m_LookAt = Center.transform;
+        FishZoomDifference = (MaxZoomFishFocusTopBottomRadious - MinZoomFishFocusTopBottomRadious) / (MaxZoomFishFocusMiddleRadious - MinZoomFishFocusMiddleRadious);
+        TankZoomDifference = (MaxZoomTankFocusTopBottomRadious - MinZoomTankFocusTopBottomRadious) / (MaxZoomTankFocusMiddleRadious - MinZoomTankFocusMiddleRadious);
+        FishInFocus = false;
         FocusFish(false);
     }
 
@@ -48,7 +61,7 @@ public class RotateAndZoom : MonoBehaviour
     {
         //Zoom
         float z = InputProvider.GetAxisValue(2);
-        if (z != 0) ZoomScreen(z);
+        if (z != 0) ZoomInZoomOut(z);
     }
 
     void ZoomScreen(float increment) {
@@ -110,16 +123,34 @@ public class RotateAndZoom : MonoBehaviour
         }
     }
 
+    public void ZoomInZoomOut(float increment) {
+        float topOrbit = FreeLookCamera.m_Orbits[0].m_Radius;
+        float middleOrbit = FreeLookCamera.m_Orbits[1].m_Radius;
+        float targetTop, targetMiddle;
+        if (FishInFocus) {
+            targetTop = Mathf.Clamp(topOrbit + (increment* FishZoomDifference), MinZoomFishFocusTopBottomRadious, MaxZoomFishFocusTopBottomRadious);
+            targetMiddle = Mathf.Clamp(middleOrbit + (increment * FishZoomDifference), MinZoomFishFocusMiddleRadious, MaxZoomFishFocusMiddleRadious);
+        } else {
+            targetTop = Mathf.Clamp(topOrbit + (increment * TankZoomDifference), MinZoomTankFocusTopBottomRadious, MaxZoomTankFocusTopBottomRadious);
+            targetMiddle = Mathf.Clamp(middleOrbit + (increment * TankZoomDifference), MinZoomTankFocusMiddleRadious, MaxZoomTankFocusMiddleRadious);
+        }
+        FreeLookCamera.m_Orbits[0].m_Radius = Mathf.Lerp(topOrbit, targetTop, ZoomSpeed * Time.deltaTime);
+        FreeLookCamera.m_Orbits[1].m_Radius = Mathf.Lerp(middleOrbit, targetMiddle, ZoomSpeed * Time.deltaTime);
+        FreeLookCamera.m_Orbits[2].m_Radius = Mathf.Lerp(topOrbit, targetTop, ZoomSpeed * Time.deltaTime);
+    }
+
 
     public void FocusFish(bool state) {
         if (state) {
-            FreeLookCamera.m_Orbits[0].m_Radius = FishFocusTopBottomRadious;
-            FreeLookCamera.m_Orbits[1].m_Radius = FishFocusMiddleRadious;
-            FreeLookCamera.m_Orbits[2].m_Radius = FishFocusTopBottomRadious;
+            FreeLookCamera.m_Orbits[0].m_Radius = MaxZoomFishFocusTopBottomRadious;
+            FreeLookCamera.m_Orbits[1].m_Radius = MaxZoomFishFocusMiddleRadious;
+            FreeLookCamera.m_Orbits[2].m_Radius = MaxZoomFishFocusTopBottomRadious;
+            FishInFocus = true;
         } else {
-            FreeLookCamera.m_Orbits[0].m_Radius = TankFocusTopBottomRadious;
-            FreeLookCamera.m_Orbits[1].m_Radius = TankFocusMiddleRadious;
-            FreeLookCamera.m_Orbits[2].m_Radius = TankFocusTopBottomRadious;
+            FreeLookCamera.m_Orbits[0].m_Radius = MaxZoomTankFocusTopBottomRadious;
+            FreeLookCamera.m_Orbits[1].m_Radius = MaxZoomTankFocusMiddleRadious;
+            FreeLookCamera.m_Orbits[2].m_Radius = MaxZoomTankFocusTopBottomRadious;
+            FishInFocus = false;
         }
     }
 }
