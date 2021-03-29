@@ -39,7 +39,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1107022669977394043}
-  m_Mesh: {fileID: 4319179129079015692, guid: 6bf51aef8d8bbf7428e789ab4038c242, type: 3}
+  m_Mesh: {fileID: -2432090755550338912, guid: dc959e0c6b9545c4481c293aed466bdc, type: 3}
 --- !u!23 &3578821763379089716
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -127,7 +127,7 @@ CapsuleCollider:
   m_Radius: 0.3
   m_Height: 1.7
   m_Direction: 2
-  m_Center: {x: 0, y: 0.4, z: 0}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &-4118619304442215633
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -142,9 +142,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fovAngle: 160
   numViewDirections: 100
-  killBoxDistance: 1.1
-  hungerThreshold: 10
-  lifeSpan: 240
+  killBoxDistance: 1
+  totalHunger: 120
+  hungerThreshold: 80
+  initStarvingTimer: 100
+  lifeSpan: 300
   unitType: Blue Fish
   unitName: Cod
   size: 7

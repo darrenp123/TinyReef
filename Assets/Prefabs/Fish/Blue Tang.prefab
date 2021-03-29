@@ -62,8 +62,10 @@ MonoBehaviour:
   fovAngle: 150
   numViewDirections: 100
   killBoxDistance: 0.25
-  hungerThreshold: 10
-  lifeSpan: 240
+  totalHunger: 120
+  hungerThreshold: 80
+  initStarvingTimer: 100
+  lifeSpan: 300
   unitType: Coral Fish
   unitName: Blue Tang
   size: 1

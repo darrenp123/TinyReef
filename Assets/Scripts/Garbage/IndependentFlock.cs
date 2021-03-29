@@ -55,7 +55,6 @@ public class IndependentFlock : MonoBehaviour
     private NativeArray<float3> _unitsCurrentVelocities;
     private NativeArray<float3> _unitsPositions;
     private NativeArray<Quaternion> _unitsRotaions;
-    private NativeArray<UnitStates> _unitsStates;
     private NativeArray<int> _unitsCurrentWaypoints;
     private NativeArray<float3> _sightDirections;
     private NativeArray<SpherecastCommand> _obstacleChecks;
@@ -208,7 +207,6 @@ public class IndependentFlock : MonoBehaviour
         _unitsCurrentVelocities = new NativeArray<float3>(flockSize, Allocator.Persistent);
         _unitsPositions = new NativeArray<float3>(flockSize, Allocator.Persistent);
         _unitsRotaions = new NativeArray<Quaternion>(flockSize, Allocator.Persistent);
-        _unitsStates = new NativeArray<UnitStates>(flockSize, Allocator.Persistent);
         _unitsHungerTimer = new NativeArray<float>(flockSize, Allocator.Persistent);
 
         for (int i = 0; i < flockSize; i++)
@@ -223,7 +221,6 @@ public class IndependentFlock : MonoBehaviour
             _unitsForwardDirections[i] = newUnit.MyTransform.forward;
             _unitsCurrentVelocities[i] = newUnit.CurrentVelocity;
             _unitsPositions[i] = newUnit.MyTransform.position;
-            _unitsStates[i] = newUnit.UnitState;
             _unitsHungerTimer[i] = newUnit.HungerThreshold;
         }
 
@@ -253,7 +250,6 @@ public class IndependentFlock : MonoBehaviour
         _unitsPositions.Dispose();
         _unitsRotaions.Dispose();
         _unitsCurrentWaypoints.Dispose();
-        _unitsStates.Dispose();
         _sightDirections.Dispose();
         _obstacleChecks.Dispose();
         _obstacleResults.Dispose();

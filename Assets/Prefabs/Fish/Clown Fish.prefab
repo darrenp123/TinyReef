@@ -39,7 +39,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1077092593735045495}
-  m_Mesh: {fileID: -6189780481300582907, guid: a25a2fe7f651fd240afac0458ab2f92e, type: 3}
+  m_Mesh: {fileID: -2432090755550338912, guid: 6cff04e3128fb4b4c8d521aaa2ec12ad, type: 3}
 --- !u!23 &1459001554714487803
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -124,10 +124,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.05
-  m_Height: 0.2
+  m_Radius: 0.03498429
+  m_Height: 0.1612493
   m_Direction: 2
-  m_Center: {x: 0, y: 0.05, z: 0}
+  m_Center: {x: 0.0017701387, y: 0, z: -0.00574667}
 --- !u!114 &-883737198729347898
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -142,9 +142,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fovAngle: 150
   numViewDirections: 100
-  killBoxDistance: 0.1
-  hungerThreshold: 35
-  lifeSpan: 240
+  killBoxDistance: 0.08
+  totalHunger: 120
+  hungerThreshold: 80
+  initStarvingTimer: 100
+  lifeSpan: 300
   unitType: Coral Fish
   unitName: Clown Fish
   size: 0

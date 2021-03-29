@@ -1,0 +1,96 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6817635830803489012
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6817635830803489001}
+  - component: {fileID: 6817635830803489002}
+  - component: {fileID: 6817635830803489003}
+  m_Layer: 0
+  m_Name: Flock Sand Tiger Shark
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6817635830803489001
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6817635830803489012}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -62.05, y: 10.17, z: 27.37}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6817635830803489002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6817635830803489012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff0b0d88e364e2f48a294dbbc40c30d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flockUnitPrefab: {fileID: 194335824614406183, guid: 358316eec2740b546b6fa60b343f2587, type: 3}
+  flockSize: 3
+  spawnBounds: {x: 7, y: 2, z: 7}
+  obstacleMask:
+    serializedVersion: 2
+    m_Bits: 128
+  predatorMask:
+    serializedVersion: 2
+    m_Bits: 0
+  preyMask:
+    serializedVersion: 2
+    m_Bits: 512
+  sphereCastRadius: 0.33
+  flockWaypoints: {fileID: 0}
+  minSpeed: 2
+  initMaxSpeed: 5
+  maxSteerForce: 2.5
+  cohesionDistance: 0
+  avoidanceDistance: 2.5
+  aligementDistance: 0
+  patrolWaypointDistance: 4
+  obstacleDistance: 3.6
+  initPredatorPreyDistance: 10
+  boundsDistance: 20
+  cohesionWeight: 0
+  avoidanceWeight: 1.5
+  aligementWeight: 0
+  patrolWaypointWeight: 0.8
+  obstacleAvoidanceWeight: 10
+  predatorFleeWeight: 5
+  preyPersuitWeight: 2.2
+  boundsWeight: 1.2
+  unitIndex: 0
+--- !u!114 &6817635830803489003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6817635830803489012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30fd7cf25bebed74ab62cd7e76adf1b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  active: 0
+  unitIndex: 0
+  mask:
+    serializedVersion: 2
+    m_Bits: 128

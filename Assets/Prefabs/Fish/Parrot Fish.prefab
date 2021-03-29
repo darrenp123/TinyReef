@@ -43,10 +43,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.21
-  m_Height: 1.21
+  m_Radius: 0.17418286
+  m_Height: 0.87406206
   m_Direction: 2
-  m_Center: {x: 0, y: 0, z: -0.14}
+  m_Center: {x: 0, y: 0.035817146, z: -0.10362387}
 --- !u!114 &2253359901877032364
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62,8 +62,10 @@ MonoBehaviour:
   fovAngle: 150
   numViewDirections: 100
   killBoxDistance: 0.45
-  hungerThreshold: 35
-  lifeSpan: 240
+  totalHunger: 120
+  hungerThreshold: 80
+  initStarvingTimer: 100
+  lifeSpan: 300
   unitType: Coral Fish
   unitName: Parrot Fish
   size: 5

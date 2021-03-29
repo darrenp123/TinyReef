@@ -1,0 +1,96 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3256035607054871389
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3256035607054871386}
+  - component: {fileID: 3256035607054871387}
+  - component: {fileID: 3256035607054871388}
+  m_Layer: 0
+  m_Name: Flock Banggai Cardinalfish
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3256035607054871386
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3256035607054871389}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -62.05, y: 10.17, z: 27.37}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3256035607054871387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3256035607054871389}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff0b0d88e364e2f48a294dbbc40c30d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flockUnitPrefab: {fileID: 4602450174552267799, guid: c4f47470ea62e274497ae5885eef734c, type: 3}
+  flockSize: 15
+  spawnBounds: {x: 5, y: 1, z: 5}
+  obstacleMask:
+    serializedVersion: 2
+    m_Bits: 128
+  predatorMask:
+    serializedVersion: 2
+    m_Bits: 768
+  preyMask:
+    serializedVersion: 2
+    m_Bits: 2048
+  sphereCastRadius: 0.04
+  flockWaypoints: {fileID: 0}
+  minSpeed: 0.9
+  initMaxSpeed: 1.1
+  maxSteerForce: 4
+  cohesionDistance: 1
+  avoidanceDistance: 0.3
+  aligementDistance: 1
+  patrolWaypointDistance: 1
+  obstacleDistance: 0.3
+  initPredatorPreyDistance: 1.5
+  boundsDistance: 20
+  cohesionWeight: 1
+  avoidanceWeight: 1.3
+  aligementWeight: 1.1
+  patrolWaypointWeight: 0.8
+  obstacleAvoidanceWeight: 30
+  predatorFleeWeight: 8
+  preyPersuitWeight: 2
+  boundsWeight: 1.2
+  unitIndex: 0
+--- !u!114 &3256035607054871388
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3256035607054871389}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30fd7cf25bebed74ab62cd7e76adf1b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  active: 0
+  unitIndex: 0
+  mask:
+    serializedVersion: 2
+    m_Bits: 128

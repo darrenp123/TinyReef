@@ -1,8 +1,8 @@
-using UnityEngine;
-using Unity.Jobs;
-using Unity.Collections;
-using Unity.Mathematics;
 using System.Collections.Generic;
+using Unity.Collections;
+using Unity.Jobs;
+using Unity.Mathematics;
+using UnityEngine;
 
 public class SFlock : MonoBehaviour
 {
@@ -68,7 +68,9 @@ public class SFlock : MonoBehaviour
     private NativeList<int> _unitsCurrentWaypoints;
     private NativeList<float> _unitsMaxSpeed;
     private NativeList<float> _unitsSightDistance;
-    private NativeList<float> _unitsHungerTimer;
+    private NativeList<float> _unitsCurrentHunger;
+    private NativeList<float> _unitsStarvingTimer;
+    private NativeList<float> _unitsLifeSpan;
 
     private NativeList<SpherecastCommand> _unitsObstacleChecks;
     private NativeList<RaycastHit> _unitsObstacleResults;
@@ -88,6 +90,7 @@ public class SFlock : MonoBehaviour
 
     private MoveFlockJob _moveJob;
     private SecheduleUnitsSightJob _secheduleRaysJob;
+    private UnitHungerJob _hungerJob;
 
     private int _totalUnitAmought;
     private int _unitBatchCount;
@@ -142,7 +145,7 @@ public class SFlock : MonoBehaviour
             UnitsCurrentVelocities = _unitsCurrentVelocities,
             UnitsPositions = _unitsPositions,
             UnitsCurrentWaypoints = _unitsCurrentWaypoints,
-            UnitsHungerTimer = _unitsHungerTimer,
+            UnitsCurrentHunger = _unitsCurrentHunger,
 
             UnitsMaxSpeed = _unitsMaxSpeed,
             UnitsSightDistance = _unitsSightDistance,
@@ -175,8 +178,22 @@ public class SFlock : MonoBehaviour
             MinSpeed = minSpeed,
             FlockPosition = transform.position,
             DeltaTime = Time.deltaTime,
+            HungerThreshold = AllUnits.Count > 0 ? AllUnits[0].HungerThreshold : 0,
 
             TestIndex = unitIndex
+        };
+
+
+        _hungerJob = new UnitHungerJob
+        {
+            UnitsCurrentHunger = _unitsCurrentHunger,
+            UnitsStarvingTimer = _unitsStarvingTimer,
+            UnitsLifeSpan = _unitsLifeSpan,
+
+            TotalHunger = AllUnits.Count > 0 ? AllUnits[0].TotalHunger : 0,
+            HungerThreshold = AllUnits.Count > 0 ? AllUnits[0].HungerThreshold : 0,
+            InitSarvingTimer = AllUnits.Count > 0 ? AllUnits[0].InitStarvingTimer : 0,
+            DeltaTime = Time.deltaTime
         };
 
         // For debugging.
@@ -195,21 +212,21 @@ public class SFlock : MonoBehaviour
             _unitsPositions[i] = currentUnitTransform.position;
             _unitsForwardDirections[i] = currentUnitTransform.forward;
             _unitsRotaions[i] = currentUnitTransform.rotation;
-            _unitsHungerTimer[i] -= deltaTime;
-            AllUnits[i].LifeSpan -= deltaTime;
         }
 
-        NativeArray<JobHandle> dependencies = new NativeArray<JobHandle>(5, Allocator.Temp);
+        _moveJob.DeltaTime = deltaTime;
+        _hungerJob.DeltaTime = deltaTime;
+
+        NativeArray<JobHandle> dependencies = new NativeArray<JobHandle>(6, Allocator.Temp);
         JobHandle secheduleHandle = _secheduleRaysJob.Schedule(_totalUnitAmought, _unitBatchCount);
         dependencies[0] = SpherecastCommand.ScheduleBatch(_unitsSightDirectionsCheks, _unitsObstacleSightResults, _sightBatchCount, secheduleHandle);
         dependencies[1] = SpherecastCommand.ScheduleBatch(_unitsObstacleChecks, _unitsObstacleResults, _unitBatchCount, secheduleHandle);
         dependencies[2] = SpherecastCommand.ScheduleBatch(_unitsPredatorsChecks, _unitsPredatorsResults, _sightBatchCount, secheduleHandle);
         dependencies[3] = SpherecastCommand.ScheduleBatch(_unitsPreyChecks, _unitsPreyResults, _sightBatchCount, secheduleHandle);
         dependencies[4] = SpherecastCommand.ScheduleBatch(_unitsPredatorPreysObtacleChecks, _unitsPredatorPreysObtacleResults, _sightBatchCount, secheduleHandle);
+        dependencies[5] = _hungerJob.Schedule(_totalUnitAmought, _unitBatchCount, default);
 
         JobHandle dependency = JobHandle.CombineDependencies(dependencies);
-
-        _moveJob.DeltaTime = deltaTime;
         _moveJob.Schedule(_totalUnitAmought, _unitBatchCount, dependency).Complete();
 
         for (int i = 0; i < _totalUnitAmought; i++)
@@ -218,22 +235,28 @@ public class SFlock : MonoBehaviour
             currentUnit.MyTransform.forward = _moveJob.UnitsForwardDirections[i];
             currentUnit.MyTransform.position = _moveJob.UnitsPositions[i];
             currentUnit.CurrentVelocity = _moveJob.UnitsCurrentVelocities[i];
-            currentUnit.CurrrentHunger = _unitsHungerTimer[i];
+            currentUnit.CurrrentHunger = _hungerJob.UnitsCurrentHunger[i];
+            currentUnit.LifeSpan = _hungerJob.UnitsLifeSpan[i];
 
-            if (currentUnit.CurrrentHunger <= 0 && Physics.SphereCast(currentUnit.MyTransform.position,
+            if (currentUnit.CurrrentHunger <= currentUnit.HungerThreshold && Physics.SphereCast(currentUnit.MyTransform.position,
            sphereCastRadius * 0.5f, currentUnit.MyTransform.forward, out RaycastHit hit, currentUnit.KillBoxDistance, preyMask))
             {
                 var killedUnit = hit.transform.GetComponent<IFood>();
                 if (killedUnit != null)
                 {
                     killedUnit.Consume();
-                    _unitsHungerTimer[i] = currentUnit.HungerThreshold;
+                    _unitsCurrentHunger[i] += currentUnit.TotalHunger / 3;
                     Debug.Log("Fish consumed! ");
                 }
             }
 
-            if (currentUnit.LifeSpan <= 0)
+            // should make removal safer by using a temp array with the indexes of units to be removed
+            if (currentUnit.LifeSpan <= 0 || _unitsStarvingTimer[i] <= 0)
+            {
+                print("Unit died: " + (currentUnit.LifeSpan <= 0) + " or starved: " + (_unitsStarvingTimer[i] <= 0));
                 RemoveUnit(currentUnit);
+                break;
+            }
         }
 
         //if (_totalUnitAmought >= 2 && UnityEngine.Random.Range(0, 200) <= 1)
@@ -256,7 +279,9 @@ public class SFlock : MonoBehaviour
         _unitsSightDistance = new NativeList<float>(flockSize, Allocator.Persistent);
         _unitsObstacleChecks = new NativeList<SpherecastCommand>(flockSize, Allocator.Persistent);
         _unitsObstacleResults = new NativeList<RaycastHit>(flockSize, Allocator.Persistent);
-        _unitsHungerTimer = new NativeList<float>(flockSize, Allocator.Persistent);
+        _unitsCurrentHunger = new NativeList<float>(flockSize, Allocator.Persistent);
+        _unitsStarvingTimer = new NativeList<float>(flockSize, Allocator.Persistent);
+        _unitsLifeSpan = new NativeList<float>(flockSize, Allocator.Persistent);
 
         int numberOfSightDirections = flockUnitPrefab.NumViewDirections * flockSize;
         _unitsSightDirectionsCheks = new NativeList<SpherecastCommand>(numberOfSightDirections, Allocator.Persistent);
@@ -307,7 +332,9 @@ public class SFlock : MonoBehaviour
         _unitsSightDistance.Add(newUnit.SightDistance);
         _unitsObstacleChecks.Add(emptyCommand);
         _unitsObstacleResults.Add(emptyRay);
-        _unitsHungerTimer.Add(newUnit.HungerThreshold);
+        _unitsCurrentHunger.Add(newUnit.TotalHunger);
+        _unitsStarvingTimer.Add(newUnit.InitStarvingTimer);
+        _unitsLifeSpan.Add(newUnit.LifeSpan);
 
         for (int j = 0; j < flockUnitPrefab.NumViewDirections; j++)
         {
@@ -327,7 +354,7 @@ public class SFlock : MonoBehaviour
     {
         int index = AllUnits.IndexOf(unitToRemove);
         if (index < 0) return;
-
+        
         AllUnits.RemoveAt(index);
         _unitsForwardDirections.RemoveAt(index);
         _unitsCurrentVelocities.RemoveAt(index);
@@ -338,6 +365,9 @@ public class SFlock : MonoBehaviour
         _unitsSightDistance.RemoveAt(index);
         _unitsObstacleChecks.RemoveAt(index);
         _unitsObstacleResults.RemoveAt(index);
+        _unitsCurrentHunger.RemoveAt(index);
+        _unitsStarvingTimer.RemoveAt(index);
+        _unitsLifeSpan.RemoveAt(index);
 
         int from = index * flockUnitPrefab.NumViewDirections;
         int to = (1 + index) * flockUnitPrefab.NumViewDirections;
@@ -384,7 +414,7 @@ public class SFlock : MonoBehaviour
         _moveJob.UnitsCurrentVelocities = _unitsCurrentVelocities;
         _moveJob.UnitsPositions = _unitsPositions;
         _moveJob.UnitsCurrentWaypoints = _unitsCurrentWaypoints;
-        _moveJob.UnitsHungerTimer = _unitsHungerTimer;
+        _moveJob.UnitsCurrentHunger = _unitsCurrentHunger;
         _moveJob.UnitsMaxSpeed = _unitsMaxSpeed;
         _moveJob.UnitsSightDistance = _unitsSightDistance;
         _moveJob.UnitsObstacleResults = _unitsObstacleResults;
@@ -393,6 +423,10 @@ public class SFlock : MonoBehaviour
         _moveJob.UnitsPreyResults = _unitsPreyResults;
         _moveJob.UnitsPredatorPreyObtacleResults = _unitsPredatorPreysObtacleResults;
         _moveJob.UnitSightDirections = _unitsSightDirections;
+
+        _hungerJob.UnitsCurrentHunger = _unitsCurrentHunger;
+        _hungerJob.UnitsStarvingTimer = _unitsStarvingTimer;
+        _hungerJob.UnitsLifeSpan = _unitsLifeSpan;
     }
 
     private void RefreshBatches()
@@ -425,6 +459,8 @@ public class SFlock : MonoBehaviour
         _unitsSightDirections.Dispose();
         _unitsMaxSpeed.Dispose();
         _unitsSightDistance.Dispose();
-        _unitsHungerTimer.Dispose();
+        _unitsCurrentHunger.Dispose();
+        _unitsStarvingTimer.Dispose();
+        _unitsLifeSpan.Dispose();
     }
 }

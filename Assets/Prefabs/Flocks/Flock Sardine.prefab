@@ -56,7 +56,7 @@ MonoBehaviour:
   preyMask:
     serializedVersion: 2
     m_Bits: 2048
-  sphereCastRadius: 0.08
+  sphereCastRadius: 0.05
   flockWaypoints: {fileID: 0}
   minSpeed: 1
   initMaxSpeed: 2.5
@@ -65,7 +65,7 @@ MonoBehaviour:
   avoidanceDistance: 0.3
   aligementDistance: 5
   patrolWaypointDistance: 2
-  obstacleDistance: 1
+  obstacleDistance: 0.75
   initPredatorPreyDistance: 2.5
   boundsDistance: 15
   cohesionWeight: 1

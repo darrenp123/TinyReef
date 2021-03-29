@@ -4,7 +4,7 @@ using Unity.Collections;
 using Unity.Burst;
 using Unity.Mathematics;
 
-//[BurstCompile]
+[BurstCompile]
 public struct MoveFlockJob : IJobParallelFor
 {
     [NativeDisableParallelForRestriction]
@@ -33,7 +33,7 @@ public struct MoveFlockJob : IJobParallelFor
     [ReadOnly]
     public NativeArray<float3> UnitSightDirections;
     [ReadOnly]
-    public NativeArray<float> UnitsHungerTimer;
+    public NativeArray<float> UnitsCurrentHunger;
     [ReadOnly]
     public NativeArray<float3> FlockWaypoints;
 
@@ -58,6 +58,7 @@ public struct MoveFlockJob : IJobParallelFor
     public float FovAngle;
     public float MinSpeed;
     public float DeltaTime;
+    public float HungerThreshold;
 
     // for testing between 
     public int TestIndex;
@@ -148,7 +149,7 @@ public struct MoveFlockJob : IJobParallelFor
         }
 
         float3 preyPersuitVector = float3.zero;
-        if (UnitsHungerTimer[index] <= 0)
+        if (UnitsCurrentHunger[index] <= HungerThreshold)
         {
             float targetDist = HasPreyInSight(index, out float3 persuitDir);
             if (targetDist > 0)

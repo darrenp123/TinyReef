@@ -1,0 +1,227 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-7390274714286259679
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 4
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Banggai Cardinalfish Wiggle
+  m_Shader: {fileID: 4800000, guid: 050cd2ec4cc25ac4aa4842eb72394f5c, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 1
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - Texture2D_18fbd30ec31a45e083460e3c4ecea396:
+        m_Texture: {fileID: 2800000, guid: 041235a9a5f136343b80b9f526659ef8, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_78a6e217707747cd83481a7cfe1a82e3:
+        m_Texture: {fileID: 2800000, guid: 669c97f8825cdb6458af31bb385285ef, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_8a4dccab83e44c49822473f67297a67e:
+        m_Texture: {fileID: 2800000, guid: 2093e3f998206544e90f096ad74ae3ec, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _BaseMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _BumpMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _BumpMapD:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Cube:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailAlbedoMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailMask:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailNormalMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EmissionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EmissionTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Gloss:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 1a999177e121085409eedca2906eba90, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MetallicGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _OcclusionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _ParallaxMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SpecGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SpecMap:
+        m_Texture: {fileID: 2800000, guid: 83e472e117df00d4198436571e79a307, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Tints:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_2895fb140d8749d38c7265f544a66039: 0.2
+    - Vector1_336ee902d70d4cecaafbb8f769d41010: 0.1
+    - Vector1_48d1c3ec6a7a4736adc8efe59b962534: 3
+    - Vector1_76256152e14a49d2bfa10576bc24cc3b: 1.21
+    - Vector1_83f6e59472b3476db478285174f0d22d: 3
+    - Vector1_86afb061ca004f1ca5ba92a8222d0d53: 0.5
+    - Vector1_89001cdb42e64bd5916cede623a3aa82: 5
+    - Vector1_8bb9aa2584744115856a35535ef625d4: 15
+    - Vector1_9636f4a9e9994dbcb3c73b27269ad40a: 10
+    - Vector1_c1d6a0a38bbd425cb8a92088c08679d6: 4.41
+    - Vector1_d849c3b015ab49ba9b35dfa0b98ee344: 3
+    - _AlphaClip: 0
+    - _Amount: 20
+    - _AmplitudeX: 0
+    - _AmplitudeY: 0
+    - _AmplitudeZ: 0.25
+    - _BiasNormal: 1
+    - _Blend: 0
+    - _Brightness: 0.67
+    - _BumpMapDUV: 1
+    - _BumpScale: 1
+    - _ClearCoatMask: 0
+    - _ClearCoatSmoothness: 0
+    - _Contrast: 1.32
+    - _ContrastRef: 1.1
+    - _Cull: 2
+    - _Cutoff: 0.5
+    - _DetailAlbedoMapScale: 1
+    - _DetailNormalMapScale: 1
+    - _DisplacementAmount: 4.04
+    - _DisplacementSpeed: 1.72
+    - _Distance: 0.01
+    - _DstBlend: 0
+    - _EffectRadius: 0.474
+    - _EnvironmentReflections: 1
+    - _FrequencyX: 0
+    - _FrequencyY: 0
+    - _FrequencyZ: 1.74
+    - _GlossMapScale: 0
+    - _Glossiness: 0
+    - _GlossyReflections: 0
+    - _HeadLimit: 0.06
+    - _IntensityNm: 1
+    - _IntensityNmD: 1
+    - _IntensityOc: 1
+    - _IntensityRef: 0.8
+    - _MaskOffset: 0.375
+    - _Metallic: 0.221
+    - _MoveOffset: 0
+    - _OcclusionMapUv: 1
+    - _OcclusionStrength: 1
+    - _Parallax: 0.005
+    - _QueueOffset: 0
+    - _ReceiveShadows: 1
+    - _Saturation: 2.5
+    - _SaturationRef: 1
+    - _ScriptControl: 0
+    - _Shininess: 0.39
+    - _Smoothness: 0.5
+    - _SmoothnessTextureChannel: 0
+    - _SpecMapInts: 0.36
+    - _SpecMapUV: 1
+    - _SpecularHighlights: 1
+    - _SpeedX: 0
+    - _SpeedY: 0
+    - _SpeedZ: 2.68
+    - _SrcBlend: 1
+    - _StrideSpeed: 4.54
+    - _StrideStrength: 0.03
+    - _Surface: 0
+    - _SwimmingPower: 0
+    - _SwimmingScale: 12.7
+    - _SwimmingSpeed: 2
+    - _Threshold: 13
+    - _TimeScale: 4
+    - _TranslationAmount: 2.16
+    - _WaveBody: 0.3
+    - _WaveDensity: 0.375
+    - _WaveHeight: 14.8
+    - _WaveSpeed: 82.5
+    - _WaveY: 0.3
+    - _WaveYSpeed: 1
+    - _Wobble: 1
+    - _WorkflowMode: 1
+    - _Yoffset: 0
+    - _ZWrite: 1
+    m_Colors:
+    - Color_1: {r: 1, g: 0, b: 0, a: 0}
+    - Color_2: {r: 1, g: 1, b: 1, a: 0}
+    - Color_3: {r: 0.26415086, g: 0.26415086, b: 0.26415086, a: 0}
+    - Color_7552811b8a4e4335b557532545dbc91b: {r: 1, g: 0.45557308, b: 0, a: 0}
+    - Vector2_0ebf751566504e04b61f2054e67025b8: {r: 0, g: 0, b: 0, a: 0}
+    - Vector2_aaf7918881c44737a168d21d1840ad7c: {r: 0.5, g: 0.5, b: 0, a: 0}
+    - Vector2_df3bdbf2d6b94b788466890e9fa2aed9: {r: 0, g: 0, b: 0, a: 0}
+    - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _ReflectColor: {r: 1, g: 1, b: 1, a: 0.5}
+    - _SpecColor: {r: 1, g: 1, b: 1, a: 1}
+  m_BuildTextureStacks: []

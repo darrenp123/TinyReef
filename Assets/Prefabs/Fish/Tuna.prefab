@@ -44,9 +44,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.25
-  m_Height: 1.7
+  m_Height: 1.6415715
   m_Direction: 2
-  m_Center: {x: 0, y: 0, z: -0.09}
+  m_Center: {x: 0, y: 0, z: -0.1192143}
 --- !u!114 &2069639157354766582
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62,8 +62,10 @@ MonoBehaviour:
   fovAngle: 150
   numViewDirections: 100
   killBoxDistance: 0.9
-  hungerThreshold: 120
-  lifeSpan: 240
+  totalHunger: 120
+  hungerThreshold: 80
+  initStarvingTimer: 100
+  lifeSpan: 300
   unitType: Deep Sea
   unitName: Albacore Tuna
   size: 1

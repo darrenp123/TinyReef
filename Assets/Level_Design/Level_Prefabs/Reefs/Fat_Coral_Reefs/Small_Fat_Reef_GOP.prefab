@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3620746978203502829}
   m_Layer: 0
-  m_Name: Small_Fat_Reef
+  m_Name: Small_Fat_Reef_GOP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

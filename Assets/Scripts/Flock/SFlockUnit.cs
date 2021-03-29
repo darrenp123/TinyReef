@@ -6,7 +6,9 @@ public class SFlockUnit : MonoBehaviour, IFood
     [SerializeField] private float fovAngle;
     [SerializeField] private int numViewDirections;
     [SerializeField] private float killBoxDistance;
+    [SerializeField] private float totalHunger;
     [SerializeField] private float hungerThreshold;
+    [SerializeField] private float initStarvingTimer;
     [SerializeField] private float lifeSpan;
     [SerializeField] private string unitType;
     [SerializeField] private string unitName;
@@ -16,6 +18,12 @@ public class SFlockUnit : MonoBehaviour, IFood
     public UnitEventSigniture OnUnitRemove;
     public UnitEventSigniture OnUnitTraitsValueChanged;
 
+    private float _maxSpeed;
+    private Vector3 _currentVelocity;
+    private float _currrentHunger;
+    private float _sightDistance;
+    private float _initialSize;
+
     public Transform MyTransform { get; set; }
     public int CurrentWaypoint { get; set; }
     public Vector3[] Directions { get; set; }
@@ -24,8 +32,9 @@ public class SFlockUnit : MonoBehaviour, IFood
     public float FOVAngle => fovAngle;
     public int NumViewDirections => numViewDirections;
     public float KillBoxDistance => killBoxDistance;
-    public UnitStates UnitState => _unitSate;
+    public float TotalHunger => totalHunger;
     public float HungerThreshold => hungerThreshold;
+    public float InitStarvingTimer => initStarvingTimer;
     public float CurrrentHunger { get => _currrentHunger; set => _currrentHunger = value; }
     public Vector3 CurrentVelocity { get => _currentVelocity; set => _currentVelocity = value; }
     public float MaxSpeed => _maxSpeed;
@@ -33,15 +42,9 @@ public class SFlockUnit : MonoBehaviour, IFood
     public string UnitType => unitType;
     public string UnitName { get => unitName; set => unitName = value; }
     public float LifeSpan { get => lifeSpan; set => lifeSpan = value; }
+    //public float CurrentHunger { get => _currentHunger; set => _currentHunger = value; }
 
     public delegate void UnitEventSigniture(SFlockUnit unitToRemove);
-
-    private UnitStates _unitSate;
-    private float _maxSpeed;
-    private Vector3 _currentVelocity;
-    private float _currrentHunger;
-    private float _sightDistance;
-    private float _initialSize;
 
     private void Awake()
     {
@@ -73,7 +76,6 @@ public class SFlockUnit : MonoBehaviour, IFood
         _maxSpeed = speed;
         _sightDistance = sightDistance;
         _currentVelocity = MyTransform.forward * speed;
-        _unitSate = UnitStates.PATROLING;
         _initialSize = Size;
     }
 
