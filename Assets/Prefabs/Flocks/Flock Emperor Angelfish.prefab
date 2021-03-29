@@ -45,8 +45,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flockUnitPrefab: {fileID: 941367559866431745, guid: 8aad5ae21f821e243a0dbad4a81a25d7, type: 3}
-  flockSize: 300
-  spawnBounds: {x: 10, y: 5, z: 10}
+  flockSize: 5
+  spawnBounds: {x: 5, y: 1, z: 5}
   obstacleMask:
     serializedVersion: 2
     m_Bits: 128
@@ -56,21 +56,21 @@ MonoBehaviour:
   preyMask:
     serializedVersion: 2
     m_Bits: 2048
-  sphereCastRadius: 0.13
+  sphereCastRadius: 0.11
   flockWaypoints: {fileID: 0}
   minSpeed: 1
-  initMaxSpeed: 3
+  initMaxSpeed: 2.5
   maxSteerForce: 4
-  cohesionDistance: 1
+  cohesionDistance: 0
   avoidanceDistance: 0.9
-  aligementDistance: 1
+  aligementDistance: 0
   patrolWaypointDistance: 1.5
   obstacleDistance: 1.1
   initPredatorPreyDistance: 3.5
   boundsDistance: 15
-  cohesionWeight: 1
+  cohesionWeight: 0
   avoidanceWeight: 1.3
-  aligementWeight: 1.2
+  aligementWeight: 0
   patrolWaypointWeight: 0.8
   obstacleAvoidanceWeight: 30
   predatorFleeWeight: 10
@@ -89,7 +89,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30fd7cf25bebed74ab62cd7e76adf1b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   unitIndex: 0
   mask:
     serializedVersion: 2

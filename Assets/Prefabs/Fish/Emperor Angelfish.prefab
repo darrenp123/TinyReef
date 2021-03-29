@@ -39,7 +39,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1394405576503156582}
-  m_Mesh: {fileID: -1146771505389353348, guid: 2137d7fde4db3e54eb3ecffc4cc93a53, type: 3}
+  m_Mesh: {fileID: -2432090755550338912, guid: e2ed3c3e222736a4282e1aebac068f42, type: 3}
 --- !u!23 &4980435846726532684
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -106,8 +106,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6496856242699960014}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.54999924, y: -0.06480026, z: -13.645}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7458424724728007258}
@@ -127,7 +127,7 @@ CapsuleCollider:
   m_Radius: 0.1136758
   m_Height: 0.48159218
   m_Direction: 2
-  m_Center: {x: 0.0022999048, y: 0.17508766, z: -0.000834465}
+  m_Center: {x: 0.0022999048, y: 0, z: -0.000834465}
 --- !u!114 &941367559866431745
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -143,8 +143,10 @@ MonoBehaviour:
   fovAngle: 150
   numViewDirections: 100
   killBoxDistance: 0.25
-  hungerThreshold: 10
-  lifeSpan: 240
+  totalHunger: 120
+  hungerThreshold: 80
+  initStarvingTimer: 100
+  lifeSpan: 300
   unitType: Coral Fish
   unitName: Emperor Angelfish
   size: 1

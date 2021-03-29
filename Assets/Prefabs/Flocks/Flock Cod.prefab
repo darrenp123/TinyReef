@@ -56,7 +56,7 @@ MonoBehaviour:
   preyMask:
     serializedVersion: 2
     m_Bits: 1024
-  sphereCastRadius: 0.35
+  sphereCastRadius: 0.31
   flockWaypoints: {fileID: 0}
   minSpeed: 2
   initMaxSpeed: 4

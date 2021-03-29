@@ -70,6 +70,7 @@ public struct SecheduleUnitsSightJob : IJobParallelFor
     }
 }
 
+// used as an idea to increase performance, but it lead nowhere
 [BurstCompile]
 public struct PreyPredetorCheksJob : IJobParallelFor
 {

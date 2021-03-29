@@ -62,8 +62,10 @@ MonoBehaviour:
   fovAngle: 180
   numViewDirections: 100
   killBoxDistance: 0.4
-  hungerThreshold: 120
-  lifeSpan: 240
+  totalHunger: 120
+  hungerThreshold: 80
+  initStarvingTimer: 100
+  lifeSpan: 300
   unitType: Coral Fish
   unitName: Lion Fish
   size: 5
@@ -127,8 +129,7 @@ MeshRenderer:
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e14a493ea091f184782a1121f7cb1bee, type: 2}
-  - {fileID: 2100000, guid: 646ee128e01412c4aa17a47b6c0a8432, type: 2}
+  - {fileID: 2100000, guid: be1fb29ad6b976140b3d9879c12e1b0e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
