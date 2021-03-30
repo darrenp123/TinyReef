@@ -14,7 +14,7 @@ public class GameEndScreen : MonoBehaviour
     [SerializeField]
     TMP_Text speciesText, traitText;
     [SerializeField]
-    GameObject graph, statisticsMenu, endScreen;
+    GameObject graph, statisticsMenu, victoryScreen, gameOverScreen;
 
     string currentSelectedSpecies, currentSelectedTrait;
     // Start is called before the first frame update
@@ -54,8 +54,13 @@ public class GameEndScreen : MonoBehaviour
         statisticsMenu.SetActive(false);
     }
 
-    public void ShowGameEndScreen()
+    public void ShowVictoryScreen()
     {
-        endScreen.SetActive(true);
+        victoryScreen.SetActive(true);
+    }
+
+    public void ShowGameOverScreen()
+    {
+        gameOverScreen.SetActive(true);
     }
 }

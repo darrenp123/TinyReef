@@ -13,7 +13,7 @@ public class PauseMenu : MonoBehaviour
 
     public static bool isPaused;
     [SerializeField]
-    GameObject pauseMenu, quitMenu, instructionsMenu, factFile;
+    GameObject pauseMenu, quitMenu, instructionsMenu, optionsMenu, factFile;
     // Start is called before the first frame update
 
     void Start()
@@ -78,6 +78,15 @@ public class PauseMenu : MonoBehaviour
     public void CloseInstructionsMenu()
     {
         instructionsMenu.SetActive(false);
+    }
+
+    public void OpenOptionsMenu()
+    {
+        optionsMenu.SetActive(true);
+    }
+    public void CloseOptionsMenu()
+    {
+        optionsMenu.SetActive(false);
     }
 
     public void OpenFactFile()
