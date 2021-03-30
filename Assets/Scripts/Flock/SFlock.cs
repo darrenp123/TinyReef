@@ -259,10 +259,10 @@ public class SFlock : MonoBehaviour
             }
         }
 
-        if (_totalUnitAmought >= 2 && UnityEngine.Random.Range(0, 800) <= 1)
-        {
-            SpawnNewUnit();
-        }
+        //if (_totalUnitAmought >= 2 && UnityEngine.Random.Range(0, 350) <= 1)
+        //{
+        //    SpawnNewUnit();
+        //}
 
         dependencies.Dispose();
     }
