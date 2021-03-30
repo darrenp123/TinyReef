@@ -60,6 +60,9 @@ public class SFlock : MonoBehaviour
     [Range(0, 10)]
     [SerializeField] private float boundsWeight;
 
+    [Range(0, 100)]
+    [SerializeField] private int spwanPercent;
+
     public List<SFlockUnit> AllUnits { get; set; }
 
     private NativeList<float3> _unitsForwardDirections;
@@ -197,6 +200,8 @@ public class SFlock : MonoBehaviour
             DeltaTime = Time.deltaTime
         };
 
+        StartCoroutine(SpawnUnit());
+
         // For debugging.
         var debuger = GetComponent<FlockDebuger>();
         if (debuger) debuger.InitDebugger(AllUnits.ToArray(), obstacleDistance, sphereCastRadius);
@@ -230,6 +235,8 @@ public class SFlock : MonoBehaviour
         JobHandle dependency = JobHandle.CombineDependencies(dependencies);
         _moveJob.Schedule(_totalUnitAmought, _unitBatchCount, dependency).Complete();
 
+        List<SFlockUnit> UnitsToRemove = new List<SFlockUnit>(_totalUnitAmought);
+
         for (int i = 0; i < _totalUnitAmought; i++)
         {
             SFlockUnit currentUnit = AllUnits[i];
@@ -247,23 +254,21 @@ public class SFlock : MonoBehaviour
                 {
                     killedUnit.Consume();
                     _unitsCurrentHunger[i] += currentUnit.TotalHunger / 3;
-                    Debug.Log("Fish consumed! ");
+                    //Debug.Log("Fish consumed! ");
                 }
             }
 
-            // should make removal safer by using a temp array with the indexes of units to be removed
             if (currentUnit.LifeSpan <= 0 || _unitsStarvingTimer[i] <= 0)
             {
-                print("Unit died: " + (currentUnit.LifeSpan <= 0) + " or starved: " + (_unitsStarvingTimer[i] <= 0));
-                RemoveUnit(currentUnit);
-                break;
+                UnitsToRemove.Add(currentUnit);
+                //print("Unit " + name + ", died: " + (currentUnit.LifeSpan <= 0) + " or starved: " + (_unitsStarvingTimer[i] <= 0));
             }
         }
 
-        //if (_totalUnitAmought >= 2 && UnityEngine.Random.Range(0, 350) <= 1)
-        //{
-        //    SpawnNewUnit();
-        //}
+        foreach (var unitToRemove in UnitsToRemove)
+        {
+            RemoveUnit(unitToRemove);
+        }
 
         dependencies.Dispose();
     }
@@ -308,7 +313,7 @@ public class SFlock : MonoBehaviour
         CreateUnit();
         AllocateNewValues();
         RefreshBatches();
-        Debug.Log("Unit made: " + _totalUnitAmought);
+       // Debug.Log("Unit from flock: " + name +  ", made: " + _totalUnitAmought);
     }
 
     private void CreateUnit()
@@ -467,11 +472,16 @@ public class SFlock : MonoBehaviour
 
     private IEnumerator SpawnUnit()
     {
-        yield return new WaitForSeconds(1);
-
-        if(_totalUnitAmought >= 2 && UnityEngine.Random.Range(0, 100) <= 1)
+        while (true)
         {
-            SpawnNewUnit();
+            yield return new WaitForSeconds(2);
+
+            int randInt = UnityEngine.Random.Range(0, 100);
+            //print("called: " + randInt + " " + spwanPercent);
+            if (_totalUnitAmought >= 2 && randInt <= spwanPercent)
+            {
+                SpawnNewUnit();
+            }
         }
     }
 }
