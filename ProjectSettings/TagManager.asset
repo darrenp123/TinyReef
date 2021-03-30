@@ -9,6 +9,7 @@ TagManager:
   - UISoundManager
   - Fish
   - test
+  - OptionsManager
   layers:
   - Default
   - TransparentFX
