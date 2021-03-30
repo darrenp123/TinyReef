@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using Unity.Collections;
 using Unity.Jobs;
@@ -462,5 +463,15 @@ public class SFlock : MonoBehaviour
         _unitsCurrentHunger.Dispose();
         _unitsStarvingTimer.Dispose();
         _unitsLifeSpan.Dispose();
+    }
+
+    private IEnumerator SpawnUnit()
+    {
+        yield return new WaitForSeconds(1);
+
+        if(_totalUnitAmought >= 2 && UnityEngine.Random.Range(0, 100) <= 1)
+        {
+            SpawnNewUnit();
+        }
     }
 }
