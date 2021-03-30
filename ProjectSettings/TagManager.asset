@@ -23,7 +23,7 @@ TagManager:
   - Tier2
   - Tier3
   - Coral
-  - 
+  - GameUI
   - 
   - 
   - 
@@ -46,4 +46,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: GameUI
+    uniqueID: 753851411
     locked: 0
