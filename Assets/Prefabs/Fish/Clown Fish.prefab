@@ -149,5 +149,6 @@ MonoBehaviour:
   lifeSpan: 300
   unitType: Coral Fish
   unitName: Clown Fish
-  size: 0
+  size: 2
   fishTransform: {fileID: 7897027409579362614}
+  InitialLifespan: 0

@@ -9,7 +9,7 @@ public class DontDestroy : MonoBehaviour
 {
     void Awake()
     {
-        GameObject[] objs = GameObject.FindGameObjectsWithTag(gameObject.tag);
+        DontDestroy[] objs = FindObjectsOfType<DontDestroy>();
         if (objs.Length > 1)
         {
             Destroy(gameObject);

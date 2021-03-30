@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/IngameUIScene.unity
     guid: e57f3d53d87426d418b279c1d5fcb359
+  - enabled: 1
+    path: Assets/Scenes/Tank_12_03.unity
+    guid: 7b199a6f5f1ff414996aab79c649408c
   m_configObjects: {}

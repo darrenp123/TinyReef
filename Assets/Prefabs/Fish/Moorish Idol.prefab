@@ -68,8 +68,9 @@ MonoBehaviour:
   lifeSpan: 300
   unitType: Coral Fish
   unitName: Moorish Idol
-  size: 1
+  size: 2
   fishTransform: {fileID: 2715837242141673809}
+  InitialLifespan: 0
 --- !u!1 &4344482743511790528
 GameObject:
   m_ObjectHideFlags: 0

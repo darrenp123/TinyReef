@@ -149,5 +149,6 @@ MonoBehaviour:
   lifeSpan: 300
   unitType: Coral Fish
   unitName: Banggai Cardinalfish
-  size: 0
-  fishTransform: {fileID: 7897027409579362614, guid: 9abe8fe6abb3ccd47a600b0488021f35, type: 3}
+  size: 1
+  fishTransform: {fileID: 6968486215552083530}
+  InitialLifespan: 0
