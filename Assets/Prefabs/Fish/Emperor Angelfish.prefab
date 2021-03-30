@@ -149,5 +149,6 @@ MonoBehaviour:
   lifeSpan: 300
   unitType: Coral Fish
   unitName: Emperor Angelfish
-  size: 1
-  fishTransform: {fileID: 722936609310412041, guid: 713cfd47a9415db468fb339356e27124, type: 3}
+  size: 3
+  fishTransform: {fileID: 5864435448639169652}
+  InitialLifespan: 0

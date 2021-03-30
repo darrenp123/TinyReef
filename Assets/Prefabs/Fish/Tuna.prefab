@@ -68,7 +68,7 @@ MonoBehaviour:
   lifeSpan: 300
   unitType: Deep Sea
   unitName: Albacore Tuna
-  size: 1
+  size: 7
   fishTransform: {fileID: 2980708935320078156}
   InitialLifespan: 0
 --- !u!1 &6889242678639535407

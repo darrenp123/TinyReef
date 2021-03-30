@@ -9,13 +9,12 @@ public class DontDestroy : MonoBehaviour
 {
     void Awake()
     {
-        GameObject[] objs = GameObject.FindGameObjectsWithTag("UISoundManager");
-
+        DontDestroy[] objs = FindObjectsOfType<DontDestroy>();
         if (objs.Length > 1)
         {
             Destroy(gameObject);
         }
-
+        
         DontDestroyOnLoad(gameObject);
     }
 }

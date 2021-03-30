@@ -149,5 +149,6 @@ MonoBehaviour:
   lifeSpan: 300
   unitType: 
   unitName: Sand Tiger Shark
-  size: 1
-  fishTransform: {fileID: 6387513127268243681, guid: e59bc0d4f07238d4faa6dc5aa4af6083, type: 3}
+  size: 10
+  fishTransform: {fileID: 6157772914338241712}
+  InitialLifespan: 0

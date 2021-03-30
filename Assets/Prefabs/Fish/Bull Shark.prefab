@@ -149,5 +149,6 @@ MonoBehaviour:
   lifeSpan: 300
   unitType: 
   unitName: Bull Shark
-  size: 1
-  fishTransform: {fileID: 6387513127268243681}
+  size: 10
+  fishTransform: {fileID: 5824620424377067961}
+  InitialLifespan: 0
