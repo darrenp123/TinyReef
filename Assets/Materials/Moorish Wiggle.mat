@@ -137,7 +137,7 @@ Material:
     - Vector1_c1d6a0a38bbd425cb8a92088c08679d6: 4.41
     - Vector1_d849c3b015ab49ba9b35dfa0b98ee344: 3
     - _AlphaClip: 0
-    - _Amount: 8
+    - _Amount: 10
     - _AmplitudeX: 0
     - _AmplitudeY: 0
     - _AmplitudeZ: 0.25
@@ -199,7 +199,7 @@ Material:
     - _SwimmingScale: 12.7
     - _SwimmingSpeed: 2
     - _Threshold: 13
-    - _TimeScale: 4
+    - _TimeScale: 5
     - _TranslationAmount: 2.16
     - _WaveBody: 0.3
     - _WaveDensity: 0.375

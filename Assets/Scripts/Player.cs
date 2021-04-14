@@ -5,7 +5,6 @@ using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
-
     SFlockUnit CurrentFish;
     List<SFlockUnit> CurrentFishFlock;
     int CurrentFishFlockCount;
@@ -48,7 +47,7 @@ public class Player : MonoBehaviour
 
     //Temp
     public void YouWin() {
-        if (GroupOfFish.AllUnits.Count > 15) WinText.SetActive(true);
+        //if (GroupOfFish.AllUnits.Count > 15) WinText.SetActive(true);
     }
 
     public SFlockUnit GoToNextFishInFlock(bool dir) {
@@ -129,7 +128,7 @@ public class Player : MonoBehaviour
                     float lifespan = CurrentFish.InitialLifespan/60;
                     if (value > 0 && lifespan >= 0 && lifespan < 10 || 
                         value < 0 && lifespan > 0 && lifespan <= 10) {
-                        CurrentFish.InitialLifespan += value*60;
+                        //CurrentFish.InitialLifespan += value*60;
                         UpdateGenePoints(-TraitCost);
                     }  
                     break;

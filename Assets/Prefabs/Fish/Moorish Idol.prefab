@@ -65,12 +65,11 @@ MonoBehaviour:
   totalHunger: 120
   hungerThreshold: 80
   initStarvingTimer: 100
+  initialLifespan: 300
   lifeSpan: 300
-  unitType: Coral Fish
+  unitType: 'Coral '
   unitName: Moorish Idol
   size: 2
-  fishTransform: {fileID: 2715837242141673809}
-  InitialLifespan: 0
 --- !u!1 &4344482743511790528
 GameObject:
   m_ObjectHideFlags: 0

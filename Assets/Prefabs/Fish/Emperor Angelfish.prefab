@@ -146,9 +146,8 @@ MonoBehaviour:
   totalHunger: 120
   hungerThreshold: 80
   initStarvingTimer: 100
+  initialLifespan: 300
   lifeSpan: 300
-  unitType: Coral Fish
+  unitType: Coral
   unitName: Emperor Angelfish
   size: 3
-  fishTransform: {fileID: 5864435448639169652}
-  InitialLifespan: 0

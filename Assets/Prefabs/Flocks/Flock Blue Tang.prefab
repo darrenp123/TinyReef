@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff0b0d88e364e2f48a294dbbc40c30d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  flockName: Blue Tang
   flockUnitPrefab: {fileID: 7619814706457136587, guid: 713cfd47a9415db468fb339356e27124, type: 3}
   flockSize: 15
   spawnBounds: {x: 5, y: 1, z: 5}

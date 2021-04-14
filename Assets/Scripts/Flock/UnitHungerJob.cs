@@ -1,17 +1,27 @@
 using Unity.Jobs;
 using Unity.Collections;
 using Unity.Burst;
+using UnityEngine;
+using Unity.Mathematics;
 
 [BurstCompile]
 public struct UnitHungerJob : IJobParallelFor
 {
-    [NativeDisableParallelForRestriction]
+    [ReadOnly]
+    public NativeArray<float3> UnitPositions;
+    [ReadOnly]
+    public NativeArray<float3> UnitForwardDirections;
+
     public NativeArray<float> UnitsCurrentHunger;
-    [NativeDisableParallelForRestriction]
     public NativeArray<float> UnitsStarvingTimer;
-    [NativeDisableParallelForRestriction]
     public NativeArray<float> UnitsLifeSpan;
 
+    [WriteOnly]
+    public NativeArray<SpherecastCommand> UnitsEatChecks;
+
+    public float SphereCastRadius;
+    public float KillBoxDistance;
+    public LayerMask PreyMask;
     public float TotalHunger;
     public float HungerThreshold;
     public float InitSarvingTimer;
@@ -25,6 +35,7 @@ public struct UnitHungerJob : IJobParallelFor
         if (UnitsCurrentHunger[index] > HungerThreshold)
         {
             UnitsStarvingTimer[index] = InitSarvingTimer;
+            UnitsEatChecks[index] = new SpherecastCommand();
         }
        else
         {
@@ -34,6 +45,9 @@ public struct UnitHungerJob : IJobParallelFor
             }
 
             UnitsStarvingTimer[index] -= DeltaTime;
+
+            UnitsEatChecks[index] = new SpherecastCommand(
+                UnitPositions[index], SphereCastRadius * 0.5f, UnitForwardDirections[index], KillBoxDistance, PreyMask);
         }
     }
 }

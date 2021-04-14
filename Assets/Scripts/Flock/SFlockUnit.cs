@@ -9,28 +9,27 @@ public class SFlockUnit : MonoBehaviour, IFood
     [SerializeField] private float totalHunger;
     [SerializeField] private float hungerThreshold;
     [SerializeField] private float initStarvingTimer;
-    [SerializeField] private float lifeSpan;
+    [SerializeField] private float initialLifespan;
     [SerializeField] private string unitType;
     [SerializeField] private string unitName;
-    [SerializeField] private int size;
-    [SerializeField] Transform fishTransform;
+    [SerializeField] private float size;
 
     public UnitEventSigniture OnUnitRemove;
     public UnitEventSigniture OnUnitTraitsValueChanged;
 
-    public float InitialLifespan;
 
     private float _maxSpeed;
     private Vector3 _currentVelocity;
     private float _currrentHunger;
     private float _sightDistance;
-    private float[] fishScale = new float[10] { 1, 3, 5, 7, 9, 11, 13, 15, 17, 20};
+    private float _initialSize;
+    private float _lifeSpan;
 
     public Transform MyTransform { get; set; }
     public int CurrentWaypoint { get; set; }
     public Vector3[] Directions { get; set; }
 
-    public int Size { get => size; set => size = value; }
+    public float Size { get => size; set => size = value; }
     public float FOVAngle => fovAngle;
     public int NumViewDirections => numViewDirections;
     public float KillBoxDistance => killBoxDistance;
@@ -43,14 +42,13 @@ public class SFlockUnit : MonoBehaviour, IFood
     public float SightDistance => _sightDistance;
     public string UnitType => unitType;
     public string UnitName { get => unitName; set => unitName = value; }
-    public float LifeSpan { get => lifeSpan; set => lifeSpan = value; }
-    //public float CurrentHunger { get => _currentHunger; set => _currentHunger = value; }
+    public float LifeSpan { get => _lifeSpan; set => _lifeSpan = value; }
+    public float InitialLifespan => initialLifespan;
 
     public delegate void UnitEventSigniture(SFlockUnit unitToRemove);
 
     private void Awake()
     {
-        InitialLifespan = LifeSpan;
         MyTransform = transform;
 
         if (Directions == null)
@@ -72,7 +70,6 @@ public class SFlockUnit : MonoBehaviour, IFood
                 Directions[i] = new Vector3(x, y, z);
             }
         }
-        ScaleFish();
     }
 
     public void Initialize(float speed, float sightDistance)
@@ -80,6 +77,8 @@ public class SFlockUnit : MonoBehaviour, IFood
         _maxSpeed = speed;
         _sightDistance = sightDistance;
         _currentVelocity = MyTransform.forward * speed;
+        _initialSize = Size;
+        _lifeSpan = initialLifespan;
     }
 
     public void SetMaxSpeed(int deltaValue)
@@ -96,14 +95,12 @@ public class SFlockUnit : MonoBehaviour, IFood
 
     public void ScaleFish()
     {
-        /*
         Debug.Log(Size);
         float sizeChange = (Size - _initialSize) / 10f;
         Debug.Log(sizeChange);
         Vector3 scaleChange = new Vector3(sizeChange, sizeChange, sizeChange);
         Debug.Log(Vector3.one + scaleChange);
-        */
-        fishTransform.localScale = new Vector3(fishScale[Size-1], fishScale[Size - 1], fishScale[Size - 1]);
+        MyTransform.localScale = Vector3.one + scaleChange;
     }
 
     private void RemoveUnit()

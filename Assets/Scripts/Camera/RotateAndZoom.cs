@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 
 public class RotateAndZoom : MonoBehaviour
 {
-
+    [SerializeField] InputAction tt;
     private CinemachineInputProvider InputProvider;
     private CinemachineFreeLook FreeLookCamera;
     [SerializeField]
@@ -45,7 +45,6 @@ public class RotateAndZoom : MonoBehaviour
         FreeLookCamera = GetComponent<CinemachineFreeLook>();
     }
 
-    // Start is called before the first frame update
     void Start()
     {
         FreeLookCamera.m_Follow = Center.transform;
@@ -56,9 +55,15 @@ public class RotateAndZoom : MonoBehaviour
         FocusFish(false);
     }
 
-    // Update is called once per frame
+    private float xAxisValue;
+
     void Update()
     {
+        //InputSystem.axis
+        //float mouseX = Input.GetAxis("Mouse X") * 20 * Time.unscaledDeltaTime;
+        //print("mouse: " + Input.GetAxis("Mouse X"));
+        //xAxisValue += mouseX;
+        // FreeLookCamera.m_XAxis.Value += xAxisValue;
         //Zoom
         float z = InputProvider.GetAxisValue(2);
         if (z != 0) ZoomInZoomOut(z);
@@ -67,7 +72,7 @@ public class RotateAndZoom : MonoBehaviour
     void ZoomScreen(float increment) {
         float FOV = FreeLookCamera.m_Lens.FieldOfView;
         float target = Mathf.Clamp(FOV + increment, ZoomInMax, ZoomOutMax);
-        FreeLookCamera.m_Lens.FieldOfView = Mathf.Lerp(FOV, target, ZoomSpeed* Time.deltaTime);
+        FreeLookCamera.m_Lens.FieldOfView = Mathf.Lerp(FOV, target, ZoomSpeed* Time.unscaledDeltaTime);
     }
 
     public void OnLeftClick(InputAction.CallbackContext context) {
@@ -134,11 +139,10 @@ public class RotateAndZoom : MonoBehaviour
             targetTop = Mathf.Clamp(topOrbit + (increment * TankZoomDifference), MinZoomTankFocusTopBottomRadious, MaxZoomTankFocusTopBottomRadious);
             targetMiddle = Mathf.Clamp(middleOrbit + (increment * TankZoomDifference), MinZoomTankFocusMiddleRadious, MaxZoomTankFocusMiddleRadious);
         }
-        FreeLookCamera.m_Orbits[0].m_Radius = Mathf.Lerp(topOrbit, targetTop, ZoomSpeed * Time.deltaTime);
-        FreeLookCamera.m_Orbits[1].m_Radius = Mathf.Lerp(middleOrbit, targetMiddle, ZoomSpeed * Time.deltaTime);
-        FreeLookCamera.m_Orbits[2].m_Radius = Mathf.Lerp(topOrbit, targetTop, ZoomSpeed * Time.deltaTime);
+        FreeLookCamera.m_Orbits[0].m_Radius = Mathf.Lerp(topOrbit, targetTop, ZoomSpeed * Time.unscaledDeltaTime);
+        FreeLookCamera.m_Orbits[1].m_Radius = Mathf.Lerp(middleOrbit, targetMiddle, ZoomSpeed * Time.unscaledDeltaTime);
+        FreeLookCamera.m_Orbits[2].m_Radius = Mathf.Lerp(topOrbit, targetTop, ZoomSpeed * Time.unscaledDeltaTime);
     }
-
 
     public void FocusFish(bool state) {
         if (state) {

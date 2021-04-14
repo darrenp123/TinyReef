@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff0b0d88e364e2f48a294dbbc40c30d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  flockName: Sardine
   flockUnitPrefab: {fileID: 7830514710517773396, guid: 8d5ffd1821b950244be1646d691f5175, type: 3}
   flockSize: 200
   spawnBounds: {x: 10, y: 5, z: 10}

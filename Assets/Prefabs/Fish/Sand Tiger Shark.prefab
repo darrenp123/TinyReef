@@ -146,9 +146,7 @@ MonoBehaviour:
   totalHunger: 120
   hungerThreshold: 80
   initStarvingTimer: 100
-  lifeSpan: 300
+  initialLifespan: 300
   unitType: 
   unitName: Sand Tiger Shark
   size: 10
-  fishTransform: {fileID: 6157772914338241712}
-  InitialLifespan: 0

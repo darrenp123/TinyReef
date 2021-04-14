@@ -8,7 +8,7 @@ using UnityEngine;
 public class InstructionsMenu : MonoBehaviour
 {
     [SerializeField]
-    PauseMenu pauseMenu;
+    TRPauseMenu pauseMenu;
     [SerializeField]
     GameObject instructionsPage, mainMenuPage, pauseMenuPage, gameplayPage, TraitsPage, controlsPage;
     [SerializeField]

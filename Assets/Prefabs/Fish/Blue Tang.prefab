@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 91113953956124595}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.7, y: 1.7, z: 1.7}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 177988077533248593}
   m_Father: {fileID: 0}
@@ -65,12 +65,10 @@ MonoBehaviour:
   totalHunger: 120
   hungerThreshold: 80
   initStarvingTimer: 100
-  lifeSpan: 300
-  unitType: Coral Fish
+  initialLifespan: 300
+  unitType: 'Coral '
   unitName: Blue Tang
   size: 2
-  fishTransform: {fileID: 722936609310412041}
-  InitialLifespan: 0
 --- !u!1 &8993257759797522282
 GameObject:
   m_ObjectHideFlags: 0

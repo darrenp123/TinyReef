@@ -65,11 +65,11 @@ MonoBehaviour:
   totalHunger: 120
   hungerThreshold: 80
   initStarvingTimer: 100
+  initialLifespan: 300
   lifeSpan: 300
-  unitType: Coral Fish
+  unitType: 'Coral '
   unitName: Parrot Fish
   size: 5
-  fishTransform: {fileID: 3545241237358212309}
 --- !u!1 &7591218075215784818
 GameObject:
   m_ObjectHideFlags: 0

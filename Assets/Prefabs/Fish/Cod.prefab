@@ -146,8 +146,8 @@ MonoBehaviour:
   totalHunger: 120
   hungerThreshold: 80
   initStarvingTimer: 100
+  initialLifespan: 300
   lifeSpan: 300
-  unitType: Blue Fish
+  unitType: Deep Sea
   unitName: Cod
   size: 7
-  fishTransform: {fileID: 1976696129229876414}
