@@ -136,8 +136,8 @@ public class Player : MonoBehaviour
                 //Size
                 case 2:
                     float size = CurrentFish.Size;
-                    if (value > 0 && size >= 0 && size < 10 ||
-                        value < 0 && size > 0 && size <= 10) {
+                    if (value > 0 && size >= 1 && size < 10 ||
+                        value < 0 && size > 1 && size <= 10) {
                         CurrentFish.Size += value;
                         CurrentFish.ScaleFish();
                         UpdateGenePoints(-TraitCost);
