@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff0b0d88e364e2f48a294dbbc40c30d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  flockName: Lion Fish
   flockUnitPrefab: {fileID: -7822817268636246769, guid: e3cb7a757cf4c7645bad9fe1b9ca2ce9, type: 3}
   flockSize: 50
   spawnBounds: {x: 5, y: 1, z: 5}

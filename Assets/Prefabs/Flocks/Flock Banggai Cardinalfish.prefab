@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff0b0d88e364e2f48a294dbbc40c30d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  flockName: Cardinalfish
   flockUnitPrefab: {fileID: 4602450174552267799, guid: c4f47470ea62e274497ae5885eef734c, type: 3}
   flockSize: 15
   spawnBounds: {x: 5, y: 1, z: 5}

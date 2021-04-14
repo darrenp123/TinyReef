@@ -65,11 +65,11 @@ MonoBehaviour:
   totalHunger: 120
   hungerThreshold: 80
   initStarvingTimer: 100
+  initialLifespan: 300
   lifeSpan: 300
-  unitType: Deep Sea Fish
+  unitType: 'Deep Sea '
   unitName: Sardine
   size: 1
-  fishTransform: {fileID: 2655313539825510394}
 --- !u!1 &5917601079730013593
 GameObject:
   m_ObjectHideFlags: 0

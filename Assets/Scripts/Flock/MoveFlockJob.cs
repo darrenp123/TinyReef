@@ -7,8 +7,8 @@ using Unity.Mathematics;
 [BurstCompile]
 public struct MoveFlockJob : IJobParallelFor
 {
-    [NativeDisableParallelForRestriction]
     public NativeArray<float3> UnitsCurrentVelocities;
+    // Not needed, normalized velocity is enough 
     [NativeDisableParallelForRestriction]
     public NativeArray<float3> UnitsForwardDirections;
     [NativeDisableParallelForRestriction]
@@ -59,18 +59,17 @@ public struct MoveFlockJob : IJobParallelFor
     public float MinSpeed;
     public float DeltaTime;
     public float HungerThreshold;
+    public NativeArray<Unity.Mathematics.Random> RandomRef;
 
     // for testing between 
     public int TestIndex;
 
     public void Execute(int index)
-    {       
-        float3 cohesionVector = float3.zero;
+    {
         int cohesionNeighbours = 0;
+        float3 cohesionVector = float3.zero;
         float3 avoidanceVector = float3.zero;
-        int AvoidanceNeighbours = 0;
         float3 alignmnentVector = float3.zero;
-        int AlignmentNeighbours = 0;
         float3 currentUnitPosition = UnitsPositions[index];
         NativeHashMap<int, int> neighbourWaypointFrquency = new NativeHashMap<int, int>(1, Allocator.Temp)
         {
@@ -81,46 +80,35 @@ public struct MoveFlockJob : IJobParallelFor
         {
             float3 currentNeighbourPosition = UnitsPositions[i];
 
-            if (!currentUnitPosition.Equals(currentNeighbourPosition))
+            if (!currentUnitPosition.Equals(currentNeighbourPosition) && IsInFov(index, currentNeighbourPosition))
             {
                 float3 offset = currentNeighbourPosition - currentUnitPosition;
                 float currentDistanceToNeighbourSqr = offset.x * offset.x + offset.y * offset.y + offset.z * offset.z;
 
                 if (currentDistanceToNeighbourSqr <= CohesionDistance * CohesionDistance)
                 {
-                    if (IsInFov(index, currentNeighbourPosition))
-                    {
-                        cohesionNeighbours++;
-                        cohesionVector += currentNeighbourPosition;
+                    cohesionNeighbours++;
+                    cohesionVector += currentNeighbourPosition;
 
-                        int neighbourCurrentWaypoint = UnitsCurrentWaypoints[i];
-                        if (neighbourWaypointFrquency.ContainsKey(neighbourCurrentWaypoint))
-                        {
-                            int frequency = neighbourWaypointFrquency[neighbourCurrentWaypoint];
-                            neighbourWaypointFrquency[neighbourCurrentWaypoint] = ++frequency;
-                        }
-                        else
-                        {
-                            neighbourWaypointFrquency.Add(neighbourCurrentWaypoint, 1);
-                        }
+                    int neighbourCurrentWaypoint = UnitsCurrentWaypoints[i];
+                    if (neighbourWaypointFrquency.ContainsKey(neighbourCurrentWaypoint))
+                    {
+                        int frequency = neighbourWaypointFrquency[neighbourCurrentWaypoint];
+                        neighbourWaypointFrquency[neighbourCurrentWaypoint] = ++frequency;
+                    }
+                    else
+                    {
+                        neighbourWaypointFrquency.Add(neighbourCurrentWaypoint, 1);
                     }
                 }
                 if (currentDistanceToNeighbourSqr <= AvoidanceDistance * AvoidanceDistance)
                 {
-                    if (IsInFov(index, currentNeighbourPosition))
-                    {
-                        AvoidanceNeighbours++;
-                        float dist = math.max(currentDistanceToNeighbourSqr, 0.000001f);
-                        avoidanceVector -= (currentNeighbourPosition - currentUnitPosition) / dist;
-                    }
+                    float dist = math.max(currentDistanceToNeighbourSqr, 0.000001f);
+                    avoidanceVector += (currentUnitPosition - currentNeighbourPosition) / dist;
                 }
                 if (currentDistanceToNeighbourSqr <= AligementDistance * AligementDistance)
                 {
-                    if (IsInFov(index, currentNeighbourPosition))
-                    {
-                        AlignmentNeighbours++;
-                        alignmnentVector += UnitsForwardDirections[i];
-                    }
+                    alignmnentVector += UnitsForwardDirections[i];
                 }
             }
         }
@@ -141,8 +129,8 @@ public struct MoveFlockJob : IJobParallelFor
         }
 
         float3 predatorAvoidanceVector = float3.zero;
-        float predatorDist = HasPredatorInSight(index, out float3 fleeDir);
-        if (predatorDist > 0)
+        float3 fleeDir = HasPredatorInSight(index, out float predatorDist);
+        if (!fleeDir.Equals(float3.zero))
         {
             float distancePercentage = 1 - predatorDist / UnitsSightDistance[index];
             predatorAvoidanceVector = SteerTowards(fleeDir, index) * PredatorFleeWeight * distancePercentage;
@@ -151,10 +139,10 @@ public struct MoveFlockJob : IJobParallelFor
         float3 preyPersuitVector = float3.zero;
         if (UnitsCurrentHunger[index] <= HungerThreshold)
         {
-            float targetDist = HasPreyInSight(index, out float3 persuitDir);
-            if (targetDist > 0)
+            float preyDist = HasPreyInSight(index, out float3 persuitDir);
+            if (preyDist > 0)
             {
-                float distancePercentage = 1 - targetDist / UnitsSightDistance[index];
+                float distancePercentage = 1 - preyDist / UnitsSightDistance[index];
                 preyPersuitVector = SteerTowards(persuitDir, index) * PreyPersuitWeight * distancePercentage;
             }
         }
@@ -173,14 +161,14 @@ public struct MoveFlockJob : IJobParallelFor
             cohesionVector = SteerTowards(cohesionVector, index) * CohesionWeight;
         }
 
-        float3 waypointVector = SteerTowards(GetWaypointDirection(center, ref waypointIndex), index) * PatrolWaypointWeight;
+        float3 waypointVector = SteerTowards(GetWaypointDirection(index, center, ref waypointIndex), index) * PatrolWaypointWeight;
 
-        if (AvoidanceNeighbours > 0)
+        if (!avoidanceVector.Equals(float3.zero))
         {
             avoidanceVector = SteerTowards(avoidanceVector, index) * AvoidanceWeight;
         }
 
-        if (AlignmentNeighbours > 0)
+        if (!alignmnentVector.Equals(float3.zero))
         {
             alignmnentVector = SteerTowards(alignmnentVector, index) * AligementWeight;
         }
@@ -200,8 +188,13 @@ public struct MoveFlockJob : IJobParallelFor
             alignmnentVector = float3.zero;
         }
 
-        float3 acceleration = cohesionVector + avoidanceVector + alignmnentVector + boundsVector
-            + obstacleAvoidanceVector + predatorAvoidanceVector + preyPersuitVector + waypointVector;
+        if(!obstacleAvoidanceVector.Equals(float3.zero))
+        {
+            predatorAvoidanceVector = float3.zero;
+        }
+
+        float3 acceleration =  cohesionVector + avoidanceVector + alignmnentVector + boundsVector + obstacleAvoidanceVector
+            + predatorAvoidanceVector + preyPersuitVector + waypointVector;
 
         float3 currVel = UnitsCurrentVelocities[index] + (acceleration * DeltaTime);
         float speed = math.length(currVel);
@@ -216,13 +209,16 @@ public struct MoveFlockJob : IJobParallelFor
         neighbourWaypointFrquency.Dispose();
     }
 
-    private float3 GetWaypointDirection(in float3 neighboursCenter, ref int waypointIndex)
+    private float3 GetWaypointDirection(int index, in float3 neighboursCenter, ref int waypointIndex)
     {
         float3 dirToWaypoint = FlockWaypoints[waypointIndex] - neighboursCenter;
         float distanceSqr = dirToWaypoint.x * dirToWaypoint.x + dirToWaypoint.y * dirToWaypoint.y + dirToWaypoint.z * dirToWaypoint.z;
         if (distanceSqr < PatrolWaypointDistance * PatrolWaypointDistance)
         {
-            waypointIndex = (waypointIndex + 1) % FlockWaypoints.Length;
+            Unity.Mathematics.Random random = RandomRef[index];
+            waypointIndex = random.NextInt(0, FlockWaypoints.Length);
+            RandomRef[index] = random;
+            //waypointIndex = (waypointIndex + 1) % FlockWaypoints.Length;
         }
 
         return FlockWaypoints[waypointIndex] - neighboursCenter;
@@ -280,35 +276,30 @@ public struct MoveFlockJob : IJobParallelFor
             (!farthestContestedDirection.Equals(float3.zero) ? farthestContestedDirection : UnitsForwardDirections[index]);
     }
 
-    private float HasPredatorInSight(in int index, out float3 fleeDir)
+
+    private float3 HasPredatorInSight(in int index, out float predatorDist)
     {
         // test with calculating predator future position
-        float minDistance = float.MaxValue;
-        float3 closestPredator = float3.zero;
-        float targetDist = 0;
+        float3 fleeDir = float3.zero;
         int particion = UnitsPredatorsResults.Length / UnitsPositions.Length;
-        fleeDir = UnitsForwardDirections[index];
+        predatorDist = float.MaxValue;
 
         for (int i = particion * index; i < particion * (index + 1); i++)
         {
             RaycastHit currentCheck = UnitsPredatorsResults[i];
             float distanceTotarget = currentCheck.distance;
             float3 targetPosition = currentCheck.point;
-            if (IsInFov(index, targetPosition) && UnitsPredatorPreyObtacleResults[i].distance == 0 && distanceTotarget > 0
-                && distanceTotarget < minDistance)
+            if (IsInFov(index, targetPosition) && UnitsPredatorPreyObtacleResults[i].distance == 0 && distanceTotarget > 0)
             {
-                minDistance = distanceTotarget;
-                closestPredator = targetPosition;
+                fleeDir += (UnitsPositions[index] - targetPosition) / distanceTotarget;
+                if (distanceTotarget < predatorDist)
+                {
+                    predatorDist = distanceTotarget;
+                }
             }
         }
 
-        if (!closestPredator.Equals(float3.zero))
-        {
-            fleeDir = UnitsPositions[index] - closestPredator;
-            targetDist = minDistance;
-        }
-
-        return targetDist;
+        return fleeDir;
     }
 
     private float HasPreyInSight(in int index, out float3 persuitDir)
@@ -353,11 +344,43 @@ public struct MoveFlockJob : IJobParallelFor
         return math.length(v) > MaxSteerForce ? math.normalize(v) * MaxSteerForce : v;
     }
 
-    private float AngleBetween(float3 from, float3 to)
+    private float AngleBetween(in float3 from, in float3 to)
     {
         float angle = math.acos(math.dot(from, to) / (math.length(from) * math.length(to)));
         return math.degrees(angle);
     }
 
-    private bool IsTestIndex(int index) => TestIndex == index;
+    // private bool IsTestIndex(int index) => TestIndex == index;
 }
+
+// Old has predator calculation 
+//private float HasPredatorInSight(in int index, out float3 fleeDir)
+//{
+//    // test with calculating predator future position
+//    float minDistance = float.MaxValue;
+//    float3 closestPredator = float3.zero;
+//    float targetDist = 0;
+//    int particion = UnitsPredatorsResults.Length / UnitsPositions.Length;
+//    fleeDir = UnitsForwardDirections[index];
+
+//    for (int i = particion * index; i < particion * (index + 1); i++)
+//    {
+//        RaycastHit currentCheck = UnitsPredatorsResults[i];
+//        float distanceTotarget = currentCheck.distance;
+//        float3 targetPosition = currentCheck.point;
+//        if (IsInFov(index, targetPosition) && UnitsPredatorPreyObtacleResults[i].distance == 0 && distanceTotarget > 0
+//            && distanceTotarget < minDistance)
+//        {
+//            minDistance = distanceTotarget;
+//            closestPredator = targetPosition;
+//        }
+//    }
+
+//    if (!closestPredator.Equals(float3.zero))
+//    {
+//        fleeDir = UnitsPositions[index] - closestPredator;
+//        targetDist = minDistance;
+//    }
+
+//    return targetDist;
+//}

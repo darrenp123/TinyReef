@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff0b0d88e364e2f48a294dbbc40c30d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  flockName: Parrot Fish
   flockUnitPrefab: {fileID: 2253359901877032364, guid: ff1ba29c971e1f44eb03f1b2db220bd4, type: 3}
   flockSize: 10
   spawnBounds: {x: 5, y: 1, z: 5}

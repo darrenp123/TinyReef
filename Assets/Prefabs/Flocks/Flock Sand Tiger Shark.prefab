@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff0b0d88e364e2f48a294dbbc40c30d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  flockName: Sand Tiger Shark
   flockUnitPrefab: {fileID: 194335824614406183, guid: 358316eec2740b546b6fa60b343f2587, type: 3}
   flockSize: 3
   spawnBounds: {x: 7, y: 2, z: 7}

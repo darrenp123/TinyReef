@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff0b0d88e364e2f48a294dbbc40c30d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  flockName: Moorish Idol
   flockUnitPrefab: {fileID: 2918758009438317830, guid: b7bc5dfa761efce4e82a6554ec53ef25, type: 3}
   flockSize: 20
   spawnBounds: {x: 5, y: 1, z: 5}

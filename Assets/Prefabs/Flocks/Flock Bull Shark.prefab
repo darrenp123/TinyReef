@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff0b0d88e364e2f48a294dbbc40c30d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  flockName: Bull Shark
   flockUnitPrefab: {fileID: 8647624575762173716, guid: e59bc0d4f07238d4faa6dc5aa4af6083, type: 3}
   flockSize: 3
   spawnBounds: {x: 10, y: 5, z: 10}

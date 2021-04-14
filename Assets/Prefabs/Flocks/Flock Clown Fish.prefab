@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff0b0d88e364e2f48a294dbbc40c30d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  flockName: Clown Fish
   flockUnitPrefab: {fileID: -883737198729347898, guid: 9abe8fe6abb3ccd47a600b0488021f35, type: 3}
   flockSize: 100
   spawnBounds: {x: 5, y: 1, z: 5}

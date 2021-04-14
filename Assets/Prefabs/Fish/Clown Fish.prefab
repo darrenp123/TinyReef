@@ -146,9 +146,8 @@ MonoBehaviour:
   totalHunger: 120
   hungerThreshold: 80
   initStarvingTimer: 100
+  initialLifespan: 300
   lifeSpan: 300
-  unitType: Coral Fish
+  unitType: Coral
   unitName: Clown Fish
   size: 2
-  fishTransform: {fileID: 7897027409579362614}
-  InitialLifespan: 0

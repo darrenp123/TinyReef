@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff0b0d88e364e2f48a294dbbc40c30d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  flockName: Tuna
   flockUnitPrefab: {fileID: 2069639157354766582, guid: e340142c406aa1648b6ef544ed75f02c, type: 3}
   flockSize: 10
   spawnBounds: {x: 5, y: 1, z: 5}

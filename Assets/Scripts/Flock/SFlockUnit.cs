@@ -9,22 +9,21 @@ public class SFlockUnit : MonoBehaviour, IFood
     [SerializeField] private float totalHunger;
     [SerializeField] private float hungerThreshold;
     [SerializeField] private float initStarvingTimer;
-    [SerializeField] private float lifeSpan;
+    [SerializeField] private float initialLifespan;
     [SerializeField] private string unitType;
     [SerializeField] private string unitName;
     [SerializeField] private float size;
-    [SerializeField] Transform fishTransform;
 
     public UnitEventSigniture OnUnitRemove;
     public UnitEventSigniture OnUnitTraitsValueChanged;
 
-    public float InitialLifespan;
 
     private float _maxSpeed;
     private Vector3 _currentVelocity;
     private float _currrentHunger;
     private float _sightDistance;
     private float _initialSize;
+    private float _lifeSpan;
 
     public Transform MyTransform { get; set; }
     public int CurrentWaypoint { get; set; }
@@ -43,14 +42,13 @@ public class SFlockUnit : MonoBehaviour, IFood
     public float SightDistance => _sightDistance;
     public string UnitType => unitType;
     public string UnitName { get => unitName; set => unitName = value; }
-    public float LifeSpan { get => lifeSpan; set => lifeSpan = value; }
-    //public float CurrentHunger { get => _currentHunger; set => _currentHunger = value; }
+    public float LifeSpan { get => _lifeSpan; set => _lifeSpan = value; }
+    public float InitialLifespan => initialLifespan;
 
     public delegate void UnitEventSigniture(SFlockUnit unitToRemove);
 
     private void Awake()
     {
-        InitialLifespan = LifeSpan;
         MyTransform = transform;
 
         if (Directions == null)
@@ -80,6 +78,7 @@ public class SFlockUnit : MonoBehaviour, IFood
         _sightDistance = sightDistance;
         _currentVelocity = MyTransform.forward * speed;
         _initialSize = Size;
+        _lifeSpan = initialLifespan;
     }
 
     public void SetMaxSpeed(int deltaValue)
@@ -101,7 +100,7 @@ public class SFlockUnit : MonoBehaviour, IFood
         Debug.Log(sizeChange);
         Vector3 scaleChange = new Vector3(sizeChange, sizeChange, sizeChange);
         Debug.Log(Vector3.one + scaleChange);
-        fishTransform.localScale = Vector3.one + scaleChange;
+        MyTransform.localScale = Vector3.one + scaleChange;
     }
 
     private void RemoveUnit()

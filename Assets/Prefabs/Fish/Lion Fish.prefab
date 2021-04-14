@@ -65,11 +65,11 @@ MonoBehaviour:
   totalHunger: 120
   hungerThreshold: 80
   initStarvingTimer: 100
+  initialLifespan: 300
   lifeSpan: 300
-  unitType: Coral Fish
+  unitType: 'Coral '
   unitName: Lion Fish
   size: 5
-  fishTransform: {fileID: 825789154934025519}
 --- !u!1 &9057813694735798092
 GameObject:
   m_ObjectHideFlags: 0

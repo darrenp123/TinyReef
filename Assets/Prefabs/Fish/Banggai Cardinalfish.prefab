@@ -146,9 +146,7 @@ MonoBehaviour:
   totalHunger: 120
   hungerThreshold: 80
   initStarvingTimer: 100
-  lifeSpan: 300
-  unitType: Coral Fish
+  initialLifespan: 300
+  unitType: 'Coral '
   unitName: Banggai Cardinalfish
   size: 1
-  fishTransform: {fileID: 6968486215552083530}
-  InitialLifespan: 0
