@@ -136,6 +136,7 @@ public class SFlock : MonoBehaviour
             UnitForwardDirections = _unitsForwardDirections,
             UnitRotaions = _unitsRotaions,
             SightDirections = _sightDirections,
+            UnitsCurrentHunger = _unitsCurrentHunger,
 
             ObstacleChecks = _unitsObstacleChecks,
             UnitsPredatorsChecks = _unitsPredatorsChecks,
@@ -147,7 +148,8 @@ public class SFlock : MonoBehaviour
             PredatorPreyDistance = initPredatorPreyDistance,
             PredatorMask = predatorMask,
             PreyMask = preyMask,
-            SphereCastRadius = sphereCastRadius
+            SphereCastRadius = sphereCastRadius,
+            HungerThreshold = AllUnits.Count > 0 ? AllUnits[0].HungerThreshold : 0
         };
 
         _secundarySensorCheksJob = new SecundarySensorCheksJob
@@ -274,7 +276,7 @@ public class SFlock : MonoBehaviour
             _reactionTimer = 0;
         }
 
-        dependencies[2] = _hungerJob.Schedule(_totalUnitAmought, _unitBatchCount, default);
+        dependencies[2] = _hungerJob.Schedule(_totalUnitAmought, _unitBatchCount, secheduleHandle);
         JobHandle lastBatch = SpherecastCommand.ScheduleBatch(_unitsEatChecks, _unitsEatResults, _unitBatchCount, dependencies[2]);
 
         _moveJob.Schedule(_totalUnitAmought, _unitBatchCount, JobHandle.CombineDependencies(dependencies)).Complete();
@@ -364,7 +366,7 @@ public class SFlock : MonoBehaviour
         CreateUnit();
         AllocateNewValues();
         RefreshBatches();
-       //Debug.Log("Unit from flock: " + name + ", made: " + _totalUnitAmought);
+        //Debug.Log("Unit from flock: " + name + ", made: " + _totalUnitAmought);
     }
 
     private void CreateUnit()
@@ -470,6 +472,7 @@ public class SFlock : MonoBehaviour
         _secheduleRaysJob.UnitsPredatorsChecks = _unitsPredatorsChecks;
         _secheduleRaysJob.UnitsPreysChecks = _unitsPreyChecks;
         _secheduleRaysJob.UnitsSightDirections = _unitsSightDirections;
+        _secheduleRaysJob.UnitsCurrentHunger = _unitsCurrentHunger;
 
         _secundarySensorCheksJob.UnitPositions = _unitsPositions;
         _secundarySensorCheksJob.UnitsSightDirections = _unitsSightDirections;
@@ -507,7 +510,6 @@ public class SFlock : MonoBehaviour
         _totalUnitAmought = AllUnits.Count;
         _unitBatchCount = _totalUnitAmought > 10 ? _totalUnitAmought / 10 : 1;
         _sightBatchCount = _sightDirections.Length / (_totalUnitAmought <= 0 ? 1 : _totalUnitAmought);
-
     }
 
     private void OnDestroy()

@@ -5,57 +5,57 @@ using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
+    [SerializeField] private ParticleSystem bubblesPrefab;
     SFlockUnit CurrentFish;
     List<SFlockUnit> CurrentFishFlock;
     int CurrentFishFlockCount;
-    [SerializeField]
-    FishStatsUI FishStats;
+    [SerializeField] FishStatsUI FishStats;
     bool IsLookingAtFish;
-    [SerializeField]
-    int GenePoints;
-    [SerializeField]
-    int TraitCost;
-    float Timer;
+    [SerializeField] int GenePoints;
+    [SerializeField] int TraitCost;
     bool UION;
-    public SFlock GroupOfFish;
     public GameObject WinText;
+    private List<ParticleSystem> _bubblesEffectPool = new List<ParticleSystem>();
+    private GameModeBase _gameMode;
 
-
-    // Start is called before the first frame update
     void Start()
     {
         IsLookingAtFish = false;
         CurrentFishFlockCount = 0;
-        Timer = 0f;
         FishStats.UpdateGenePoints(GenePoints);
         UION = false;
         WinText.SetActive(false);
+        _gameMode = FindObjectOfType<GameModeBase>();
+        if (_gameMode && _gameMode.State == GameModeBase.GameModeSate.SANDBOX)
+            InvokeRepeating(nameof(SanboxMode), 1, 1);
     }
 
-    // Update is called once per frame
+    private void SanboxMode()
+    {
+        UpdateGenePoints(1);
+    }
+
     void Update()
     {
-           /*
-        Timer += Time.deltaTime;
-        if(Timer >= 1f) {
-            UpdateGenePoints(1);
-            Timer = 0f;
-        }
-           */
         YouWin();
     }
 
-    //Temp
-    public void YouWin() {
-        //if (GroupOfFish.AllUnits.Count > 15) WinText.SetActive(true);
+    public void YouWin()
+    {
+        if (_gameMode && _gameMode.ObjectiveComplete())
+            WinText.SetActive(true);
     }
 
-    public SFlockUnit GoToNextFishInFlock(bool dir) {
-        if (dir) {
+    public SFlockUnit GoToNextFishInFlock(bool dir)
+    {
+        if (dir)
+        {
             //Left
             CurrentFishFlockCount--;
             if (CurrentFishFlockCount < 0) CurrentFishFlockCount = CurrentFishFlock.Count - 1;
-        } else {
+        }
+        else
+        {
             //Right
             CurrentFishFlockCount++;
             if (CurrentFishFlockCount >= CurrentFishFlock.Count) CurrentFishFlockCount = 0;
@@ -64,22 +64,29 @@ public class Player : MonoBehaviour
         return CurrentFishFlock[CurrentFishFlockCount];
     }
 
-    void UpdateGenePoints(int updateValue) {
+    void UpdateGenePoints(int updateValue)
+    {
         GenePoints += updateValue;
         FishStats.UpdateGenePoints(GenePoints);
     }
 
-    int GetGenePoints() {
+    int GetGenePoints()
+    {
         return GenePoints;
     }
 
-    public void SeeFishStats(InputAction.CallbackContext context) {
-        if (context.performed) {
-            if (FishStats.IsFishStatsActive()) {
+    public void SeeFishStats(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            if (FishStats.IsFishStatsActive())
+            {
                 FishStats.TurnOnOffFishStats(false);
                 UION = false;
                 //FishStats.SetCurrentFish(null);
-            } else if (IsLookingAtFish) {
+            }
+            else if (IsLookingAtFish)
+            {
                 FishStats.TurnOnOffFishStats(true);
                 UION = true;
                 //FishStats.SetCurrentFish(CurrentFish);
@@ -87,12 +94,16 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void IsLookingAtFishState(bool state, SFlockUnit fish) {
-        if (state) {
+    public void IsLookingAtFishState(bool state, SFlockUnit fish)
+    {
+        if (state)
+        {
             IsLookingAtFish = true;
             SetCurrentFish(fish);
             CurrentFishFlock = CurrentFish.GetComponentInParent<SFlock>().AllUnits;
-        } else {
+        }
+        else
+        {
             SetCurrentFish(null);
             CurrentFishFlock = null;
             CurrentFishFlockCount = 0;
@@ -102,51 +113,62 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void SetCurrentFish(SFlockUnit fish) {
+    public void SetCurrentFish(SFlockUnit fish)
+    {
         CurrentFish = fish;
         FishStats.SetCurrentFish(fish);
     }
 
-    public SFlockUnit GetCurrentFish() {
+    public SFlockUnit GetCurrentFish()
+    {
         return CurrentFish;
     }
 
-    bool IsPurchasePossible() {
+    bool IsPurchasePossible()
+    {
         return GenePoints >= TraitCost;
     }
 
-    public bool IsUION() {
+    public bool IsUION()
+    {
         return UION;
     }
 
-    public void PurchasePoints(int trait, int value) {
-        if (IsPurchasePossible()) {
-            switch (trait) {
+    public void PurchasePoints(int trait, int value)
+    {
+        if (IsPurchasePossible())
+        {
+            DoBuyEffects();
+            switch (trait)
+            {
                 //Lifespan
                 case 1:
                     //TODO
-                    float lifespan = CurrentFish.InitialLifespan/60;
-                    if (value > 0 && lifespan >= 0 && lifespan < 10 || 
-                        value < 0 && lifespan > 0 && lifespan <= 10) {
+                    float lifespan = CurrentFish.InitialLifespan / 60;
+                    if (value > 0 && lifespan >= 0 && lifespan < 10 ||
+                        value < 0 && lifespan > 0 && lifespan <= 10)
+                    {
                         //CurrentFish.InitialLifespan += value*60;
                         UpdateGenePoints(-TraitCost);
-                    }  
+                    }
                     break;
                 //Size
                 case 2:
                     float size = CurrentFish.Size;
                     if (value > 0 && size >= 0 && size < 10 ||
-                        value < 0 && size > 0 && size <= 10) {
+                        value < 0 && size > 0 && size <= 10)
+                    {
                         CurrentFish.Size += value;
                         CurrentFish.ScaleFish();
                         UpdateGenePoints(-TraitCost);
                     }
-            break;
+                    break;
                 //Speed
                 case 3:
                     int speed = Mathf.RoundToInt(CurrentFish.MaxSpeed);
                     if (value > 0 && speed >= 1 && speed < 10 ||
-                        value < 0 && speed > 0 && speed <= 10) {
+                        value < 0 && speed > 0 && speed <= 10)
+                    {
                         CurrentFish.SetMaxSpeed(value);
                         UpdateGenePoints(-TraitCost);
                     }
@@ -155,7 +177,8 @@ public class Player : MonoBehaviour
                 case 4:
                     int sensoryRadious = Mathf.RoundToInt(CurrentFish.SightDistance);
                     if (value > 0 && sensoryRadious >= 0 && sensoryRadious < 10 ||
-                        value < 0 && sensoryRadious > 0 && sensoryRadious <= 10) {
+                        value < 0 && sensoryRadious > 0 && sensoryRadious <= 10)
+                    {
                         CurrentFish.SetSightDistance(value);
                         UpdateGenePoints(-TraitCost);
                     }
@@ -184,5 +207,25 @@ public class Player : MonoBehaviour
                     break;
             }
         }
+    }
+
+    private void DoBuyEffects()
+    {
+        if (!bubblesPrefab) return;
+
+        foreach (ParticleSystem bubbleEffect in _bubblesEffectPool)
+        {
+            if (!bubbleEffect.isPlaying)
+            {
+                bubbleEffect.transform.position = CurrentFish.transform.position;
+                bubbleEffect.transform.parent = CurrentFish.transform;
+                bubbleEffect.Play();
+                return;
+            }
+        }
+
+        ParticleSystem newBubbleEffect = Instantiate(bubblesPrefab, CurrentFish.transform.position, Quaternion.identity, CurrentFish.transform);
+        newBubbleEffect.Play();
+        _bubblesEffectPool.Add(newBubbleEffect);
     }
 }

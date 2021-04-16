@@ -10,6 +10,12 @@ public class MainMenu : MonoBehaviour
 {
     [SerializeField]
     GameObject instructionsPage, optionsPage, creditsPage, mainMenuPage, gamemodeSelectionPage, challengeModeText, sandboxModeText, gamemodeSelectionPlayButton;
+     private GameModeBase _gameMode;
+
+    private void Awake()
+    {
+        _gameMode = FindObjectOfType<GameModeBase>();
+    }
 
     public void OpenInstructionsPage()
     {
@@ -65,16 +71,20 @@ public class MainMenu : MonoBehaviour
     {
         challengeModeText.SetActive(false);
         sandboxModeText.SetActive(true);
-        //TODO set gamemode
+        //TODO set game mode
         gamemodeSelectionPlayButton.GetComponent<Button>().interactable = true;
+        if (_gameMode)
+            _gameMode.State = GameModeBase.GameModeSate.SANDBOX;
     }
 
     public void SelectedChallengeMode()
     {
         sandboxModeText.SetActive(false);
         challengeModeText.SetActive(true);
-        //TODO set gamemode
+        //TODO set game mode
         gamemodeSelectionPlayButton.GetComponent<Button>().interactable = true;
+        if (_gameMode)
+            _gameMode.State = GameModeBase.GameModeSate.CHALLENGE;
     }
 
     #endregion

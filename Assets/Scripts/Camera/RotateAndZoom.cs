@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Cinemachine;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 public class RotateAndZoom : MonoBehaviour
@@ -40,7 +41,8 @@ public class RotateAndZoom : MonoBehaviour
     bool FishInFocus;
     float FishZoomDifference, TankZoomDifference;
 
-    private void Awake() {
+    private void Awake()
+    {
         InputProvider = GetComponent<CinemachineInputProvider>();
         FreeLookCamera = GetComponent<CinemachineFreeLook>();
     }
@@ -55,34 +57,34 @@ public class RotateAndZoom : MonoBehaviour
         FocusFish(false);
     }
 
-    private float xAxisValue;
-
     void Update()
     {
-        //InputSystem.axis
-        //float mouseX = Input.GetAxis("Mouse X") * 20 * Time.unscaledDeltaTime;
-        //print("mouse: " + Input.GetAxis("Mouse X"));
-        //xAxisValue += mouseX;
-        // FreeLookCamera.m_XAxis.Value += xAxisValue;
         //Zoom
+        if (EventSystem.current.IsPointerOverGameObject()) return;
+
         float z = InputProvider.GetAxisValue(2);
         if (z != 0) ZoomInZoomOut(z);
     }
 
-    void ZoomScreen(float increment) {
+    void ZoomScreen(float increment)
+    {
         float FOV = FreeLookCamera.m_Lens.FieldOfView;
         float target = Mathf.Clamp(FOV + increment, ZoomInMax, ZoomOutMax);
-        FreeLookCamera.m_Lens.FieldOfView = Mathf.Lerp(FOV, target, ZoomSpeed* Time.unscaledDeltaTime);
+        FreeLookCamera.m_Lens.FieldOfView = Mathf.Lerp(FOV, target, ZoomSpeed * Time.unscaledDeltaTime);
     }
 
-    public void OnLeftClick(InputAction.CallbackContext context) {
-        if (!PlayerState.IsUION() && context.performed) {
+    public void OnLeftClick(InputAction.CallbackContext context)
+    {
+        if (!PlayerState.IsUION() && context.performed && !EventSystem.current.IsPointerOverGameObject())
+        {
             Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
             RaycastHit hit;
             int layer_mask = LayerMask.GetMask("Tier1", "Tier2", "Tier3");
-            if (Physics.Raycast(ray, out hit, Mathf.Infinity,layer_mask)) {
+            if (Physics.SphereCast(ray, 0.1f, out hit, Mathf.Infinity, layer_mask))
+            {
                 var fish = hit.transform.GetComponent<SFlockUnit>();
-                if (fish) {
+                if (fish)
+                {
                     FreeLookCamera.m_Follow = hit.transform;
                     FreeLookCamera.m_LookAt = hit.transform;
                     FocusFish(true);
@@ -92,8 +94,10 @@ public class RotateAndZoom : MonoBehaviour
         }
     }
 
-    public void CycleLeft(InputAction.CallbackContext context) {
-        if (context.performed) {
+    public void CycleLeft(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
             SFlockUnit fish = PlayerState.GoToNextFishInFlock(true);
             FreeLookCamera.m_Follow = fish.MyTransform;
             FreeLookCamera.m_LookAt = fish.MyTransform;
@@ -101,8 +105,10 @@ public class RotateAndZoom : MonoBehaviour
         }
     }
 
-    public void CycleRight(InputAction.CallbackContext context) {
-        if (context.performed) {
+    public void CycleRight(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
             SFlockUnit fish = PlayerState.GoToNextFishInFlock(false);
             FreeLookCamera.m_Follow = fish.MyTransform;
             FreeLookCamera.m_LookAt = fish.MyTransform;
@@ -110,8 +116,10 @@ public class RotateAndZoom : MonoBehaviour
         }
     }
 
-    public void ReturnCamera(InputAction.CallbackContext context) {
-        if (context.performed) {
+    public void ReturnCamera(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
             FreeLookCamera.m_Follow = Center.transform;
             FreeLookCamera.m_LookAt = Center.transform;
             FocusFish(false);
@@ -119,23 +127,30 @@ public class RotateAndZoom : MonoBehaviour
         }
     }
 
-    public void DisableEnableCameraInput(InputAction.CallbackContext context) {
-        if (context.performed) {
+    public void DisableEnableCameraInput(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
             InputProvider.XYAxis = AxisControl;
         }
-        else if(context.canceled) {
+        else if (context.canceled)
+        {
             InputProvider.XYAxis = null;
         }
     }
 
-    public void ZoomInZoomOut(float increment) {
+    public void ZoomInZoomOut(float increment)
+    {
         float topOrbit = FreeLookCamera.m_Orbits[0].m_Radius;
         float middleOrbit = FreeLookCamera.m_Orbits[1].m_Radius;
         float targetTop, targetMiddle;
-        if (FishInFocus) {
-            targetTop = Mathf.Clamp(topOrbit + (increment* FishZoomDifference), MinZoomFishFocusTopBottomRadious, MaxZoomFishFocusTopBottomRadious);
+        if (FishInFocus)
+        {
+            targetTop = Mathf.Clamp(topOrbit + (increment * FishZoomDifference), MinZoomFishFocusTopBottomRadious, MaxZoomFishFocusTopBottomRadious);
             targetMiddle = Mathf.Clamp(middleOrbit + (increment * FishZoomDifference), MinZoomFishFocusMiddleRadious, MaxZoomFishFocusMiddleRadious);
-        } else {
+        }
+        else
+        {
             targetTop = Mathf.Clamp(topOrbit + (increment * TankZoomDifference), MinZoomTankFocusTopBottomRadious, MaxZoomTankFocusTopBottomRadious);
             targetMiddle = Mathf.Clamp(middleOrbit + (increment * TankZoomDifference), MinZoomTankFocusMiddleRadious, MaxZoomTankFocusMiddleRadious);
         }
@@ -144,13 +159,17 @@ public class RotateAndZoom : MonoBehaviour
         FreeLookCamera.m_Orbits[2].m_Radius = Mathf.Lerp(topOrbit, targetTop, ZoomSpeed * Time.unscaledDeltaTime);
     }
 
-    public void FocusFish(bool state) {
-        if (state) {
+    public void FocusFish(bool state)
+    {
+        if (state)
+        {
             FreeLookCamera.m_Orbits[0].m_Radius = MaxZoomFishFocusTopBottomRadious;
             FreeLookCamera.m_Orbits[1].m_Radius = MaxZoomFishFocusMiddleRadious;
             FreeLookCamera.m_Orbits[2].m_Radius = MaxZoomFishFocusTopBottomRadious;
             FishInFocus = true;
-        } else {
+        }
+        else
+        {
             FreeLookCamera.m_Orbits[0].m_Radius = MaxZoomTankFocusTopBottomRadious;
             FreeLookCamera.m_Orbits[1].m_Radius = MaxZoomTankFocusMiddleRadious;
             FreeLookCamera.m_Orbits[2].m_Radius = MaxZoomTankFocusTopBottomRadious;
