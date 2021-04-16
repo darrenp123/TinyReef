@@ -145,8 +145,8 @@ public class Player : MonoBehaviour
                 case 1:
                     //TODO
                     float lifespan = CurrentFish.InitialLifespan / 60;
-                    if (value > 0 && lifespan >= 0 && lifespan < 10 ||
-                        value < 0 && lifespan > 0 && lifespan <= 10)
+                    if (value > 0 && lifespan >= 1 && lifespan < 10 ||
+                        value < 0 && lifespan > 1 && lifespan <= 10)
                     {
                         //CurrentFish.InitialLifespan += value*60;
                         UpdateGenePoints(-TraitCost);
@@ -155,8 +155,8 @@ public class Player : MonoBehaviour
                 //Size
                 case 2:
                     float size = CurrentFish.Size;
-                    if (value > 0 && size >= 0 && size < 10 ||
-                        value < 0 && size > 0 && size <= 10)
+                    if (value > 0 && size >= 1 && size < 10 ||
+                        value < 0 && size > 1 && size <= 10)
                     {
                         CurrentFish.Size += value;
                         CurrentFish.ScaleFish();
@@ -167,7 +167,7 @@ public class Player : MonoBehaviour
                 case 3:
                     int speed = Mathf.RoundToInt(CurrentFish.MaxSpeed);
                     if (value > 0 && speed >= 1 && speed < 10 ||
-                        value < 0 && speed > 0 && speed <= 10)
+                        value < 0 && speed > 1 && speed <= 10)
                     {
                         CurrentFish.SetMaxSpeed(value);
                         UpdateGenePoints(-TraitCost);
@@ -176,8 +176,8 @@ public class Player : MonoBehaviour
                 //SensoryRadious
                 case 4:
                     int sensoryRadious = Mathf.RoundToInt(CurrentFish.SightDistance);
-                    if (value > 0 && sensoryRadious >= 0 && sensoryRadious < 10 ||
-                        value < 0 && sensoryRadious > 0 && sensoryRadious <= 10)
+                    if (value > 0 && sensoryRadious >= 1 && sensoryRadious < 10 ||
+                        value < 0 && sensoryRadious > 1 && sensoryRadious <= 10)
                     {
                         CurrentFish.SetSightDistance(value);
                         UpdateGenePoints(-TraitCost);
@@ -188,8 +188,8 @@ public class Player : MonoBehaviour
                     //TODO
                     /*
                     float camouflage = CurrentFish.GetCamouflage();
-                    if (value > 0 && camouflage >= 0 && camouflage < 10 ||
-                        value < 0 && camouflage > 0 && camouflage <= 10) {
+                    if (value > 0 && camouflage >= 1 && camouflage < 10 ||
+                        value < 0 && camouflage > 1 && camouflage <= 10) {
                         CurrentFish.SetCamouflage(value);
                         UpdateGenePoints(-TraitCost);
                     }
