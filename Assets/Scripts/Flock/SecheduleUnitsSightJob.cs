@@ -15,6 +15,8 @@ public struct SecheduleUnitsSightJob : IJobParallelFor
     public NativeArray<quaternion> UnitRotaions;
     [ReadOnly]
     public NativeArray<float3> SightDirections;
+    [ReadOnly]
+    public NativeArray<float> UnitsCurrentHunger;
 
     [WriteOnly]
     public NativeArray<SpherecastCommand> ObstacleChecks;
@@ -34,6 +36,7 @@ public struct SecheduleUnitsSightJob : IJobParallelFor
     public LayerMask PredatorMask;
     public LayerMask PreyMask;
     public float SphereCastRadius;
+    public float HungerThreshold;
 
     public void Execute(int index)
     {
@@ -42,18 +45,19 @@ public struct SecheduleUnitsSightJob : IJobParallelFor
         ObstacleChecks[index] = new SpherecastCommand(
                  currentUnitPosition, SphereCastRadius, UnitForwardDirections[index], ObstacleDistance * 0.85f, ObstacleMask);
 
+        SpherecastCommand emptyCommand = new SpherecastCommand();
         int IndexStart = SightDirections.Length * index;
         for (int i = 0; i < SightDirections.Length; i++)
         {
             float3 dir = math.rotate(UnitRotaions[index], SightDirections[i]);
-          // float3 dir = UnitRotaions[index] * SightDirections[i];
+            // float3 dir = UnitRotaions[index] * SightDirections[i];
             UnitsSightDirections[i + IndexStart] = dir;
 
             UnitsPredatorsChecks[i + IndexStart] = new SpherecastCommand(
                 currentUnitPosition, SphereCastRadius, dir, PredatorPreyDistance, PredatorMask);
 
-            UnitsPreysChecks[i + IndexStart] = new SpherecastCommand(
-                currentUnitPosition, SphereCastRadius, dir, PredatorPreyDistance, PreyMask);
+            UnitsPreysChecks[i + IndexStart] = UnitsCurrentHunger[index] > HungerThreshold ? new SpherecastCommand(
+        currentUnitPosition, SphereCastRadius, dir, PredatorPreyDistance, PreyMask) : emptyCommand;
         }
     }
 }
@@ -89,15 +93,16 @@ public struct SecundarySensorCheksJob : IJobParallelFor
         float3 currentUnitPosition = UnitPositions[index];
         int particion = UnitsSightDirections.Length / UnitsObstacleResults.Length;
         bool hasObstacle = UnitsObstacleResults[index].distance > 0;
+        SpherecastCommand emptyCommand = new SpherecastCommand();
 
         for (int i = particion * index; i < particion * (index + 1); i++)
         {
             UnitsSightDirectionsCheks[i] = hasObstacle ? new SpherecastCommand(
-                currentUnitPosition, SphereCastRadius, UnitsSightDirections[i], ObstacleDistance, ObstacleMask) : new SpherecastCommand();
+                currentUnitPosition, SphereCastRadius, UnitsSightDirections[i], ObstacleDistance, ObstacleMask) : emptyCommand;
 
             UnitsPredatorPreysObtacleChecks[i] = (UnitsPredatorsResults[i].distance > 0 || UnitsPreyResults[i].distance > 0) ?
-                new SpherecastCommand(currentUnitPosition, SphereCastRadius, UnitsSightDirections[i], PredatorPreyDistance, ObstacleMask) 
-                : new SpherecastCommand();
+                new SpherecastCommand(currentUnitPosition, SphereCastRadius, UnitsSightDirections[i], PredatorPreyDistance, ObstacleMask)
+                : emptyCommand;
         }
     }
 }

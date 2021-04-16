@@ -34,6 +34,7 @@ public class SpeciesOutliner : MonoBehaviour
             dropdownEvent.AddListener(FillSpiciesConteiner);
             dropdown.onValueChanged = dropdownEvent;
         }
+
         // refactor later
         _freeLookCamera = FindObjectOfType<CinemachineFreeLook>();
     }
