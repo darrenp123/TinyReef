@@ -4,7 +4,7 @@ using Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class RotateAndZoom : MonoBehaviour
+public class FollowCamera : MonoBehaviour
 {
     [SerializeField] InputAction tt;
     private CinemachineInputProvider InputProvider;
@@ -37,6 +37,8 @@ public class RotateAndZoom : MonoBehaviour
     private GameObject Center;
     [SerializeField]
     private Player PlayerState;
+    [SerializeField]
+    //private InputActionAsset controls;
     bool FishInFocus;
     float FishZoomDifference, TankZoomDifference;
 
@@ -53,6 +55,9 @@ public class RotateAndZoom : MonoBehaviour
         TankZoomDifference = (MaxZoomTankFocusTopBottomRadious - MinZoomTankFocusTopBottomRadious) / (MaxZoomTankFocusMiddleRadious - MinZoomTankFocusMiddleRadious);
         FishInFocus = false;
         FocusFish(false);
+
+        //Set actions
+        
     }
 
     private float xAxisValue;
