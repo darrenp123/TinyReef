@@ -9,7 +9,7 @@ using UnityEngine.UI;
 public class MainMenu : MonoBehaviour
 {
     [SerializeField]
-    GameObject instructionsPage, optionsPage, creditsPage, mainMenuPage, gamemodeSelectionPage, challengeModeText, sandboxModeText, gamemodeSelectionPlayButton;
+    GameObject instructionsPage, optionsPage, creditsPage, mainMenuPage, gamemodeSelectionPage, levelSelectionPage, challengeModeText, sandboxModeText, gamemodeSelectionNextButton, levelSelectionPlayButton;
 
     public void OpenInstructionsPage()
     {
@@ -66,7 +66,7 @@ public class MainMenu : MonoBehaviour
         challengeModeText.SetActive(false);
         sandboxModeText.SetActive(true);
         //TODO set gamemode
-        gamemodeSelectionPlayButton.GetComponent<Button>().interactable = true;
+        gamemodeSelectionNextButton.GetComponent<Button>().interactable = true;
     }
 
     public void SelectedChallengeMode()
@@ -74,7 +74,33 @@ public class MainMenu : MonoBehaviour
         sandboxModeText.SetActive(false);
         challengeModeText.SetActive(true);
         //TODO set gamemode
-        gamemodeSelectionPlayButton.GetComponent<Button>().interactable = true;
+        gamemodeSelectionNextButton.GetComponent<Button>().interactable = true;
+    }
+
+    #endregion
+
+    #region LevelSelection
+
+    public void OpenLevelSelectionPage()
+    {
+        gamemodeSelectionPage.SetActive(false);
+        levelSelectionPage.SetActive(true);
+    }
+
+    public void CloseLevelSelectionPage()
+    {
+        levelSelectionPage.SetActive(false);
+        gamemodeSelectionPage.SetActive(true);
+    }
+
+    public void SelectedLevel1()
+    {
+        levelSelectionPlayButton.GetComponent<Button>().interactable = true;
+    }
+
+    public void SelectedLevel2()
+    {
+        levelSelectionPlayButton.GetComponent<Button>().interactable = true;
     }
 
     #endregion
