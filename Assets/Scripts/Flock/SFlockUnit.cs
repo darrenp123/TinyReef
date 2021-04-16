@@ -105,7 +105,7 @@ public class SFlockUnit : MonoBehaviour, IFood
         Debug.Log(Vector3.one + scaleChange);
         MyTransform.localScale = Vector3.one + scaleChange;
         */
-        MyTransform.localScale = new Vector3(fishScale[Size - 1], fishScale[Size - 1], fishScale[Size - 1]);
+       // MyTransform.localScale = new Vector3(fishScale[Size - 1], fishScale[Size - 1], fishScale[Size - 1]);
     }
 
     private void RemoveUnit()
