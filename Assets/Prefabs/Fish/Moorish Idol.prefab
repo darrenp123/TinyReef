@@ -43,10 +43,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.08168109
-  m_Height: 0.24856415
+  m_Radius: 0.04643149
+  m_Height: 0.1325517
   m_Direction: 2
-  m_Center: {x: -0.013145149, y: 0, z: 0.0025277287}
+  m_Center: {x: -0.0016581938, y: -0.0065071583, z: 0.0022008866}
 --- !u!114 &2918758009438317830
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -66,10 +66,21 @@ MonoBehaviour:
   hungerThreshold: 80
   initStarvingTimer: 100
   initialLifespan: 300
-  lifeSpan: 300
   unitType: 'Coral '
   unitName: Moorish Idol
   size: 2
+  fishScale:
+  - 1
+  - 2
+  - 3
+  - 5
+  - 7
+  - 9
+  - 11
+  - 15
+  - 17
+  - 20
+  consumeEffectPrefab: {fileID: 2247388813125844722, guid: a5cb3ef1716dfa94da27fbf76aa9f5e4, type: 3}
 --- !u!1 &4344482743511790528
 GameObject:
   m_ObjectHideFlags: 0
@@ -97,7 +108,7 @@ Transform:
   m_GameObject: {fileID: 4344482743511790528}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 2715837242141673809}
   m_RootOrder: 0

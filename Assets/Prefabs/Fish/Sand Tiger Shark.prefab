@@ -26,8 +26,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2572354301845585619}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0.066}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalScale: {x: 0.05, y: 0.05, z: 0.05}
   m_Children: []
   m_Father: {fileID: 6157772914338241712}
   m_RootOrder: 0
@@ -124,10 +124,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.2720582
-  m_Height: 2.7862787
+  m_Radius: 0.012846027
+  m_Height: 0.13692093
   m_Direction: 2
-  m_Center: {x: 0, y: -0.035871208, z: -0.40657282}
+  m_Center: {x: -0.00017231703, y: -0.0005383231, z: -0.020198822}
 --- !u!114 &194335824614406183
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -150,3 +150,15 @@ MonoBehaviour:
   unitType: 
   unitName: Sand Tiger Shark
   size: 10
+  fishScale:
+  - 1
+  - 2.2
+  - 3.3
+  - 5.5
+  - 7.3
+  - 9.3
+  - 11.12
+  - 15.2
+  - 18
+  - 20
+  consumeEffectPrefab: {fileID: 2247388813125844722, guid: a5cb3ef1716dfa94da27fbf76aa9f5e4, type: 3}

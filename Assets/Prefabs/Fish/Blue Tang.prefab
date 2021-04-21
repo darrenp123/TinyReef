@@ -43,10 +43,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.09
-  m_Height: 0.39
+  m_Radius: 0.035764016
+  m_Height: 0.15710223
   m_Direction: 2
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0.0010188445, y: -0.001913324, z: -0.00028523803}
 --- !u!114 &7619814706457136587
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -69,6 +69,18 @@ MonoBehaviour:
   unitType: 'Coral '
   unitName: Blue Tang
   size: 2
+  fishScale:
+  - 1
+  - 2.5
+  - 3.3
+  - 5.5
+  - 7.3
+  - 9.5
+  - 11
+  - 15.2
+  - 18
+  - 21
+  consumeEffectPrefab: {fileID: 2247388813125844722, guid: a5cb3ef1716dfa94da27fbf76aa9f5e4, type: 3}
 --- !u!1 &8993257759797522282
 GameObject:
   m_ObjectHideFlags: 0
@@ -96,7 +108,7 @@ Transform:
   m_GameObject: {fileID: 8993257759797522282}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_Children: []
   m_Father: {fileID: 722936609310412041}
   m_RootOrder: 0

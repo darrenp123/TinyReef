@@ -15,8 +15,8 @@ public class Player : MonoBehaviour
     [SerializeField] int TraitCost;
     bool UION;
     public GameObject WinText;
-    private List<ParticleSystem> _bubblesEffectPool = new List<ParticleSystem>();
     private GameModeBase _gameMode;
+    private ConsumablePool _consumablePool;
 
     void Start()
     {
@@ -28,6 +28,8 @@ public class Player : MonoBehaviour
         _gameMode = FindObjectOfType<GameModeBase>();
         if (_gameMode && _gameMode.State == GameModeBase.GameModeSate.SANDBOX)
             InvokeRepeating(nameof(SanboxMode), 1, 1);
+
+        _consumablePool = FindObjectOfType<ConsumablePool>();
     }
 
     private void SanboxMode()
@@ -211,21 +213,41 @@ public class Player : MonoBehaviour
 
     private void DoBuyEffects()
     {
-        if (!bubblesPrefab) return;
+        _ = StartCoroutine(ManageConsumableEffect());
 
-        foreach (ParticleSystem bubbleEffect in _bubblesEffectPool)
-        {
-            if (!bubbleEffect.isPlaying)
-            {
-                bubbleEffect.transform.position = CurrentFish.transform.position;
-                bubbleEffect.transform.parent = CurrentFish.transform;
-                bubbleEffect.Play();
-                return;
-            }
-        }
+        // To remove
+        //if (!bubblesPrefab) return;
 
-        ParticleSystem newBubbleEffect = Instantiate(bubblesPrefab, CurrentFish.transform.position, Quaternion.identity, CurrentFish.transform);
-        newBubbleEffect.Play();
-        _bubblesEffectPool.Add(newBubbleEffect);
+        //foreach (ParticleSystem bubbleEffect in _bubblesEffectPool)
+        //{
+        //    if (!bubbleEffect.isPlaying)
+        //    {
+        //        bubbleEffect.transform.position = CurrentFish.transform.position;
+        //        bubbleEffect.transform.parent = CurrentFish.transform;
+        //        bubbleEffect.Play();
+        //        return;
+        //    }
+        //}
+
+        //ParticleSystem newBubbleEffect = Instantiate(bubblesPrefab, CurrentFish.transform.position, Quaternion.identity, CurrentFish.transform);
+        //newBubbleEffect.Play();
+        //_bubblesEffectPool.Add(newBubbleEffect);
+    }
+
+    private IEnumerator ManageConsumableEffect()
+    {
+        if (!_consumablePool) yield break;
+
+        ParticleSystem bubbleEffect = _consumablePool.GetItemFromPool(ItemPool.BUBBLES_BURST, bubblesPrefab)
+            .GetComponent<ParticleSystem>();
+
+        bubbleEffect.transform.position = CurrentFish.transform.position;
+        bubbleEffect.transform.parent = CurrentFish.transform;
+        bubbleEffect.gameObject.SetActive(true);
+        bubbleEffect.Play();
+
+        yield return new WaitWhile(() => bubbleEffect.isPlaying);
+
+        _consumablePool.ReturnToPool(ItemPool.BUBBLES_BURST, bubbleEffect.gameObject);
     }
 }
