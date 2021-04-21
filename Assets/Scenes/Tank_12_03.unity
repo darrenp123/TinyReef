@@ -16485,7 +16485,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 1
-  m_FollowOffset: {x: 0, y: 1, z: -12}
+  m_FollowOffset: {x: 0, y: 1, z: -11.3342}
   m_XDamping: 0.8
   m_YDamping: 0.8
   m_ZDamping: 0.8
@@ -17669,11 +17669,11 @@ MonoBehaviour:
   m_SplineCurvature: 0.343
   m_Orbits:
   - m_Height: 1.5
-    m_Radius: 10
+    m_Radius: 9.334204
   - m_Height: 1
-    m_Radius: 12
+    m_Radius: 11.3342
   - m_Height: -1.5
-    m_Radius: 10
+    m_Radius: 9.334204
   m_LegacyHeadingBias: 3.4028235e+38
   m_Rigs:
   - {fileID: 18997226}
@@ -20379,6 +20379,10 @@ PrefabInstance:
     - target: {fileID: 3256035607054871389, guid: 73bdeb731cc7e564ca5617770620448e, type: 3}
       propertyPath: m_Name
       value: Flock Banggai Cardinalfish
+      objectReference: {fileID: 0}
+    - target: {fileID: 3256035607054871389, guid: 73bdeb731cc7e564ca5617770620448e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 73bdeb731cc7e564ca5617770620448e, type: 3}
@@ -23634,7 +23638,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 1
-  m_FollowOffset: {x: 0, y: 1, z: -12}
+  m_FollowOffset: {x: 0, y: 1, z: -11.3342}
   m_XDamping: 0.8
   m_YDamping: 0.8
   m_ZDamping: 0.8
@@ -25852,7 +25856,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9107440545818283387, guid: de6629ef5de98e24b802e9d8d7c7c4ac, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de6629ef5de98e24b802e9d8d7c7c4ac, type: 3}
@@ -31366,6 +31370,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Flock Sardine
       objectReference: {fileID: 0}
+    - target: {fileID: 2678035041445953304, guid: 3bf302d673bc12f4fb0eca7d00724871, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2678035041445953306, guid: 3bf302d673bc12f4fb0eca7d00724871, type: 3}
       propertyPath: flockSize
       value: 20
@@ -32151,7 +32159,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7371807810527790348, guid: 6ab7e483d32ad24468a3d5c0ab61e851, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6ab7e483d32ad24468a3d5c0ab61e851, type: 3}
@@ -33990,6 +33998,10 @@ PrefabInstance:
     - target: {fileID: 8069508316591609107, guid: b0d832dadb2a61141b61df6da6ba0cd7, type: 3}
       propertyPath: m_Name
       value: Flock Emperor Angelfish
+      objectReference: {fileID: 0}
+    - target: {fileID: 8069508316591609107, guid: b0d832dadb2a61141b61df6da6ba0cd7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8069508316591609109, guid: b0d832dadb2a61141b61df6da6ba0cd7, type: 3}
       propertyPath: flockSize
@@ -36015,7 +36027,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3581474779332409853, guid: bccf83bbce0515544a2cbe9c93841f10, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bccf83bbce0515544a2cbe9c93841f10, type: 3}
@@ -41022,7 +41034,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 1
-  m_FollowOffset: {x: 0, y: 1, z: -12}
+  m_FollowOffset: {x: 0, y: 1, z: -11.3342}
   m_XDamping: 0.8
   m_YDamping: 0.8
   m_ZDamping: 0.8
@@ -44421,7 +44433,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5638369182917961935, guid: f8ce00f89531fec41a77987c82e6dedc, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f8ce00f89531fec41a77987c82e6dedc, type: 3}
@@ -44487,6 +44499,10 @@ PrefabInstance:
     - target: {fileID: 6817635830803489012, guid: c4218d18edf5ee545a2705e3c1a25e41, type: 3}
       propertyPath: m_Name
       value: Flock Sand Tiger Shark
+      objectReference: {fileID: 0}
+    - target: {fileID: 6817635830803489012, guid: c4218d18edf5ee545a2705e3c1a25e41, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c4218d18edf5ee545a2705e3c1a25e41, type: 3}
@@ -46465,6 +46481,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Flock Tuna
       objectReference: {fileID: 0}
+    - target: {fileID: 5200210676395332593, guid: c13bcb7ada5b23e429c3d585b43178d3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6705059994739628929, guid: c13bcb7ada5b23e429c3d585b43178d3, type: 3}
       propertyPath: flockSize
       value: 8
@@ -46780,7 +46800,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 310231194867374169, guid: 60fd7d73c2632cc44b4aba7d540f2a4a, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 310231194867374172, guid: 60fd7d73c2632cc44b4aba7d540f2a4a, type: 3}
       propertyPath: m_RootOrder
