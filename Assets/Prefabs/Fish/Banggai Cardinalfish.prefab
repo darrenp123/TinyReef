@@ -124,10 +124,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.03841066
-  m_Height: 0.13608018
+  m_Radius: 0.024396332
+  m_Height: 0.10897568
   m_Direction: 2
-  m_Center: {x: 0.0015940592, y: 0.0010021441, z: -0.023153812}
+  m_Center: {x: -0.0011182968, y: -0.00014754571, z: -0.01603517}
 --- !u!114 &4602450174552267799
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -148,5 +148,17 @@ MonoBehaviour:
   initStarvingTimer: 100
   initialLifespan: 300
   unitType: 'Coral '
-  unitName: Banggai Cardinalfish
+  unitName: Cardinalfish
   size: 1
+  fishScale:
+  - 1
+  - 2.5
+  - 3.3
+  - 5.5
+  - 7.3
+  - 9.5
+  - 11.8
+  - 15.2
+  - 18
+  - 21
+  consumeEffectPrefab: {fileID: 2247388813125844722, guid: a5cb3ef1716dfa94da27fbf76aa9f5e4, type: 3}

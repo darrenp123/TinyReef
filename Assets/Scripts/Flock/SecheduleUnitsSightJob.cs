@@ -56,7 +56,7 @@ public struct SecheduleUnitsSightJob : IJobParallelFor
             UnitsPredatorsChecks[i + IndexStart] = new SpherecastCommand(
                 currentUnitPosition, SphereCastRadius, dir, PredatorPreyDistance, PredatorMask);
 
-            UnitsPreysChecks[i + IndexStart] = UnitsCurrentHunger[index] > HungerThreshold ? new SpherecastCommand(
+            UnitsPreysChecks[i + IndexStart] = UnitsCurrentHunger[index] <= HungerThreshold ? new SpherecastCommand(
         currentUnitPosition, SphereCastRadius, dir, PredatorPreyDistance, PreyMask) : emptyCommand;
         }
     }

@@ -1,5 +1,3 @@
-// Upgrade NOTE: upgraded instancing buffer 'FishInstanceProperties' to new syntax.
-
 Shader "Custom/FishAnimation02" {
     Properties {
         _Color ("Color", Color) = (1,1,1,1)
@@ -48,9 +46,9 @@ Shader "Custom/FishAnimation02" {
 
         void vert(inout appdata_full v)
         {
-            float cycleOffset = UNITY_ACCESS_INSTANCED_PROP(_InstanceCycleOffset_arr, _InstanceCycleOffset);
+          /*  float cycleOffset = UNITY_ACCESS_INSTANCED_PROP(_InstanceCycleOffset_arr, _InstanceCycleOffset);
             float4 offs = sin((cycleOffset + _Time.y) * _TimeScale + v.vertex.z * _Amount) * _Distance;
-            v.vertex.x += offs;
+            v.vertex.x += offs;*/
         }
 
         void surf (Input IN, inout SurfaceOutputStandard o)

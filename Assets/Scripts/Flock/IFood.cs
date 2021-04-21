@@ -5,4 +5,6 @@ using UnityEngine;
 public interface IFood
 {
     void Consume();
+
+    string GetFoodName();
 }

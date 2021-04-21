@@ -108,6 +108,7 @@ public class SFlock : MonoBehaviour
     private int _unitBatchCount;
     private int _sightBatchCount;
     private float _reactionTimer;
+    private ActivityLog _activityLog;
 
     // used for debugging and testing
     [Header("Debugging and Testing")]
@@ -232,6 +233,7 @@ public class SFlock : MonoBehaviour
             DeltaTime = Time.deltaTime
         };
 
+        _activityLog = FindObjectOfType<ActivityLog>();
         StartCoroutine(SpawnUnit());
 
         // For debugging.
@@ -304,6 +306,9 @@ public class SFlock : MonoBehaviour
                 {
                     killedUnit.Consume();
                     _unitsCurrentHunger[i] += currentUnit.TotalHunger / 3;
+
+                    string message = currentUnit.UnitName + " consumed " + killedUnit.GetFoodName();
+                    SendMessage(MessageType.DEFAULT, message);
                 }
             }
 
@@ -311,7 +316,11 @@ public class SFlock : MonoBehaviour
             if (currentUnit.LifeSpan <= 0 || _unitsStarvingTimer[i] <= 0)
             {
                 UnitsToRemove.Add(currentUnit);
-                //print("Unit " + name + ", died: " + (currentUnit.LifeSpan <= 0) + " or starved: " + (_unitsStarvingTimer[i] <= 0));
+                if (_activityLog)
+                {
+                    string message = currentUnit.UnitName + " died of " +((currentUnit.LifeSpan <= 0) ? "died of old age." : "died of starvation");
+                    SendMessage(MessageType.DEATH, message);
+                }
             }
         }
 
@@ -366,7 +375,8 @@ public class SFlock : MonoBehaviour
         CreateUnit();
         AllocateNewValues();
         RefreshBatches();
-        //Debug.Log("Unit from flock: " + name + ", made: " + _totalUnitAmought);
+        string message = "A " + flockUnitPrefab.UnitName + " has spawned! (current number is " + _totalUnitAmought + ")";
+        SendMessage(MessageType.BIRTH, message);
     }
 
     private void CreateUnit()
@@ -449,7 +459,7 @@ public class SFlock : MonoBehaviour
 
         AllocateNewValues();
         RefreshBatches();
-
+        
         Destroy(unitToRemove.gameObject);
     }
 
@@ -555,5 +565,11 @@ public class SFlock : MonoBehaviour
                 SpawnNewUnit();
             }
         }
+    }
+
+    private void SendMessage(MessageType messageType, string message)
+    {
+        if (_activityLog)
+            _activityLog.SendMessage(messageType, message);
     }
 }

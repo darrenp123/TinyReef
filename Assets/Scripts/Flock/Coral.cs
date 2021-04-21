@@ -8,4 +8,6 @@ public class Coral : MonoBehaviour, IFood
     {
 
     }
+
+    public string GetFoodName() => "Coral";
 }

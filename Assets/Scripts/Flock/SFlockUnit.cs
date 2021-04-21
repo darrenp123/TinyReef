@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class SFlockUnit : MonoBehaviour, IFood
@@ -13,10 +14,11 @@ public class SFlockUnit : MonoBehaviour, IFood
     [SerializeField] private string unitType;
     [SerializeField] private string unitName;
     [SerializeField] private int size;
+    [SerializeField] private float[] fishScale = new float[10] { 1, 2.5f, 3.3f, 5.5f, 7.3f, 9.5f, 11.8f, 15.2f, 18, 21 };
+    [SerializeField] private ParticleSystem consumeEffectPrefab;
 
     public UnitEventSigniture OnUnitRemove;
     public UnitEventSigniture OnUnitTraitsValueChanged;
-
 
     private float _maxSpeed;
     private Vector3 _currentVelocity;
@@ -24,9 +26,9 @@ public class SFlockUnit : MonoBehaviour, IFood
     private float _sightDistance;
     private float _initialSize;
     private float _lifeSpan;
+    private ConsumablePool _consumablePool;
 
     public Transform MyTransform { get; set; }
-    public int CurrentWaypoint { get; set; }
     public Vector3[] Directions { get; set; }
 
     public int Size { get => size; set => size = value; }
@@ -44,7 +46,6 @@ public class SFlockUnit : MonoBehaviour, IFood
     public string UnitName { get => unitName; set => unitName = value; }
     public float LifeSpan { get => _lifeSpan; set => _lifeSpan = value; }
     public float InitialLifespan => initialLifespan;
-    private float[] fishScale = new float[10] { 1, 3, 5, 7, 9, 11, 13, 15, 17, 20 };
 
     public delegate void UnitEventSigniture(SFlockUnit unitToRemove);
 
@@ -71,6 +72,7 @@ public class SFlockUnit : MonoBehaviour, IFood
                 Directions[i] = new Vector3(x, y, z);
             }
         }
+
         ScaleFish();
     }
 
@@ -81,6 +83,8 @@ public class SFlockUnit : MonoBehaviour, IFood
         _currentVelocity = MyTransform.forward * speed;
         _initialSize = Size;
         _lifeSpan = initialLifespan;
+
+        _consumablePool = FindObjectOfType<ConsumablePool>();
     }
 
     public void SetMaxSpeed(int deltaValue)
@@ -105,7 +109,7 @@ public class SFlockUnit : MonoBehaviour, IFood
         Debug.Log(Vector3.one + scaleChange);
         MyTransform.localScale = Vector3.one + scaleChange;
         */
-       // MyTransform.localScale = new Vector3(fishScale[Size - 1], fishScale[Size - 1], fishScale[Size - 1]);
+        MyTransform.localScale = new Vector3(fishScale[Size - 1], fishScale[Size - 1], fishScale[Size - 1]);
     }
 
     private void RemoveUnit()
@@ -116,5 +120,26 @@ public class SFlockUnit : MonoBehaviour, IFood
     public void Consume()
     {
         RemoveUnit();
+
+        if (_consumablePool)
+            _consumablePool.StartCoroutine(ManageConsumableEffect());
+    }
+
+    public string GetFoodName() => unitName;
+
+    private IEnumerator ManageConsumableEffect()
+    {
+        if (!_consumablePool) yield break;
+
+        ParticleSystem consumeEffect = _consumablePool.GetItemFromPool(ItemPool.FOAM_BURST, consumeEffectPrefab)
+            .GetComponent<ParticleSystem>();
+
+        consumeEffect.transform.position = transform.position;
+        consumeEffect.gameObject.SetActive(true);
+        consumeEffect.Play();
+
+        yield return new WaitWhile(() => consumeEffect.isPlaying);
+
+        _consumablePool.ReturnToPool(ItemPool.FOAM_BURST, consumeEffect.gameObject);
     }
 }

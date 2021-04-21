@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 1394405576503156582}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.33, y: 0.33, z: 0.33}
   m_Children: []
   m_Father: {fileID: 5864435448639169652}
   m_RootOrder: 0
@@ -124,10 +124,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.1136758
-  m_Height: 0.48159218
+  m_Radius: 0.047603574
+  m_Height: 0.16179512
   m_Direction: 2
-  m_Center: {x: 0.0022999048, y: 0, z: -0.000834465}
+  m_Center: {x: 0.0008397214, y: 0.0049897917, z: -0.0011814758}
 --- !u!114 &941367559866431745
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -147,7 +147,18 @@ MonoBehaviour:
   hungerThreshold: 80
   initStarvingTimer: 100
   initialLifespan: 300
-  lifeSpan: 300
   unitType: Coral
   unitName: Emperor Angelfish
   size: 3
+  fishScale:
+  - 1
+  - 2.5
+  - 3.3
+  - 5.5
+  - 7.3
+  - 9.5
+  - 11.8
+  - 15.2
+  - 18
+  - 21
+  consumeEffectPrefab: {fileID: 2247388813125844722, guid: a5cb3ef1716dfa94da27fbf76aa9f5e4, type: 3}

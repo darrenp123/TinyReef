@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 2743587341446269914}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.048, y: 0.048, z: 0.048}
   m_Children: []
   m_Father: {fileID: 5824620424377067961}
   m_RootOrder: 0
@@ -124,10 +124,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.05717425
-  m_Height: 0.33828008
+  m_Radius: 0.014918097
+  m_Height: 0.1475977
   m_Direction: 2
-  m_Center: {x: -0.008913502, y: 0.0015441328, z: -0.038282096}
+  m_Center: {x: 0, y: -0.0011778539, z: -0.022767514}
 --- !u!114 &8647624575762173716
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -150,3 +150,15 @@ MonoBehaviour:
   unitType: 
   unitName: Bull Shark
   size: 10
+  fishScale:
+  - 1
+  - 2.2
+  - 3.3
+  - 5.5
+  - 7.3
+  - 9.3
+  - 11.12
+  - 15.2
+  - 18
+  - 20.8
+  consumeEffectPrefab: {fileID: 2247388813125844722, guid: a5cb3ef1716dfa94da27fbf76aa9f5e4, type: 3}
