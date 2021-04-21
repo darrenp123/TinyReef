@@ -7368,21 +7368,20 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Click and drag with the right mouse button to rotate, as well as using
-    WASD if preferred. The mouse wheel can be used to zoom in and out, as well page
-    up and page down. \r\n\r\nAs well as having this general overview mode, click
-    on fish to zoom into the individual fish in the tank and use the same controls
-    to zoom in and rotate around the fish. Fish can also be selected using a drop
-    down menu in the UI. When a fish is selected, a small UI menu will appear. Click
-    a plus or minus symbol to increase or decrease a stat using gene points. When
-    focused on a fish, press Q or E to quickly switch to another fish within the
-    species, press R to stop focusing.\r\n\r\nToggle between fixed camera mode and
-    a free cam mode where the camera can fly in and around the tank using WASD to
-    change direction and right mouse button to change camera angle. There are also
-    controls over simulation speed, for example press buttons at the bottom of the
-    screen to slow down, pause or speed up the game. These buttons also have hotkeys,
-    > to increase and < to decrease, with space to pause and unpause. The pause menu
-    is accessed with Esc.\r"
+  m_text: "Click and drag with the right mouse button to rotate. The mouse wheel
+    can be used to zoom in and out.\n\r\nAs well as having this general overview
+    mode, click on fish to zoom into the individual fish in the tank and use the
+    same controls to zoom in and rotate around the fish. Fish can also be selected
+    using a drop down menu in the UI. When a fish is selected, a small UI menu will
+    appear. Click a plus or minus symbol to increase or decrease a stat using gene
+    points. When focused on a fish, press Q or E to quickly switch to another fish
+    within the species, press R to stop focusing.\r\n\r\nToggle between fixed camera
+    mode and a free cam mode where the camera can fly in and around the tank using
+    WASD to change direction and right mouse button to change camera angle. There
+    are also controls over simulation speed, for example press buttons at the bottom
+    of the screen to slow down, pause or speed up the game. These buttons also have
+    hotkeys, > to increase and < to decrease, with space to pause and unpause. The
+    pause menu is accessed with Esc.\r"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

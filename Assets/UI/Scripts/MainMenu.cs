@@ -9,13 +9,7 @@ using UnityEngine.UI;
 public class MainMenu : MonoBehaviour
 {
     [SerializeField]
-    GameObject instructionsPage, optionsPage, creditsPage, mainMenuPage, gamemodeSelectionPage, challengeModeText, sandboxModeText, gamemodeSelectionPlayButton;
-     private GameModeBase _gameMode;
-
-    private void Awake()
-    {
-        _gameMode = FindObjectOfType<GameModeBase>();
-    }
+    GameObject instructionsPage, optionsPage, creditsPage, mainMenuPage, gamemodeSelectionPage, levelSelectionPage, challengeModeText, sandboxModeText, gamemodeSelectionNextButton, levelSelectionPlayButton;
 
     public void OpenInstructionsPage()
     {
@@ -71,20 +65,42 @@ public class MainMenu : MonoBehaviour
     {
         challengeModeText.SetActive(false);
         sandboxModeText.SetActive(true);
-        //TODO set game mode
-        gamemodeSelectionPlayButton.GetComponent<Button>().interactable = true;
-        if (_gameMode)
-            _gameMode.State = GameModeBase.GameModeSate.SANDBOX;
+        //TODO set gamemode
+        gamemodeSelectionNextButton.GetComponent<Button>().interactable = true;
     }
 
     public void SelectedChallengeMode()
     {
         sandboxModeText.SetActive(false);
         challengeModeText.SetActive(true);
-        //TODO set game mode
-        gamemodeSelectionPlayButton.GetComponent<Button>().interactable = true;
-        if (_gameMode)
-            _gameMode.State = GameModeBase.GameModeSate.CHALLENGE;
+        //TODO set gamemode
+        gamemodeSelectionNextButton.GetComponent<Button>().interactable = true;
+    }
+
+    #endregion
+
+    #region LevelSelection
+
+    public void OpenLevelSelectionPage()
+    {
+        gamemodeSelectionPage.SetActive(false);
+        levelSelectionPage.SetActive(true);
+    }
+
+    public void CloseLevelSelectionPage()
+    {
+        levelSelectionPage.SetActive(false);
+        gamemodeSelectionPage.SetActive(true);
+    }
+
+    public void SelectedLevel1()
+    {
+        levelSelectionPlayButton.GetComponent<Button>().interactable = true;
+    }
+
+    public void SelectedLevel2()
+    {
+        levelSelectionPlayButton.GetComponent<Button>().interactable = true;
     }
 
     #endregion
