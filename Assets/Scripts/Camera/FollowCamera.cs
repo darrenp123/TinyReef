@@ -7,15 +7,10 @@ using UnityEngine.InputSystem;
 
 public class FollowCamera : MonoBehaviour
 {
-    [SerializeField] InputAction tt;
     private CinemachineInputProvider InputProvider;
-    private CinemachineFreeLook FreeLookCamera;
+    private CinemachineFreeLook _FollowCamera;
     [SerializeField]
     private float ZoomSpeed = 5f;
-    [SerializeField]
-    private float ZoomInMax = 5f;
-    [SerializeField]
-    private float ZoomOutMax = 40f;
     [SerializeField]
     private float MaxZoomFishFocusMiddleRadious = 7f;
     [SerializeField]
@@ -38,49 +33,40 @@ public class FollowCamera : MonoBehaviour
     private GameObject Center;
     [SerializeField]
     private Player PlayerState;
-    [SerializeField]
-    //private InputActionAsset controls;
+    private bool isActive;
     bool FishInFocus;
     float FishZoomDifference, TankZoomDifference;
 
     private void Awake()
     {
         InputProvider = GetComponent<CinemachineInputProvider>();
-        FreeLookCamera = GetComponent<CinemachineFreeLook>();
+        _FollowCamera = GetComponent<CinemachineFreeLook>();
     }
 
     void Start()
     {
-        FreeLookCamera.m_Follow = Center.transform;
-        FreeLookCamera.m_LookAt = Center.transform;
+        isActive = true;
+        _FollowCamera.m_Follow = Center.transform;
+        _FollowCamera.m_LookAt = Center.transform;
         FishZoomDifference = (MaxZoomFishFocusTopBottomRadious - MinZoomFishFocusTopBottomRadious) / (MaxZoomFishFocusMiddleRadious - MinZoomFishFocusMiddleRadious);
         TankZoomDifference = (MaxZoomTankFocusTopBottomRadious - MinZoomTankFocusTopBottomRadious) / (MaxZoomTankFocusMiddleRadious - MinZoomTankFocusMiddleRadious);
         FishInFocus = false;
         FocusFish(false);
-
-        //Set actions
-        
     }
 
     void Update()
     {
-        //Zoom
-        if (EventSystem.current.IsPointerOverGameObject()) return;
-
-        float z = InputProvider.GetAxisValue(2);
-        if (z != 0) ZoomInZoomOut(z);
-    }
-
-    void ZoomScreen(float increment)
-    {
-        float FOV = FreeLookCamera.m_Lens.FieldOfView;
-        float target = Mathf.Clamp(FOV + increment, ZoomInMax, ZoomOutMax);
-        FreeLookCamera.m_Lens.FieldOfView = Mathf.Lerp(FOV, target, ZoomSpeed * Time.unscaledDeltaTime);
+        if (isActive) {
+            //Zoom
+            if (EventSystem.current.IsPointerOverGameObject()) return;
+            float z = InputProvider.GetAxisValue(2);
+            if (z != 0) ZoomInZoomOut(z);
+        }
     }
 
     public void OnLeftClick(InputAction.CallbackContext context)
     {
-        if (!PlayerState.IsUION() && context.performed && !EventSystem.current.IsPointerOverGameObject())
+        if (!PlayerState.IsUION() && isActive && context.performed && !EventSystem.current.IsPointerOverGameObject())
         {
             Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
             RaycastHit hit;
@@ -90,8 +76,8 @@ public class FollowCamera : MonoBehaviour
                 var fish = hit.transform.GetComponent<SFlockUnit>();
                 if (fish)
                 {
-                    FreeLookCamera.m_Follow = hit.transform;
-                    FreeLookCamera.m_LookAt = hit.transform;
+                    _FollowCamera.m_Follow = hit.transform;
+                    _FollowCamera.m_LookAt = hit.transform;
                     FocusFish(true);
                     PlayerState.IsLookingAtFishState(true, fish);
                 }
@@ -99,13 +85,20 @@ public class FollowCamera : MonoBehaviour
         }
     }
 
+    public void FollowFish(SFlockUnit fish) {
+        _FollowCamera.m_Follow = fish.MyTransform;
+        _FollowCamera.m_LookAt = fish.MyTransform;
+        FocusFish(true);
+        PlayerState.IsLookingAtFishState(true, fish);
+    }
+
     public void CycleLeft(InputAction.CallbackContext context)
     {
         if (context.performed)
         {
             SFlockUnit fish = PlayerState.GoToNextFishInFlock(true);
-            FreeLookCamera.m_Follow = fish.MyTransform;
-            FreeLookCamera.m_LookAt = fish.MyTransform;
+            _FollowCamera.m_Follow = fish.MyTransform;
+            _FollowCamera.m_LookAt = fish.MyTransform;
             FocusFish(true);
         }
     }
@@ -115,8 +108,8 @@ public class FollowCamera : MonoBehaviour
         if (context.performed)
         {
             SFlockUnit fish = PlayerState.GoToNextFishInFlock(false);
-            FreeLookCamera.m_Follow = fish.MyTransform;
-            FreeLookCamera.m_LookAt = fish.MyTransform;
+            _FollowCamera.m_Follow = fish.MyTransform;
+            _FollowCamera.m_LookAt = fish.MyTransform;
             FocusFish(true);
         }
     }
@@ -125,8 +118,8 @@ public class FollowCamera : MonoBehaviour
     {
         if (context.performed)
         {
-            FreeLookCamera.m_Follow = Center.transform;
-            FreeLookCamera.m_LookAt = Center.transform;
+            _FollowCamera.m_Follow = Center.transform;
+            _FollowCamera.m_LookAt = Center.transform;
             FocusFish(false);
             PlayerState.IsLookingAtFishState(false, null);
         }
@@ -134,20 +127,21 @@ public class FollowCamera : MonoBehaviour
 
     public void DisableEnableCameraInput(InputAction.CallbackContext context)
     {
-        if (context.performed)
-        {
-            InputProvider.XYAxis = AxisControl;
-        }
-        else if (context.canceled)
-        {
-            InputProvider.XYAxis = null;
+        if (isActive) {
+            if (context.performed) {
+                InputProvider.XYAxis = AxisControl;
+                Cursor.lockState = CursorLockMode.Locked;
+            } else if (context.canceled) {
+                InputProvider.XYAxis = null;
+                Cursor.lockState = CursorLockMode.None;
+            }
         }
     }
 
     public void ZoomInZoomOut(float increment)
     {
-        float topOrbit = FreeLookCamera.m_Orbits[0].m_Radius;
-        float middleOrbit = FreeLookCamera.m_Orbits[1].m_Radius;
+        float topOrbit = _FollowCamera.m_Orbits[0].m_Radius;
+        float middleOrbit = _FollowCamera.m_Orbits[1].m_Radius;
         float targetTop, targetMiddle;
         if (FishInFocus)
         {
@@ -159,26 +153,45 @@ public class FollowCamera : MonoBehaviour
             targetTop = Mathf.Clamp(topOrbit + (increment * TankZoomDifference), MinZoomTankFocusTopBottomRadious, MaxZoomTankFocusTopBottomRadious);
             targetMiddle = Mathf.Clamp(middleOrbit + (increment * TankZoomDifference), MinZoomTankFocusMiddleRadious, MaxZoomTankFocusMiddleRadious);
         }
-        FreeLookCamera.m_Orbits[0].m_Radius = Mathf.Lerp(topOrbit, targetTop, ZoomSpeed * Time.unscaledDeltaTime);
-        FreeLookCamera.m_Orbits[1].m_Radius = Mathf.Lerp(middleOrbit, targetMiddle, ZoomSpeed * Time.unscaledDeltaTime);
-        FreeLookCamera.m_Orbits[2].m_Radius = Mathf.Lerp(topOrbit, targetTop, ZoomSpeed * Time.unscaledDeltaTime);
+        _FollowCamera.m_Orbits[0].m_Radius = Mathf.Lerp(topOrbit, targetTop, ZoomSpeed * Time.unscaledDeltaTime);
+        _FollowCamera.m_Orbits[1].m_Radius = Mathf.Lerp(middleOrbit, targetMiddle, ZoomSpeed * Time.unscaledDeltaTime);
+        _FollowCamera.m_Orbits[2].m_Radius = Mathf.Lerp(topOrbit, targetTop, ZoomSpeed * Time.unscaledDeltaTime);
     }
 
     public void FocusFish(bool state)
     {
         if (state)
         {
-            FreeLookCamera.m_Orbits[0].m_Radius = MaxZoomFishFocusTopBottomRadious;
-            FreeLookCamera.m_Orbits[1].m_Radius = MaxZoomFishFocusMiddleRadious;
-            FreeLookCamera.m_Orbits[2].m_Radius = MaxZoomFishFocusTopBottomRadious;
+            _FollowCamera.m_Orbits[0].m_Radius = MaxZoomFishFocusTopBottomRadious;
+            _FollowCamera.m_Orbits[1].m_Radius = MaxZoomFishFocusMiddleRadious;
+            _FollowCamera.m_Orbits[2].m_Radius = MaxZoomFishFocusTopBottomRadious;
             FishInFocus = true;
         }
         else
         {
-            FreeLookCamera.m_Orbits[0].m_Radius = MaxZoomTankFocusTopBottomRadious;
-            FreeLookCamera.m_Orbits[1].m_Radius = MaxZoomTankFocusMiddleRadious;
-            FreeLookCamera.m_Orbits[2].m_Radius = MaxZoomTankFocusTopBottomRadious;
+            _FollowCamera.m_Orbits[0].m_Radius = MaxZoomTankFocusTopBottomRadious;
+            _FollowCamera.m_Orbits[1].m_Radius = MaxZoomTankFocusMiddleRadious;
+            _FollowCamera.m_Orbits[2].m_Radius = MaxZoomTankFocusTopBottomRadious;
             FishInFocus = false;
         }
+    }
+
+    public bool GetCurrentState() {
+        return isActive;
+    }
+
+    public void ChangeState(bool state) {
+        isActive = state;
+    }
+
+    //from 1 to 10
+    public void ChangeRotationSpeed(float speed) {
+        _FollowCamera.m_XAxis.m_MaxSpeed = speed;
+        _FollowCamera.m_YAxis.m_MaxSpeed = speed/0.01f;
+    }
+
+    //from 1 to 10
+    public void ChangeZoomSpeed(float speed) {
+        ZoomSpeed = speed;
     }
 }

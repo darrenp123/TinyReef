@@ -13,8 +13,10 @@ public class SpeciesOutliner : MonoBehaviour
     private SFlock[] _allFlocks;
     private List<SpeciesFishButton> buttons;
 
-    // refactor later
-    private CinemachineFreeLook _freeLookCamera;
+    [SerializeField]
+    private CinemachineSwitcher switcher;
+    [SerializeField]
+    private FollowCamera followCamera;
 
     void Awake()
     {
@@ -34,9 +36,6 @@ public class SpeciesOutliner : MonoBehaviour
             dropdownEvent.AddListener(FillSpiciesConteiner);
             dropdown.onValueChanged = dropdownEvent;
         }
-
-        // refactor later
-        _freeLookCamera = FindObjectOfType<CinemachineFreeLook>();
     }
 
     private void Start()
@@ -86,8 +85,7 @@ public class SpeciesOutliner : MonoBehaviour
             return;
         };
 
-        // refactor later
-        _freeLookCamera.m_Follow = currentFlock[buttonIndex].MyTransform;
-        _freeLookCamera.m_LookAt = currentFlock[buttonIndex].MyTransform;
+        if (switcher.freeCamera.GetCurrentState()) switcher.SwitchState();
+        followCamera.FollowFish(currentFlock[buttonIndex]);
     }
 }

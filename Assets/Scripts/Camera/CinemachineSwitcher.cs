@@ -7,7 +7,10 @@ public class CinemachineSwitcher : MonoBehaviour
     [SerializeField]
     private InputAction action;
     private Animator animator;
-    private bool followCamera = true;
+    [SerializeField]
+    private FollowCamera followCamera;
+    [SerializeField]
+    public FreeCamera freeCamera;
 
     private void Awake() {
         animator = GetComponent<Animator>();
@@ -26,17 +29,15 @@ public class CinemachineSwitcher : MonoBehaviour
         action.performed += _ => SwitchState();
     }
 
-    private void SwitchState() {
-        if (followCamera) {
+    public void SwitchState() {
+        if (followCamera.GetCurrentState()) {
             animator.Play("FreeCamera");
+            freeCamera.ChangeState(true);
+            followCamera.ChangeState(false);
         } else {
             animator.Play("FollowCamera");
+            followCamera.ChangeState(true);
+            freeCamera.ChangeState(false);
         }
-        followCamera = !followCamera;
-    }
-
-    void Update()
-    {
-        
     }
 }
