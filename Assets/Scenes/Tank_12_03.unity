@@ -16493,7 +16493,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 1
-  m_FollowOffset: {x: 0, y: 1, z: -12}
+  m_FollowOffset: {x: 0, y: 1, z: -11.28812}
   m_XDamping: 0.8
   m_YDamping: 0.8
   m_ZDamping: 0.8
@@ -17491,17 +17491,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: debb5fbc640d384418990bce00100007, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tt:
-    m_Name: Tt
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: e5e469ff-7b0b-4153-a906-5a6d8e482218
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings: []
   ZoomSpeed: 5
-  ZoomInMax: 5
-  ZoomOutMax: 40
   MaxZoomFishFocusMiddleRadious: 12
   MaxZoomFishFocusTopBottomRadious: 10
   MinZoomFishFocusMiddleRadious: 4
@@ -17513,7 +17503,6 @@ MonoBehaviour:
   AxisControl: {fileID: 1909632940283603487, guid: 318d648b9950e2b4f900d3c15495b2a2, type: 3}
   Center: {fileID: 1807053819}
   PlayerState: {fileID: 401919271}
-  FishInFocus: 0
 --- !u!114 &158109827
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17620,11 +17609,11 @@ MonoBehaviour:
   m_SplineCurvature: 0.343
   m_Orbits:
   - m_Height: 1.5
-    m_Radius: 10
+    m_Radius: 9.288116
   - m_Height: 1
-    m_Radius: 12
+    m_Radius: 11.28812
   - m_Height: -1.5
-    m_Radius: 10
+    m_Radius: 9.288116
   m_LegacyHeadingBias: 3.4028235e+38
   m_Rigs:
   - {fileID: 18997226}
@@ -23578,6 +23567,8 @@ MonoBehaviour:
   dropdown: {fileID: 2092183747}
   verticalLayoutGroup: {fileID: 4431572}
   spiciesButtonPrefab: {fileID: 555302376}
+  switcher: {fileID: 1761047835}
+  followCamera: {fileID: 158109826}
 --- !u!1 &357868591
 GameObject:
   m_ObjectHideFlags: 3
@@ -23651,7 +23642,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 1
-  m_FollowOffset: {x: 0, y: 1, z: -12}
+  m_FollowOffset: {x: 0, y: 1, z: -11.28812}
   m_XDamping: 0.8
   m_YDamping: 0.8
   m_ZDamping: 0.8
@@ -41156,7 +41147,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 1
-  m_FollowOffset: {x: 0, y: 1, z: -12}
+  m_FollowOffset: {x: 0, y: 1, z: -11.28812}
   m_XDamping: 0.8
   m_YDamping: 0.8
   m_ZDamping: 0.8
@@ -45510,6 +45501,8 @@ MonoBehaviour:
       m_Groups: 
       m_Action: Action
       m_Flags: 0
+  followCamera: {fileID: 158109826}
+  freeCamera: {fileID: 2015074623}
 --- !u!95 &1761047836
 Animator:
   serializedVersion: 3
@@ -47259,7 +47252,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerIndex: -1
-  XYAxis: {fileID: 869797871932361499, guid: 318d648b9950e2b4f900d3c15495b2a2, type: 3}
+  XYAxis: {fileID: 0}
   ZAxis: {fileID: 0}
 --- !u!114 &2015074623
 MonoBehaviour:
@@ -47274,54 +47267,89 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraSpeed: 15
-  action:
-    m_Name: Action
+  moveAction:
+    m_Name: Move
     m_Type: 0
     m_ExpectedControlType: 
-    m_Id: 2f86d811-cbbb-40a2-9b64-847417c19594
+    m_Id: bfdb3f5f-aabe-4b76-bb71-5bce0136aa1a
     m_Processors: 
     m_Interactions: 
     m_SingletonActionBindings:
     - m_Name: 2D Vector
-      m_Id: 9b67ffdb-941e-43b4-b4db-cec15fdae0cb
+      m_Id: 8c53d03c-a310-43d9-855f-17243ea6fc2c
       m_Path: 2DVector
       m_Interactions: 
       m_Processors: 
       m_Groups: 
-      m_Action: Action
+      m_Action: Move
       m_Flags: 4
     - m_Name: up
-      m_Id: 02f891f6-cf40-4835-8bbf-b5b9790b6365
+      m_Id: c8a15326-1dbc-4243-9d4b-1a73d9d9a2e6
       m_Path: <Keyboard>/w
       m_Interactions: 
       m_Processors: 
       m_Groups: 
-      m_Action: Action
+      m_Action: Move
       m_Flags: 8
     - m_Name: down
-      m_Id: 4aef3ddc-40ea-42bd-b74c-4553b3148313
+      m_Id: 9d2ec4dd-cdb8-4d43-984b-4d1e64c6be13
       m_Path: <Keyboard>/s
       m_Interactions: 
       m_Processors: 
       m_Groups: 
-      m_Action: Action
+      m_Action: Move
       m_Flags: 8
     - m_Name: left
-      m_Id: 1a3aac0e-6654-4612-add6-4970b77e7f82
+      m_Id: 147eed55-3a07-4bca-8543-158f84d0e69c
       m_Path: <Keyboard>/a
       m_Interactions: 
       m_Processors: 
       m_Groups: 
-      m_Action: Action
+      m_Action: Move
       m_Flags: 8
     - m_Name: right
-      m_Id: a83ca5d5-4603-4648-9553-05d482797d9a
+      m_Id: ea79eeeb-7ae6-4bd5-b2e2-a65f5b83218b
       m_Path: <Keyboard>/d
       m_Interactions: 
       m_Processors: 
       m_Groups: 
-      m_Action: Action
+      m_Action: Move
       m_Flags: 8
+  rotateAction:
+    m_Name: Rotate
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 91ebf72f-a06a-4382-bf72-417e68bc3f1b
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: af536f3c-4eb3-438e-970c-09bf08622caa
+      m_Path: <Mouse>/rightButton
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Rotate
+      m_Flags: 0
+  leftClick:
+    m_Name: Left Click
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 99acdec2-1f07-4375-80c4-d4adda85831b
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: c2fbc7b3-5b80-4169-99f1-935432556375
+      m_Path: <Mouse>/leftButton
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Left Click
+      m_Flags: 0
+  AxisControl: {fileID: 869797871932361499, guid: 318d648b9950e2b4f900d3c15495b2a2, type: 3}
+  followCamera: {fileID: 158109826}
+  switcher: {fileID: 1761047835}
 --- !u!1 &2021182896
 GameObject:
   m_ObjectHideFlags: 0
