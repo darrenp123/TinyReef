@@ -405,7 +405,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3951a44e21a4fb74aa0923b5ce997cf8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isMuted: 0
+  videoMenu: {fileID: 0}
+  audioMenu: {fileID: 0}
+  gameplayMenu: {fileID: 0}
+  inputMenu: {fileID: 0}
 --- !u!4 &750441381
 Transform:
   m_ObjectHideFlags: 0
@@ -939,10 +942,6 @@ PrefabInstance:
     - target: {fileID: 2622303380541793876, guid: 385a7a0603e7c374cabadaf502fa0075, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3650085219156823633, guid: 385a7a0603e7c374cabadaf502fa0075, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -18.332764
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 385a7a0603e7c374cabadaf502fa0075, type: 3}
