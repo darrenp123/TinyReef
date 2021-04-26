@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class FlockDebuger : MonoBehaviour
 {
-
     [SerializeField] bool active = false;
     [SerializeField] int unitIndex;
     [SerializeField] LayerMask mask;
@@ -30,16 +29,18 @@ public class FlockDebuger : MonoBehaviour
         {
             SFlockUnit chosen = _allUnits[unitIndex];
             CapsuleCollider capsule = chosen.GetComponent<CapsuleCollider>();
-            float shereCastRadious = capsule.radius * chosen.transform.localScale.x;
-            shereCastRadious += shereCastRadious * 0.25f;
+            float sphereCastRadious = capsule.radius * chosen.transform.localScale.x;
+
+            print("radius: " + sphereCastRadious);
+            // shereCastRadious += shereCastRadious * 0.25f;
             //print("radios: " + shereCastRadious + " name: " + chosen.name);
             // print("dist at one: " + (_obstacleDistance / chosen.transform.localScale.x) + " name: " + chosen.name);
-            print("dist: " + (_obstacleDistance * chosen.transform.localScale.x) + " name: " + chosen.name);
+            // print("dist: " + (_obstacleDistance * chosen.transform.localScale.x) + " name: " + chosen.name);
 
             Gizmos.color = Color.green;
-            Gizmos.DrawWireSphere(chosen.MyTransform.position + chosen.MyTransform.forward * chosen.KillBoxDistance * chosen.transform.localScale.x, shereCastRadious * 0.5f);
+            Gizmos.DrawWireSphere(chosen.MyTransform.position + chosen.MyTransform.forward * chosen.KillBoxDistance * chosen.transform.localScale.x, sphereCastRadious * 0.5f);
             Gizmos.color = Color.yellow;
-            Gizmos.DrawWireSphere(chosen.MyTransform.position + chosen.MyTransform.forward * _obstacleDistance * 0.85f * chosen.transform.localScale.x, shereCastRadious);
+            Gizmos.DrawWireSphere(chosen.MyTransform.position + chosen.MyTransform.forward * _obstacleDistance * 0.85f * chosen.transform.localScale.x, sphereCastRadious);
             Gizmos.color = Color.red;
             for (int i = 0; i < chosen.Directions.Length; i++)
             {
@@ -47,7 +48,7 @@ public class FlockDebuger : MonoBehaviour
                 float angle = Vector3.Angle(chosen.transform.forward, math.normalize(dir));
 
                 if (angle <= chosen.FOVAngle)
-                    Gizmos.DrawWireSphere(chosen.MyTransform.position + dir * _obstacleDistance * chosen.transform.localScale.x, shereCastRadious);
+                    Gizmos.DrawWireSphere(chosen.MyTransform.position + dir * _obstacleDistance * chosen.transform.localScale.x, sphereCastRadious);
             }
 
             /*

@@ -241,12 +241,16 @@ public class Player : MonoBehaviour
         ParticleSystem bubbleEffect = _consumablePool.GetItemFromPool(ItemPool.BUBBLES_BURST, bubblesPrefab)
             .GetComponent<ParticleSystem>();
 
-        bubbleEffect.transform.position = CurrentFish.transform.position;
-        bubbleEffect.transform.parent = CurrentFish.transform;
         bubbleEffect.gameObject.SetActive(true);
         bubbleEffect.Play();
 
-        yield return new WaitWhile(() => bubbleEffect.isPlaying);
+        yield return new WaitWhile(() =>
+        {
+            if (CurrentFish)
+                bubbleEffect.transform.position = CurrentFish.transform.position;
+
+            return bubbleEffect.isPlaying;
+        });
 
         _consumablePool.ReturnToPool(ItemPool.BUBBLES_BURST, bubbleEffect.gameObject);
     }

@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class SFlockUnit : MonoBehaviour, IFood
@@ -16,6 +17,7 @@ public class SFlockUnit : MonoBehaviour, IFood
     [SerializeField] private int size;
     [SerializeField] private float[] fishScale = new float[10] { 1, 2.5f, 3.3f, 5.5f, 7.3f, 9.5f, 11.8f, 15.2f, 18, 21 };
     [SerializeField] private ParticleSystem consumeEffectPrefab;
+    [SerializeField] private Material referenceMat;
 
     public UnitEventSigniture OnUnitRemove;
     public UnitEventSigniture OnUnitTraitsValueChanged;
@@ -24,9 +26,14 @@ public class SFlockUnit : MonoBehaviour, IFood
     private Vector3 _currentVelocity;
     private float _currrentHunger;
     private float _sightDistance;
-    private float _initialSize;
     private float _lifeSpan;
     private ConsumablePool _consumablePool;
+    private Material _fishMat;
+    private Dictionary<int, string> _sizeToLayerDic;
+    private LayerMask _predatorMask;
+    private LayerMask _preyMask;
+    private List<string> _predatorLayerNames;
+    private List<string> _preyLayerNames;
 
     public Transform MyTransform { get; set; }
     public Vector3[] Directions { get; set; }
@@ -46,6 +53,9 @@ public class SFlockUnit : MonoBehaviour, IFood
     public string UnitName { get => unitName; set => unitName = value; }
     public float LifeSpan { get => _lifeSpan; set => _lifeSpan = value; }
     public float InitialLifespan => initialLifespan;
+
+    public LayerMask PredatorMask => _predatorMask;
+    public LayerMask PreyMask => _preyMask;
 
     public delegate void UnitEventSigniture(SFlockUnit unitToRemove);
 
@@ -73,7 +83,22 @@ public class SFlockUnit : MonoBehaviour, IFood
             }
         }
 
-        ScaleFish();
+        _sizeToLayerDic = new Dictionary<int, string>(10)
+        {
+            {1, "Sise_1" },
+            {2, "Sise_2" },
+            {3, "Sise_3" },
+            {4, "Sise_4" },
+            {5, "Sise_5" },
+            {6, "Sise_6" },
+            {7, "Sise_7" },
+            {8, "Sise_8" },
+            {9, "Sise_9" },
+            {10, "Sise_10" },
+        };
+
+        _predatorLayerNames = new List<string>(10);
+        _preyLayerNames = new List<string>(10);
     }
 
     public void Initialize(float speed, float sightDistance)
@@ -81,10 +106,12 @@ public class SFlockUnit : MonoBehaviour, IFood
         _maxSpeed = speed;
         _sightDistance = sightDistance;
         _currentVelocity = MyTransform.forward * speed;
-        _initialSize = Size;
         _lifeSpan = initialLifespan;
 
         _consumablePool = FindObjectOfType<ConsumablePool>();
+        _fishMat = GetComponentInChildren<MeshRenderer>().material;
+
+        ScaleFish();
     }
 
     public void SetMaxSpeed(int deltaValue)
@@ -101,15 +128,53 @@ public class SFlockUnit : MonoBehaviour, IFood
 
     public void ScaleFish()
     {
-        /*
-        Debug.Log(Size);
-        float sizeChange = (Size - _initialSize) / 10f;
-        Debug.Log(sizeChange);
-        Vector3 scaleChange = new Vector3(sizeChange, sizeChange, sizeChange);
-        Debug.Log(Vector3.one + scaleChange);
-        MyTransform.localScale = Vector3.one + scaleChange;
-        */
-        MyTransform.localScale = new Vector3(fishScale[Size - 1], fishScale[Size - 1], fishScale[Size - 1]);
+        _predatorLayerNames.Clear();
+        _preyLayerNames.Clear();
+
+        // Testing
+        //size = Random.Range(0, 10);
+        //float fishSize = fishScale[size];
+        float fishSize = fishScale[Size - 1];
+        MyTransform.localScale = new Vector3(fishSize, fishSize, fishSize);
+
+        if (_fishMat)
+        {
+            float divisor;
+            if (size <= 3)
+                divisor = 1;
+            else if (size <= 7)
+                divisor = 1.5f;
+            else
+                divisor = 2;
+
+            _fishMat.SetFloat("_TimeScale", referenceMat.GetFloat("_TimeScale") / divisor);
+        }
+
+        int predatorMinSize = size + 1;
+        int preyMinSize = size - 1;
+        foreach (KeyValuePair<int, string> sizeToLayer in _sizeToLayerDic)
+        {
+            if (predatorMinSize < sizeToLayer.Key /*&& sizeToLayer.Key - size < 9*/)
+            {
+                _predatorLayerNames.Add(sizeToLayer.Value);
+            }
+
+            if (preyMinSize > sizeToLayer.Key && size - sizeToLayer.Key < 8)
+            {
+                _preyLayerNames.Add(sizeToLayer.Value);
+            }
+        }
+
+        if (size <= 3)
+        {
+            _preyLayerNames.Add("Coral");
+        }
+
+        gameObject.layer = LayerMask.NameToLayer(_sizeToLayerDic[size]);
+        _predatorMask = LayerMask.GetMask(_predatorLayerNames.ToArray());
+        _preyMask = LayerMask.GetMask(_preyLayerNames.ToArray());
+
+        OnUnitTraitsValueChanged?.Invoke(this);
     }
 
     private void RemoveUnit()

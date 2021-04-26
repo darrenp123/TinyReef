@@ -3,7 +3,6 @@ using UnityEngine.InputSystem;
 
 public class CinemachineSwitcher : MonoBehaviour
 {
-
     [SerializeField]
     private InputAction action;
     private Animator animator;
@@ -33,10 +32,5 @@ public class CinemachineSwitcher : MonoBehaviour
             animator.Play("FollowCamera");
         }
         followCamera = !followCamera;
-    }
-
-    void Update()
-    {
-        
     }
 }

@@ -199,7 +199,7 @@ Material:
     - _SwimmingScale: 12.7
     - _SwimmingSpeed: 2
     - _Threshold: 13
-    - _TimeScale: 2.5
+    - _TimeScale: 3.8
     - _TranslationAmount: 2.16
     - _WaveBody: 0.3
     - _WaveDensity: 0.375

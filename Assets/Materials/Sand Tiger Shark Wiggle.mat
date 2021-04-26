@@ -172,7 +172,7 @@ Material:
     - _IntensityOc: 1
     - _IntensityRef: 0.8
     - _MaskOffset: 0.375
-    - _Metallic: 0.3
+    - _Metallic: 0.37
     - _Mode: 0
     - _MoveOffset: 0
     - _OcclusionMapUv: 1
@@ -200,7 +200,7 @@ Material:
     - _SwimmingScale: 12.7
     - _SwimmingSpeed: 2
     - _Threshold: 13
-    - _TimeScale: 3
+    - _TimeScale: 6
     - _TranslationAmount: 2.16
     - _UVSec: 0
     - _WaveBody: 0.3
@@ -222,7 +222,7 @@ Material:
     - Vector2_aaf7918881c44737a168d21d1840ad7c: {r: 0.5, g: 0.5, b: 0, a: 0}
     - Vector2_df3bdbf2d6b94b788466890e9fa2aed9: {r: 0, g: 0, b: 0, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
-    - _Color: {r: 0.8207547, g: 0.8207547, b: 0.8207547, a: 1}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _ReflectColor: {r: 1, g: 1, b: 1, a: 0.5}
     - _SpecColor: {r: 1, g: 1, b: 1, a: 1}

@@ -4,6 +4,13 @@ using Unity.Collections;
 using Unity.Burst;
 using Unity.Mathematics;
 
+public struct PreyInfo
+{
+    public int size;
+    public float3 impactPoint;
+    public float distance;
+}
+
 [BurstCompile]
 public struct MoveFlockJob : IJobParallelFor
 {
@@ -17,6 +24,10 @@ public struct MoveFlockJob : IJobParallelFor
     public NativeArray<int> UnitsCurrentWaypoints;
 
     [ReadOnly]
+    public NativeArray<float> UnitsScales;
+    [ReadOnly]
+    public NativeArray<int> UnitsSizes;
+    [ReadOnly]
     public NativeArray<float> UnitsMaxSpeed;
     [ReadOnly]
     public NativeArray<float> UnitsSightDistance;
@@ -28,6 +39,8 @@ public struct MoveFlockJob : IJobParallelFor
     public NativeArray<RaycastHit> UnitsPredatorsResults;
     [ReadOnly]
     public NativeArray<RaycastHit> UnitsPreyResults;
+    [ReadOnly]
+    public NativeArray<PreyInfo> UnitsPreyInfo;
     [ReadOnly]
     public NativeArray<RaycastHit> UnitsPredatorPreyObtacleResults;
     [ReadOnly]
@@ -59,6 +72,7 @@ public struct MoveFlockJob : IJobParallelFor
     public float MinSpeed;
     public float DeltaTime;
     public float HungerThreshold;
+    public float SphereCastRadius;
     public NativeArray<Unity.Mathematics.Random> RandomRef;
 
     // for testing between 
@@ -76,6 +90,9 @@ public struct MoveFlockJob : IJobParallelFor
             { UnitsCurrentWaypoints[index], 1 }
         };
 
+        float t1 = CohesionDistance * UnitsScales[index];
+        float t3 = AligementDistance * UnitsScales[index];
+
         for (int i = 0; i < UnitsPositions.Length; i++)
         {
             float3 currentNeighbourPosition = UnitsPositions[i];
@@ -84,8 +101,29 @@ public struct MoveFlockJob : IJobParallelFor
             {
                 float3 offset = currentNeighbourPosition - currentUnitPosition;
                 float currentDistanceToNeighbourSqr = offset.x * offset.x + offset.y * offset.y + offset.z * offset.z;
+    
+                // work more on flock relation when fishes are different sizes
+                float t2;
+                if (UnitsScales[index] > UnitsScales[i])
+                {
+                    t2 = (AvoidanceDistance * UnitsScales[i]) + (SphereCastRadius * UnitsScales[i]);
+                }
+                else
+                {
+                    t2 = AvoidanceDistance * UnitsScales[i];
+                }
 
-                if (currentDistanceToNeighbourSqr <= CohesionDistance * CohesionDistance)
+                if(t1 > 9)
+                {
+                    t1 = t2 + 1;
+                }
+
+                if(t3 > 9)
+                {
+                    t3 = t2 + 1;
+                }
+                    
+                if (currentDistanceToNeighbourSqr <= t1 * t1)
                 {
                     cohesionNeighbours++;
                     cohesionVector += currentNeighbourPosition;
@@ -101,12 +139,12 @@ public struct MoveFlockJob : IJobParallelFor
                         neighbourWaypointFrquency.Add(neighbourCurrentWaypoint, 1);
                     }
                 }
-                if (currentDistanceToNeighbourSqr <= AvoidanceDistance * AvoidanceDistance)
+                if (currentDistanceToNeighbourSqr <= t2 * t2)
                 {
                     float dist = math.max(currentDistanceToNeighbourSqr, 0.000001f);
                     avoidanceVector += (currentUnitPosition - currentNeighbourPosition) / dist;
                 }
-                if (currentDistanceToNeighbourSqr <= AligementDistance * AligementDistance)
+                if (currentDistanceToNeighbourSqr <= t3 * t3)
                 {
                     alignmnentVector += UnitsForwardDirections[i];
                 }
@@ -123,7 +161,14 @@ public struct MoveFlockJob : IJobParallelFor
         var distancetoObstacle = UnitsObstacleResults[index].distance;
         if (distancetoObstacle > 0)
         {
-            float distancePercentage = 1 - distancetoObstacle / ObstacleDistance;
+            if (UnitsSizes[index] <= 3)
+                ObstacleAvoidanceWeight = 30;
+            else if (UnitsSizes[index] <= 6)
+                ObstacleAvoidanceWeight = 20;
+            else
+                ObstacleAvoidanceWeight = 10;
+
+            float distancePercentage = 1 - distancetoObstacle / (ObstacleDistance * UnitsScales[index]);
             obstacleAvoidanceVector = SteerTowards(AvoidObstacleDirection(index), index)
                 * ObstacleAvoidanceWeight * distancePercentage;
         }
@@ -188,12 +233,12 @@ public struct MoveFlockJob : IJobParallelFor
             alignmnentVector = float3.zero;
         }
 
-        if(!obstacleAvoidanceVector.Equals(float3.zero))
+        if (!obstacleAvoidanceVector.Equals(float3.zero))
         {
             predatorAvoidanceVector = float3.zero;
         }
 
-        float3 acceleration =  cohesionVector + avoidanceVector + alignmnentVector + boundsVector + obstacleAvoidanceVector
+        float3 acceleration = cohesionVector + avoidanceVector + alignmnentVector + boundsVector + obstacleAvoidanceVector
             + predatorAvoidanceVector + preyPersuitVector + waypointVector;
 
         float3 currVel = UnitsCurrentVelocities[index] + (acceleration * DeltaTime);
@@ -306,18 +351,21 @@ public struct MoveFlockJob : IJobParallelFor
     {
         // test with calculating prey future position
         float minDistance = float.MaxValue;
+        int maxSize = -1;
         float3 closestPrey = float3.zero;
         float targetDist = 0;
-        int particion = UnitsPreyResults.Length / UnitsPositions.Length;
+        int particion = UnitsPreyInfo.Length / UnitsPositions.Length;
         persuitDir = UnitsForwardDirections[index];
 
         for (int i = particion * index; i < particion * (index + 1); i++)
         {
-            RaycastHit currentCheck = UnitsPreyResults[i];
+            PreyInfo currentCheck = UnitsPreyInfo[i];
             float distanceTotarget = currentCheck.distance;
-            float3 targetPosition = currentCheck.point;
+            int preySize = currentCheck.size;
+            float3 targetPosition = currentCheck.impactPoint;
+
             if (IsInFov(index, targetPosition) && UnitsPredatorPreyObtacleResults[i].distance == 0 && distanceTotarget > 0
-                && distanceTotarget < minDistance)
+                && distanceTotarget < minDistance && preySize >= maxSize)
             {
                 minDistance = distanceTotarget;
                 closestPrey = targetPosition;
