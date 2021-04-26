@@ -645,4 +645,46 @@ public class SFlock : MonoBehaviour
         if (_activityLog)
             _activityLog.SendMessage(messageType, message);
     }
+
+    /*
+    private void RandomUpgrade() {
+        int upgradeChance = Random.Range(0, 10);
+        if(upgradeChance > 5) {
+            int change = Random.Range(1, 2);
+            int trait = Random.Range(1, 5);
+            switch (trait) {
+                //Lifespan
+                case 1:
+                    //
+                    break;
+                //Size
+                case 2:
+                    //
+                    break;
+                //Speed
+                case 3:
+                    //
+                    break;
+                //SensoryRadious
+                case 4:
+                    //
+                    break;
+                //Camouflage
+                case 5:
+                    //TODO
+                    break;
+                //MatingUrge
+                case 6:
+                    //
+                    break;
+                //GestationPeriod
+                case 7:
+                    //
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
+    */
 }
