@@ -66,7 +66,7 @@ MonoBehaviour:
   avoidanceDistance: 3.5
   aligementDistance: 4.5
   patrolWaypointDistance: 2.5
-  obstacleDistance: 3.5
+  obstacleDistance: 0.19
   initPredatorPreyDistance: 5.5
   boundsDistance: 20
   cohesionWeight: 1

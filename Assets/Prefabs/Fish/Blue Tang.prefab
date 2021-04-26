@@ -61,7 +61,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fovAngle: 150
   numViewDirections: 100
-  killBoxDistance: 0.25
+  killBoxDistance: 0.1
   totalHunger: 120
   hungerThreshold: 80
   initStarvingTimer: 100
@@ -79,8 +79,9 @@ MonoBehaviour:
   - 11
   - 15.2
   - 18
-  - 21
+  - 20.5
   consumeEffectPrefab: {fileID: 2247388813125844722, guid: a5cb3ef1716dfa94da27fbf76aa9f5e4, type: 3}
+  referenceMat: {fileID: 2100000, guid: eb329099a3721a542aaef68e4a64392d, type: 2}
 --- !u!1 &8993257759797522282
 GameObject:
   m_ObjectHideFlags: 0

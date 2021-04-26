@@ -63,10 +63,10 @@ MonoBehaviour:
   initMaxSpeed: 4
   maxSteerForce: 2.5
   cohesionDistance: 6
-  avoidanceDistance: 2.5
+  avoidanceDistance: 0.22
   aligementDistance: 6
   patrolWaypointDistance: 2.5
-  obstacleDistance: 3.2
+  obstacleDistance: 0.19
   initPredatorPreyDistance: 7.5
   boundsDistance: 15
   cohesionWeight: 1

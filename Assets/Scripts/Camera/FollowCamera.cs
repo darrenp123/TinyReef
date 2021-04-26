@@ -70,7 +70,9 @@ public class FollowCamera : MonoBehaviour
         {
             Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
             RaycastHit hit;
-            int layer_mask = LayerMask.GetMask("Tier1", "Tier2", "Tier3");
+            int layer_mask = LayerMask.GetMask("Tier1", "Tier2", "Tier3",
+                "Sise_1", "Sise_2", "Sise_3", "Sise_4", "Sise_5", "Sise_6", "Sise_7", "Sise_8", "Sise_9", "Sise_10");
+          
             if (Physics.SphereCast(ray, 0.1f, out hit, Mathf.Infinity, layer_mask))
             {
                 var fish = hit.transform.GetComponent<SFlockUnit>();

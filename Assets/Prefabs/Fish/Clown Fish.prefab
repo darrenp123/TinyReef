@@ -145,8 +145,8 @@ MonoBehaviour:
   killBoxDistance: 0.08
   totalHunger: 120
   hungerThreshold: 80
-  initStarvingTimer: 100
-  initialLifespan: 300
+  initStarvingTimer: 200
+  initialLifespan: 500
   unitType: Coral
   unitName: Clown Fish
   size: 1
@@ -160,5 +160,6 @@ MonoBehaviour:
   - 11.8
   - 15.2
   - 18
-  - 21
+  - 20.5
   consumeEffectPrefab: {fileID: 2247388813125844722, guid: a5cb3ef1716dfa94da27fbf76aa9f5e4, type: 3}
+  referenceMat: {fileID: 2100000, guid: 93a571a2d9508604faa6d5abbf338ae3, type: 2}

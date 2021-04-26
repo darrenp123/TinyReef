@@ -29,7 +29,6 @@ public class ConsumablePool : MonoBehaviour
 
     public void ReturnToPool(ItemPool ItemClass, GameObject objToreturn)
     {
-        print("returned to queue: " + ItemClass);
         objToreturn.transform.parent = null;
         AddToQueue(ItemClass, objToreturn);
     }
