@@ -9,29 +9,34 @@ using UnityEngine;
 
 public class OptionsMenu : MonoBehaviour
 {
-    public bool isMuted;
-    // Start is called before the first frame update
-    void Start()
+    public GameObject videoMenu, audioMenu, gameplayMenu, inputMenu;
+
+    public void VideoOptions()
     {
-        
+        CloseMenus();
+        videoMenu.SetActive(true);
+    }
+    public void AudioOptions()
+    {
+        CloseMenus();
+        audioMenu.SetActive(true);
+    }
+    public void GameplayOptions()
+    {
+        CloseMenus();
+        gameplayMenu.SetActive(true);
+    }
+    public void InputOptions()
+    {
+        CloseMenus();
+        inputMenu.SetActive(true);
     }
 
-    // Update is called once per frame
-    void Update()
+    void CloseMenus()
     {
-        
-    }
-
-    public void ToggleMuteAudio()
-    {
-        if(isMuted == true)
-        {
-            isMuted = false;
-            AudioListener.volume = 1;
-        }else if(isMuted == false)
-        {
-            isMuted = true;
-            AudioListener.volume = 0;
-        }
+        videoMenu.SetActive(false);
+        audioMenu.SetActive(false);
+        gameplayMenu.SetActive(false);
+        inputMenu.SetActive(false);
     }
 }

@@ -8,6 +8,14 @@ using UnityEngine.SceneManagement;
 
 public class SceneController : MonoBehaviour
 {
+
+    OptionsManager optionsManager;
+
+    private void Start()
+    {
+        optionsManager = GameObject.FindGameObjectWithTag("OptionsManager").GetComponent<OptionsManager>();
+    }
+
     public void ResetLevel()
     {
         Scene scene = SceneManager.GetActiveScene();
@@ -18,6 +26,7 @@ public class SceneController : MonoBehaviour
     public void LoadLevel(string level)
     {
         SceneManager.LoadSceneAsync(level);
+        optionsManager.InitialiseCameras();
     }
 
     public void LoadMainMenu()
