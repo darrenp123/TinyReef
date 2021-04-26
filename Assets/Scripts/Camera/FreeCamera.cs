@@ -40,7 +40,7 @@ public class FreeCamera : MonoBehaviour
         leftClick.Disable();
     }
 
-    void Start()
+    void Awake()
     {
         isActive = false;
         speed = 0f;
@@ -50,7 +50,7 @@ public class FreeCamera : MonoBehaviour
         rotateAction.canceled += _ => DisableRotation();
         leftClick.performed += _ => OnLeftClick();
         InputProvider = GetComponent<CinemachineInputProvider>();
-        _FreeLookCamera = GetComponent<CinemachineVirtualCamera>().GetComponent<CinemachinePOV>();
+        _FreeLookCamera = GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachinePOV>();
     }
 
     void Update()
@@ -108,13 +108,14 @@ public class FreeCamera : MonoBehaviour
 
     //from 100 to 300
     public void ChangeRotationSpeed(float speed) {
+        print("Free rotation" + speed);
         _FreeLookCamera.m_VerticalAxis.m_MaxSpeed = speed;
         _FreeLookCamera.m_HorizontalAxis.m_MaxSpeed = speed;
-        Debug.Log(_FreeLookCamera.m_VerticalAxis.m_MaxSpeed);
     }
 
     //from 10 to 30
     public void ChangeCameraSpeed(float speed) {
+        print("Free speed" + speed);
         cameraSpeed = speed;
     }
 }

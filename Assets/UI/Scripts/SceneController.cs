@@ -13,7 +13,8 @@ public class SceneController : MonoBehaviour
 
     private void Start()
     {
-        optionsManager = GameObject.FindGameObjectWithTag("OptionsManager").GetComponent<OptionsManager>();
+        optionsManager = FindObjectOfType<OptionsManager>();
+        if(optionsManager) optionsManager.InitialiseCameras();
     }
 
     public void ResetLevel()
@@ -26,7 +27,6 @@ public class SceneController : MonoBehaviour
     public void LoadLevel(string level)
     {
         SceneManager.LoadSceneAsync(level);
-        optionsManager.InitialiseCameras();
     }
 
     public void LoadMainMenu()

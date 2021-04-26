@@ -12,7 +12,7 @@ public class FishStatsUI : MonoBehaviour
     [SerializeField]
     GameObject FishStats;
     [SerializeField]
-    TMP_Text FishName;
+    TMP_InputField FishName;
     [SerializeField]
     TMP_Text Fishtype;
     [SerializeField]

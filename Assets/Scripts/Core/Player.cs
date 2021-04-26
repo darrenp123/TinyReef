@@ -14,7 +14,7 @@ public class Player : MonoBehaviour
     [SerializeField] int GenePoints;
     [SerializeField] int TraitCost;
     bool UION;
-    public GameObject WinText;
+    //public GameObject WinText;
     private GameModeBase _gameMode;
     private ConsumablePool _consumablePool;
 
@@ -24,7 +24,7 @@ public class Player : MonoBehaviour
         CurrentFishFlockCount = 0;
         FishStats.UpdateGenePoints(GenePoints);
         UION = false;
-        WinText.SetActive(false);
+        //WinText.SetActive(false);
         _gameMode = FindObjectOfType<GameModeBase>();
         if (_gameMode && _gameMode.State == GameModeBase.GameModeSate.SANDBOX)
             InvokeRepeating(nameof(SanboxMode), 1, 1);
@@ -44,8 +44,8 @@ public class Player : MonoBehaviour
 
     public void YouWin()
     {
-        if (_gameMode && _gameMode.ObjectiveComplete())
-            WinText.SetActive(true);
+       // if (_gameMode && _gameMode.ObjectiveComplete())
+            //WinText.SetActive(true);
     }
 
     public SFlockUnit GoToNextFishInFlock(bool dir)
@@ -145,7 +145,6 @@ public class Player : MonoBehaviour
             {
                 //Lifespan
                 case 1:
-                    //TODO
                     float lifespan = CurrentFish.InitialLifespan / 60;
                     if (value > 0 && lifespan >= 1 && lifespan < 10 ||
                         value < 0 && lifespan > 1 && lifespan <= 10)
@@ -188,22 +187,14 @@ public class Player : MonoBehaviour
                 //Camouflage
                 case 5:
                     //TODO
-                    /*
-                    float camouflage = CurrentFish.GetCamouflage();
-                    if (value > 0 && camouflage >= 1 && camouflage < 10 ||
-                        value < 0 && camouflage > 1 && camouflage <= 10) {
-                        CurrentFish.SetCamouflage(value);
-                        UpdateGenePoints(-TraitCost);
-                    }
-                    */
                     break;
                 //MatingUrge
                 case 6:
-
+                    //
                     break;
                 //GestationPeriod
                 case 7:
-
+                    //
                     break;
                 default:
                     break;

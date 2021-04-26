@@ -188,12 +188,14 @@ public class FollowCamera : MonoBehaviour
 
     //from 1 to 10
     public void ChangeRotationSpeed(float speed) {
+        print("follow speed" + speed);
         _FollowCamera.m_XAxis.m_MaxSpeed = speed;
         _FollowCamera.m_YAxis.m_MaxSpeed = speed/0.01f;
     }
 
     //from 1 to 10
     public void ChangeZoomSpeed(float speed) {
+        print("follow zoom" + speed);
         ZoomSpeed = speed;
     }
 }
