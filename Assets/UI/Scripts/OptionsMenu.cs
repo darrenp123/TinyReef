@@ -9,8 +9,7 @@ using UnityEngine;
 
 public class OptionsMenu : MonoBehaviour
 {
-    [SerializeField]
-    GameObject videoMenu, audioMenu, gameplayMenu, inputMenu;
+    public GameObject videoMenu, audioMenu, gameplayMenu, inputMenu;
 
     public void VideoOptions()
     {

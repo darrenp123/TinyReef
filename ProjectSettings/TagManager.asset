@@ -10,6 +10,9 @@ TagManager:
   - Fish
   - test
   - OptionsManager
+  - OptionsMenu
+  - FreeCam
+  - FollowCam
   layers:
   - Default
   - TransparentFX

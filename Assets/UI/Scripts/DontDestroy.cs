@@ -10,7 +10,7 @@ public class DontDestroy : MonoBehaviour
     void Awake()
     {
         DontDestroy[] objs = FindObjectsOfType<DontDestroy>();
-        if (objs.Length > 1)
+        if (objs.Length > 2)
         {
             Destroy(gameObject);
         }

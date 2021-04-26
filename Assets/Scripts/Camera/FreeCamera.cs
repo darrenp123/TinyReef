@@ -110,6 +110,7 @@ public class FreeCamera : MonoBehaviour
     public void ChangeRotationSpeed(float speed) {
         _FreeLookCamera.m_VerticalAxis.m_MaxSpeed = speed;
         _FreeLookCamera.m_HorizontalAxis.m_MaxSpeed = speed;
+        Debug.Log(_FreeLookCamera.m_VerticalAxis.m_MaxSpeed);
     }
 
     //from 10 to 30
