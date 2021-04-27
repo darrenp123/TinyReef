@@ -1,20 +1,26 @@
 /*  
- *  AUTHOR: Jon Munro 
+ *  AUTHOR: Jon Munro & Tiago Guerra
  *  CREATED: 02/03/2021 
  */
 
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UISoundManager : MonoBehaviour
 {
     AudioSource source;
     [SerializeField]
+    Slider audioSlider;
+    [SerializeField]
     AudioClip[] clips;
     AudioClip soundToPlay;
+    bool muted;
 
-    private void Awake()
+    private void Start()
     {
         source = GetComponent<AudioSource>();
+        audioSlider.value = PlayerPrefs.GetFloat("AudioVolume");
+        muted = false;
     }
 
     public void PlaySound(string sound)
@@ -31,6 +37,26 @@ public class UISoundManager : MonoBehaviour
         {
             source.PlayOneShot(soundToPlay);
             soundToPlay = null;
+        }
+    }
+
+    public void AssignSlider(Slider newSlider) {
+        audioSlider = newSlider;
+    }
+
+    public void VolumeControl(float volume) {
+        source.volume = volume;
+        PlayerPrefs.SetFloat("AudioVolume", volume);
+        PlayerPrefs.Save();
+    }
+
+    public void Mute() {
+        if (muted) {
+            source.volume = PlayerPrefs.GetFloat("AudioVolume");
+            muted = false;
+        } else {
+            source.volume = 0;
+            muted = true;
         }
     }
 }

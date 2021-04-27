@@ -646,12 +646,14 @@ public class SFlock : MonoBehaviour
             _activityLog.SendMessage(messageType, message);
     }
 
-    /*
+    
     private void RandomUpgrade() {
-        int upgradeChance = Random.Range(0, 10);
+        int upgradeChance = UnityEngine.Random.Range(0, 11);
         if(upgradeChance > 5) {
-            int change = Random.Range(1, 2);
-            int trait = Random.Range(1, 5);
+            int change = UnityEngine.Random.Range(1, 3);
+            if (change == 1) change = -1;
+            else change = 1;
+            int trait = UnityEngine.Random.Range(1, 5);
             switch (trait) {
                 //Lifespan
                 case 1:
@@ -686,5 +688,5 @@ public class SFlock : MonoBehaviour
             }
         }
     }
-    */
+   
 }

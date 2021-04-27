@@ -13,6 +13,7 @@ TagManager:
   - OptionsMenu
   - FreeCam
   - FollowCam
+  - AudioSlider
   layers:
   - Default
   - TransparentFX
