@@ -38,8 +38,6 @@ public struct MoveFlockJob : IJobParallelFor
     [ReadOnly]
     public NativeArray<RaycastHit> UnitsPredatorsResults;
     [ReadOnly]
-    public NativeArray<RaycastHit> UnitsPreyResults;
-    [ReadOnly]
     public NativeArray<PreyInfo> UnitsPreyInfo;
     [ReadOnly]
     public NativeArray<RaycastHit> UnitsPredatorPreyObtacleResults;
@@ -90,10 +88,11 @@ public struct MoveFlockJob : IJobParallelFor
             { UnitsCurrentWaypoints[index], 1 }
         };
 
-        float t1 = CohesionDistance * UnitsScales[index];
-        float t3 = AligementDistance * UnitsScales[index];
+        float scaledCohesion = CohesionDistance * UnitsScales[index];
+        float scaledAligement = AligementDistance * UnitsScales[index];
+        float scaledAvoidance;
 
-        for (int i = 0; i < UnitsPositions.Length; i++)
+        for (int i = 0; i < UnitsPositions.Length; ++i)
         {
             float3 currentNeighbourPosition = UnitsPositions[i];
 
@@ -101,29 +100,30 @@ public struct MoveFlockJob : IJobParallelFor
             {
                 float3 offset = currentNeighbourPosition - currentUnitPosition;
                 float currentDistanceToNeighbourSqr = offset.x * offset.x + offset.y * offset.y + offset.z * offset.z;
-    
-                // work more on flock relation when fishes are different sizes
-                float t2;
+
                 if (UnitsScales[index] > UnitsScales[i])
                 {
-                    t2 = (AvoidanceDistance * UnitsScales[i]) + (SphereCastRadius * UnitsScales[i]);
+                    scaledAvoidance = (AvoidanceDistance * UnitsScales[i]) + (SphereCastRadius * UnitsScales[i]);
+                }
+                else if (UnitsScales[index] == UnitsScales[i])
+                {
+                    scaledAvoidance = (AvoidanceDistance * UnitsScales[index]);
                 }
                 else
+                    scaledAvoidance = (AvoidanceDistance * UnitsScales[index]) + (SphereCastRadius * UnitsScales[i]);
+
+
+                if (scaledCohesion > 9)
                 {
-                    t2 = AvoidanceDistance * UnitsScales[i];
+                    scaledCohesion = scaledAvoidance + 1;
                 }
 
-                if(t1 > 9)
+                if (scaledAligement > 9)
                 {
-                    t1 = t2 + 1;
+                    scaledAligement = scaledAvoidance + 1;
                 }
 
-                if(t3 > 9)
-                {
-                    t3 = t2 + 1;
-                }
-                    
-                if (currentDistanceToNeighbourSqr <= t1 * t1)
+                if (currentDistanceToNeighbourSqr <= scaledCohesion * scaledCohesion)
                 {
                     cohesionNeighbours++;
                     cohesionVector += currentNeighbourPosition;
@@ -139,12 +139,12 @@ public struct MoveFlockJob : IJobParallelFor
                         neighbourWaypointFrquency.Add(neighbourCurrentWaypoint, 1);
                     }
                 }
-                if (currentDistanceToNeighbourSqr <= t2 * t2)
+                if (currentDistanceToNeighbourSqr <= scaledAvoidance * scaledAvoidance)
                 {
                     float dist = math.max(currentDistanceToNeighbourSqr, 0.000001f);
                     avoidanceVector += (currentUnitPosition - currentNeighbourPosition) / dist;
                 }
-                if (currentDistanceToNeighbourSqr <= t3 * t3)
+                if (currentDistanceToNeighbourSqr <= scaledAligement * scaledAligement)
                 {
                     alignmnentVector += UnitsForwardDirections[i];
                 }
@@ -258,7 +258,16 @@ public struct MoveFlockJob : IJobParallelFor
     {
         float3 dirToWaypoint = FlockWaypoints[waypointIndex] - neighboursCenter;
         float distanceSqr = dirToWaypoint.x * dirToWaypoint.x + dirToWaypoint.y * dirToWaypoint.y + dirToWaypoint.z * dirToWaypoint.z;
-        if (distanceSqr < PatrolWaypointDistance * PatrolWaypointDistance)
+        float patrolDistanceScaled;
+
+        if (UnitsSizes[index] <= 3)
+            patrolDistanceScaled = PatrolWaypointDistance;
+        else if (UnitsSizes[index] <= 7)
+            patrolDistanceScaled = PatrolWaypointDistance * 2.5f;
+        else
+            patrolDistanceScaled = PatrolWaypointDistance * 4;
+
+        if (distanceSqr < patrolDistanceScaled * patrolDistanceScaled)
         {
             Unity.Mathematics.Random random = RandomRef[index];
             waypointIndex = random.NextInt(0, FlockWaypoints.Length);

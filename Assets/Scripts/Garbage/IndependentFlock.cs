@@ -221,7 +221,7 @@ public class IndependentFlock : MonoBehaviour
             _unitsForwardDirections[i] = newUnit.MyTransform.forward;
             _unitsCurrentVelocities[i] = newUnit.CurrentVelocity;
             _unitsPositions[i] = newUnit.MyTransform.position;
-            _unitsHungerTimer[i] = newUnit.HungerThreshold;
+            _unitsHungerTimer[i] = newUnit.CurrentHungerThreshold;
         }
 
         _sightDirections = new NativeArray<float3>(AllUnits[0].Directions.Length, Allocator.Persistent);

@@ -15,6 +15,8 @@ public struct UnitHungerJob : IJobParallelFor
     public NativeArray<float> UnitsScales;
     [ReadOnly]
     public NativeArray<LayerMask> UnitsPreyMask;
+    [ReadOnly]
+    public NativeArray<float> UnitsHungerThreshold;
 
     public NativeArray<float> UnitsCurrentHunger;
     public NativeArray<float> UnitsStarvingTimer;
@@ -26,7 +28,6 @@ public struct UnitHungerJob : IJobParallelFor
     public float SphereCastRadius;
     public float KillBoxDistance;
     public float TotalHunger;
-    public float HungerThreshold;
     public float InitSarvingTimer;
     public float DeltaTime;
 
@@ -35,7 +36,7 @@ public struct UnitHungerJob : IJobParallelFor
         UnitsCurrentHunger[index] -= DeltaTime;
         UnitsLifeSpan[index] -= DeltaTime;
 
-        if (UnitsCurrentHunger[index] > HungerThreshold)
+        if (UnitsCurrentHunger[index] > UnitsHungerThreshold[index])
         {
             UnitsStarvingTimer[index] = InitSarvingTimer;
             UnitsEatChecks[index] = new SpherecastCommand();

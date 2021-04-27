@@ -54,7 +54,7 @@ public struct SecheduleUnitsSightJob : IJobParallelFor
         SpherecastCommand emptyCommand = new SpherecastCommand();
 
         int IndexStart = SightDirections.Length * index;
-        for (int i = 0; i < SightDirections.Length; i++)
+        for (int i = 0; i < SightDirections.Length; ++i)
         {
             float3 dir = math.rotate(UnitRotaions[index], SightDirections[i]);
             // float3 dir = UnitRotaions[index] * SightDirections[i];
@@ -107,7 +107,7 @@ public struct SecundarySensorCheksJob : IJobParallelFor
         bool hasObstacle = UnitsObstacleResults[index].distance > 0;
         SpherecastCommand emptyCommand = new SpherecastCommand();
 
-        for (int i = particion * index; i < particion * (index + 1); i++)
+        for (int i = particion * index; i < particion * (index + 1); ++i)
         {
             UnitsSightDirectionsCheks[i] = hasObstacle ? new SpherecastCommand(currentUnitPosition, sphereRadius, 
                 UnitsSightDirections[i], ObstacleDistance * currentUnitScale, ObstacleMask) : emptyCommand;

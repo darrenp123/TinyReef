@@ -161,5 +161,8 @@ MonoBehaviour:
   - 15.2
   - 18
   - 20.5
+  seepIncumbrance: 3
+  sightIncumbrance: 1
+  sizeIncumbrance: 5
   consumeEffectPrefab: {fileID: 2247388813125844722, guid: a5cb3ef1716dfa94da27fbf76aa9f5e4, type: 3}
   referenceMat: {fileID: 2100000, guid: d8ad96fa54b4102468278c6a5780e51b, type: 2}
