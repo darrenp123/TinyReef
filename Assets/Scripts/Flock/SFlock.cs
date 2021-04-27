@@ -101,6 +101,7 @@ public class SFlock : MonoBehaviour
     private NativeList<SpherecastCommand> _unitsEatChecks;
     private NativeList<RaycastHit> _unitsEatResults;
     private NativeList<PreyInfo> _unitsPreyInfo;
+    private NativeList<float> _unitsHungerThreshold;
 
     private MoveFlockJob _moveJob;
     private SecheduleUnitsSightJob _secheduleRaysJob;
@@ -158,7 +159,7 @@ public class SFlock : MonoBehaviour
             UnitsPredatorMask = _unitsPredatorMasks,
             UnitsPreyMask = _unitsPreyMasks,
             SphereCastRadius = sphereCastRadius,
-            HungerThreshold = AllUnits.Count > 0 ? AllUnits[0].HungerThreshold : 0
+            HungerThreshold = AllUnits.Count > 0 ? AllUnits[0].CurrentHungerThreshold : 0
         };
 
         _secundarySensorCheksJob = new SecundarySensorCheksJob
@@ -194,7 +195,6 @@ public class SFlock : MonoBehaviour
             UnitsObstacleResults = _unitsObstacleResults,
             UnitsObstacleSightResults = _unitsObstacleSightResults,
             UnitsPredatorsResults = _unitsPredatorsResults,
-            UnitsPreyResults = _unitsPreyResults,
             UnitsPreyInfo = _unitsPreyInfo,
             UnitsPredatorPreyObtacleResults = _unitsPredatorPreysObtacleResults,
             UnitSightDirections = _unitsSightDirections,
@@ -221,7 +221,7 @@ public class SFlock : MonoBehaviour
             MinSpeed = minSpeed,
             FlockPosition = transform.position,
             DeltaTime = Time.deltaTime,
-            HungerThreshold = AllUnits.Count > 0 ? AllUnits[0].HungerThreshold : 0,
+            HungerThreshold = AllUnits.Count > 0 ? AllUnits[0].CurrentHungerThreshold : 0,
             SphereCastRadius = sphereCastRadius,
             RandomRef = _random,
             TestIndex = unitIndex
@@ -238,11 +238,11 @@ public class SFlock : MonoBehaviour
             UnitsStarvingTimer = _unitsStarvingTimer,
             UnitsLifeSpan = _unitsLifeSpan,
             UnitsEatChecks = _unitsEatChecks,
+            UnitsHungerThreshold = _unitsHungerThreshold,
 
             SphereCastRadius = sphereCastRadius,
             KillBoxDistance = AllUnits.Count > 0 ? AllUnits[0].KillBoxDistance : 0,
             TotalHunger = AllUnits.Count > 0 ? AllUnits[0].TotalHunger : 0,
-            HungerThreshold = AllUnits.Count > 0 ? AllUnits[0].HungerThreshold : 0,
             InitSarvingTimer = AllUnits.Count > 0 ? AllUnits[0].InitStarvingTimer : 0,
             DeltaTime = Time.deltaTime
         };
@@ -394,6 +394,7 @@ public class SFlock : MonoBehaviour
         _unitsPredatorMasks = new NativeList<LayerMask>(flockSize, Allocator.Persistent);
         _unitsPreyMasks = new NativeList<LayerMask>(flockSize, Allocator.Persistent);
         _random = new NativeList<Unity.Mathematics.Random>(flockSize, Allocator.Persistent);
+        _unitsHungerThreshold = new NativeList<float>(flockSize, Allocator.Persistent);
 
         int numberOfSightDirections = flockUnitPrefab.NumViewDirections * flockSize;
         _unitsSightDirectionsCheks = new NativeList<SpherecastCommand>(numberOfSightDirections, Allocator.Persistent);
@@ -415,9 +416,24 @@ public class SFlock : MonoBehaviour
         RefreshBatches();
     }
 
-    private void SpawnNewUnit()
+    private void SpawnNewUnit(SFlockUnit parent1, SFlockUnit parent2)
     {
         CreateUnit();
+
+        //float newBornSpeed = (parent1.MaxSpeed + parent2.MaxSpeed) / 2;
+        //float newBornSightDist = (parent1.SightDistance + parent2.SightDistance) / 2;
+        //int newBornSize = (parent1.Size + parent2.Size) / 2;
+        //float newBornLifespan = (parent1.InitialLifespan + parent2.LifeSpan) / 2;
+
+        //SFlockUnit child = AllUnits[_totalUnitAmought - 1];
+
+        //MotateChild(ref newBornSpeed,ref newBornSightDist, ref newBornSize, ref newBornLifespan);
+
+        //child.SetMaxSpeed(newBornSpeed);
+        //child.SetSightDistance(newBornSightDist);
+        //child.SetScale(newBornSize);
+        //child.SetLifeSapan(newBornLifespan);
+
         AllocateNewValues();
         RefreshBatches();
         string message = "A " + flockUnitPrefab.UnitName + " has spawned! (current number is " + _totalUnitAmought + ")";
@@ -457,6 +473,7 @@ public class SFlock : MonoBehaviour
         _unitsPredatorMasks.Add(newUnit.PredatorMask);
         _unitsPreyMasks.Add(newUnit.PreyMask);
         _random.Add(new Unity.Mathematics.Random((uint)UnityEngine.Random.Range(1, 100000)));
+        _unitsHungerThreshold.Add(newUnit.CurrentHungerThreshold);
 
         for (int j = 0; j < flockUnitPrefab.NumViewDirections; j++)
         {
@@ -498,6 +515,7 @@ public class SFlock : MonoBehaviour
         _unitsPredatorMasks.RemoveAt(index);
         _unitsPreyMasks.RemoveAt(index);
         _random.RemoveAt(index);
+        _unitsHungerThreshold.RemoveAt(index);
 
         int from = index * flockUnitPrefab.NumViewDirections;
         int to = (1 + index) * flockUnitPrefab.NumViewDirections;
@@ -531,6 +549,7 @@ public class SFlock : MonoBehaviour
         _unitsSizes[index] = flockUnit.Size;
         _unitsPredatorMasks[index] = flockUnit.PredatorMask;
         _unitsPreyMasks[index] = flockUnit.PreyMask;
+        _unitsHungerThreshold[index] = flockUnit.CurrentHungerThreshold;
     }
 
     private void AllocateNewValues()
@@ -568,7 +587,6 @@ public class SFlock : MonoBehaviour
         _moveJob.UnitsObstacleResults = _unitsObstacleResults;
         _moveJob.UnitsObstacleSightResults = _unitsObstacleSightResults;
         _moveJob.UnitsPredatorsResults = _unitsPredatorsResults;
-        _moveJob.UnitsPreyResults = _unitsPreyResults;
         _moveJob.UnitsPreyInfo = _unitsPreyInfo;
         _moveJob.UnitsPredatorPreyObtacleResults = _unitsPredatorPreysObtacleResults;
         _moveJob.UnitSightDirections = _unitsSightDirections;
@@ -582,6 +600,7 @@ public class SFlock : MonoBehaviour
         _hungerJob.UnitsLifeSpan = _unitsLifeSpan;
         _hungerJob.UnitsEatChecks = _unitsEatChecks;
         _hungerJob.UnitsPreyMask = _unitsPreyMasks;
+        _hungerJob.UnitsHungerThreshold = _unitsHungerThreshold;
     }
 
     private void RefreshBatches()
@@ -624,6 +643,7 @@ public class SFlock : MonoBehaviour
         _unitsPredatorMasks.Dispose();
         _unitsPreyMasks.Dispose();
         _unitsPreyInfo.Dispose();
+        _unitsHungerThreshold.Dispose();
     }
 
     private IEnumerator SpawnUnit()
@@ -635,7 +655,78 @@ public class SFlock : MonoBehaviour
             int randInt = UnityEngine.Random.Range(0, 100);
             if (_totalUnitAmought >= 2 && randInt <= spwanPercent)
             {
-                SpawnNewUnit();
+                int bestUnitsLenght = _totalUnitAmought < 5 ? _totalUnitAmought : 5;
+                SFlockUnit[] bestUnits = new SFlockUnit[bestUnitsLenght];
+
+                for (int i = 0; i < bestUnitsLenght; ++i)
+                {
+                    float best = 0;
+                    for (int j = 0; j < _totalUnitAmought; ++j)
+                    {
+                        bool containsUnit = false;
+                        SFlockUnit currentUnit = AllUnits[j];
+
+                        for (int c = 0; c < i; ++c)
+                        {
+                            if (currentUnit == bestUnits[c])
+                            {
+                                containsUnit = true;
+                                break;
+                            }
+                        }
+
+                        float currentEvaluation = currentUnit.CalculateMatingUrge();
+                        // if is smaller or equal to the last evaluation 
+                        if (/*(i == 0 || (bestUnits[i - 1] != currentUnit && bestUnits[i - 1].CalculateMatingUrge() <= currentEvaluation)) &&*/ 
+                            !containsUnit && best < currentEvaluation)
+                        {
+                            bestUnits[i] = currentUnit;
+                            best = currentEvaluation;
+                        }
+                    }
+                }
+
+                SFlockUnit parent1 = bestUnits[UnityEngine.Random.Range(0, bestUnitsLenght)];
+                SFlockUnit parent2 = bestUnits[UnityEngine.Random.Range(0, bestUnitsLenght)];
+
+                while (parent2 == parent1)
+                {
+                    parent2 = bestUnits[UnityEngine.Random.Range(0, bestUnitsLenght)];
+                }
+
+                SpawnNewUnit(parent1, parent2);
+            }
+        }
+    }
+
+    private void MotateChild(ref float newBornSpeed, ref float  newBornSightDist, ref int  newBornSize, ref float newBornLifSpan)
+    {
+        int upgradeChance = UnityEngine.Random.Range(0, 11);
+        if (upgradeChance < 1)
+        {
+            bool change = UnityEngine.Random.value >= 0.5;
+            int changeDelta = change ? 1 : 2;
+            int trait = UnityEngine.Random.Range(1, 5);
+            switch (trait)
+            {
+                case 1:
+                    if (newBornSpeed <= 1) return;
+                    newBornSpeed += changeDelta;
+                    break;
+                case 2:
+                    if (newBornSightDist <= 1) return;
+                    newBornSightDist += changeDelta;
+                    break;
+                
+                case 3:
+                    if (newBornSize <= 1) return;
+                    newBornSize += changeDelta;
+                    break;
+               
+                case 4:
+                    if (newBornLifSpan <= 1) return;
+                    newBornLifSpan += changeDelta;
+                    break;
             }
         }
     }

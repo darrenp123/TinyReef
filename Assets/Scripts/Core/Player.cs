@@ -150,18 +150,17 @@ public class Player : MonoBehaviour
                     if (value > 0 && lifespan >= 1 && lifespan < 10 ||
                         value < 0 && lifespan > 1 && lifespan <= 10)
                     {
-                        //CurrentFish.InitialLifespan += value*60;
+                        CurrentFish.SetLifeSapan(CurrentFish.InitialLifespan + value * 60);
                         UpdateGenePoints(-TraitCost);
                     }
                     break;
                 //Size
                 case 2:
-                    float size = CurrentFish.Size;
+                    int size = CurrentFish.Size;
                     if (value > 0 && size >= 1 && size < 10 ||
                         value < 0 && size > 1 && size <= 10)
                     {
-                        CurrentFish.Size += value;
-                        CurrentFish.ScaleFish();
+                        CurrentFish.SetScale(size + value);
                         UpdateGenePoints(-TraitCost);
                     }
                     break;
@@ -171,7 +170,7 @@ public class Player : MonoBehaviour
                     if (value > 0 && speed >= 1 && speed < 10 ||
                         value < 0 && speed > 1 && speed <= 10)
                     {
-                        CurrentFish.SetMaxSpeed(value);
+                        CurrentFish.SetMaxSpeed(CurrentFish.MaxSpeed + value);
                         UpdateGenePoints(-TraitCost);
                     }
                     break;
@@ -181,7 +180,7 @@ public class Player : MonoBehaviour
                     if (value > 0 && sensoryRadious >= 1 && sensoryRadious < 10 ||
                         value < 0 && sensoryRadious > 1 && sensoryRadious <= 10)
                     {
-                        CurrentFish.SetSightDistance(value);
+                        CurrentFish.SetSightDistance(CurrentFish.SightDistance + value);
                         UpdateGenePoints(-TraitCost);
                     }
                     break;
@@ -206,24 +205,6 @@ public class Player : MonoBehaviour
     private void DoBuyEffects()
     {
         _ = StartCoroutine(ManageConsumableEffect());
-
-        // To remove
-        //if (!bubblesPrefab) return;
-
-        //foreach (ParticleSystem bubbleEffect in _bubblesEffectPool)
-        //{
-        //    if (!bubbleEffect.isPlaying)
-        //    {
-        //        bubbleEffect.transform.position = CurrentFish.transform.position;
-        //        bubbleEffect.transform.parent = CurrentFish.transform;
-        //        bubbleEffect.Play();
-        //        return;
-        //    }
-        //}
-
-        //ParticleSystem newBubbleEffect = Instantiate(bubblesPrefab, CurrentFish.transform.position, Quaternion.identity, CurrentFish.transform);
-        //newBubbleEffect.Play();
-        //_bubblesEffectPool.Add(newBubbleEffect);
     }
 
     private IEnumerator ManageConsumableEffect()

@@ -16,6 +16,9 @@ public class SFlockUnit : MonoBehaviour, IFood
     [SerializeField] private string unitName;
     [SerializeField] private int size;
     [SerializeField] private float[] fishScale = new float[10] { 1, 2.5f, 3.3f, 5.5f, 7.3f, 9.5f, 11.8f, 15.2f, 18, 21 };
+    [SerializeField] private float seepIncumbrance;
+    [SerializeField] private float sightIncumbrance;
+    [SerializeField] private float sizeIncumbrance;
     [SerializeField] private ParticleSystem consumeEffectPrefab;
     [SerializeField] private Material referenceMat;
 
@@ -27,6 +30,7 @@ public class SFlockUnit : MonoBehaviour, IFood
     private float _currrentHunger;
     private float _sightDistance;
     private float _lifeSpan;
+    private float _scaledHungerThreshold;
     private ConsumablePool _consumablePool;
     private Material _fishMat;
     private Dictionary<int, string> _sizeToLayerDic;
@@ -43,7 +47,7 @@ public class SFlockUnit : MonoBehaviour, IFood
     public int NumViewDirections => numViewDirections;
     public float KillBoxDistance => killBoxDistance;
     public float TotalHunger => totalHunger;
-    public float HungerThreshold => hungerThreshold;
+    public float CurrentHungerThreshold => _scaledHungerThreshold;
     public float InitStarvingTimer => initStarvingTimer;
     public float CurrrentHunger { get => _currrentHunger; set => _currrentHunger = value; }
     public Vector3 CurrentVelocity { get => _currentVelocity; set => _currentVelocity = value; }
@@ -111,29 +115,42 @@ public class SFlockUnit : MonoBehaviour, IFood
         _consumablePool = FindObjectOfType<ConsumablePool>();
         _fishMat = GetComponentInChildren<MeshRenderer>().material;
 
-        ScaleFish();
+        SetScale(size);
     }
 
-    public void SetMaxSpeed(int deltaValue)
+    public void SetLifeSapan(float newLifeSapwn)
     {
-        _maxSpeed += deltaValue;
+        initialLifespan = newLifeSapwn;
+    }
+
+    // this two functions might need to run on the Initialize method
+    public void SetMaxSpeed(float newSpeed)
+    {
+        float oldSpeed = _maxSpeed;
+        _maxSpeed = newSpeed;
+        UpdateHungerThreshold();
         OnUnitTraitsValueChanged?.Invoke(this);
     }
 
-    public void SetSightDistance(int deltaValue)
+    public void SetSightDistance(float newSightDistance)
     {
-        _sightDistance += deltaValue;
+        float oldSSightDist = _sightDistance;
+        _sightDistance = newSightDistance;
+        UpdateHungerThreshold();
         OnUnitTraitsValueChanged?.Invoke(this);
     }
 
-    public void ScaleFish()
+    public void SetScale(int newSise)
     {
-        _predatorLayerNames.Clear();
-        _preyLayerNames.Clear();
-
         // Testing
         //size = Random.Range(0, 10);
         //float fishSize = fishScale[size];
+        _predatorLayerNames.Clear();
+        _preyLayerNames.Clear();
+
+        int oldSize = size;
+        size = newSise;
+
         float fishSize = fishScale[Size - 1];
         MyTransform.localScale = new Vector3(fishSize, fishSize, fishSize);
 
@@ -174,20 +191,26 @@ public class SFlockUnit : MonoBehaviour, IFood
         _predatorMask = LayerMask.GetMask(_predatorLayerNames.ToArray());
         _preyMask = LayerMask.GetMask(_preyLayerNames.ToArray());
 
+        UpdateHungerThreshold();
         OnUnitTraitsValueChanged?.Invoke(this);
-    }
-
-    private void RemoveUnit()
-    {
-        OnUnitRemove?.Invoke(this);
     }
 
     public void Consume()
     {
-        RemoveUnit();
+        OnUnitRemove?.Invoke(this);
 
         if (_consumablePool)
             _consumablePool.StartCoroutine(ManageConsumableEffect());
+    }
+
+    public float CalculateMatingUrge()
+    {
+        return _sightDistance + _maxSpeed + size;
+    }
+
+    private void UpdateHungerThreshold()
+    {
+        _scaledHungerThreshold = hungerThreshold + (size * sizeIncumbrance) + (size * seepIncumbrance) + (size * seepIncumbrance);
     }
 
     public string GetFoodName() => unitName;
