@@ -21,6 +21,6 @@ public class ReefGameMode : GameModeBase
 
     public override bool ObjectiveComplete()
     {
-        return state == GameModeSate.CHALLENGE &&  objectiveFlock.AllUnits.Count > numOfUnits;
+        return objectiveFlock && state == GameModeSate.CHALLENGE &&  objectiveFlock.AllUnits.Count > numOfUnits;
     }
 }

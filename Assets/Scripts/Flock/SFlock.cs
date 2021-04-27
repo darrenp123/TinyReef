@@ -656,6 +656,7 @@ public class SFlock : MonoBehaviour
             if (_totalUnitAmought >= 2 && randInt <= spwanPercent)
             {
                 int bestUnitsLenght = _totalUnitAmought < 5 ? _totalUnitAmought : 5;
+                // should be list
                 SFlockUnit[] bestUnits = new SFlockUnit[bestUnitsLenght];
 
                 for (int i = 0; i < bestUnitsLenght; ++i)
@@ -686,6 +687,7 @@ public class SFlock : MonoBehaviour
                     }
                 }
 
+                // must verify if it has at least two units
                 SFlockUnit parent1 = bestUnits[UnityEngine.Random.Range(0, bestUnitsLenght)];
                 SFlockUnit parent2 = bestUnits[UnityEngine.Random.Range(0, bestUnitsLenght)];
 
@@ -699,7 +701,7 @@ public class SFlock : MonoBehaviour
         }
     }
 
-    private void MotateChild(ref float newBornSpeed, ref float  newBornSightDist, ref int  newBornSize, ref float newBornLifSpan)
+    private void MutateChild(ref float newBornSpeed, ref float  newBornSightDist, ref int  newBornSize, ref float newBornLifSpan)
     {
         int upgradeChance = UnityEngine.Random.Range(0, 11);
         if (upgradeChance < 1)
@@ -736,48 +738,4 @@ public class SFlock : MonoBehaviour
         if (_activityLog)
             _activityLog.SendMessage(messageType, message);
     }
-
-    
-    private void RandomUpgrade() {
-        int upgradeChance = UnityEngine.Random.Range(0, 11);
-        if(upgradeChance > 5) {
-            int change = UnityEngine.Random.Range(1, 3);
-            if (change == 1) change = -1;
-            else change = 1;
-            int trait = UnityEngine.Random.Range(1, 5);
-            switch (trait) {
-                //Lifespan
-                case 1:
-                    //
-                    break;
-                //Size
-                case 2:
-                    //
-                    break;
-                //Speed
-                case 3:
-                    //
-                    break;
-                //SensoryRadious
-                case 4:
-                    //
-                    break;
-                //Camouflage
-                case 5:
-                    //TODO
-                    break;
-                //MatingUrge
-                case 6:
-                    //
-                    break;
-                //GestationPeriod
-                case 7:
-                    //
-                    break;
-                default:
-                    break;
-            }
-        }
-    }
-   
 }
