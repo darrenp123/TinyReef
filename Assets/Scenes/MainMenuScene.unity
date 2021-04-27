@@ -164,6 +164,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18e079a601faddb4f9a2d7188f70b7ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainMenu: {fileID: 907302471742974778}
 --- !u!4 &973623271
 Transform:
   m_ObjectHideFlags: 0
@@ -459,6 +460,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 126581884885361729, guid: 385a7a0603e7c374cabadaf502fa0075, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 126581884885361729, guid: 385a7a0603e7c374cabadaf502fa0075, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 126581884885361729, guid: 385a7a0603e7c374cabadaf502fa0075, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 875
+      objectReference: {fileID: 0}
+    - target: {fileID: 126581884885361729, guid: 385a7a0603e7c374cabadaf502fa0075, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 1422.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 126581884885361729, guid: 385a7a0603e7c374cabadaf502fa0075, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -493.00488
+      objectReference: {fileID: 0}
     - target: {fileID: 907302469668721273, guid: 385a7a0603e7c374cabadaf502fa0075, type: 3}
       propertyPath: m_Camera
       value: 
@@ -491,6 +512,18 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1132655515}
+    - target: {fileID: 907302470725908737, guid: 385a7a0603e7c374cabadaf502fa0075, type: 3}
+      propertyPath: levels.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 907302470725908737, guid: 385a7a0603e7c374cabadaf502fa0075, type: 3}
+      propertyPath: levels.Array.data[0]
+      value: Tank_24_04
+      objectReference: {fileID: 0}
+    - target: {fileID: 907302470725908737, guid: 385a7a0603e7c374cabadaf502fa0075, type: 3}
+      propertyPath: levels.Array.data[1]
+      value: open ocean
+      objectReference: {fileID: 0}
     - target: {fileID: 907302470725908750, guid: 385a7a0603e7c374cabadaf502fa0075, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -552,9 +585,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1132655515}
     - target: {fileID: 1207689905834978833, guid: 385a7a0603e7c374cabadaf502fa0075, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1207689905834978833, guid: 385a7a0603e7c374cabadaf502fa0075, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 973623270}
+    - target: {fileID: 1207689905834978833, guid: 385a7a0603e7c374cabadaf502fa0075, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadLevelMenu
+      objectReference: {fileID: 0}
     - target: {fileID: 2622303378677252349, guid: 385a7a0603e7c374cabadaf502fa0075, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -691,12 +732,55 @@ PrefabInstance:
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 576207356}
+    - target: {fileID: 4600336926898265641, guid: 385a7a0603e7c374cabadaf502fa0075, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4600336926898265641, guid: 385a7a0603e7c374cabadaf502fa0075, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4600336926898265641, guid: 385a7a0603e7c374cabadaf502fa0075, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 875
+      objectReference: {fileID: 0}
+    - target: {fileID: 4600336926898265641, guid: 385a7a0603e7c374cabadaf502fa0075, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 497.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4600336926898265641, guid: 385a7a0603e7c374cabadaf502fa0075, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -493.00488
+      objectReference: {fileID: 0}
+    - target: {fileID: 6307174947518101477, guid: 385a7a0603e7c374cabadaf502fa0075, type: 3}
+      propertyPath: m_text
+      value: Shallow Water
+      objectReference: {fileID: 0}
     - target: {fileID: 6483357865586599397, guid: 385a7a0603e7c374cabadaf502fa0075, type: 3}
       propertyPath: m_TagString
       value: AudioSlider
       objectReference: {fileID: 0}
+    - target: {fileID: 6536340225813940269, guid: 385a7a0603e7c374cabadaf502fa0075, type: 3}
+      propertyPath: m_text
+      value: Open Ocean
+      objectReference: {fileID: 0}
+    - target: {fileID: 7880342949850690142, guid: 385a7a0603e7c374cabadaf502fa0075, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 385a7a0603e7c374cabadaf502fa0075, type: 3}
+--- !u!114 &907302471742974778 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 907302470725908737, guid: 385a7a0603e7c374cabadaf502fa0075, type: 3}
+  m_PrefabInstance: {fileID: 907302471742974777}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5501d740a6a8f574e9757efa897af97c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5272672808059919940
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -10,6 +10,8 @@ public class SceneController : MonoBehaviour
 {
 
     OptionsManager optionsManager;
+    [SerializeField]
+    MainMenu mainMenu;
 
     private void Start()
     {
@@ -27,6 +29,10 @@ public class SceneController : MonoBehaviour
     public void LoadLevel(string level)
     {
         SceneManager.LoadSceneAsync(level);
+    }
+
+    public void LoadLevelMenu() {
+        SceneManager.LoadSceneAsync(mainMenu.ReturnCurrentLevel());
     }
 
     public void LoadMainMenu()

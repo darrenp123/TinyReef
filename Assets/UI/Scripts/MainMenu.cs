@@ -11,9 +11,13 @@ public class MainMenu : MonoBehaviour
     [SerializeField]
     GameObject instructionsPage, optionsPage, creditsPage, mainMenuPage, gamemodeSelectionPage, levelSelectionPage, challengeModeText, sandboxModeText, gamemodeSelectionNextButton, levelSelectionPlayButton;
     private GameModeBase _gameMode;
+    private string currentLevel;
+    [SerializeField]
+    string[] levels;
 
     private void Awake() {
         _gameMode = FindObjectOfType<GameModeBase>();
+        currentLevel = "";
     }
 
     public void OpenInstructionsPage()
@@ -105,11 +109,17 @@ public class MainMenu : MonoBehaviour
     public void SelectedLevel1()
     {
         levelSelectionPlayButton.GetComponent<Button>().interactable = true;
+        currentLevel = levels[0];
     }
 
     public void SelectedLevel2()
     {
         levelSelectionPlayButton.GetComponent<Button>().interactable = true;
+        currentLevel = levels[1];
+    }
+
+    public string ReturnCurrentLevel() {
+        return currentLevel;
     }
 
     #endregion
