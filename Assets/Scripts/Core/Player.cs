@@ -69,6 +69,7 @@ public class Player : MonoBehaviour
     void UpdateGenePoints(int updateValue)
     {
         GenePoints += updateValue;
+        if (GenePoints > 999) GenePoints = 999;
         FishStats.UpdateGenePoints(GenePoints);
     }
 
