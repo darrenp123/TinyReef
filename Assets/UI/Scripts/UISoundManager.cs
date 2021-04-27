@@ -42,6 +42,7 @@ public class UISoundManager : MonoBehaviour
 
     public void AssignSlider(Slider newSlider) {
         audioSlider = newSlider;
+        audioSlider.value = PlayerPrefs.GetFloat("AudioVolume");
     }
 
     public void VolumeControl(float volume) {
