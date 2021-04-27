@@ -11,7 +11,10 @@ public class AssignUIFunctions : MonoBehaviour
     [SerializeField]
     Slider slider;
 
-    private void Awake() {
+    private void Awake()
+    {
+        if (!soundManager) return;
+
         soundManager = FindObjectOfType<UISoundManager>();
         button.onClick.AddListener(soundManager.Mute);
         soundManager.AssignSlider(slider);
