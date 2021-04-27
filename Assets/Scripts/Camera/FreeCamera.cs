@@ -108,7 +108,6 @@ public class FreeCamera : MonoBehaviour
 
     //from 100 to 300
     public void ChangeRotationSpeed(float speed) {
-        print("Free rotation" + speed);
         _FreeLookCamera.m_VerticalAxis.m_MaxSpeed = speed;
         _FreeLookCamera.m_HorizontalAxis.m_MaxSpeed = speed;
         PlayerPrefs.SetFloat("FreeCamSens", speed);
@@ -117,7 +116,6 @@ public class FreeCamera : MonoBehaviour
 
     //from 10 to 30
     public void ChangeCameraSpeed(float speed) {
-        print("Free speed" + speed);
         cameraSpeed = speed;
         PlayerPrefs.SetFloat("FreeCamMoveSpeed", speed);
         PlayerPrefs.Save();

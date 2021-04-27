@@ -17,28 +17,24 @@ public class OptionsManager : MonoBehaviour
     {
         PlayerPrefs.SetFloat("FreeCamSens", speed);
         PlayerPrefs.Save();
-        print("Updated preferences");
     }
 
     public void ChangeFreeCamMoveSpeed(float speed)
     {
         PlayerPrefs.SetFloat("FreeCamMoveSpeed", speed);
         PlayerPrefs.Save();
-        print("Updated preferences");
     }
 
     public void ChangeFollowCameraSensitivity(float speed)
     {
         PlayerPrefs.SetFloat("FollowCamRotSpeed", speed);
         PlayerPrefs.Save();
-        print("Updated preferences");
     }
 
     public void ChangeFollowCameraZoomSpeed(float speed)
     {
         PlayerPrefs.SetFloat("FollowCamZoomSpeed", speed);
         PlayerPrefs.Save();
-        print("Updated preferences");
     }
 
     public void InitialiseCameras()
