@@ -6303,6 +6303,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   instructionsMenuScript: {fileID: 6081252257848327647}
+  pauseGame:
+    m_Name: Pause Game
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: c4f9b723-657b-485f-bfee-a0cb8f5cc6bc
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: c6793650-f6e1-4b99-afa2-d29cb4926da9
+      m_Path: <Keyboard>/escape
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Pause Game
+      m_Flags: 0
   pauseMenu: {fileID: 4469901985626769493}
   quitMenu: {fileID: 4469901985037072946}
   instructionsMenu: {fileID: 3044185921806938186}
