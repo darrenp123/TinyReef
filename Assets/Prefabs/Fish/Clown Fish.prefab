@@ -143,8 +143,8 @@ MonoBehaviour:
   fovAngle: 150
   numViewDirections: 100
   killBoxDistance: 0.08
-  totalHunger: 120
-  hungerThreshold: 80
+  totalHunger: 150
+  hungerThreshold: 70
   initStarvingTimer: 200
   initialLifespan: 500
   unitType: Coral

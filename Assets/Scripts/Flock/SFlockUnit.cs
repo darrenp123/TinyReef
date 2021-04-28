@@ -14,6 +14,7 @@ public class SFlockUnit : MonoBehaviour, IFood
     [SerializeField] private float initialLifespan;
     [SerializeField] private string unitType;
     [SerializeField] private string unitName;
+    [SerializeField] private float matingUrge;
     [SerializeField] private int size;
     [SerializeField] private float[] fishScale = new float[10] { 1, 2.5f, 3.3f, 5.5f, 7.3f, 9.5f, 11.8f, 15.2f, 18, 21 };
     [SerializeField] private float seepIncumbrance;
@@ -38,6 +39,7 @@ public class SFlockUnit : MonoBehaviour, IFood
     private LayerMask _preyMask;
     private List<string> _predatorLayerNames;
     private List<string> _preyLayerNames;
+    private float _currentMatingUrge;
 
     public Transform MyTransform { get; set; }
     public Vector3[] Directions { get; set; }
@@ -191,6 +193,8 @@ public class SFlockUnit : MonoBehaviour, IFood
         _predatorMask = LayerMask.GetMask(_predatorLayerNames.ToArray());
         _preyMask = LayerMask.GetMask(_preyLayerNames.ToArray());
 
+        _currentMatingUrge = matingUrge * (1 + (size / 10));
+
         UpdateHungerThreshold();
         OnUnitTraitsValueChanged?.Invoke(this);
     }
@@ -203,9 +207,9 @@ public class SFlockUnit : MonoBehaviour, IFood
             _consumablePool.StartCoroutine(ManageConsumableEffect());
     }
 
-    public float CalculateMatingUrge()
+    public float CalculateUnitFitness()
     {
-        return _sightDistance + _maxSpeed + size;
+        return _sightDistance + _maxSpeed + size + _lifeSpan;
     }
 
     private void UpdateHungerThreshold()

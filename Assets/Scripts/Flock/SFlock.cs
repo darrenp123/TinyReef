@@ -676,7 +676,7 @@ public class SFlock : MonoBehaviour
                             }
                         }
 
-                        float currentEvaluation = currentUnit.CalculateMatingUrge();
+                        float currentEvaluation = currentUnit.CalculateUnitFitness();
                         // if is smaller or equal to the last evaluation 
                         if (/*(i == 0 || (bestUnits[i - 1] != currentUnit && bestUnits[i - 1].CalculateMatingUrge() <= currentEvaluation)) &&*/ 
                             !containsUnit && best < currentEvaluation)
