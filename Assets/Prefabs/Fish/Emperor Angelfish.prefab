@@ -149,6 +149,7 @@ MonoBehaviour:
   initialLifespan: 300
   unitType: Coral
   unitName: Emperor Angelfish
+  matingUrge: 60
   size: 3
   fishScale:
   - 1

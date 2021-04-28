@@ -149,6 +149,7 @@ MonoBehaviour:
   initialLifespan: 300
   unitType: 
   unitName: Bull Shark
+  matingUrge: 60
   size: 10
   fishScale:
   - 1

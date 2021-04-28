@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2456232386147802614
+--- !u!1 &3427873958213844288
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,52 +8,52 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2980708935320078156}
-  - component: {fileID: 405878428090991741}
-  - component: {fileID: 2069639157354766582}
-  m_Layer: 9
-  m_Name: Tuna
+  - component: {fileID: 2655313539825510394}
+  - component: {fileID: 6206406771911620929}
+  - component: {fileID: 7830514710517773396}
+  m_Layer: 10
+  m_Name: Blobfish
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2980708935320078156
+--- !u!4 &2655313539825510394
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2456232386147802614}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.048, y: 1.366, z: 0.459}
+  m_GameObject: {fileID: 3427873958213844288}
+  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -64.13768, y: 15.381611, z: 31.548}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 2390759156624340500}
+  - {fileID: 3218285558867990178}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &405878428090991741
+--- !u!136 &6206406771911620929
 CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2456232386147802614}
+  m_GameObject: {fileID: 3427873958213844288}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.018500049
-  m_Height: 0.14748317
+  m_Radius: 0.022457123
+  m_Height: 0.14408112
   m_Direction: 2
-  m_Center: {x: -0.00034869835, y: 0.0050934553, z: -0.013540477}
---- !u!114 &2069639157354766582
+  m_Center: {x: -0.00093460083, y: -0.0028419495, z: 0.000957489}
+--- !u!114 &7830514710517773396
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2456232386147802614}
+  m_GameObject: {fileID: 3427873958213844288}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d746ca851849463408e46ee377e65398, type: 3}
@@ -61,32 +61,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fovAngle: 150
   numViewDirections: 100
-  killBoxDistance: 0.075
+  killBoxDistance: 0.08
   totalHunger: 150
   hungerThreshold: 70
   initStarvingTimer: 100
   initialLifespan: 300
-  unitType: Deep Sea
-  unitName: Albacore Tuna
+  unitType: 'Deep Sea '
+  unitName: Blobfish
   matingUrge: 60
-  size: 7
+  size: 2
   fishScale:
   - 1
-  - 2.2
-  - 3.3
-  - 5.5
-  - 7.3
-  - 9.3
+  - 2
+  - 3
+  - 5
+  - 7
+  - 9
   - 10.5
-  - 15.2
-  - 18
-  - 20.5
+  - 15
+  - 17
+  - 20
   seepIncumbrance: 3
   sightIncumbrance: 1
   sizeIncumbrance: 5
   consumeEffectPrefab: {fileID: 2247388813125844722, guid: a5cb3ef1716dfa94da27fbf76aa9f5e4, type: 3}
-  referenceMat: {fileID: 2100000, guid: d127c75b0a0fbf443b4f44aca61067e2, type: 2}
---- !u!1 &6889242678639535407
+--- !u!1 &5917601079730013593
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -94,45 +93,45 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2390759156624340500}
-  - component: {fileID: 719029567892295518}
-  - component: {fileID: 4098059830472354762}
-  m_Layer: 9
+  - component: {fileID: 3218285558867990178}
+  - component: {fileID: 323849014417731560}
+  - component: {fileID: 3844720408739285884}
+  m_Layer: 10
   m_Name: default
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2390759156624340500
+--- !u!4 &3218285558867990178
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6889242678639535407}
+  m_GameObject: {fileID: 5917601079730013593}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 0.095, y: 0.095, z: 0.095}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
-  m_Father: {fileID: 2980708935320078156}
+  m_Father: {fileID: 2655313539825510394}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &719029567892295518
+--- !u!33 &323849014417731560
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6889242678639535407}
-  m_Mesh: {fileID: -2432090755550338912, guid: 01d9ff57394702244bf563f0534cdf26, type: 3}
---- !u!23 &4098059830472354762
+  m_GameObject: {fileID: 5917601079730013593}
+  m_Mesh: {fileID: -2432090755550338912, guid: 62a6cfad14de8254c853d97236d63766, type: 3}
+--- !u!23 &3844720408739285884
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6889242678639535407}
+  m_GameObject: {fileID: 5917601079730013593}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -145,7 +144,7 @@ MeshRenderer:
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d127c75b0a0fbf443b4f44aca61067e2, type: 2}
+  - {fileID: 2100000, guid: 14e50e96e5b932c42a60edadded22cf7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

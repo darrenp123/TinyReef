@@ -13,10 +13,6 @@ public class SFlock : MonoBehaviour
     [SerializeField] private int flockSize;
     [SerializeField] private Vector3 spawnBounds;
     [SerializeField] private LayerMask obstacleMask;
-    [SerializeField] private LayerMask predatorMask;
-    [SerializeField] private LayerMask preyMask;
-    [Range(0, 1)]
-    [SerializeField] private float sphereCastRadius;
     [SerializeField] private FlockWaypoints flockWaypoints;
 
     [Header("Speed Setup")]
@@ -61,10 +57,11 @@ public class SFlock : MonoBehaviour
     [Range(0, 10)]
     [SerializeField] private float boundsWeight;
 
+    [Header("spawning percentages")]
     [Range(0, 1)]
-    [SerializeField] private readonly float spwanPercent;
+    [SerializeField] private float spwanPercent;
     [Range(0, 1)]
-    [SerializeField] private readonly float spwanMutatePercent;
+    [SerializeField] private float spwanMutatePercent;
 
     public List<SFlockUnit> AllUnits { get; set; }
 
@@ -113,6 +110,7 @@ public class SFlock : MonoBehaviour
 
     private NativeList<Unity.Mathematics.Random> _random;
 
+    private float _sphereCastRadius;
     private int _totalUnitAmought;
     private int _unitBatchCount;
     private int _sightBatchCount;
@@ -140,7 +138,7 @@ public class SFlock : MonoBehaviour
             _sightDirections[i] = AllUnits[0].Directions[i];
         }
 
-        sphereCastRadius = AllUnits[0].GetComponent<CapsuleCollider>().radius;
+        _sphereCastRadius = AllUnits[0].GetComponent<CapsuleCollider>().radius;
 
         _secheduleRaysJob = new SecheduleUnitsSightJob
         {
@@ -161,7 +159,7 @@ public class SFlock : MonoBehaviour
             PredatorPreyDistance = initPredatorPreyDistance,
             UnitsPredatorMask = _unitsPredatorMasks,
             UnitsPreyMask = _unitsPreyMasks,
-            SphereCastRadius = sphereCastRadius,
+            SphereCastRadius = _sphereCastRadius,
             HungerThreshold = AllUnits.Count > 0 ? AllUnits[0].CurrentHungerThreshold : 0
         };
 
@@ -180,7 +178,7 @@ public class SFlock : MonoBehaviour
             ObstacleDistance = obstacleDistance,
             ObstacleMask = obstacleMask,
             PredatorPreyDistance = initPredatorPreyDistance,
-            SphereCastRadius = sphereCastRadius
+            SphereCastRadius = _sphereCastRadius
         };
 
         _moveJob = new MoveFlockJob
@@ -225,7 +223,7 @@ public class SFlock : MonoBehaviour
             FlockPosition = transform.position,
             DeltaTime = Time.deltaTime,
             HungerThreshold = AllUnits.Count > 0 ? AllUnits[0].CurrentHungerThreshold : 0,
-            SphereCastRadius = sphereCastRadius,
+            SphereCastRadius = _sphereCastRadius,
             RandomRef = _random,
             TestIndex = unitIndex
         };
@@ -244,7 +242,7 @@ public class SFlock : MonoBehaviour
             UnitsHungerThreshold = _unitsHungerThreshold,
             UnitsMatingHurge = _unitsMatingHurge,
 
-            SphereCastRadius = sphereCastRadius,
+            SphereCastRadius = _sphereCastRadius,
             KillBoxDistance = AllUnits.Count > 0 ? AllUnits[0].KillBoxDistance : 0,
             TotalHunger = AllUnits.Count > 0 ? AllUnits[0].TotalHunger : 0,
             InitSarvingTimer = AllUnits.Count > 0 ? AllUnits[0].InitStarvingTimer : 0,
@@ -256,7 +254,7 @@ public class SFlock : MonoBehaviour
 
         // For debugging.
         var debuger = GetComponent<FlockDebuger>();
-        if (debuger) debuger.InitDebugger(AllUnits.ToArray(), obstacleDistance, sphereCastRadius);
+        if (debuger) debuger.InitDebugger(AllUnits.ToArray(), obstacleDistance, _sphereCastRadius);
     }
 
     private void Update()
@@ -631,7 +629,7 @@ public class SFlock : MonoBehaviour
                 SFlockUnit parent1 = null;
                 SFlockUnit parent2 = null;
                 float best1 = 0;
-                float best2 = 0;
+               // float best2 = 0;
                 int index1 = -1;
                 int index2 = -1;
                 for (int i = 0; i < _totalUnitAmought; ++i)
@@ -641,23 +639,28 @@ public class SFlock : MonoBehaviour
                     SFlockUnit currentUnit = AllUnits[i];
                     float currentEvaluation = currentUnit.CalculateUnitFitness();
                     //could probably use recursion or a loop
-                    if (best1 < currentEvaluation)
+
+                    // not working as intended second parent is not correct. it is not the second best 
+                    if (best1 <= currentEvaluation)
                     {
+                        parent2 = parent1;
+                        index2 = index1;
                         parent1 = currentUnit;
                         best1 = currentEvaluation;
                         index1 = i;
                     }
-                    else if (best2 < currentEvaluation)
-                    {
-                        parent2 = currentUnit;
-                        best2 = currentEvaluation;
-                        index2 = i;
-                    }
+                    //else if (best2 < currentEvaluation)
+                    //{
+                    //    parent2 = currentUnit;
+                    //    best2 = currentEvaluation;
+                    //    index2 = i;
+                    //}
                 }
 
                 print("parent 1: " + index1 + ", parent 2: " + index2);
                 if (index1 >= 0 && index2 >= 0)
                 {
+                    print("mating urge 1: " + _unitsMatingHurge[index1] + ", mating urge 2: " + _unitsMatingHurge[index1]);
                     _unitsMatingHurge[index1] = AllUnits[index1].CurrentMatingUrge;
                     _unitsMatingHurge[index2] = AllUnits[index2].CurrentMatingUrge;
 
@@ -674,6 +677,7 @@ public class SFlock : MonoBehaviour
 
         int changeDelta = UnityEngine.Random.value >= 0.5f ? 1 : -1;
         int trait = UnityEngine.Random.Range(1, 5);
+        print("mutated: " + changeDelta);
         switch (trait)
         {
             case 1:

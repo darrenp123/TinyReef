@@ -149,6 +149,7 @@ MonoBehaviour:
   initialLifespan: 300
   unitType: Deep Sea
   unitName: Cod
+  matingUrge: 60
   size: 7
   fishScale:
   - 1

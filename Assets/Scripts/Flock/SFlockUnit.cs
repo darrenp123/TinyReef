@@ -21,7 +21,6 @@ public class SFlockUnit : MonoBehaviour, IFood
     [SerializeField] private float sightIncumbrance;
     [SerializeField] private float sizeIncumbrance;
     [SerializeField] private ParticleSystem consumeEffectPrefab;
-    [SerializeField] private Material referenceMat;
 
     public UnitEventSigniture OnUnitRemove;
     public UnitEventSigniture OnUnitTraitsValueChanged;

@@ -68,6 +68,7 @@ MonoBehaviour:
   initialLifespan: 300
   unitType: 'Coral '
   unitName: Blue Tang
+  matingUrge: 60
   size: 2
   fishScale:
   - 1

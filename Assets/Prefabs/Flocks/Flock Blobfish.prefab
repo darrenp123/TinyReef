@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &5200210676395332593
+--- !u!1 &142822322698251238
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,91 +8,84 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2909403284011304531}
-  - component: {fileID: 6705059994739628929}
-  - component: {fileID: 8853999783279170354}
+  - component: {fileID: 207091835904988520}
+  - component: {fileID: 3017659609090755692}
+  - component: {fileID: 7143240938846486928}
   m_Layer: 0
-  m_Name: Flock Tuna
+  m_Name: Flock Blobfish
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2909403284011304531
+--- !u!4 &207091835904988520
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5200210676395332593}
+  m_GameObject: {fileID: 142822322698251238}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -62.05, y: 10.17, z: 27.37}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6705059994739628929
+--- !u!114 &3017659609090755692
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5200210676395332593}
+  m_GameObject: {fileID: 142822322698251238}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ff0b0d88e364e2f48a294dbbc40c30d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flockName: Tuna
-  flockUnitPrefab: {fileID: 2069639157354766582, guid: e340142c406aa1648b6ef544ed75f02c, type: 3}
-  flockSize: 10
-  spawnBounds: {x: 5, y: 1, z: 5}
+  flockName: 
+  flockUnitPrefab: {fileID: 7830514710517773396, guid: 5fc0f3f84a4400c4299c8c47f5e1f1be, type: 3}
+  flockSize: 40
+  spawnBounds: {x: 10, y: 5, z: 10}
   obstacleMask:
     serializedVersion: 2
     m_Bits: 128
-  predatorMask:
-    serializedVersion: 2
-    m_Bits: 256
-  preyMask:
-    serializedVersion: 2
-    m_Bits: 1024
-  sphereCastRadius: 0.36
   flockWaypoints: {fileID: 0}
-  minSpeed: 3
-  initMaxSpeed: 7
-  maxSteerForce: 2.5
-  cohesionDistance: 4.5
-  avoidanceDistance: 3.5
-  aligementDistance: 4.5
-  patrolWaypointDistance: 2.5
-  obstacleDistance: 0.19
-  initPredatorPreyDistance: 5.5
-  boundsDistance: 20
+  minSpeed: 0.7
+  initMaxSpeed: 1
+  maxSteerForce: 4
+  cohesionDistance: 0
+  avoidanceDistance: 0.3
+  aligementDistance: 0
+  patrolWaypointDistance: 0.8
+  obstacleDistance: 0.15
+  initPredatorPreyDistance: 2
+  boundsDistance: 15
   cohesionWeight: 1
   avoidanceWeight: 1.3
   aligementWeight: 1.1
   patrolWaypointWeight: 0.8
   obstacleAvoidanceWeight: 20
-  predatorFleeWeight: 5
+  predatorFleeWeight: 6
   preyPersuitWeight: 2
   boundsWeight: 1.2
-  spwanPercent: 0.4
+  spwanPercent: 0.5
   spwanMutatePercent: 0.1
   unitIndex: 0
---- !u!114 &8853999783279170354
+--- !u!114 &7143240938846486928
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5200210676395332593}
+  m_GameObject: {fileID: 142822322698251238}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 30fd7cf25bebed74ab62cd7e76adf1b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  active: 0
+  active: 1
   unitIndex: 0
   mask:
     serializedVersion: 2
