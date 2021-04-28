@@ -10,22 +10,30 @@ public class TRPauseMenu : MonoBehaviour
 {
     [SerializeField]
     InstructionsMenu instructionsMenuScript;
+    [SerializeField]
+    private InputAction pauseGame;
 
     public static bool isPaused;
     [SerializeField]
     GameObject pauseMenu, quitMenu, instructionsMenu, optionsMenu, factFile;
-    // Start is called before the first frame update
 
+    private void OnEnable() {
+        pauseGame.Enable();
+    }
+
+    private void OnDisable() {
+        pauseGame.Disable();
+    }
+
+    private void Awake() {
+        pauseGame.performed += _ => PauseUnpause();
+    }
+
+    // Start is called before the first frame update
     void Start()
     {
         isPaused = false;
     }
-
-    // Update is called once per frame
-    //void Update()
-    //{
-
-    //}
 
     public void OpenPauseMenu(InputAction.CallbackContext context) {
         if (context.performed) {
@@ -44,12 +52,21 @@ public class TRPauseMenu : MonoBehaviour
         CloseInstructionsMenu();
     }
 
+    public void PauseUnpause() {
+        if (isPaused) {
+            UnPauseGame();
+        } else {
+            PauseGame();
+        }
+    }
+
     public void PauseGame()
     {
         isPaused = true;
         Time.timeScale = 0;
         pauseMenu.SetActive(true);
     }
+
     public void UnPauseGame()
     {
         if (quitMenu.activeInHierarchy == true)

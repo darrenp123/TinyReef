@@ -143,12 +143,13 @@ MonoBehaviour:
   fovAngle: 155
   numViewDirections: 150
   killBoxDistance: 0.06
-  totalHunger: 120
-  hungerThreshold: 80
+  totalHunger: 150
+  hungerThreshold: 70
   initStarvingTimer: 100
   initialLifespan: 300
   unitType: 
   unitName: Sand Tiger Shark
+  matingUrge: 60
   size: 10
   fishScale:
   - 1

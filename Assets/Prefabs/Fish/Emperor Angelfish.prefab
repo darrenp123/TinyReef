@@ -143,12 +143,13 @@ MonoBehaviour:
   fovAngle: 150
   numViewDirections: 100
   killBoxDistance: 0.1
-  totalHunger: 120
-  hungerThreshold: 80
+  totalHunger: 150
+  hungerThreshold: 70
   initStarvingTimer: 100
   initialLifespan: 300
   unitType: Coral
   unitName: Emperor Angelfish
+  matingUrge: 60
   size: 3
   fishScale:
   - 1

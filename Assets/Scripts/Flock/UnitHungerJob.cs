@@ -21,8 +21,9 @@ public struct UnitHungerJob : IJobParallelFor
     public NativeArray<float> UnitsCurrentHunger;
     public NativeArray<float> UnitsStarvingTimer;
     public NativeArray<float> UnitsLifeSpan;
+    public NativeArray<float> UnitsMatingHurge;
 
-    [WriteOnly]
+   [WriteOnly]
     public NativeArray<SpherecastCommand> UnitsEatChecks;
 
     public float SphereCastRadius;
@@ -35,6 +36,7 @@ public struct UnitHungerJob : IJobParallelFor
     {
         UnitsCurrentHunger[index] -= DeltaTime;
         UnitsLifeSpan[index] -= DeltaTime;
+        UnitsMatingHurge[index] -= DeltaTime;
 
         if (UnitsCurrentHunger[index] > UnitsHungerThreshold[index])
         {

@@ -143,12 +143,13 @@ MonoBehaviour:
   fovAngle: 150
   numViewDirections: 100
   killBoxDistance: 0.055
-  totalHunger: 120
-  hungerThreshold: 80
+  totalHunger: 150
+  hungerThreshold: 70
   initStarvingTimer: 100
   initialLifespan: 300
   unitType: 'Coral '
   unitName: Cardinalfish
+  matingUrge: 60
   size: 1
   fishScale:
   - 1

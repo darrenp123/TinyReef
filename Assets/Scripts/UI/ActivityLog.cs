@@ -1,9 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.UI;
-using static UnityEngine.UI.Button;
 
 public enum MessageType
 {
@@ -33,9 +31,9 @@ public class ActivityLog : MonoBehaviour
 
         messageObjPool = new List<ActivityLogMessage>();
 
-        SetListener(deathsButon, ShowDeathMessages);
-        SetListener(birthsButon, ShowBirthMessages);
-        SetListener(clearMessagesButon, ClearAllMessages);
+        deathsButon.onClick.AddListener(ShowDeathMessages);
+        birthsButon.onClick.AddListener(ShowBirthMessages);
+        clearMessagesButon.onClick.AddListener(ClearAllMessages);
     }
 
     public void SendMessage(MessageType messageType, string message)
@@ -95,12 +93,5 @@ public class ActivityLog : MonoBehaviour
         {
             item.gameObject.SetActive(false);
         }
-    }
-
-    private void SetListener(Button button, UnityAction action)
-    {
-        ButtonClickedEvent buttonClickedEvent = new ButtonClickedEvent();
-        buttonClickedEvent.AddListener(action);
-        button.onClick = buttonClickedEvent;
     }
 }

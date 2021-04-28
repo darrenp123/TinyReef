@@ -62,12 +62,13 @@ MonoBehaviour:
   fovAngle: 150
   numViewDirections: 100
   killBoxDistance: 0.09
-  totalHunger: 120
-  hungerThreshold: 80
+  totalHunger: 150
+  hungerThreshold: 70
   initStarvingTimer: 100
   initialLifespan: 300
   unitType: 'Deep Sea '
   unitName: Sardine
+  matingUrge: 60
   size: 2
   fishScale:
   - 1

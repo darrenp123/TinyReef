@@ -77,7 +77,8 @@ MonoBehaviour:
   predatorFleeWeight: 8
   preyPersuitWeight: 2
   boundsWeight: 1.2
-  spwanPercent: 25
+  spwanPercent: 0.5
+  spwanMutatePercent: 0.1
   unitIndex: 10
 --- !u!114 &4930066079336723640
 MonoBehaviour:

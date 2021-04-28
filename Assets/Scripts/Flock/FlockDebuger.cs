@@ -31,7 +31,7 @@ public class FlockDebuger : MonoBehaviour
             CapsuleCollider capsule = chosen.GetComponent<CapsuleCollider>();
             float sphereCastRadious = capsule.radius * chosen.transform.localScale.x;
 
-            print("radius: " + sphereCastRadious);
+           // print("radius: " + sphereCastRadious);
             // shereCastRadious += shereCastRadious * 0.25f;
             //print("radios: " + shereCastRadious + " name: " + chosen.name);
             // print("dist at one: " + (_obstacleDistance / chosen.transform.localScale.x) + " name: " + chosen.name);

@@ -21,10 +21,6 @@ public class SpeciesFishButton : MonoBehaviour
     private void Start()
     {
         _button = GetComponent<Button>();
-        ButtonClickedEvent buttonClickedEvent = new ButtonClickedEvent();
-        buttonClickedEvent.AddListener(OnClick);
-        _button.onClick = buttonClickedEvent;
+        _button.onClick.AddListener(() => _onClickButton?.Invoke(_fishIndex));
     }
-
-    private void OnClick() => _onClickButton?.Invoke(_fishIndex);
 }
