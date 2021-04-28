@@ -30,8 +30,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 5369405398835938695}
   - {fileID: 8906713286722084632}
+  - {fileID: 5369405398835938695}
   - {fileID: 5301269778707220826}
   m_Father: {fileID: 1213103408058412847}
   m_RootOrder: 0
@@ -125,11 +125,11 @@ RectTransform:
   m_Children:
   - {fileID: 921127687143262191}
   m_Father: {fileID: 8100142732803892145}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -12.5, y: 48.4}
+  m_AnchoredPosition: {x: -12.5, y: 0}
   m_SizeDelta: {x: -50.722, y: 42.886}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &2285327993712621407
@@ -226,6 +226,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: FactFileMK2, Assembly-CSharp
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2580805730696499551
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -271,11 +283,11 @@ RectTransform:
   m_Children:
   - {fileID: 9124894111275773390}
   m_Father: {fileID: 8100142732803892145}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -12.5, y: 0}
+  m_AnchoredPosition: {x: -12.5, y: 48.4}
   m_SizeDelta: {x: -50.722, y: 42.886}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &8198556817587577853
