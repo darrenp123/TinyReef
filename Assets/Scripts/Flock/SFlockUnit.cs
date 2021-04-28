@@ -40,6 +40,7 @@ public class SFlockUnit : MonoBehaviour, IFood
     private List<string> _predatorLayerNames;
     private List<string> _preyLayerNames;
     private float _currentMatingUrge;
+    private float _matDefaultWigleSpeed;
 
     public Transform MyTransform { get; set; }
     public Vector3[] Directions { get; set; }
@@ -59,7 +60,7 @@ public class SFlockUnit : MonoBehaviour, IFood
     public string UnitName { get => unitName; set => unitName = value; }
     public float LifeSpan { get => _lifeSpan; set => _lifeSpan = value; }
     public float InitialLifespan => initialLifespan;
-
+    public float CurrentMatingUrge => _currentMatingUrge;
     public LayerMask PredatorMask => _predatorMask;
     public LayerMask PreyMask => _preyMask;
 
@@ -116,6 +117,7 @@ public class SFlockUnit : MonoBehaviour, IFood
 
         _consumablePool = FindObjectOfType<ConsumablePool>();
         _fishMat = GetComponentInChildren<MeshRenderer>().material;
+        _matDefaultWigleSpeed = _fishMat.GetFloat("_TimeScale");
 
         SetScale(size);
     }
@@ -128,7 +130,6 @@ public class SFlockUnit : MonoBehaviour, IFood
     // this two functions might need to run on the Initialize method
     public void SetMaxSpeed(float newSpeed)
     {
-        float oldSpeed = _maxSpeed;
         _maxSpeed = newSpeed;
         UpdateHungerThreshold();
         OnUnitTraitsValueChanged?.Invoke(this);
@@ -136,7 +137,6 @@ public class SFlockUnit : MonoBehaviour, IFood
 
     public void SetSightDistance(float newSightDistance)
     {
-        float oldSSightDist = _sightDistance;
         _sightDistance = newSightDistance;
         UpdateHungerThreshold();
         OnUnitTraitsValueChanged?.Invoke(this);
@@ -150,7 +150,6 @@ public class SFlockUnit : MonoBehaviour, IFood
         _predatorLayerNames.Clear();
         _preyLayerNames.Clear();
 
-        int oldSize = size;
         size = newSise;
 
         float fishSize = fishScale[Size - 1];
@@ -166,7 +165,7 @@ public class SFlockUnit : MonoBehaviour, IFood
             else
                 divisor = 2;
 
-            _fishMat.SetFloat("_TimeScale", referenceMat.GetFloat("_TimeScale") / divisor);
+            _fishMat.SetFloat("_TimeScale", _matDefaultWigleSpeed / divisor);
         }
 
         int predatorMinSize = size + 1;
@@ -214,7 +213,7 @@ public class SFlockUnit : MonoBehaviour, IFood
 
     private void UpdateHungerThreshold()
     {
-        _scaledHungerThreshold = hungerThreshold + (size * sizeIncumbrance) + (size * seepIncumbrance) + (size * seepIncumbrance);
+        _scaledHungerThreshold = hungerThreshold + (size * sizeIncumbrance) + (size * seepIncumbrance) + (size * sightIncumbrance);
     }
 
     public string GetFoodName() => unitName;

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,9 +11,10 @@ public class AssignUIFunctions : MonoBehaviour
 
     private void Awake()
     {
+        soundManager = FindObjectOfType<UISoundManager>();
+
         if (!soundManager) return;
 
-        soundManager = FindObjectOfType<UISoundManager>();
         button.onClick.AddListener(soundManager.Mute);
         soundManager.AssignSlider(slider);
         slider.onValueChanged.AddListener(delegate { soundManager.VolumeControl(slider.value); });

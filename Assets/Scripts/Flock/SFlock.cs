@@ -61,8 +61,10 @@ public class SFlock : MonoBehaviour
     [Range(0, 10)]
     [SerializeField] private float boundsWeight;
 
-    [Range(0, 100)]
-    [SerializeField] private int spwanPercent;
+    [Range(0, 1)]
+    [SerializeField] private readonly float spwanPercent;
+    [Range(0, 1)]
+    [SerializeField] private readonly float spwanMutatePercent;
 
     public List<SFlockUnit> AllUnits { get; set; }
 
@@ -102,6 +104,7 @@ public class SFlock : MonoBehaviour
     private NativeList<RaycastHit> _unitsEatResults;
     private NativeList<PreyInfo> _unitsPreyInfo;
     private NativeList<float> _unitsHungerThreshold;
+    private NativeList<float> _unitsMatingHurge;
 
     private MoveFlockJob _moveJob;
     private SecheduleUnitsSightJob _secheduleRaysJob;
@@ -239,6 +242,7 @@ public class SFlock : MonoBehaviour
             UnitsLifeSpan = _unitsLifeSpan,
             UnitsEatChecks = _unitsEatChecks,
             UnitsHungerThreshold = _unitsHungerThreshold,
+            UnitsMatingHurge = _unitsMatingHurge,
 
             SphereCastRadius = sphereCastRadius,
             KillBoxDistance = AllUnits.Count > 0 ? AllUnits[0].KillBoxDistance : 0,
@@ -395,6 +399,7 @@ public class SFlock : MonoBehaviour
         _unitsPreyMasks = new NativeList<LayerMask>(flockSize, Allocator.Persistent);
         _random = new NativeList<Unity.Mathematics.Random>(flockSize, Allocator.Persistent);
         _unitsHungerThreshold = new NativeList<float>(flockSize, Allocator.Persistent);
+        _unitsMatingHurge = new NativeList<float>(flockSize, Allocator.Persistent);
 
         int numberOfSightDirections = flockUnitPrefab.NumViewDirections * flockSize;
         _unitsSightDirectionsCheks = new NativeList<SpherecastCommand>(numberOfSightDirections, Allocator.Persistent);
@@ -414,30 +419,6 @@ public class SFlock : MonoBehaviour
         }
 
         RefreshBatches();
-    }
-
-    private void SpawnNewUnit(SFlockUnit parent1, SFlockUnit parent2)
-    {
-        CreateUnit();
-
-        //float newBornSpeed = (parent1.MaxSpeed + parent2.MaxSpeed) / 2;
-        //float newBornSightDist = (parent1.SightDistance + parent2.SightDistance) / 2;
-        //int newBornSize = (parent1.Size + parent2.Size) / 2;
-        //float newBornLifespan = (parent1.InitialLifespan + parent2.LifeSpan) / 2;
-
-        //SFlockUnit child = AllUnits[_totalUnitAmought - 1];
-
-        //MotateChild(ref newBornSpeed,ref newBornSightDist, ref newBornSize, ref newBornLifespan);
-
-        //child.SetMaxSpeed(newBornSpeed);
-        //child.SetSightDistance(newBornSightDist);
-        //child.SetScale(newBornSize);
-        //child.SetLifeSapan(newBornLifespan);
-
-        AllocateNewValues();
-        RefreshBatches();
-        string message = "A " + flockUnitPrefab.UnitName + " has spawned! (current number is " + _totalUnitAmought + ")";
-        SendMessage(MessageType.BIRTH, message);
     }
 
     private void CreateUnit()
@@ -474,6 +455,7 @@ public class SFlock : MonoBehaviour
         _unitsPreyMasks.Add(newUnit.PreyMask);
         _random.Add(new Unity.Mathematics.Random((uint)UnityEngine.Random.Range(1, 100000)));
         _unitsHungerThreshold.Add(newUnit.CurrentHungerThreshold);
+        _unitsMatingHurge.Add(newUnit.CurrentMatingUrge);
 
         for (int j = 0; j < flockUnitPrefab.NumViewDirections; j++)
         {
@@ -516,6 +498,7 @@ public class SFlock : MonoBehaviour
         _unitsPreyMasks.RemoveAt(index);
         _random.RemoveAt(index);
         _unitsHungerThreshold.RemoveAt(index);
+        _unitsMatingHurge.RemoveAt(index);
 
         int from = index * flockUnitPrefab.NumViewDirections;
         int to = (1 + index) * flockUnitPrefab.NumViewDirections;
@@ -550,6 +533,7 @@ public class SFlock : MonoBehaviour
         _unitsPredatorMasks[index] = flockUnit.PredatorMask;
         _unitsPreyMasks[index] = flockUnit.PreyMask;
         _unitsHungerThreshold[index] = flockUnit.CurrentHungerThreshold;
+        _unitsMatingHurge[index] = flockUnit.CurrentMatingUrge;
     }
 
     private void AllocateNewValues()
@@ -601,6 +585,7 @@ public class SFlock : MonoBehaviour
         _hungerJob.UnitsEatChecks = _unitsEatChecks;
         _hungerJob.UnitsPreyMask = _unitsPreyMasks;
         _hungerJob.UnitsHungerThreshold = _unitsHungerThreshold;
+        _hungerJob.UnitsMatingHurge = _unitsMatingHurge;
     }
 
     private void RefreshBatches()
@@ -608,6 +593,114 @@ public class SFlock : MonoBehaviour
         _totalUnitAmought = AllUnits.Count;
         _unitBatchCount = _totalUnitAmought > 10 ? _totalUnitAmought / 10 : 1;
         _sightBatchCount = _sightDirections.Length / (_totalUnitAmought <= 0 ? 1 : _totalUnitAmought);
+    }
+
+    private void SpawnNewUnit(SFlockUnit parent1, SFlockUnit parent2)
+    {
+        CreateUnit();
+
+        float newBornSpeed = (parent1.MaxSpeed + parent2.MaxSpeed) / 2;
+        float newBornSightDist = (parent1.SightDistance + parent2.SightDistance) / 2;
+        int newBornSize = (parent1.Size + parent2.Size) / 2;
+        float newBornLifespan = (parent1.InitialLifespan + parent2.LifeSpan) / 2;
+
+        SFlockUnit child = AllUnits[_totalUnitAmought - 1];
+
+        MutateChild(ref newBornSpeed, ref newBornSightDist, ref newBornSize, ref newBornLifespan);
+
+        child.SetMaxSpeed(newBornSpeed);
+        child.SetSightDistance(newBornSightDist);
+        child.SetScale(newBornSize);
+        child.SetLifeSapan(newBornLifespan);
+
+        AllocateNewValues();
+        RefreshBatches();
+        string message = "A " + flockUnitPrefab.UnitName + " has spawned! (current number is " + _totalUnitAmought + ")";
+        SendMessage(MessageType.BIRTH, message);
+    }
+
+    private IEnumerator SpawnUnit()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(2);
+
+            float randInt = UnityEngine.Random.value;
+            if (_totalUnitAmought >= 2 && randInt <= spwanPercent)
+            {
+                SFlockUnit parent1 = null;
+                SFlockUnit parent2 = null;
+                float best1 = 0;
+                float best2 = 0;
+                int index1 = -1;
+                int index2 = -1;
+                for (int i = 0; i < _totalUnitAmought; ++i)
+                {
+                    if (_unitsMatingHurge[i] > 0) continue;
+
+                    SFlockUnit currentUnit = AllUnits[i];
+                    float currentEvaluation = currentUnit.CalculateUnitFitness();
+                    //could probably use recursion or a loop
+                    if (best1 < currentEvaluation)
+                    {
+                        parent1 = currentUnit;
+                        best1 = currentEvaluation;
+                        index1 = i;
+                    }
+                    else if (best2 < currentEvaluation)
+                    {
+                        parent2 = currentUnit;
+                        best2 = currentEvaluation;
+                        index2 = i;
+                    }
+                }
+
+                print("parent 1: " + index1 + ", parent 2: " + index2);
+                if (index1 >= 0 && index2 >= 0)
+                {
+                    _unitsMatingHurge[index1] = AllUnits[index1].CurrentMatingUrge;
+                    _unitsMatingHurge[index2] = AllUnits[index2].CurrentMatingUrge;
+
+                    SpawnNewUnit(parent1, parent2);
+                }
+            }
+        }
+    }
+
+    private void MutateChild(ref float newBornSpeed, ref float newBornSightDist, ref int newBornSize, ref float newBornLifSpan)
+    {
+        float upgradeChance = UnityEngine.Random.value;
+        if (upgradeChance > spwanMutatePercent) return;
+
+        int changeDelta = UnityEngine.Random.value >= 0.5f ? 1 : -1;
+        int trait = UnityEngine.Random.Range(1, 5);
+        switch (trait)
+        {
+            case 1:
+                if (newBornSpeed <= 1) return;
+                newBornSpeed += changeDelta;
+                break;
+            case 2:
+                if (newBornSightDist <= 1) return;
+                newBornSightDist += changeDelta;
+                break;
+
+            case 3:
+                if (newBornSize <= 1) return;
+                newBornSize += changeDelta;
+                break;
+
+            case 4:
+                if (newBornLifSpan <= 1) return;
+                newBornLifSpan += changeDelta;
+                break;
+        }
+    }
+
+    private void SendMessage(MessageType messageType, string message)
+    {
+        if (_activityLog)
+            _activityLog.SendMessage(messageType, message);
     }
 
     private void OnDestroy()
@@ -644,98 +737,6 @@ public class SFlock : MonoBehaviour
         _unitsPreyMasks.Dispose();
         _unitsPreyInfo.Dispose();
         _unitsHungerThreshold.Dispose();
-    }
-
-    private IEnumerator SpawnUnit()
-    {
-        while (true)
-        {
-            yield return new WaitForSeconds(2);
-
-            int randInt = UnityEngine.Random.Range(0, 100);
-            if (_totalUnitAmought >= 2 && randInt <= spwanPercent)
-            {
-                int bestUnitsLenght = _totalUnitAmought < 5 ? _totalUnitAmought : 5;
-                // should be list
-                SFlockUnit[] bestUnits = new SFlockUnit[bestUnitsLenght];
-
-                for (int i = 0; i < bestUnitsLenght; ++i)
-                {
-                    float best = 0;
-                    for (int j = 0; j < _totalUnitAmought; ++j)
-                    {
-                        bool containsUnit = false;
-                        SFlockUnit currentUnit = AllUnits[j];
-
-                        for (int c = 0; c < i; ++c)
-                        {
-                            if (currentUnit == bestUnits[c])
-                            {
-                                containsUnit = true;
-                                break;
-                            }
-                        }
-
-                        float currentEvaluation = currentUnit.CalculateUnitFitness();
-                        // if is smaller or equal to the last evaluation 
-                        if (/*(i == 0 || (bestUnits[i - 1] != currentUnit && bestUnits[i - 1].CalculateMatingUrge() <= currentEvaluation)) &&*/ 
-                            !containsUnit && best < currentEvaluation)
-                        {
-                            bestUnits[i] = currentUnit;
-                            best = currentEvaluation;
-                        }
-                    }
-                }
-
-                // must verify if it has at least two units
-                SFlockUnit parent1 = bestUnits[UnityEngine.Random.Range(0, bestUnitsLenght)];
-                SFlockUnit parent2 = bestUnits[UnityEngine.Random.Range(0, bestUnitsLenght)];
-
-                while (parent2 == parent1)
-                {
-                    parent2 = bestUnits[UnityEngine.Random.Range(0, bestUnitsLenght)];
-                }
-
-                SpawnNewUnit(parent1, parent2);
-            }
-        }
-    }
-
-    private void MutateChild(ref float newBornSpeed, ref float  newBornSightDist, ref int  newBornSize, ref float newBornLifSpan)
-    {
-        int upgradeChance = UnityEngine.Random.Range(0, 11);
-        if (upgradeChance < 1)
-        {
-            bool change = UnityEngine.Random.value >= 0.5;
-            int changeDelta = change ? 1 : 2;
-            int trait = UnityEngine.Random.Range(1, 5);
-            switch (trait)
-            {
-                case 1:
-                    if (newBornSpeed <= 1) return;
-                    newBornSpeed += changeDelta;
-                    break;
-                case 2:
-                    if (newBornSightDist <= 1) return;
-                    newBornSightDist += changeDelta;
-                    break;
-                
-                case 3:
-                    if (newBornSize <= 1) return;
-                    newBornSize += changeDelta;
-                    break;
-               
-                case 4:
-                    if (newBornLifSpan <= 1) return;
-                    newBornLifSpan += changeDelta;
-                    break;
-            }
-        }
-    }
-
-    private void SendMessage(MessageType messageType, string message)
-    {
-        if (_activityLog)
-            _activityLog.SendMessage(messageType, message);
+        _unitsMatingHurge.Dispose();
     }
 }

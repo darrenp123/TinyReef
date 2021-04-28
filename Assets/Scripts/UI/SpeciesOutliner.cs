@@ -1,9 +1,7 @@
-using Cinemachine;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using static TMPro.TMP_Dropdown;
 
 public class SpeciesOutliner : MonoBehaviour
 {
@@ -32,9 +30,7 @@ public class SpeciesOutliner : MonoBehaviour
         if (dropdown)
         {
             dropdown.AddOptions(flockNames);
-            DropdownEvent dropdownEvent = new DropdownEvent();
-            dropdownEvent.AddListener(FillSpiciesConteiner);
-            dropdown.onValueChanged = dropdownEvent;
+            dropdown.onValueChanged.AddListener(FillSpiciesConteiner);
         }
     }
 
