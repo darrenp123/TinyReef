@@ -207,7 +207,7 @@ public class SFlockUnit : MonoBehaviour, IFood
 
     public float CalculateUnitFitness()
     {
-        return _sightDistance + _maxSpeed + size + _lifeSpan;
+        return _sightDistance + _maxSpeed + size + initialLifespan;
     }
 
     private void UpdateHungerThreshold()

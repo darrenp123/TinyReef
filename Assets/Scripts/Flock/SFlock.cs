@@ -337,6 +337,7 @@ public class SFlock : MonoBehaviour
             currentUnit.CurrentVelocity = _moveJob.UnitsCurrentVelocities[i];
             currentUnit.CurrrentHunger = _hungerJob.UnitsCurrentHunger[i];
             currentUnit.LifeSpan = _hungerJob.UnitsLifeSpan[i];
+            // might have a current mating urge to be able to show in the UI
 
             // if (currentUnit.CurrrentHunger <= currentUnit.HungerThreshold && Physics.SphereCast(currentUnit.MyTransform.position,
             //sphereCastRadius * 0.5f, currentUnit.MyTransform.forward, out RaycastHit hit, currentUnit.KillBoxDistance, preyMask))
@@ -600,9 +601,11 @@ public class SFlock : MonoBehaviour
         float newBornSpeed = (parent1.MaxSpeed + parent2.MaxSpeed) / 2;
         float newBornSightDist = (parent1.SightDistance + parent2.SightDistance) / 2;
         int newBornSize = (parent1.Size + parent2.Size) / 2;
-        float newBornLifespan = (parent1.InitialLifespan + parent2.LifeSpan) / 2;
+        float newBornLifespan = (parent1.InitialLifespan + parent2.InitialLifespan) / 2;
 
         SFlockUnit child = AllUnits[_totalUnitAmought - 1];
+
+        print("new boen sats: speed: " + newBornSpeed + ", sight dist: " + newBornSightDist + ", size: " + newBornSize + ", lifeSpan: " + newBornLifespan);
 
         MutateChild(ref newBornSpeed, ref newBornSightDist, ref newBornSize, ref newBornLifespan);
 
@@ -629,7 +632,7 @@ public class SFlock : MonoBehaviour
                 SFlockUnit parent1 = null;
                 SFlockUnit parent2 = null;
                 float best1 = 0;
-               // float best2 = 0;
+                float best2 = 0;
                 int index1 = -1;
                 int index2 = -1;
                 for (int i = 0; i < _totalUnitAmought; ++i)
@@ -638,29 +641,28 @@ public class SFlock : MonoBehaviour
 
                     SFlockUnit currentUnit = AllUnits[i];
                     float currentEvaluation = currentUnit.CalculateUnitFitness();
-                    //could probably use recursion or a loop
 
-                    // not working as intended second parent is not correct. it is not the second best 
-                    if (best1 <= currentEvaluation)
+                    if (best1 < currentEvaluation)
                     {
                         parent2 = parent1;
+                        best2 = best1;
                         index2 = index1;
                         parent1 = currentUnit;
                         best1 = currentEvaluation;
                         index1 = i;
                     }
-                    //else if (best2 < currentEvaluation)
-                    //{
-                    //    parent2 = currentUnit;
-                    //    best2 = currentEvaluation;
-                    //    index2 = i;
-                    //}
+                    else if (best2 < currentEvaluation)
+                    {
+                        parent2 = currentUnit;
+                        best2 = currentEvaluation;
+                        index2 = i;
+                    }
                 }
 
                 print("parent 1: " + index1 + ", parent 2: " + index2);
                 if (index1 >= 0 && index2 >= 0)
                 {
-                    print("mating urge 1: " + _unitsMatingHurge[index1] + ", mating urge 2: " + _unitsMatingHurge[index1]);
+                    //print("mating urge 1: " + _unitsMatingHurge[index1] + ", mating urge 2: " + _unitsMatingHurge[index1]);
                     _unitsMatingHurge[index1] = AllUnits[index1].CurrentMatingUrge;
                     _unitsMatingHurge[index2] = AllUnits[index2].CurrentMatingUrge;
 

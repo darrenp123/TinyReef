@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &9107440545818283387
+--- !u!1 &8221195122142969188
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,59 +8,59 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 9107440545818283384}
-  - component: {fileID: 9107440545818283385}
-  - component: {fileID: 9107440545818283386}
+  - component: {fileID: 8221195122142969211}
+  - component: {fileID: 8221195122142969210}
+  - component: {fileID: 8221195122142969189}
   m_Layer: 0
-  m_Name: Flock Lion Fish
+  m_Name: Flock Pilot Fish
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &9107440545818283384
+--- !u!4 &8221195122142969211
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9107440545818283387}
+  m_GameObject: {fileID: 8221195122142969188}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 3.141, z: -2.588}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &9107440545818283385
+--- !u!114 &8221195122142969210
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9107440545818283387}
+  m_GameObject: {fileID: 8221195122142969188}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ff0b0d88e364e2f48a294dbbc40c30d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flockName: Lion Fish
-  flockUnitPrefab: {fileID: -7822817268636246769, guid: e3cb7a757cf4c7645bad9fe1b9ca2ce9, type: 3}
+  flockName: 
+  flockUnitPrefab: {fileID: 941367559866431745, guid: 3d3642ed6a8a644479b3efa1356872d8, type: 3}
   flockSize: 50
-  spawnBounds: {x: 5, y: 1, z: 5}
+  spawnBounds: {x: 10, y: 5, z: 10}
   obstacleMask:
     serializedVersion: 2
     m_Bits: 128
   flockWaypoints: {fileID: 0}
   minSpeed: 1
-  initMaxSpeed: 2.5
-  maxSteerForce: 4
-  cohesionDistance: 0
-  avoidanceDistance: 2
-  aligementDistance: 0
-  patrolWaypointDistance: 0.8
-  obstacleDistance: 0.16
-  initPredatorPreyDistance: 3.5
+  initMaxSpeed: 3
+  maxSteerForce: 3
+  cohesionDistance: 0.4
+  avoidanceDistance: 0.22
+  aligementDistance: 0.4
+  patrolWaypointDistance: 1
+  obstacleDistance: 0.15
+  initPredatorPreyDistance: 2.5
   boundsDistance: 20
   cohesionWeight: 1
   avoidanceWeight: 1.3
@@ -68,18 +68,18 @@ MonoBehaviour:
   patrolWaypointWeight: 0.8
   obstacleAvoidanceWeight: 20
   predatorFleeWeight: 7
-  preyPersuitWeight: 3
+  preyPersuitWeight: 2
   boundsWeight: 1.2
-  spwanPercent: 0.4
+  spwanPercent: 0.45
   spwanMutatePercent: 0.1
   unitIndex: 0
---- !u!114 &9107440545818283386
+--- !u!114 &8221195122142969189
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9107440545818283387}
+  m_GameObject: {fileID: 8221195122142969188}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 30fd7cf25bebed74ab62cd7e76adf1b1, type: 3}

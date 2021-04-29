@@ -24516,6 +24516,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18e079a601faddb4f9a2d7188f70b7ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainMenu: {fileID: 0}
 --- !u!4 &343721494
 Transform:
   m_ObjectHideFlags: 0
@@ -26972,10 +26973,6 @@ PrefabInstance:
     - target: {fileID: 9107440545818283385, guid: de6629ef5de98e24b802e9d8d7c7c4ac, type: 3}
       propertyPath: avoidanceDistance
       value: 0.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 9107440545818283385, guid: de6629ef5de98e24b802e9d8d7c7c4ac, type: 3}
-      propertyPath: patrolWaypointDistance
-      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 9107440545818283387, guid: de6629ef5de98e24b802e9d8d7c7c4ac, type: 3}
       propertyPath: m_Name
@@ -33357,10 +33354,6 @@ PrefabInstance:
       propertyPath: aligementDistance
       value: 0.53
       objectReference: {fileID: 0}
-    - target: {fileID: 7371807810527790346, guid: 6ab7e483d32ad24468a3d5c0ab61e851, type: 3}
-      propertyPath: patrolWaypointDistance
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7371807810527790348, guid: 6ab7e483d32ad24468a3d5c0ab61e851, type: 3}
       propertyPath: m_Name
       value: Flock Cod
@@ -37073,10 +37066,6 @@ PrefabInstance:
       propertyPath: avoidanceDistance
       value: 0.13
       objectReference: {fileID: 0}
-    - target: {fileID: 4729461356009986723, guid: df0720999c1889340bda9eecdff71647, type: 3}
-      propertyPath: patrolWaypointDistance
-      value: 1.14
-      objectReference: {fileID: 0}
     - target: {fileID: 6041938403911740367, guid: df0720999c1889340bda9eecdff71647, type: 3}
       propertyPath: m_Name
       value: Flock Bull Shark
@@ -37365,10 +37354,6 @@ PrefabInstance:
     - target: {fileID: 3581474779332409843, guid: bccf83bbce0515544a2cbe9c93841f10, type: 3}
       propertyPath: avoidanceDistance
       value: 0.35
-      objectReference: {fileID: 0}
-    - target: {fileID: 3581474779332409843, guid: bccf83bbce0515544a2cbe9c93841f10, type: 3}
-      propertyPath: patrolWaypointDistance
-      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 3581474779332409853, guid: bccf83bbce0515544a2cbe9c93841f10, type: 3}
       propertyPath: m_Name
@@ -45752,10 +45737,6 @@ PrefabInstance:
       propertyPath: avoidanceDistance
       value: 0.13
       objectReference: {fileID: 0}
-    - target: {fileID: 6817635830803489002, guid: c4218d18edf5ee545a2705e3c1a25e41, type: 3}
-      propertyPath: patrolWaypointDistance
-      value: 1.14
-      objectReference: {fileID: 0}
     - target: {fileID: 6817635830803489012, guid: c4218d18edf5ee545a2705e3c1a25e41, type: 3}
       propertyPath: m_Name
       value: Flock Sand Tiger Shark
@@ -47828,10 +47809,6 @@ PrefabInstance:
     - target: {fileID: 6705059994739628929, guid: c13bcb7ada5b23e429c3d585b43178d3, type: 3}
       propertyPath: avoidanceDistance
       value: 0.33
-      objectReference: {fileID: 0}
-    - target: {fileID: 6705059994739628929, guid: c13bcb7ada5b23e429c3d585b43178d3, type: 3}
-      propertyPath: patrolWaypointDistance
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c13bcb7ada5b23e429c3d585b43178d3, type: 3}
