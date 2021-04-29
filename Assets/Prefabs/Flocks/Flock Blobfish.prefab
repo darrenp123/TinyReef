@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff0b0d88e364e2f48a294dbbc40c30d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flockName: 
+  flockName: Blobfish
   flockUnitPrefab: {fileID: 7830514710517773396, guid: 5fc0f3f84a4400c4299c8c47f5e1f1be, type: 3}
   flockSize: 40
   spawnBounds: {x: 10, y: 5, z: 10}

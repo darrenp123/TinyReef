@@ -145,11 +145,11 @@ MonoBehaviour:
   killBoxDistance: 0.08
   totalHunger: 150
   hungerThreshold: 70
-  initStarvingTimer: 200
-  initialLifespan: 500
+  initStarvingTimer: 100
+  initialLifespan: 300
   unitType: Coral
   unitName: Clown Fish
-  matingUrge: 6
+  matingUrge: 60
   size: 1
   fishScale:
   - 1

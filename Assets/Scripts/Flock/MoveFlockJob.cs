@@ -373,11 +373,13 @@ public struct MoveFlockJob : IJobParallelFor
             int preySize = currentCheck.size;
             float3 targetPosition = currentCheck.impactPoint;
 
+            // should check and test for the prey size
             if (IsInFov(index, targetPosition) && UnitsPredatorPreyObtacleResults[i].distance == 0 && distanceTotarget > 0
                 && distanceTotarget < minDistance && preySize >= maxSize)
             {
                 minDistance = distanceTotarget;
                 closestPrey = targetPosition;
+                maxSize = preySize;
             }
         }
 

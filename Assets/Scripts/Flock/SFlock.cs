@@ -605,7 +605,7 @@ public class SFlock : MonoBehaviour
 
         SFlockUnit child = AllUnits[_totalUnitAmought - 1];
 
-        print("new boen sats: speed: " + newBornSpeed + ", sight dist: " + newBornSightDist + ", size: " + newBornSize + ", lifeSpan: " + newBornLifespan);
+        //print("new boen sats: speed: " + newBornSpeed + ", sight dist: " + newBornSightDist + ", size: " + newBornSize + ", lifeSpan: " + newBornLifespan);
 
         MutateChild(ref newBornSpeed, ref newBornSightDist, ref newBornSize, ref newBornLifespan);
 
@@ -659,7 +659,7 @@ public class SFlock : MonoBehaviour
                     }
                 }
 
-                print("parent 1: " + index1 + ", parent 2: " + index2);
+               // print("parent 1: " + index1 + ", parent 2: " + index2);
                 if (index1 >= 0 && index2 >= 0)
                 {
                     //print("mating urge 1: " + _unitsMatingHurge[index1] + ", mating urge 2: " + _unitsMatingHurge[index1]);
@@ -674,12 +674,12 @@ public class SFlock : MonoBehaviour
 
     private void MutateChild(ref float newBornSpeed, ref float newBornSightDist, ref int newBornSize, ref float newBornLifSpan)
     {
-        float upgradeChance = UnityEngine.Random.value;
-        if (upgradeChance > spwanMutatePercent) return;
+        float mutateChance = UnityEngine.Random.value;
+        if (mutateChance > spwanMutatePercent) return;
 
         int changeDelta = UnityEngine.Random.value >= 0.5f ? 1 : -1;
         int trait = UnityEngine.Random.Range(1, 5);
-        print("mutated: " + changeDelta);
+        //print("mutated: " + changeDelta);
         switch (trait)
         {
             case 1:

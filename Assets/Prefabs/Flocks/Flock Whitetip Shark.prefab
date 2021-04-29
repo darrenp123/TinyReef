@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff0b0d88e364e2f48a294dbbc40c30d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flockName: 
+  flockName: ' Whitetip Shark'
   flockUnitPrefab: {fileID: 194335824614406183, guid: 2ec92b5d102d0ae42afde5c231e02f5e, type: 3}
   flockSize: 4
   spawnBounds: {x: 10, y: 5, z: 10}

@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff0b0d88e364e2f48a294dbbc40c30d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flockName: 
+  flockName: ' Red Snapper'
   flockUnitPrefab: {fileID: -4118619304442215633, guid: ddb8b57222ec5ed40a1c5006aec97cb8, type: 3}
   flockSize: 40
   spawnBounds: {x: 10, y: 5, z: 10}
