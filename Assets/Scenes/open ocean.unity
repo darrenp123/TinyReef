@@ -1161,7 +1161,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 1
-  m_FollowOffset: {x: 0, y: 1, z: -45}
+  m_FollowOffset: {x: 0, y: 1, z: -20.75855}
   m_XDamping: 0.8
   m_YDamping: 0.8
   m_ZDamping: 0.8
@@ -19958,7 +19958,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 1
-  m_FollowOffset: {x: 0, y: 1, z: -45}
+  m_FollowOffset: {x: 0, y: 1, z: -20.75855}
   m_XDamping: 0.8
   m_YDamping: 0.8
   m_ZDamping: 0.8
@@ -21404,6 +21404,7 @@ MonoBehaviour:
   FishStats: {fileID: 194777073}
   GenePoints: 30
   TraitCost: 1
+  WinScreen: {fileID: 1053475717}
 --- !u!114 &1011967297
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22826,7 +22827,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 499727511184529781, guid: 951c5340405d2b44896f63db877d44d0, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 121.000244
+      value: 121.00012
       objectReference: {fileID: 0}
     - target: {fileID: 594920273372266746, guid: 951c5340405d2b44896f63db877d44d0, type: 3}
       propertyPath: m_AnchorMax.x
@@ -23146,7 +23147,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1910078351608875695, guid: 951c5340405d2b44896f63db877d44d0, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 121.000244
+      value: 121.00012
       objectReference: {fileID: 0}
     - target: {fileID: 2691496423896712406, guid: 951c5340405d2b44896f63db877d44d0, type: 3}
       propertyPath: m_AnchorMax.y
@@ -23174,7 +23175,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2699584162102014241, guid: 951c5340405d2b44896f63db877d44d0, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 121.000244
+      value: 121.00012
       objectReference: {fileID: 0}
     - target: {fileID: 3044185921517039000, guid: 951c5340405d2b44896f63db877d44d0, type: 3}
       propertyPath: m_AnchorMax.y
@@ -23778,11 +23779,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3819711853587380740, guid: 951c5340405d2b44896f63db877d44d0, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 121.000244
+      value: 121.00012
       objectReference: {fileID: 0}
     - target: {fileID: 3956751760193778680, guid: 951c5340405d2b44896f63db877d44d0, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 121.000244
+      value: 121.00012
       objectReference: {fileID: 0}
     - target: {fileID: 4175990529366348718, guid: 951c5340405d2b44896f63db877d44d0, type: 3}
       propertyPath: m_AnchorMax.x
@@ -24262,7 +24263,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5286917956698355670, guid: 951c5340405d2b44896f63db877d44d0, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 121.000244
+      value: 121.00012
       objectReference: {fileID: 0}
     - target: {fileID: 5550413669073820738, guid: 951c5340405d2b44896f63db877d44d0, type: 3}
       propertyPath: m_AnchorMax.x
@@ -24794,7 +24795,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6654253324337508747, guid: 951c5340405d2b44896f63db877d44d0, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 121.000244
+      value: 121.00012
       objectReference: {fileID: 0}
     - target: {fileID: 6866955192281872493, guid: 951c5340405d2b44896f63db877d44d0, type: 3}
       propertyPath: m_AnchorMax.y
@@ -24926,7 +24927,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8955214570280735324, guid: 951c5340405d2b44896f63db877d44d0, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 121.000244
+      value: 121.00012
       objectReference: {fileID: 0}
     - target: {fileID: 9029706962062862213, guid: 951c5340405d2b44896f63db877d44d0, type: 3}
       propertyPath: m_AnchorMax.x
@@ -25242,6 +25243,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1053475717 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3155011069985857029, guid: 951c5340405d2b44896f63db877d44d0, type: 3}
+  m_PrefabInstance: {fileID: 1053475690}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1053475718 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 9188889304579698633, guid: 951c5340405d2b44896f63db877d44d0, type: 3}
@@ -26058,11 +26064,11 @@ MonoBehaviour:
   m_SplineCurvature: 0.343
   m_Orbits:
   - m_Height: 1.5
-    m_Radius: 42
+    m_Radius: 18.7282
   - m_Height: 1
-    m_Radius: 45
+    m_Radius: 20.75855
   - m_Height: -1.5
-    m_Radius: 42
+    m_Radius: 18.7282
   m_LegacyHeadingBias: 3.4028235e+38
   m_Rigs:
   - {fileID: 369379138}
@@ -26984,7 +26990,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 1
-  m_FollowOffset: {x: 0, y: 1, z: -45}
+  m_FollowOffset: {x: 0, y: 1, z: -20.75855}
   m_XDamping: 0.8
   m_YDamping: 0.8
   m_ZDamping: 0.8

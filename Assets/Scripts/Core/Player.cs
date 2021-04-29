@@ -14,9 +14,11 @@ public class Player : MonoBehaviour
     [SerializeField] int GenePoints;
     [SerializeField] int TraitCost;
     bool UION;
-    //public GameObject WinText;
+    [SerializeField]
+    GameObject WinScreen;
     private GameModeBase _gameMode;
     private ConsumablePool _consumablePool;
+
 
     void Start()
     {
@@ -24,7 +26,7 @@ public class Player : MonoBehaviour
         CurrentFishFlockCount = 0;
         FishStats.UpdateGenePoints(GenePoints);
         UION = false;
-        //WinText.SetActive(false);
+        WinScreen.SetActive(false);
         _gameMode = FindObjectOfType<GameModeBase>();
         if (_gameMode && _gameMode.State == GameModeBase.GameModeSate.SANDBOX)
             InvokeRepeating(nameof(SanboxMode), 1, 1);
@@ -44,8 +46,9 @@ public class Player : MonoBehaviour
 
     public void YouWin()
     {
-       // if (_gameMode && _gameMode.ObjectiveComplete())
-            //WinText.SetActive(true);
+        print(_gameMode.ObjectiveComplete());
+       if (_gameMode && _gameMode.ObjectiveComplete())
+            WinScreen.SetActive(true);
     }
 
     public SFlockUnit GoToNextFishInFlock(bool dir)
