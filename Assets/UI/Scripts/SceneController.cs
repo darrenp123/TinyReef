@@ -17,6 +17,7 @@ public class SceneController : MonoBehaviour
     {
         optionsManager = FindObjectOfType<OptionsManager>();
         if(optionsManager) optionsManager.InitialiseCameras();
+        Time.timeScale = 1;
     }
 
     public void ResetLevel()
