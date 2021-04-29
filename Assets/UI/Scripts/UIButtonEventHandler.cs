@@ -17,7 +17,15 @@ public class UIButtonEventHandler : MonoBehaviour, IPointerEnterHandler, IPointe
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        UISoundManager.PlaySound("ButtonClicked");
+        if (CompareTag("Trait"))
+        {
+
+            UISoundManager.PlaySound("Bubbles");
+        }
+        else
+        {
+            UISoundManager.PlaySound("ButtonClicked");
+        }
     }
 
     public void OnPointerEnter(PointerEventData eventData)
