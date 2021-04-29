@@ -141,9 +141,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2417a6e60d5811243b24eb75c9692efa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioSlider: {fileID: 0}
   clips:
   - {fileID: 8300000, guid: 918098b181053a14490297e9399cdbd1, type: 3}
   - {fileID: 8300000, guid: 8445747d9e9712e498f53a36e900d135, type: 3}
+  bubbleClips:
+  - {fileID: 8300000, guid: cf15fd70764b94943b5ffb6de135719b, type: 3}
+  - {fileID: 8300000, guid: 22d67b0b9bf27ab429538befbb7ad8bc, type: 3}
 --- !u!114 &5272672807553984443
 MonoBehaviour:
   m_ObjectHideFlags: 0

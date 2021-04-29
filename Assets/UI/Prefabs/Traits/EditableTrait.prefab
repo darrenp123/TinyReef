@@ -422,7 +422,7 @@ GameObject:
   - component: {fileID: 4125223575609767793}
   m_Layer: 5
   m_Name: DecreaseValueButton
-  m_TagString: Untagged
+  m_TagString: Trait
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -810,7 +810,7 @@ GameObject:
   - component: {fileID: 4355459052932582043}
   m_Layer: 5
   m_Name: IncreaseValueButton
-  m_TagString: Untagged
+  m_TagString: Trait
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
