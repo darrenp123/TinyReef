@@ -13,6 +13,13 @@ public class OptionsManager : MonoBehaviour
     [SerializeField]
     Slider freeCamSensSlider, freeCamMoveSpeedSlider, followCameraSensSlider, followCameraZoomSpeedSlider;
 
+    private void Awake() {
+        if (!PlayerPrefs.HasKey("FreeCamSens")) PlayerPrefs.SetFloat("FreeCamSens", 150f);
+        if (!PlayerPrefs.HasKey("FreeCamMoveSpeed")) PlayerPrefs.SetFloat("FreeCamMoveSpeed", 15f);
+        if (!PlayerPrefs.HasKey("FollowCamRotSpeed")) PlayerPrefs.SetFloat("FollowCamRotSpeed", 3f);
+        if (!PlayerPrefs.HasKey("FollowCamZoomSpeed")) PlayerPrefs.SetFloat("FollowCamZoomSpeed", 5f);
+    }
+
     public void ChangeFreeCamSensitivity(float speed)
     {
         PlayerPrefs.SetFloat("FreeCamSens", speed);

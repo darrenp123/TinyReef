@@ -4457,6 +4457,7 @@ MonoBehaviour:
   FishStats: {fileID: 1542092445}
   GenePoints: 30
   TraitCost: 1
+  WinScreen: {fileID: 1957547057}
 --- !u!114 &41522748
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5971,7 +5972,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectiveDescription: Have at least 15 Lion Fish
-  objectiveFlock: {fileID: 0}
+  objectiveFlock: {fileID: 946747307}
   numOfUnits: 15
 --- !u!114 &113491327
 MonoBehaviour:
@@ -32499,6 +32500,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 9107440545818283384, guid: de6629ef5de98e24b802e9d8d7c7c4ac, type: 3}
   m_PrefabInstance: {fileID: 946747305}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &946747307 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9107440545818283385, guid: de6629ef5de98e24b802e9d8d7c7c4ac, type: 3}
+  m_PrefabInstance: {fileID: 946747305}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff0b0d88e364e2f48a294dbbc40c30d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &955732279
 GameObject:
   m_ObjectHideFlags: 0
@@ -58159,6 +58171,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 53.714844
       objectReference: {fileID: 0}
+    - target: {fileID: 3155011069985857029, guid: 951c5340405d2b44896f63db877d44d0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3431999379346157670, guid: 951c5340405d2b44896f63db877d44d0, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -59413,6 +59429,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1957547057 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3155011069985857029, guid: 951c5340405d2b44896f63db877d44d0, type: 3}
+  m_PrefabInstance: {fileID: 1957547034}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1957547058 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 26960970040235035, guid: 951c5340405d2b44896f63db877d44d0, type: 3}
