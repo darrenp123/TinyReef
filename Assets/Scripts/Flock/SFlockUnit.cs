@@ -143,9 +143,6 @@ public class SFlockUnit : MonoBehaviour, IFood
 
     public void SetScale(int newSise)
     {
-        // Testing
-        //size = Random.Range(0, 10);
-        //float fishSize = fishScale[size];
         _predatorLayerNames.Clear();
         _preyLayerNames.Clear();
 
@@ -191,7 +188,7 @@ public class SFlockUnit : MonoBehaviour, IFood
         _predatorMask = LayerMask.GetMask(_predatorLayerNames.ToArray());
         _preyMask = LayerMask.GetMask(_preyLayerNames.ToArray());
 
-        _currentMatingUrge = matingUrge * (1 + (size / 10));
+        _currentMatingUrge = matingUrge * (1 + (float)(size / 10.0f));
 
         UpdateHungerThreshold();
         OnUnitTraitsValueChanged?.Invoke(this);
@@ -202,13 +199,10 @@ public class SFlockUnit : MonoBehaviour, IFood
         OnUnitRemove?.Invoke(this);
 
         if (_consumablePool)
-            _consumablePool.StartCoroutine(ManageConsumableEffect());
+            _ = _consumablePool.StartCoroutine(ManageConsumableEffect());
     }
 
-    public float CalculateUnitFitness()
-    {
-        return _sightDistance + _maxSpeed + size + initialLifespan;
-    }
+    public float CalculateUnitFitness() => _sightDistance + _maxSpeed + size + (initialLifespan / 60);
 
     private void UpdateHungerThreshold()
     {
@@ -216,6 +210,11 @@ public class SFlockUnit : MonoBehaviour, IFood
     }
 
     public string GetFoodName() => unitName;
+
+    public float GetNutricionValue()
+    {
+        return 0;
+    }
 
     private IEnumerator ManageConsumableEffect()
     {

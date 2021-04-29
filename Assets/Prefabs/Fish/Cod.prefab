@@ -143,7 +143,7 @@ MonoBehaviour:
   fovAngle: 160
   numViewDirections: 100
   killBoxDistance: 0.09
-  totalHunger: 150
+  totalHunger: 200
   hungerThreshold: 70
   initStarvingTimer: 100
   initialLifespan: 300
@@ -166,4 +166,3 @@ MonoBehaviour:
   sightIncumbrance: 1
   sizeIncumbrance: 5
   consumeEffectPrefab: {fileID: 2247388813125844722, guid: a5cb3ef1716dfa94da27fbf76aa9f5e4, type: 3}
-  referenceMat: {fileID: 2100000, guid: b8c6281487903674ab1d40a536d286d1, type: 2}

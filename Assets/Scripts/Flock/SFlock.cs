@@ -603,11 +603,11 @@ public class SFlock : MonoBehaviour
         int newBornSize = (parent1.Size + parent2.Size) / 2;
         float newBornLifespan = (parent1.InitialLifespan + parent2.InitialLifespan) / 2;
 
-        SFlockUnit child = AllUnits[_totalUnitAmought - 1];
-
-        //print("new boen sats: speed: " + newBornSpeed + ", sight dist: " + newBornSightDist + ", size: " + newBornSize + ", lifeSpan: " + newBornLifespan);
+        SFlockUnit child = AllUnits[_totalUnitAmought];
 
         MutateChild(ref newBornSpeed, ref newBornSightDist, ref newBornSize, ref newBornLifespan);
+
+       //print("new born stats: speed: " + newBornSpeed + ", sight dist: " + newBornSightDist + ", size: " + newBornSize + ", lifeSpan: " + newBornLifespan);
 
         child.SetMaxSpeed(newBornSpeed);
         child.SetSightDistance(newBornSightDist);
@@ -616,7 +616,7 @@ public class SFlock : MonoBehaviour
 
         AllocateNewValues();
         RefreshBatches();
-        string message = "A " + flockUnitPrefab.UnitName + " has spawned! (current number is " + _totalUnitAmought + ")";
+        string message = "A " + flockUnitPrefab.UnitName + " spawned! (current number is " + _totalUnitAmought + ")";
         SendMessage(MessageType.BIRTH, message);
     }
 
@@ -659,10 +659,9 @@ public class SFlock : MonoBehaviour
                     }
                 }
 
-               // print("parent 1: " + index1 + ", parent 2: " + index2);
+                //print("parent 1: " + index1 + ", parent 2: " + index2);
                 if (index1 >= 0 && index2 >= 0)
                 {
-                    //print("mating urge 1: " + _unitsMatingHurge[index1] + ", mating urge 2: " + _unitsMatingHurge[index1]);
                     _unitsMatingHurge[index1] = AllUnits[index1].CurrentMatingUrge;
                     _unitsMatingHurge[index2] = AllUnits[index2].CurrentMatingUrge;
 
@@ -697,8 +696,8 @@ public class SFlock : MonoBehaviour
                 break;
 
             case 4:
-                if (newBornLifSpan <= 1) return;
-                newBornLifSpan += changeDelta;
+                if ((newBornLifSpan / 60) <= 1) return;
+                newBornLifSpan += (changeDelta * 60);
                 break;
         }
     }

@@ -143,7 +143,7 @@ MonoBehaviour:
   fovAngle: 160
   numViewDirections: 100
   killBoxDistance: 0.08
-  totalHunger: 150
+  totalHunger: 200
   hungerThreshold: 70
   initStarvingTimer: 100
   initialLifespan: 300

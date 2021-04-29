@@ -46,7 +46,6 @@ public class Player : MonoBehaviour
 
     public void YouWin()
     {
-        print(_gameMode.ObjectiveComplete());
        if (_gameMode && _gameMode.ObjectiveComplete())
             WinScreen.SetActive(true);
     }
