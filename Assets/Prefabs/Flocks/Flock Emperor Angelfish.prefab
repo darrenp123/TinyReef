@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff0b0d88e364e2f48a294dbbc40c30d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flockName: Anglefish
+  flockName: Angelfish
   flockUnitPrefab: {fileID: 941367559866431745, guid: 8aad5ae21f821e243a0dbad4a81a25d7, type: 3}
   flockSize: 5
   spawnBounds: {x: 5, y: 1, z: 5}

@@ -12,6 +12,8 @@ using TMPro;
 public class FactFileMK2 : MonoBehaviour
 {
     [SerializeField]
+    TRPauseMenu pauseMenu;
+    [SerializeField]
     GameObject factFileContainer, pauseMenuPage, statsContainer;
     [SerializeField]
     TMP_Text sizeText, speedText, sensText, lifespanText, hungerText;
@@ -24,7 +26,18 @@ public class FactFileMK2 : MonoBehaviour
     public void OpenFactFile()
     {
         factFileContainer.SetActive(true);
-        //ResetPage();
+    }
+    //public void OpenFactFileFromTraitMenu(int pageNumber)
+    //{
+    //    pauseMenu.PauseGame();
+    //    factFileContainer.SetActive(true);
+    //    OpenPage(pageNumber);
+    //}
+    public void OpenFactFileFromTraitMenu()
+    {
+        pauseMenu.PauseGame();
+        factFileContainer.SetActive(true);
+        OpenPage(0);
     }
 
     public void CloseFactFileToMainMenu()

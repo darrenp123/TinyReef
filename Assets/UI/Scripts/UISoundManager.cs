@@ -13,6 +13,8 @@ public class UISoundManager : MonoBehaviour
     Slider audioSlider;
     [SerializeField]
     AudioClip[] clips;
+    [SerializeField]
+    AudioClip[] bubbleClips;
     AudioClip soundToPlay;
     bool muted;
 
@@ -28,10 +30,15 @@ public class UISoundManager : MonoBehaviour
     {
         for (int i = 0; i < clips.Length; i++)
         {
-            if(clips[i].name == sound)
+            if (clips[i].name == sound)
             {
                 soundToPlay = clips[i];
                 break;
+            }
+            else if (sound == "Bubbles")
+            {
+                int rand = Random.Range(0, 2);
+                soundToPlay = bubbleClips[rand];
             }
         }
         if (soundToPlay != null)
