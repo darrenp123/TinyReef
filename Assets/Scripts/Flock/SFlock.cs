@@ -361,7 +361,7 @@ public class SFlock : MonoBehaviour
                 UnitsToRemove.Add(currentUnit);
                 if (_activityLog)
                 {
-                    string message = currentUnit.UnitName + " died of " + ((currentUnit.LifeSpan <= 0) ? "died of old age." : "died of starvation");
+                    string message = currentUnit.UnitName + " died of " + ((currentUnit.LifeSpan <= 0) ? " old age." : " starvation");
                     SendMessage(MessageType.DEATH, message);
                 }
             }

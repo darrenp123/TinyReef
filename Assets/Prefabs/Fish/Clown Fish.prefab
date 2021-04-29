@@ -149,7 +149,7 @@ MonoBehaviour:
   initialLifespan: 300
   unitType: Coral
   unitName: Clown Fish
-  matingUrge: 20
+  matingUrge: 60
   size: 1
   fishScale:
   - 1

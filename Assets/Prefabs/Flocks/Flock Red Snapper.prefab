@@ -53,7 +53,7 @@ MonoBehaviour:
     m_Bits: 128
   flockWaypoints: {fileID: 0}
   minSpeed: 2
-  initMaxSpeed: 5
+  initMaxSpeed: 3
   maxSteerForce: 3
   cohesionDistance: 0.4
   avoidanceDistance: 0.18

@@ -880,6 +880,10 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3249861555130554789, guid: 7553656fd498c3e47a277d8edf9420f4, type: 3}
+      propertyPath: initMaxSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3249861555130554789, guid: 7553656fd498c3e47a277d8edf9420f4, type: 3}
       propertyPath: spawnBounds.x
       value: 7
       objectReference: {fileID: 0}
