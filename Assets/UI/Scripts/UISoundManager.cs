@@ -18,6 +18,7 @@ public class UISoundManager : MonoBehaviour
 
     private void Start()
     {
+        if (!PlayerPrefs.HasKey("AudioVolume")) PlayerPrefs.SetFloat("AudioVolume", 0.5f);
         source = GetComponent<AudioSource>();
         audioSlider.value = PlayerPrefs.GetFloat("AudioVolume");
         muted = false;
