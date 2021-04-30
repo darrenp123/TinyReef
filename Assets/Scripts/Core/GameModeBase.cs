@@ -9,7 +9,10 @@ public class GameModeBase : MonoBehaviour
         CHALLENGE
     }
 
+    public delegate void OnObjectiveValueChangeSignature(SFlock Objectiveflock);
+
     [SerializeField] protected string objectiveDescription;
+    public OnObjectiveValueChangeSignature OnObjectiveValueChange;
     protected static GameModeSate state;
 
     public GameModeSate State { get => state; set => state = value; }

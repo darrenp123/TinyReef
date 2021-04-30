@@ -117,6 +117,9 @@ public class SFlock : MonoBehaviour
     private float _reactionTimer;
     private ActivityLog _activityLog;
 
+    public OnFlockSizeChangeSignature OnFlockSizeChange;
+    public delegate void OnFlockSizeChangeSignature(SFlock flock);
+
     // used for debugging and testing
     [Header("Debugging and Testing")]
     public int unitIndex;
@@ -592,6 +595,7 @@ public class SFlock : MonoBehaviour
         _totalUnitAmought = AllUnits.Count;
         _unitBatchCount = _totalUnitAmought > 10 ? _totalUnitAmought / 10 : 1;
         _sightBatchCount = _sightDirections.Length / (_totalUnitAmought <= 0 ? 1 : _totalUnitAmought);
+        OnFlockSizeChange?.Invoke(this);
     }
 
     private void SpawnNewUnit(SFlockUnit parent1, SFlockUnit parent2)
