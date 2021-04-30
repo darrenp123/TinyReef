@@ -21419,7 +21419,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bubblesPrefab: {fileID: 19800000, guid: eb8f4f875e2ee8c48a3d047cf794ab1d, type: 3}
   FishStats: {fileID: 194777073}
-  GenePoints: 30
+  GenePoints: 20
   TraitCost: 1
   WinScreen: {fileID: 1053475717}
 --- !u!114 &1011967297
