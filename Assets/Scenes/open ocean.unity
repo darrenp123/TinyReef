@@ -24282,6 +24282,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 121.000244
       objectReference: {fileID: 0}
+    - target: {fileID: 5529120727271938363, guid: 951c5340405d2b44896f63db877d44d0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1788933215}
+    - target: {fileID: 5529120727271938363, guid: 951c5340405d2b44896f63db877d44d0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadMainMenu
+      objectReference: {fileID: 0}
     - target: {fileID: 5550413669073820738, guid: 951c5340405d2b44896f63db877d44d0, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -24893,6 +24901,14 @@ PrefabInstance:
     - target: {fileID: 7802859404333131380, guid: 951c5340405d2b44896f63db877d44d0, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7910824364755462926, guid: 951c5340405d2b44896f63db877d44d0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1788933215}
+    - target: {fileID: 7910824364755462926, guid: 951c5340405d2b44896f63db877d44d0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ResetLevel
       objectReference: {fileID: 0}
     - target: {fileID: 8139682031969830308, guid: 951c5340405d2b44896f63db877d44d0, type: 3}
       propertyPath: m_AnchorMax.x
