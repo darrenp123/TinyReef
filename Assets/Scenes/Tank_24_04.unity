@@ -6398,15 +6398,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8069508316591609109, guid: b0d832dadb2a61141b61df6da6ba0cd7, type: 3}
       propertyPath: spawnBounds.x
-      value: 7
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8069508316591609109, guid: b0d832dadb2a61141b61df6da6ba0cd7, type: 3}
       propertyPath: spawnBounds.y
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8069508316591609109, guid: b0d832dadb2a61141b61df6da6ba0cd7, type: 3}
       propertyPath: spawnBounds.z
-      value: 7
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8069508316591609109, guid: b0d832dadb2a61141b61df6da6ba0cd7, type: 3}
       propertyPath: boundsDistance
@@ -7168,15 +7168,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3581474779332409843, guid: bccf83bbce0515544a2cbe9c93841f10, type: 3}
       propertyPath: spawnBounds.x
-      value: 7
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3581474779332409843, guid: bccf83bbce0515544a2cbe9c93841f10, type: 3}
       propertyPath: spawnBounds.y
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3581474779332409843, guid: bccf83bbce0515544a2cbe9c93841f10, type: 3}
       propertyPath: spawnBounds.z
-      value: 7
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3581474779332409843, guid: bccf83bbce0515544a2cbe9c93841f10, type: 3}
       propertyPath: boundsDistance
@@ -8180,15 +8180,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 310231194867374175, guid: 60fd7d73c2632cc44b4aba7d540f2a4a, type: 3}
       propertyPath: spawnBounds.x
-      value: 7
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 310231194867374175, guid: 60fd7d73c2632cc44b4aba7d540f2a4a, type: 3}
       propertyPath: spawnBounds.y
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 310231194867374175, guid: 60fd7d73c2632cc44b4aba7d540f2a4a, type: 3}
       propertyPath: spawnBounds.z
-      value: 7
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 310231194867374175, guid: 60fd7d73c2632cc44b4aba7d540f2a4a, type: 3}
       propertyPath: boundsDistance
@@ -16026,15 +16026,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5638369182917961929, guid: f8ce00f89531fec41a77987c82e6dedc, type: 3}
       propertyPath: spawnBounds.x
-      value: 7
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5638369182917961929, guid: f8ce00f89531fec41a77987c82e6dedc, type: 3}
       propertyPath: spawnBounds.y
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5638369182917961929, guid: f8ce00f89531fec41a77987c82e6dedc, type: 3}
       propertyPath: spawnBounds.z
-      value: 7
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5638369182917961929, guid: f8ce00f89531fec41a77987c82e6dedc, type: 3}
       propertyPath: boundsDistance
@@ -16374,15 +16374,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4930066079336723647, guid: 0bd095030cda9e241adc270e1f5a04ae, type: 3}
       propertyPath: spawnBounds.x
-      value: 7
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4930066079336723647, guid: 0bd095030cda9e241adc270e1f5a04ae, type: 3}
       propertyPath: spawnBounds.y
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4930066079336723647, guid: 0bd095030cda9e241adc270e1f5a04ae, type: 3}
       propertyPath: spawnBounds.z
-      value: 7
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4930066079336723647, guid: 0bd095030cda9e241adc270e1f5a04ae, type: 3}
       propertyPath: boundsDistance
@@ -24757,6 +24757,18 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6817635830803489002, guid: c4218d18edf5ee545a2705e3c1a25e41, type: 3}
+      propertyPath: spawnBounds.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6817635830803489002, guid: c4218d18edf5ee545a2705e3c1a25e41, type: 3}
+      propertyPath: spawnBounds.y
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6817635830803489002, guid: c4218d18edf5ee545a2705e3c1a25e41, type: 3}
+      propertyPath: spawnBounds.z
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6817635830803489002, guid: c4218d18edf5ee545a2705e3c1a25e41, type: 3}
       propertyPath: flockWaypoints
       value: 
       objectReference: {fileID: 1055000919}
@@ -32459,15 +32471,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9107440545818283385, guid: de6629ef5de98e24b802e9d8d7c7c4ac, type: 3}
       propertyPath: spawnBounds.x
-      value: 7
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 9107440545818283385, guid: de6629ef5de98e24b802e9d8d7c7c4ac, type: 3}
       propertyPath: spawnBounds.y
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 9107440545818283385, guid: de6629ef5de98e24b802e9d8d7c7c4ac, type: 3}
       propertyPath: spawnBounds.z
-      value: 7
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 9107440545818283385, guid: de6629ef5de98e24b802e9d8d7c7c4ac, type: 3}
       propertyPath: boundsDistance
@@ -32968,15 +32980,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4729461356009986723, guid: df0720999c1889340bda9eecdff71647, type: 3}
       propertyPath: spawnBounds.x
-      value: 7
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4729461356009986723, guid: df0720999c1889340bda9eecdff71647, type: 3}
       propertyPath: spawnBounds.y
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4729461356009986723, guid: df0720999c1889340bda9eecdff71647, type: 3}
       propertyPath: spawnBounds.z
-      value: 7
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4729461356009986723, guid: df0720999c1889340bda9eecdff71647, type: 3}
       propertyPath: flockWaypoints
@@ -33106,15 +33118,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3256035607054871387, guid: 73bdeb731cc7e564ca5617770620448e, type: 3}
       propertyPath: spawnBounds.x
-      value: 7
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3256035607054871387, guid: 73bdeb731cc7e564ca5617770620448e, type: 3}
       propertyPath: spawnBounds.y
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3256035607054871387, guid: 73bdeb731cc7e564ca5617770620448e, type: 3}
       propertyPath: spawnBounds.z
-      value: 7
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3256035607054871387, guid: 73bdeb731cc7e564ca5617770620448e, type: 3}
       propertyPath: flockWaypoints
@@ -35945,15 +35957,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7371807810527790346, guid: 6ab7e483d32ad24468a3d5c0ab61e851, type: 3}
       propertyPath: spawnBounds.x
-      value: 7
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7371807810527790346, guid: 6ab7e483d32ad24468a3d5c0ab61e851, type: 3}
       propertyPath: spawnBounds.y
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7371807810527790346, guid: 6ab7e483d32ad24468a3d5c0ab61e851, type: 3}
       propertyPath: spawnBounds.z
-      value: 7
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7371807810527790346, guid: 6ab7e483d32ad24468a3d5c0ab61e851, type: 3}
       propertyPath: boundsDistance

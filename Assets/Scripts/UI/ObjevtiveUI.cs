@@ -4,17 +4,28 @@ using UnityEngine;
 public class ObjevtiveUI : MonoBehaviour
 {
     [SerializeField] private TMP_Text objectiveText;
-    private void Start()
+    private GameModeBase _gameMode;
+    
+    private void Awake()
     {
-        var gameMode = FindObjectOfType<GameModeBase>();
+        _gameMode = FindObjectOfType<GameModeBase>();
 
-        if (objectiveText && gameMode)
+        if (objectiveText && _gameMode)
         {
-            objectiveText.SetText(gameMode.ObjectiveDescription);
-            if(gameMode.State == GameModeBase.GameModeSate.SANDBOX)
+            if (_gameMode.State == GameModeBase.GameModeSate.SANDBOX)
             {
                 gameObject.SetActive(false);
             }
+            else if(_gameMode.State == GameModeBase.GameModeSate.CHALLENGE)
+            {
+                objectiveText.SetText(_gameMode.ObjectiveDescription);
+                _gameMode.OnObjectiveValueChange += UpdateFlockUnitsNumber;
+            }
         }
+    }
+
+    private void UpdateFlockUnitsNumber(SFlock flock)
+    {
+        objectiveText.SetText(_gameMode.ObjectiveDescription + "\n" + "The current number of " + flock.FlockName + " is " + flock.AllUnits.Count);
     }
 }

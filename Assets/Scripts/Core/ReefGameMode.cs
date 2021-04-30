@@ -15,6 +15,10 @@ public class ReefGameMode : GameModeBase
                 objectiveDescription = "";
                 break;
             case GameModeSate.CHALLENGE:
+                if (objectiveFlock)
+                {
+                    objectiveFlock.OnFlockSizeChange += (flock) => OnObjectiveValueChange?.Invoke(flock);
+                }
                 break;
         }
     }
