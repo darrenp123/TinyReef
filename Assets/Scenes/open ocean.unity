@@ -21416,7 +21416,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bubblesPrefab: {fileID: 19800000, guid: eb8f4f875e2ee8c48a3d047cf794ab1d, type: 3}
   FishStats: {fileID: 194777073}
-  GenePoints: 30
+  GenePoints: 20
   TraitCost: 1
   WinScreen: {fileID: 1053475717}
 --- !u!114 &1011967297
@@ -23299,6 +23299,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 121.00049
       objectReference: {fileID: 0}
+    - target: {fileID: 5529120727271938363, guid: 951c5340405d2b44896f63db877d44d0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1788933215}
+    - target: {fileID: 5529120727271938363, guid: 951c5340405d2b44896f63db877d44d0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadMainMenu
+      objectReference: {fileID: 0}
     - target: {fileID: 5935476496197355102, guid: 951c5340405d2b44896f63db877d44d0, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -23846,6 +23854,14 @@ PrefabInstance:
     - target: {fileID: 7584960512909716013, guid: 951c5340405d2b44896f63db877d44d0, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7910824364755462926, guid: 951c5340405d2b44896f63db877d44d0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1788933215}
+    - target: {fileID: 7910824364755462926, guid: 951c5340405d2b44896f63db877d44d0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ResetLevel
       objectReference: {fileID: 0}
     - target: {fileID: 8955214570280735324, guid: 951c5340405d2b44896f63db877d44d0, type: 3}
       propertyPath: m_AnchoredPosition.x
