@@ -107,7 +107,7 @@ public class FreeCamera : MonoBehaviour
         isActive = state;
     }
 
-    //from 100 to 300
+    //from 1 to 5
     public void ChangeRotationSpeed(float speed) {
         _FreeLookCamera.m_VerticalAxis.m_MaxSpeed = speed;
         _FreeLookCamera.m_HorizontalAxis.m_MaxSpeed = speed;
