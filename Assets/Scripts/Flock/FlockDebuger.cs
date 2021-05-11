@@ -48,7 +48,7 @@ public class FlockDebuger : MonoBehaviour
                 float angle = Vector3.Angle(chosen.transform.forward, math.normalize(dir));
 
                 if (angle <= chosen.FOVAngle)
-                    Gizmos.DrawWireSphere(chosen.MyTransform.position + dir * _obstacleDistance * chosen.transform.localScale.x, sphereCastRadious);
+                    Gizmos.DrawWireSphere(chosen.MyTransform.position + dir * chosen.SightDistance, sphereCastRadious);
             }
 
             /*

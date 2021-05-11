@@ -1,0 +1,151 @@
+ttg96,2021-04-30%,readded victory links in open ocean scene, and changed gene poinst back to 20,edcdf16
+ttg96,2021-04-30%,Merge remote-tracking branch 'origin/PedroBranch' into DemoBranch,c2b6a5f
+rorix14,2021-04-30%,small bug fix,1d938a2
+ttg96,2021-04-30%,not sure what the changes were,f122c0f
+rorix14,2021-04-30%,ship collision fixed, number of objectve fish display,861af48
+ttg96,2021-04-30%,Fixed gene points challenge on open ocean, fixed free camera left click bug,ef32969
+ttg96,2021-04-30%,fixed vistory screen, changed starting genepoints for challenge mode,f5508f8
+rorix14,2021-04-29%,Build 2.22,a0b58cc
+rorix14,2021-04-29%,Build 2.21,39bd9b0
+rorix14,2021-04-29%,Build 2.2,4e5afa2
+rorix14,2021-04-29%,Merge remote-tracking branch 'origin/DemoBranch' into PedroBranch,25774e4
+rorix14,2021-04-29%,Fixed fish spawning and some other stats related bugs,fa8178c
+ttg96,2021-04-29%,Merge remote-tracking branch 'origin/JonTestBranch' into DemoBranch,32cf6eb
+Jon Munro,2021-04-29%,added new fact file pages, linked species i button to fact file, added sounds to trait +/- buttons, corrected some spelling mistakes, disabled chromatic abberation for reef scene,63fc3a1
+ttg96,2021-04-29%,chnage to project settings,4fc1537
+rorix14,2021-04-29%,Merge remote-tracking branch 'origin/DemoBranch' into PedroBranch,8246e4a
+rorix14,2021-04-29%,empty,845e0eb
+ttg96,2021-04-29%,fixed win screen,0fb3064
+ttg96,2021-04-29%,fixed menu quitting bug,5ea3ad6
+ttg96,2021-04-29%,Added default to playerPrefs, completely fixed intro bug,5ea0677
+rorix14,2021-04-29%,Fish in Tank,ba9d19a
+rorix14,2021-04-29%,Merge remote-tracking branch 'origin/DemoBranch' into PedroBranch,2096e14
+rorix14,2021-04-29%,all new fish ready,4254ca9
+ttg96,2021-04-28%,Added skybox, moved stickers, changed intro bug,6496c65
+Jon Munro,2021-04-28%,added stats to fact file pages,e702254
+Jon Munro,2021-04-28%,Merge branch 'DemoBranch' of https://github.com/ttg96/TinyReef into JonTestBranch,40cedc5
+ttg96,2021-04-28%,Pausing and unpausing with escape key fixed, updated ingameUI prefab,548131a
+rorix14,2021-04-28%,fish update,2deb24f
+rorix14,2021-04-28%,Merge remote-tracking branch 'origin/DemoBranch' into PedroBranch,27b0fea
+rorix14,2021-04-28%,mating and spawning reworked,e956824
+ttg96,2021-04-28%,Update to UI prefab,ea76c44
+ttg96,2021-04-28%,Moved follow camera centers down in both tanks, rebaked lighting, readded label to open ocean tank, fixed sound error on first tank,1b65632
+rorix14,2021-04-28%,tanks alomost ready,d1eb65d
+Jon Munro,2021-04-28%,Updated fact file with new pages, deleted old fact file pages,59e9414
+rorix14,2021-04-28%,Merge remote-tracking branch 'origin/DemoBranch' into PedroBranch,00326c6
+rorix14,2021-04-28%,open ocean tank ready,9d6e991
+ttg96,2021-04-27%,Added lighting to new tank scene, added labels to both tanks,1c65b88
+ttg96,2021-04-27%,Added images to level select,90318af
+rorix14,2021-04-27%,Merge remote-tracking branch 'origin/DemoBranch' into PedroBranch,47abdce
+rorix14,2021-04-27%,small changes to last merge,7c45bfd
+ttg96,2021-04-27%,Baked lighting for open ocean map, added whitetip, red snapper, pilot and blob with material correct scaling down, correct centering and capsule collider, fixed bug of not being able of going back to game mode selection screen after selecting it.,43748a1
+ttg96,2021-04-27%,Merge remote-tracking branch 'origin/PedroBranch' into DemoBranch,a38d309
+rorix14,2021-04-27%,fish, spawning, and hunger,516b6aa
+ttg96,2021-04-27%,levels select screen works properly now,609b78c
+ttg96,2021-04-27%,Added new maps, added cameras and UI to new maps, added walls to second map,e69458d
+ttg96,2021-04-27%,Small change to gitattribute,eb1c8ab
+ttg96,2021-04-27%,Added 999 limit to genepoints,36987c1
+ttg96,2021-04-27%,Added audio controls in game,eb1cc21
+ttg96,2021-04-27%,Fixed audio, mute, restart, buttons and sliders. Fixed player preferences,3559f4e
+ttg96,2021-04-27%,Merge remote-tracking branch 'origin/SecondLevel' into DemoBranch,9b88739
+ttg96,2021-04-27%,added function for randomization on spawn,227b7f6
+ttg96,2021-04-26%,fixing UI bugs, fixing unreported issues, relinking functions to sliders and buttons,5545980
+ttg96,2021-04-26%,Merge remote-tracking branch 'origin/JonTestBranch' into DemoBranch,9bd203e
+ttg96,2021-04-26%,Merge remote-tracking branch 'origin/PedroBranch' into DemoBranch,2e7a605
+rorix14,2021-04-26%,size mechanics,a30072b
+Jon Munro,2021-04-26%,Linked input options to each camera for primary scene,4880e39
+ttg96,2021-04-23%,Merge branch 'DemoBranch' into JonTestBranch,f0646c7
+Jon Munro,2021-04-23%,Added hide ui buttons to ui, fleshed out options menu, added icons to misc buttons menu,600d64f
+ttg96,2021-04-23%,Camera roation functions added, camera transition bugs fixed,f54bacc
+JLR94,2021-04-23%,Updated Level,1983726
+ttg96,2021-04-21%,Merge remote-tracking branch 'origin/PedroBranch' into DemoBranch,78ff27e
+rorix14,2021-04-21%,updated build,667ec17
+rorix14,2021-04-21%,fish scaling, activity log,934099e
+ttg96,2021-04-21%,Merge remote-tracking branch 'origin/JonBranch' into DemoBranch,96208a2
+ttg96,2021-04-21%,small scene changes,4ea069a
+rorix14,2021-04-16%,fish scaling unavailable for now,cb60703
+ttg96,2021-04-16%,Size changes readded,0ac2f58
+ttg96,2021-04-16%,Merge remote-tracking branch 'origin/PedroBranch' into DemoBranch,98bb5ef
+rorix14,2021-04-16%,sandbox/challenge, bubbles, UI raycast block,a8fdb46
+ttg96,2021-04-16%,Free camera added,645ce26
+Jon Munro,2021-04-16%,updated control menu, added free cam and mute button to ingame ui, added level select screen,5af3fd9
+ttg96,2021-04-14%,Merge remote-tracking branch 'origin/PedroBranch' into DemoBranch,6ff6edf
+ttg96,2021-04-14%,added size scaling code for fish,36634ca
+rorix14,2021-04-14%,water effects, species outliner, camera fixes,3e4ab40
+JLR94,2021-04-12%,Second Level_01,0841971
+ttg96,2021-03-31%,Fixed the black images bug in the build, fixed issues with text of screen on UI and increased button sound,d8ca63b
+ttg96,2021-03-30%,Attempted fixes, nothing worked,eddc9a6
+rorix14,2021-03-30%,Lighting, waypoints, reworked spawning,0c0e113
+rorix14,2021-03-30%,Merge remote-tracking branch 'origin/deliveryBranch' into PedroBranch,c843ef7
+rorix14,2021-03-30%,small changes,07c9f7e
+ttg96,2021-03-30%,Fixed fish size issues, fixed scene transitioning, added music to menu, changed don't destroy file,73583c9
+ttg96,2021-03-30%,Merge remote-tracking branch 'origin/JonBranch' into deliveryBranch,67a6ffe
+ttg96,2021-03-30%,Merge remote-tracking branch 'origin/PedroBranch' into deliveryBranch,157f1f1
+rorix14,2021-03-30%,Tank new lighting, new terrain, and ajustements,33c6f21
+Jon Munro,2021-03-30%,Added Credits page, added mute button to options menu, overhauled the fact file page, added dynamic scaling to both the activity log as well as the species outliner, changed some text on the Controls information page to be more accurate, changed DontDestroy script to be more dynamic,0eabb83
+ttg96,2021-03-29%,no message,65279f6
+ttg96,2021-03-29%,Removed uselless scenes, added simple objective, fixed any merge issues, updated map,e36f1a5
+ttg96,2021-03-29%,Merge remote-tracking branch 'origin/PedroBranch' into deliveryBranch,57e74c3
+ttg96,2021-03-29%,Merge remote-tracking branch 'origin/JonBranch' into deliveryBranch,7b093a4
+ttg96,2021-03-29%,Actually forgot some shit,6abe21d
+ttg96,2021-03-29%,Added improved zooming in and out, implemented UI changes,592a45b
+Jon Munro,2021-03-29%,new fact file pages and expanded contents page,b81a9ce
+rorix14,2021-03-29%,new tanck, new fish and hunger mechanics,639a837
+ttg96,2021-03-29%,Merge remote-tracking branch 'origin/JonBranch' into deliveryBranch,cb3c070
+Jon Munro,2021-03-27%,Updated Chauncey on each trait page with the new asset and added Chauncey to the remaining trait pages, also added new icon to player settings,092db1e
+ttg96,2021-03-27%,Merge remote-tracking branch 'origin/JonBranch' into deliveryBranch,a6c9e1f
+Jon Munro,2021-03-27%,Changed all Canvases to use the Screen Space - Camera render mode (will need to assign the primary camera), added contents page and button to the fact file, changed gene points ui to use shell assets, Fixed the information screen not letting the user go back to the menu, added title logo to main menu, removed red snapper slide from fact file, added sound to species outliner buttons and dropdown, Made all UI into a prefab for both Ingame and Main Menu, reimplemented cursor and added logo to Player settings,fcbfb9f
+ttg96,2021-03-27%,fixed UI issues,71121fb
+rorix14,2021-03-27%,Merged,2ffb45b
+rorix14,2021-03-27%,Merge remote-tracking branch 'origin/deliveryBranch' into PedroBranch,0a59da5
+ttg96,2021-03-27%,Merge remote-tracking branch 'origin/Level_Update' into deliveryBranch,90e8ea1
+rorix14,2021-03-27%,new fish,fe0276e
+ttg96,2021-03-27%,Merge remote-tracking branch 'origin/JonBranch' into deliveryBranch,c0c1aba
+Jon Munro,2021-03-25%,added species outliner, added objectives UI, altered fish stats container, added back to game button on ingame trait info menu, added replay pause and play buttons, added cursor,e41e364
+JLR94,2021-03-22%,Level Updated,a30a0c3
+Jon Munro,2021-03-22%,Changed the UI to use Diana's assets, altered colour scheme of some of the ingame ui, tweaked the fish stats outliner slightly, added fact file to main menu and ingameUI scene, added credits and options buttons back to the main menu,0efe64a
+JLR94,2021-03-19%,Terrain Test,5743fbe
+Jon Munro,2021-03-18%,Added splash screen, added gamemode descriptions, changed text for certain buttons, fixed scene loading within 'Tank_With_Glass' scene, added functionality to game speed buttons,3b00955
+ttg96,2021-03-15%,Merge branch 'Level_Update' into PedroBranch,c2a37ee
+ttg96,2021-03-15%,Merge branch 'deliveryBranch' into PedroBranch,49cf9ff
+rorix14,2021-03-15%,Fish eating coral,f7499fc
+JLR94,2021-03-15%,New Prefabs,da08e95
+ttg96,2021-03-14%,Added Q and E cycling and fixed UI fix selection bug,0b4dde2
+rorix14,2021-03-14%,Fish lifespan and spawning,377b649
+rorix14,2021-03-11%,Tank ready to edit,46c53b4
+ttg96,2021-03-11%,Small scene changes,176fb18
+ttg96,2021-03-11%,Merge branch 'mergeBranch' into PedroBranch,ed3f62e
+rorix14,2021-03-11%,New fish behaviors and map collision fixes,623bb15
+ttg96,2021-03-09%,Merging issues fixed for presentation build Camera and UI working on water tank,1d02205
+ttg96,2021-03-09%,Merge branch 'PedroBranch' into mergeBranch,e326e07
+ttg96,2021-03-09%,small scene changes,13aa8e0
+rorix14,2021-03-09%,Presentation build,f4df00a
+ttg96,2021-03-08%,increased hunger slider for fish and disabled Q and E,9e0aadd
+ttg96,2021-03-08%,Fixed bug were fish couldn't be slected through the aquarium walls,e5b3a97
+ttg96,2021-03-08%,added temp fix for clicking on fish behind ui added audio mixer to UI sounds added escape key event to pause menu,2ecb9ee
+ttg96,2021-03-08%,Merge branch 'Jon-UI-Branch' into mergeBranch,92c15da
+ttg96,2021-03-08%,modified UI for new fish, commented traits that aren't used in the prototype. fixed traits for new fish,51fab58
+rorix14,2021-03-07%,Merge error correction,dde48c0
+rorix14,2021-03-07%,Merge remote-tracking branch 'origin/tiagoBranch',7ebf75e
+rorix14,2021-03-07%,Merge branch 'master' of https://github.com/ttg96/TinyReef,e025629
+rorix14,2021-03-07%,Flock version 1,792bc18
+ttg96,2021-03-07%,added size reduction and fixed a trait bug,f9079ba
+Jon Munro,2021-03-05%,background changes,ce1c35b
+ttg96,2021-03-05%,Added interaction to buttons and UI updates correctly to currently viewing fish,0454de4
+ttg96,2021-03-04%,Chnaged functions in FishStatUI, improved code, commented pause menu to stop error messages,bf66b51
+ttg96,2021-03-04%,Merge branch 'Jon-UI-Branch' into tiagoBranch,1553b76
+ttg96,2021-03-04%,small changes to scene,df8c750
+Jon Munro,2021-03-02%,Added new font (Rubik), added to certain menus backgrounds, button sounds, information page via pause menu and hooked up blue info buttons to information page, disabled options & fact file buttons for now as well as the species outliner as none of them are currently functioning,c707231
+Jon Munro,2021-03-01%,More functioning buttons,f3c17ca
+ttg96,2021-03-01%,Updated project version,d40eb52
+ttg96,2021-02-26%,added scripts,b16272e
+ttg96,2021-02-26%,Merge branch 'Jon-UI-Branch' into tiagoBranch,1fcb986
+ttg96,2021-02-26%,Added more controls options,81f74d3
+Jon Munro,2021-02-24%,Added Main Menu, Instructions and in-game UI,3ae1b59
+ttg96,2021-02-21%,Camera swapping, rotation by clicking and focus on fish,cada82c
+ttg96,2021-02-18%,Camera movement and rotation,9bcbd84
+ttg96,2021-02-12%,test,1cd4f1f
+ttg96,2021-02-12%,project creation,3432547
+ttg96,2021-02-12%,update to gitattributes,8dd7cac
+ttg96,2021-02-12%,.gitignore update,17374e6
+ttg96,2021-02-01%,gitignore and gitattributes added,4677424
