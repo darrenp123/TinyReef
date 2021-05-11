@@ -186,15 +186,15 @@ public class FollowCamera : MonoBehaviour
         isActive = state;
     }
 
-    //from 1 to 10
+    //from 1 to 5
     public void ChangeRotationSpeed(float speed) {
         _FollowCamera.m_XAxis.m_MaxSpeed = speed;
-        _FollowCamera.m_YAxis.m_MaxSpeed = speed/0.01f;
+        _FollowCamera.m_YAxis.m_MaxSpeed = speed;
         PlayerPrefs.SetFloat("FollowCamRotSpeed", speed);
         PlayerPrefs.Save();
     }
 
-    //from 1 to 10
+    //from 1 to 5
     public void ChangeZoomSpeed(float speed) {
         ZoomSpeed = speed;
         PlayerPrefs.SetFloat("FollowCamZoomSpeed", speed);

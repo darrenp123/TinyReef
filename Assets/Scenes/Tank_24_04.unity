@@ -30451,7 +30451,7 @@ MonoBehaviour:
   m_YAxis:
     Value: 0.5
     m_SpeedMode: 1
-    m_MaxSpeed: 209.149
+    m_MaxSpeed: 2
     m_AccelTime: 0.1
     m_DecelTime: 0.1
     m_InputAxisName: Mouse ScrollWheel
@@ -30475,7 +30475,7 @@ MonoBehaviour:
   m_XAxis:
     Value: 0
     m_SpeedMode: 1
-    m_MaxSpeed: 2.091491
+    m_MaxSpeed: 2
     m_AccelTime: 0.4
     m_DecelTime: 0.1
     m_InputAxisName: Mouse X
@@ -30504,11 +30504,11 @@ MonoBehaviour:
   m_SplineCurvature: 0.343
   m_Orbits:
   - m_Height: 1.5
-    m_Radius: 10
+    m_Radius: 42
   - m_Height: 1
-    m_Radius: 12
+    m_Radius: 45
   - m_Height: -1.5
-    m_Radius: 10
+    m_Radius: 42
   m_LegacyHeadingBias: 3.4028235e+38
   m_Rigs:
   - {fileID: 1239781406}
@@ -30664,7 +30664,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 1
-  m_FollowOffset: {x: 0, y: 1, z: -12}
+  m_FollowOffset: {x: 0, y: 1, z: -45}
   m_XDamping: 0.8
   m_YDamping: 0.8
   m_ZDamping: 0.8
@@ -32630,8 +32630,8 @@ MonoBehaviour:
   m_RecenterTarget: 0
   m_VerticalAxis:
     Value: 0
-    m_SpeedMode: 0
-    m_MaxSpeed: 188.6958
+    m_SpeedMode: 1
+    m_MaxSpeed: 2
     m_AccelTime: 0.1
     m_DecelTime: 0.1
     m_InputAxisName: Mouse Y
@@ -32654,8 +32654,8 @@ MonoBehaviour:
     m_LegacyVelocityFilterStrength: -1
   m_HorizontalAxis:
     Value: 0
-    m_SpeedMode: 0
-    m_MaxSpeed: 188.6958
+    m_SpeedMode: 1
+    m_MaxSpeed: 2
     m_AccelTime: 0.1
     m_DecelTime: 0.1
     m_InputAxisName: Mouse X
@@ -35721,7 +35721,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 1
-  m_FollowOffset: {x: 0, y: 1, z: -12}
+  m_FollowOffset: {x: 0, y: 1, z: -45}
   m_XDamping: 0.8
   m_YDamping: 0.8
   m_ZDamping: 0.8
@@ -55362,7 +55362,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 1
-  m_FollowOffset: {x: 0, y: 1, z: -12}
+  m_FollowOffset: {x: 0, y: 1, z: -45}
   m_XDamping: 0.8
   m_YDamping: 0.8
   m_ZDamping: 0.8
