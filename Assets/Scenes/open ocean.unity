@@ -1165,7 +1165,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 1
-  m_FollowOffset: {x: 0, y: 1, z: -20.75855}
+  m_FollowOffset: {x: 0, y: 1, z: -12}
   m_XDamping: 0.8
   m_YDamping: 0.8
   m_ZDamping: 0.8
@@ -19972,7 +19972,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 1
-  m_FollowOffset: {x: 0, y: 1, z: -20.75855}
+  m_FollowOffset: {x: 0, y: 1, z: -12}
   m_XDamping: 0.8
   m_YDamping: 0.8
   m_ZDamping: 0.8
@@ -21326,7 +21326,7 @@ MonoBehaviour:
   m_VerticalAxis:
     Value: 0
     m_SpeedMode: 0
-    m_MaxSpeed: 188.6958
+    m_MaxSpeed: 1.98983
     m_AccelTime: 0.1
     m_DecelTime: 0.1
     m_InputAxisName: Mouse Y
@@ -21350,7 +21350,7 @@ MonoBehaviour:
   m_HorizontalAxis:
     Value: 0
     m_SpeedMode: 0
-    m_MaxSpeed: 188.6958
+    m_MaxSpeed: 1.98983
     m_AccelTime: 0.1
     m_DecelTime: 0.1
     m_InputAxisName: Mouse X
@@ -22783,10 +22783,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 499727511184529781, guid: 951c5340405d2b44896f63db877d44d0, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 121.00049
-      objectReference: {fileID: 0}
     - target: {fileID: 709977101516122998, guid: 951c5340405d2b44896f63db877d44d0, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -22815,6 +22811,26 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 874577288093364825, guid: 951c5340405d2b44896f63db877d44d0, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 874577288093364825, guid: 951c5340405d2b44896f63db877d44d0, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1301157381001770533, guid: 951c5340405d2b44896f63db877d44d0, type: 3}
+      propertyPath: m_OnSelect.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 194777073}
+    - target: {fileID: 1301157381001770533, guid: 951c5340405d2b44896f63db877d44d0, type: 3}
+      propertyPath: m_OnEndEdit.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 194777073}
+    - target: {fileID: 1301157381001770533, guid: 951c5340405d2b44896f63db877d44d0, type: 3}
+      propertyPath: m_OnDeselect.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 194777073}
     - target: {fileID: 1627647978193154460, guid: 951c5340405d2b44896f63db877d44d0, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -22834,14 +22850,6 @@ PrefabInstance:
     - target: {fileID: 1627647978193154460, guid: 951c5340405d2b44896f63db877d44d0, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1910078351608875695, guid: 951c5340405d2b44896f63db877d44d0, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 121.00049
-      objectReference: {fileID: 0}
-    - target: {fileID: 2699584162102014241, guid: 951c5340405d2b44896f63db877d44d0, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 121.00049
       objectReference: {fileID: 0}
     - target: {fileID: 3431999379346157670, guid: 951c5340405d2b44896f63db877d44d0, type: 3}
       propertyPath: m_AnchorMax.y
@@ -23079,14 +23087,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3819711853587380740, guid: 951c5340405d2b44896f63db877d44d0, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 121.00049
-      objectReference: {fileID: 0}
-    - target: {fileID: 3956751760193778680, guid: 951c5340405d2b44896f63db877d44d0, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 121.00049
-      objectReference: {fileID: 0}
     - target: {fileID: 4266161941696546209, guid: 951c5340405d2b44896f63db877d44d0, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -23295,18 +23295,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5286917956698355670, guid: 951c5340405d2b44896f63db877d44d0, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 121.00049
-      objectReference: {fileID: 0}
     - target: {fileID: 5529120727271938363, guid: 951c5340405d2b44896f63db877d44d0, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1788933215}
-    - target: {fileID: 5529120727271938363, guid: 951c5340405d2b44896f63db877d44d0, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: LoadMainMenu
-      objectReference: {fileID: 0}
     - target: {fileID: 5935476496197355102, guid: 951c5340405d2b44896f63db877d44d0, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -23799,10 +23791,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1527585112}
-    - target: {fileID: 6654253324337508747, guid: 951c5340405d2b44896f63db877d44d0, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 121.00049
-      objectReference: {fileID: 0}
     - target: {fileID: 7298861980888810429, guid: 951c5340405d2b44896f63db877d44d0, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -23859,14 +23847,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1788933215}
-    - target: {fileID: 7910824364755462926, guid: 951c5340405d2b44896f63db877d44d0, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ResetLevel
-      objectReference: {fileID: 0}
-    - target: {fileID: 8955214570280735324, guid: 951c5340405d2b44896f63db877d44d0, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 121.00049
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 951c5340405d2b44896f63db877d44d0, type: 3}
 --- !u!114 &1053475691 stripped
@@ -24917,7 +24897,7 @@ MonoBehaviour:
   m_YAxis:
     Value: 0.5
     m_SpeedMode: 1
-    m_MaxSpeed: 209.149
+    m_MaxSpeed: 2.029639
     m_AccelTime: 0.1
     m_DecelTime: 0.1
     m_InputAxisName: Mouse ScrollWheel
@@ -24941,7 +24921,7 @@ MonoBehaviour:
   m_XAxis:
     Value: 0
     m_SpeedMode: 1
-    m_MaxSpeed: 2.091491
+    m_MaxSpeed: 2.029639
     m_AccelTime: 0.4
     m_DecelTime: 0.1
     m_InputAxisName: Mouse X
@@ -24970,11 +24950,11 @@ MonoBehaviour:
   m_SplineCurvature: 0.343
   m_Orbits:
   - m_Height: 1.5
-    m_Radius: 18.7282
+    m_Radius: 10
   - m_Height: 1
-    m_Radius: 20.75855
+    m_Radius: 12
   - m_Height: -1.5
-    m_Radius: 18.7282
+    m_Radius: 10
   m_LegacyHeadingBias: 3.4028235e+38
   m_Rigs:
   - {fileID: 369379138}
@@ -25897,7 +25877,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 1
-  m_FollowOffset: {x: 0, y: 1, z: -20.75855}
+  m_FollowOffset: {x: 0, y: 1, z: -12}
   m_XDamping: 0.8
   m_YDamping: 0.8
   m_ZDamping: 0.8

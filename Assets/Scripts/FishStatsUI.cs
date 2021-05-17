@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 using TMPro;
+using UnityEngine.InputSystem;
 
 
 public class FishStatsUI : MonoBehaviour
@@ -98,6 +99,19 @@ public class FishStatsUI : MonoBehaviour
         if (value < 0) value = 0;
         Hunger.text = value.ToString();
         HungerSlider.value = value;
+    }
+
+    public void OnSelectInput(string text) {
+        InputSystem.DisableDevice(Keyboard.current);
+    }
+
+    public void OnDeselectInput(string text) {
+        InputSystem.EnableDevice(Keyboard.current);
+    }
+
+    public void UpdateName(string newName) {
+        CurrentFish.UnitName = newName;
+        FishName.text = CurrentFish.UnitName;
     }
 
     void UpdateDesirability(SFlockUnit fish) {
