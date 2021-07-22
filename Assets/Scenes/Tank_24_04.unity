@@ -58155,6 +58155,38 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1301157381001770533, guid: 951c5340405d2b44896f63db877d44d0, type: 3}
+      propertyPath: m_OnSelect.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1301157381001770533, guid: 951c5340405d2b44896f63db877d44d0, type: 3}
+      propertyPath: m_OnDeselect.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1301157381001770533, guid: 951c5340405d2b44896f63db877d44d0, type: 3}
+      propertyPath: m_OnSelect.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1542092445}
+    - target: {fileID: 1301157381001770533, guid: 951c5340405d2b44896f63db877d44d0, type: 3}
+      propertyPath: m_OnEndEdit.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1542092445}
+    - target: {fileID: 1301157381001770533, guid: 951c5340405d2b44896f63db877d44d0, type: 3}
+      propertyPath: m_OnDeselect.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1542092445}
+    - target: {fileID: 1301157381001770533, guid: 951c5340405d2b44896f63db877d44d0, type: 3}
+      propertyPath: m_OnSelect.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnSelectInput
+      objectReference: {fileID: 0}
+    - target: {fileID: 1301157381001770533, guid: 951c5340405d2b44896f63db877d44d0, type: 3}
+      propertyPath: m_OnEndEdit.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: UpdateName
+      objectReference: {fileID: 0}
+    - target: {fileID: 1301157381001770533, guid: 951c5340405d2b44896f63db877d44d0, type: 3}
+      propertyPath: m_OnDeselect.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnDeselectInput
+      objectReference: {fileID: 0}
     - target: {fileID: 1627647978193154460, guid: 951c5340405d2b44896f63db877d44d0, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
