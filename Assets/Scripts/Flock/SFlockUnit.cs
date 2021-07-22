@@ -17,9 +17,9 @@ public class SFlockUnit : MonoBehaviour, IFood
     [SerializeField] private float matingUrge;
     [SerializeField] private int size;
     [SerializeField] private float[] fishScale = new float[10] { 1, 2.5f, 3.3f, 5.5f, 7.3f, 9.5f, 11.8f, 15.2f, 18, 21 };
-    [SerializeField] private float seepIncumbrance;
-    [SerializeField] private float sightIncumbrance;
-    [SerializeField] private float sizeIncumbrance;
+    [SerializeField] private float seepEncumbrance;
+    [SerializeField] private float sightEncumbrance;
+    [SerializeField] private float sizeEncumbrance;
     [SerializeField] private ParticleSystem consumeEffectPrefab;
 
     public UnitEventSigniture OnUnitRemove;
@@ -206,7 +206,7 @@ public class SFlockUnit : MonoBehaviour, IFood
 
     private void UpdateHungerThreshold()
     {
-        _scaledHungerThreshold = hungerThreshold + (size * sizeIncumbrance) + (size * seepIncumbrance) + (size * sightIncumbrance);
+        _scaledHungerThreshold = hungerThreshold + (size * sizeEncumbrance) + (_maxSpeed * seepEncumbrance) + (_sightDistance * sightEncumbrance);
     }
 
     public string GetFoodName() => unitName;

@@ -57,7 +57,6 @@ public struct SecheduleUnitsSightJob : IJobParallelFor
         for (int i = 0; i < SightDirections.Length; ++i)
         {
             float3 dir = math.rotate(UnitRotaions[index], SightDirections[i]);
-            // float3 dir = UnitRotaions[index] * SightDirections[i];
             UnitsSightDirections[i + IndexStart] = dir;
 
             UnitsPredatorsChecks[i + IndexStart] = new SpherecastCommand(

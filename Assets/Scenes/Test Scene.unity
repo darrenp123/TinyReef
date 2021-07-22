@@ -4406,7 +4406,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 310231194867374169, guid: 60fd7d73c2632cc44b4aba7d540f2a4a, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 310231194867374172, guid: 60fd7d73c2632cc44b4aba7d540f2a4a, type: 3}
       propertyPath: m_RootOrder
@@ -5847,7 +5847,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4930066079336723641, guid: 0bd095030cda9e241adc270e1f5a04ae, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4930066079336723646, guid: 0bd095030cda9e241adc270e1f5a04ae, type: 3}
       propertyPath: m_RootOrder
@@ -5895,7 +5895,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4930066079336723647, guid: 0bd095030cda9e241adc270e1f5a04ae, type: 3}
       propertyPath: flockSize
-      value: 50
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 4930066079336723647, guid: 0bd095030cda9e241adc270e1f5a04ae, type: 3}
       propertyPath: unitIndex

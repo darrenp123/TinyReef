@@ -32,19 +32,12 @@ public class OldFlockUnit : MonoBehaviour
     public void MoveUnit()
     {
         FindNeighbours();
-        //CalculateSpeed();
-        //Debug.Log("Old!! Speed: " + Speed + " Cohesion: " + CalculateCohesionVector().ToString() + " Avoidance: " + CalculateAvoidanceVector().ToString()
-        //    + " Alignment: " + CalculateAlignmentVector().ToString() + "Bounds: " + CalculateBoundsVector().ToString());
-        Vector3 moveVector = CalculateCohesionVector() + CalculateAvoidanceVector() + CalculateAlignmentVector() + CalculateBoundsVector() +  CalculateObstacleAvoidanceVector();
+        CalculateSpeed();
+
+        Vector3 moveVector = CalculateCohesionVector() + CalculateAvoidanceVector() + CalculateAlignmentVector() + CalculateBoundsVector() + CalculateObstacleAvoidanceVector();
         moveVector = Vector3.SmoothDamp(MyTransform.forward, moveVector, ref _currentVelocity, smoothDamp, _assignedFlock.MaxSpeed, Time.deltaTime);
         MyTransform.forward = moveVector.normalized * _speed;
         MyTransform.position += MyTransform.forward * Time.deltaTime;
-
-    //    Debug.Log("Old!! CohesionDistance: " + _assignedFlock.CohesionDistance + " AvoidanceDistance: " + _assignedFlock.AvoidanceDistance +
-    //" AligementDistance: " + _assignedFlock.AlignmentDistance
-    //+ " CohesionWeight: " + _assignedFlock.CohesionWeight + " AvoidanceWeight: " + _assignedFlock.AvoidanceWeight + " AligementWeight: " + _assignedFlock.AlignmentWeight);
-
-        // Debug.Log("Old!! forward: " + MyTransform.forward + " deltaTime: " + Time.deltaTime + " velocity: " + _currentVelocity);
     }
 
     private void FindNeighbours()
@@ -121,7 +114,6 @@ public class OldFlockUnit : MonoBehaviour
             if (IsInFOV(neighbor.MyTransform.position))
             {
                 ++neighboursInFOV;
-                //avoidanceVector += MyTransform.position - neighbor.MyTransform.position;
                 Vector3 offSet = MyTransform.position - neighbor.MyTransform.position;
                 float dist = offSet.magnitude;
                 if(dist < _assignedFlock.AvoidanceDistance)
@@ -135,10 +127,6 @@ public class OldFlockUnit : MonoBehaviour
         if (neighboursInFOV == 0)
             return avoidanceVector;
 
-       // avoidanceVector /= neighboursInFOV;
-       // Debug.Log("Old: " + avoidanceVector.normalized * _assignedFlock.AvoidanceWeight);
-
-        //return avoidanceVector.normalized * _assignedFlock.AvoidanceWeight;
         return avoidanceVector * _assignedFlock.AvoidanceWeight;
     }
 
@@ -160,7 +148,6 @@ public class OldFlockUnit : MonoBehaviour
             return alignmnentVector;
 
         alignmnentVector /= neighboursInFOV;
-        // return alignmnentVector.normalized * _assignedFlock.AlignmentWeight;
         return alignmnentVector * _assignedFlock.AlignmentWeight;
     }
 
