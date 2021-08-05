@@ -1,3 +1,5 @@
+// controls how the fog acts, when the camera is inside the bounds of this game object it changes the fog density and
+// color. Must be in an object with a collider, in this case it is usually on the post proses volume object 
 using UnityEngine;
 
 public class TankFog : MonoBehaviour

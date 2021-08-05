@@ -4,9 +4,13 @@ using Unity.Collections;
 using Unity.Jobs;
 using Unity.Mathematics;
 
+// This job is used to correctly set up all the the fishes sight checks, the obstacles checks, the predators
+// and the preys
 [BurstCompile]
 public struct SecheduleUnitsSightJob : IJobParallelFor
 {
+    // all this parameters are set up by the SFlock object that instantiates this job
+    // ReadOnly and WriteOnly are set up for performance reasons, but they are not mandatory
     [ReadOnly]
     public NativeArray<float3> UnitPositions;
     [ReadOnly]
@@ -46,6 +50,8 @@ public struct SecheduleUnitsSightJob : IJobParallelFor
     {
         float3 currentUnitPosition = UnitPositions[index];
         float currentUnitScale = UnitsScales[index];
+
+        // SphereCastRadius value is constant so we must multiply it by the current fish to get it's current size 
         float sphereRadius = SphereCastRadius * currentUnitScale;
 
         ObstacleChecks[index] = new SpherecastCommand(currentUnitPosition, sphereRadius,
@@ -53,21 +59,27 @@ public struct SecheduleUnitsSightJob : IJobParallelFor
 
         SpherecastCommand emptyCommand = new SpherecastCommand();
 
+        //  every fish has its own different sight directions, but in jobs we can't have arrays of arrays,
+        //  so we every sight dir for all fish (from that flock) is stored in one array,
+        //  then use some math and logic to know what is what is the correct index to access from
         int IndexStart = SightDirections.Length * index;
         for (int i = 0; i < SightDirections.Length; ++i)
         {
+            // converting local sight directions to fish world space
             float3 dir = math.rotate(UnitRotaions[index], SightDirections[i]);
             UnitsSightDirections[i + IndexStart] = dir;
 
             UnitsPredatorsChecks[i + IndexStart] = new SpherecastCommand(
                 currentUnitPosition, sphereRadius, dir, PredatorPreyDistance, UnitsPredatorMask[index]);
 
+            // only make a real check if is hungry
             UnitsPreysChecks[i + IndexStart] = UnitsCurrentHunger[index] <= HungerThreshold ? new SpherecastCommand(
         currentUnitPosition, sphereRadius, dir, PredatorPreyDistance, UnitsPreyMask[index]) : emptyCommand;
         }
     }
 }
 
+// job made mostly for performance reasons, it correctly sets obstacle avoidance and predator prey obstacle checks
 [BurstCompile]
 public struct SecundarySensorCheksJob : IJobParallelFor
 {
@@ -108,9 +120,12 @@ public struct SecundarySensorCheksJob : IJobParallelFor
 
         for (int i = particion * index; i < particion * (index + 1); ++i)
         {
+            // if the fish has an object in the way set the avoidance dir checks
             UnitsSightDirectionsCheks[i] = hasObstacle ? new SpherecastCommand(currentUnitPosition, sphereRadius, 
                 UnitsSightDirections[i], ObstacleDistance * currentUnitScale, ObstacleMask) : emptyCommand;
 
+            // if on that direction there is a predator or prey, check to see if there is an obstacle in the way
+            // breaking line of sight 
             UnitsPredatorPreysObtacleChecks[i] = (UnitsPredatorsResults[i].distance > 0 || UnitsPreyResults[i].distance > 0) ?
                 new SpherecastCommand(currentUnitPosition, sphereRadius, UnitsSightDirections[i], PredatorPreyDistance, ObstacleMask)
                 : emptyCommand;

@@ -199,7 +199,7 @@ Material:
     - _SwimmingScale: 12.7
     - _SwimmingSpeed: 2
     - _Threshold: 13
-    - _TimeScale: 6
+    - _TimeScale: 1.26
     - _TranslationAmount: 2.16
     - _WaveBody: 0.3
     - _WaveDensity: 0.375
@@ -211,6 +211,7 @@ Material:
     - _WorkflowMode: 1
     - _Yoffset: 0
     - _ZWrite: 1
+    - test: 1
     m_Colors:
     - Color_1: {r: 1, g: 0, b: 0, a: 0}
     - Color_2: {r: 1, g: 1, b: 1, a: 0}

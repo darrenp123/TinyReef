@@ -4458,7 +4458,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 310231194867374175, guid: 60fd7d73c2632cc44b4aba7d540f2a4a, type: 3}
       propertyPath: flockSize
-      value: 100
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 310231194867374175, guid: 60fd7d73c2632cc44b4aba7d540f2a4a, type: 3}
       propertyPath: spawnBounds.x

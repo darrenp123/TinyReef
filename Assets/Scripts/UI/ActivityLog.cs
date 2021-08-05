@@ -1,8 +1,11 @@
+
+// UI class for the activity log
 using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+// Every message as a type, this is important when we want to select a specific type of message to see
 public enum MessageType
 {
     DEATH,
@@ -12,13 +15,17 @@ public enum MessageType
 
 public class ActivityLog : MonoBehaviour
 {
+    // references to all the necessary UI elements
     [SerializeField] private Button deathsButon;
     [SerializeField] private Button birthsButon;
     [SerializeField] private Button clearMessagesButon;
     [SerializeField] private VerticalLayoutGroup messagesConteiner;
     [SerializeField] private ActivityLogMessage messagePrefab;
 
+    // a list of all the string messages is saved along with their typing
     private Dictionary<MessageType, List<string>> _messages;
+    // a list of all created UI messages elements saved for reuse. UI messages do not save their previous message,
+    // they are changed as needed
     private List<ActivityLogMessage> messageObjPool;
 
     private void Awake()
@@ -36,6 +43,7 @@ public class ActivityLog : MonoBehaviour
         clearMessagesButon.onClick.AddListener(ClearAllMessages);
     }
 
+    // method used by other classes to send a message to the activity log;
     public void SendMessage(MessageType messageType, string message)
     {
         ShowMessage(message);
@@ -54,6 +62,7 @@ public class ActivityLog : MonoBehaviour
         ChosseMessagesToShow(MessageType.BIRTH);
     }
 
+    // shows the messages from the chosen type
     private void ChosseMessagesToShow(MessageType messageType)
     {
         foreach (string message in _messages[messageType])
@@ -62,6 +71,7 @@ public class ActivityLog : MonoBehaviour
         }
     }
 
+    // reuses UI message elements if available, other wise creates a new UI message element
     private void ShowMessage(string message)
     {
         ActivityLogMessage availableMessageOgj = null;

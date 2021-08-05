@@ -4,6 +4,7 @@ using Unity.Burst;
 using UnityEngine;
 using Unity.Mathematics;
 
+// job used mostly to manage the timers for the current hunger, starving, life span and matting urge
 [BurstCompile]
 public struct UnitHungerJob : IJobParallelFor
 {
@@ -38,11 +39,13 @@ public struct UnitHungerJob : IJobParallelFor
         UnitsLifeSpan[index] -= DeltaTime;
         UnitsMatingHurge[index] -= DeltaTime;
 
+        // fish is not hungry
         if (UnitsCurrentHunger[index] > UnitsHungerThreshold[index])
         {
             UnitsStarvingTimer[index] = InitSarvingTimer;
             UnitsEatChecks[index] = new SpherecastCommand();
         }
+        // fish is hungry
        else
         {
             if (UnitsCurrentHunger[index] < 0)
@@ -52,6 +55,7 @@ public struct UnitHungerJob : IJobParallelFor
 
             UnitsStarvingTimer[index] -= DeltaTime;
 
+            //set up the sphere cast for the mouth of the fish when it is trying to eat
             UnitsEatChecks[index] = new SpherecastCommand(
                 UnitPositions[index], SphereCastRadius * UnitsScales[index] * 0.5f,
                 UnitForwardDirections[index], KillBoxDistance * UnitsScales[index], UnitsPreyMask[index]);

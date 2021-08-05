@@ -5,8 +5,12 @@ using Unity.Jobs;
 using Unity.Mathematics;
 using UnityEngine;
 
+// this script represents and manages all the fish of a species, there should be a game object with this script
+// for every different type of fish that you want to have in the scene
 public class SFlock : MonoBehaviour
 {
+    // set up variables, all these values will affect the entirety of the fish species, that this game object 
+    // is creating
     [SerializeField] private string flockName;
     [Header("Spawn Setup")]
     [SerializeField] private SFlockUnit flockUnitPrefab;
@@ -67,6 +71,7 @@ public class SFlock : MonoBehaviour
 
     public string FlockName => flockName;
 
+    // all this variables are meant to be passed into the created jobs
     private NativeList<float3> _unitsForwardDirections;
     private NativeList<float3> _unitsCurrentVelocities;
     private NativeList<float3> _unitsPositions;
@@ -102,18 +107,21 @@ public class SFlock : MonoBehaviour
     private NativeList<PreyInfo> _unitsPreyInfo;
     private NativeList<float> _unitsHungerThreshold;
     private NativeList<float> _unitsMatingHurge;
+    private NativeList<Unity.Mathematics.Random> _random;
+    private float _sphereCastRadius;
 
+    // jobs used while this script is running
     private MoveFlockJob _moveJob;
     private SecheduleUnitsSightJob _secheduleRaysJob;
     private SecundarySensorCheksJob _secundarySensorCheksJob;
     private UnitHungerJob _hungerJob;
 
-    private NativeList<Unity.Mathematics.Random> _random;
-
-    private float _sphereCastRadius;
+    // helper variables, used only by this script
     private int _totalUnitAmought;
     private int _unitBatchCount;
     private int _sightBatchCount;
+    // timer that tells when a fish checks for predators or prey, mainly used so we are
+    // checking for preys and predators every frame
     private float _reactionTimer;
     private ActivityLog _activityLog;
 
@@ -124,6 +132,7 @@ public class SFlock : MonoBehaviour
     [Header("Debugging and Testing")]
     public int unitIndex;
 
+    // set up all necessary variables and jobs
     private void Start()
     {
         Vector3[] waypoints = flockWaypoints.GetWaypoints();
@@ -133,6 +142,7 @@ public class SFlock : MonoBehaviour
             _flockWaypoints[i] = waypoints[i];
         }
 
+        // create initial fish
         InitialGenerateUnits();
 
         _sightDirections = new NativeArray<float3>(AllUnits[0].Directions.Length, Allocator.Persistent);
@@ -253,6 +263,7 @@ public class SFlock : MonoBehaviour
         };
 
         _activityLog = FindObjectOfType<ActivityLog>();
+        // start running the matting checks
         StartCoroutine(SpawnUnit());
 
         // For debugging.
@@ -265,6 +276,8 @@ public class SFlock : MonoBehaviour
         if (_totalUnitAmought <= 0) return;
 
         float deltaTime = Time.deltaTime;
+        // set job values with the correct information, although in this case we truly only need to 
+        // set the rotation
         for (int i = 0; i < _totalUnitAmought; i++)
         {
             Transform currentUnitTransform = AllUnits[i].MyTransform;
@@ -277,6 +290,9 @@ public class SFlock : MonoBehaviour
         _hungerJob.DeltaTime = deltaTime;
         _reactionTimer += deltaTime;
 
+        // job scheduling, jobs are scheduled in this order, because some jobs need information from other jobs
+        // to do their work, they have to wait until the other jobs finish running to get the correct information,
+        // this is called a dependency 
         JobHandle secheduleHandle = _secheduleRaysJob.Schedule(_totalUnitAmought, _unitBatchCount);
 
         NativeArray<JobHandle> dependencies = new NativeArray<JobHandle>(3, Allocator.Temp);
@@ -291,8 +307,11 @@ public class SFlock : MonoBehaviour
             RaycastHit emptyHit = new RaycastHit();
             PreyInfo emptyInfo = new PreyInfo();
             JobHandle.CombineDependencies(dependencies).Complete();
+
+            // set helper prey predator variables, so it is easier to use on jobs
             for (int i = 0; i < (flockUnitPrefab.NumViewDirections * _totalUnitAmought); i++)
             {
+                // if the prey detected is another fish from the flock ignore it
                 RaycastHit currentPreyResult = _unitsPreyResults[i];
                 _unitsPreyInfo[i] = emptyInfo;
                 if (currentPreyResult.transform)
@@ -308,7 +327,7 @@ public class SFlock : MonoBehaviour
                         };
                     }
                 }
-
+                // if the predator detected is another fish from the flock ignore it
                 if (_unitsPredatorsResults[i].transform && AllUnits.Contains(_unitsPredatorsResults[i].transform.GetComponent<SFlockUnit>()))
                 {
                     _unitsPredatorsResults[i] = emptyHit;
@@ -332,6 +351,7 @@ public class SFlock : MonoBehaviour
 
         List<SFlockUnit> UnitsToRemove = new List<SFlockUnit>(_totalUnitAmought);
 
+        // set the fish variables with the correct one calculated in the jobs
         for (int i = 0; i < _totalUnitAmought; i++)
         {
             SFlockUnit currentUnit = AllUnits[i];
@@ -340,10 +360,13 @@ public class SFlock : MonoBehaviour
             currentUnit.CurrentVelocity = _moveJob.UnitsCurrentVelocities[i];
             currentUnit.CurrrentHunger = _hungerJob.UnitsCurrentHunger[i];
             currentUnit.LifeSpan = _hungerJob.UnitsLifeSpan[i];
-            // might have a current mating urge to be able to show in the UI
+            // might have a current mating urge updating here to be able to show in the UI
 
+            // another approach to "eating"
             // if (currentUnit.CurrrentHunger <= currentUnit.HungerThreshold && Physics.SphereCast(currentUnit.MyTransform.position,
             //sphereCastRadius * 0.5f, currentUnit.MyTransform.forward, out RaycastHit hit, currentUnit.KillBoxDistance, preyMask))
+            
+            //eat food that does not belong to this flock
             Transform foodTransform = _unitsEatResults[i].transform;
             if (foodTransform)
             {
@@ -358,7 +381,7 @@ public class SFlock : MonoBehaviour
                     SendMessage(MessageType.DEFAULT, message);
                 }
             }
-
+            // set up fish to be destroyed based on their life span or their hunger
             if (currentUnit.LifeSpan <= 0 || _unitsStarvingTimer[i] <= 0)
             {
                 UnitsToRemove.Add(currentUnit);
@@ -380,6 +403,7 @@ public class SFlock : MonoBehaviour
 
     private void InitialGenerateUnits()
     {
+        // allocate memory and initialize containers
         AllUnits = new List<SFlockUnit>(flockSize);
         _unitsForwardDirections = new NativeList<float3>(flockSize, Allocator.Persistent);
         _unitsCurrentVelocities = new NativeList<float3>(flockSize, Allocator.Persistent);
@@ -429,6 +453,7 @@ public class SFlock : MonoBehaviour
         RaycastHit emptyRay = new RaycastHit();
         PreyInfo emptyInfo = new PreyInfo();
 
+        // initialize a fish in a random point inside bounds
         Vector3 randomVector = Vector3.Scale(UnityEngine.Random.insideUnitSphere, spawnBounds);
         SFlockUnit newUnit = Instantiate(flockUnitPrefab, transform.position + randomVector,
             Quaternion.Euler(0, UnityEngine.Random.Range(0, 360), 0), transform);
@@ -436,6 +461,7 @@ public class SFlock : MonoBehaviour
         newUnit.OnUnitRemove = RemoveUnit;
         newUnit.OnUnitTraitsValueChanged = OnUnitChangeTraits;
 
+        // fill containers with initial values
         AllUnits.Add(newUnit);
         _unitsForwardDirections.Add(newUnit.MyTransform.forward);
         _unitsCurrentVelocities.Add(newUnit.CurrentVelocity);
@@ -474,6 +500,7 @@ public class SFlock : MonoBehaviour
         }
     }
 
+    // safe way to remove units, all native containers must be updated here when a fish is destroyed
     private void RemoveUnit(SFlockUnit unitToRemove)
     {
         int index = AllUnits.IndexOf(unitToRemove);
@@ -519,15 +546,17 @@ public class SFlock : MonoBehaviour
         AllocateNewValues();
         RefreshBatches();
 
+        // at the end of updating all containers it safe to destroy the fish
         Destroy(unitToRemove.gameObject);
     }
 
+    // function run when a fish trait is edited (it might not need run for every trait)
     private void OnUnitChangeTraits(SFlockUnit flockUnit)
     {
         int index = AllUnits.IndexOf(flockUnit);
         if (index < 0) return;
 
-        // add all traits that can be editable 
+        // add all traits that can be editable, or are a consequence of that editing 
         _unitsMaxSpeed[index] = flockUnit.MaxSpeed;
         _unitsSightDistance[index] = flockUnit.SightDistance;
         _unitsScales[index] = flockUnit.MyTransform.localScale.x;
@@ -538,6 +567,8 @@ public class SFlock : MonoBehaviour
         _unitsMatingHurge[index] = flockUnit.CurrentMatingUrge;
     }
 
+    // allocate job values with updated containers when there is a change in container size. 
+    // I'm unsure if this needs to run at all, some more testing would be unnecessary
     private void AllocateNewValues()
     {
         _secheduleRaysJob.UnitPositions = _unitsPositions;
@@ -590,6 +621,7 @@ public class SFlock : MonoBehaviour
         _hungerJob.UnitsMatingHurge = _unitsMatingHurge;
     }
 
+    // update some local helper variables, as well as broadcast an event when flock size changes
     private void RefreshBatches()
     {
         _totalUnitAmought = AllUnits.Count;
@@ -598,10 +630,12 @@ public class SFlock : MonoBehaviour
         OnFlockSizeChange?.Invoke(this);
     }
 
+    // create a newborn from two fish
     private void SpawnNewUnit(SFlockUnit parent1, SFlockUnit parent2)
     {
         CreateUnit();
 
+        // averages of inherited traits
         float newBornSpeed = (parent1.MaxSpeed + parent2.MaxSpeed) / 2;
         float newBornSightDist = (parent1.SightDistance + parent2.SightDistance) / 2;
         int newBornSize = (parent1.Size + parent2.Size) / 2;
@@ -610,8 +644,6 @@ public class SFlock : MonoBehaviour
         SFlockUnit child = AllUnits[_totalUnitAmought];
 
         MutateChild(ref newBornSpeed, ref newBornSightDist, ref newBornSize, ref newBornLifespan);
-
-       //print("new born stats: speed: " + newBornSpeed + ", sight dist: " + newBornSightDist + ", size: " + newBornSize + ", lifeSpan: " + newBornLifespan);
 
         child.SetMaxSpeed(newBornSpeed);
         child.SetSightDistance(newBornSightDist);
@@ -624,6 +656,7 @@ public class SFlock : MonoBehaviour
         SendMessage(MessageType.BIRTH, message);
     }
 
+    // coroutine that is always running and managing mating
     private IEnumerator SpawnUnit()
     {
         while (true)
@@ -633,6 +666,7 @@ public class SFlock : MonoBehaviour
             float randInt = UnityEngine.Random.value;
             if (_totalUnitAmought >= 2 && randInt <= spwanPercent)
             {
+                //choose the best two available parents to "mate"
                 SFlockUnit parent1 = null;
                 SFlockUnit parent2 = null;
                 float best1 = 0;
@@ -663,12 +697,13 @@ public class SFlock : MonoBehaviour
                     }
                 }
 
-                //print("parent 1: " + index1 + ", parent 2: " + index2);
                 if (index1 >= 0 && index2 >= 0)
                 {
-                    _unitsMatingHurge[index1] = AllUnits[index1].CurrentMatingUrge;
-                    _unitsMatingHurge[index2] = AllUnits[index2].CurrentMatingUrge;
+                    // reset mating urge timer of the parents
+                    _unitsMatingHurge[index1] = parent1.CurrentMatingUrge;
+                    _unitsMatingHurge[index2] = parent2.CurrentMatingUrge;
 
+                    // spawn a child with those parents
                     SpawnNewUnit(parent1, parent2);
                 }
             }
@@ -680,9 +715,10 @@ public class SFlock : MonoBehaviour
         float mutateChance = UnityEngine.Random.value;
         if (mutateChance > spwanMutatePercent) return;
 
+        // random selector of increasing or decreasingly the chosen trait
         int changeDelta = UnityEngine.Random.value >= 0.5f ? 1 : -1;
+        //select a random trait. Since there are only 5 traits, the random values range from 1 to 5
         int trait = UnityEngine.Random.Range(1, 5);
-        //print("mutated: " + changeDelta);
         switch (trait)
         {
             case 1:
@@ -700,18 +736,22 @@ public class SFlock : MonoBehaviour
                 break;
 
             case 4:
+                // life span is in seconds so it needs to be converted to 1 to 10 ratio
                 if ((newBornLifSpan / 60) <= 1) return;
                 newBornLifSpan += (changeDelta * 60);
                 break;
         }
     }
 
+    // send a log to the activity log
     private void SendMessage(MessageType messageType, string message)
     {
         if (_activityLog)
             _activityLog.SendMessage(messageType, message);
     }
 
+    // when this object is destroyed we must clean all memory created by the native containers that we passed to 
+    // our jobs
     private void OnDestroy()
     {
         _unitsForwardDirections.Dispose();

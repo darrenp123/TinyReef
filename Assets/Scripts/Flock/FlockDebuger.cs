@@ -1,3 +1,7 @@
+
+//  custom debugger class made to be able to better test some of the fish characteristics, like sight and collisions
+// for the debugger to be active the active bool must be set to true in the editor
+// also the debugger must be attached to SFlock object
 using Unity.Mathematics;
 using UnityEngine;
 
@@ -13,6 +17,7 @@ public class FlockDebuger : MonoBehaviour
     private float _mouthDistance;
     private Vector3 _testClosestpoint = Vector3.zero;
 
+    // set test variables, does no have to be the variables descriptions
     public void InitDebugger(SFlockUnit[] allUnits, float obstacleDistance, float sphereCastRadius)
     {
         _allUnits = allUnits;
@@ -20,6 +25,8 @@ public class FlockDebuger : MonoBehaviour
         _sphereCastRadius = sphereCastRadius;
     }
 
+    // for now it is drawing the specified fish mouth position (in green), the collision detection sphere (in yellow),
+    // and all the sight tests (in red) a fish does to detect for predators and preys 
 
     private void OnDrawGizmos()
     {

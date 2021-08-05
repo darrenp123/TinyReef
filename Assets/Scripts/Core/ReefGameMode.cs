@@ -1,3 +1,5 @@
+// Game mode class used for the game, inherits from game mode base
+// meant to evaluate the size of the chosen fish species 
 using UnityEngine;
 
 public class ReefGameMode : GameModeBase
@@ -7,6 +9,7 @@ public class ReefGameMode : GameModeBase
 
     void Awake()
     {
+        // initial set up based on state
         switch (state)
         {
             case GameModeSate.DEFAULT:
@@ -17,7 +20,8 @@ public class ReefGameMode : GameModeBase
             case GameModeSate.CHALLENGE:
                 if (objectiveFlock)
                 {
-                    objectiveFlock.OnFlockSizeChange += (flock) => OnObjectiveValueChange?.Invoke(flock);
+                    // setting a function to run whenever the chosen "flock" changes in size
+                    objectiveFlock.OnFlockSizeChange += flock => OnObjectiveValueChange?.Invoke(flock);
                 }
                 break;
         }

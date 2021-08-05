@@ -1,8 +1,9 @@
+
+// class meant to be used for the buttons of the species outliner
 using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using static UnityEngine.UI.Button;
 
 public class SpeciesFishButton : MonoBehaviour
 {
@@ -20,6 +21,7 @@ public class SpeciesFishButton : MonoBehaviour
 
     private void Start()
     {
+        // set the function that runs when a button is clicked
         _button = GetComponent<Button>();
         _button.onClick.AddListener(() => _onClickButton?.Invoke(_fishIndex));
     }

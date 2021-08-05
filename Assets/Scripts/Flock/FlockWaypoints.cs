@@ -1,3 +1,6 @@
+
+// Class used to make it easier to make, use and visualize the fish waypoints 
+// way points must be child objects of this object
 using UnityEngine;
 
 public class FlockWaypoints : MonoBehaviour
@@ -17,6 +20,7 @@ public class FlockWaypoints : MonoBehaviour
         return Waypoints;
     }
 
+    // function that draws waypoints on the editor
     private void OnDrawGizmos()
     {
         if (!drawPatrolPath) return;

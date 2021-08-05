@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// This class represents a fish, it holds most of the fish individual values
+// it does not hold any logic in regards to the fish movement and behavior 
 public class SFlockUnit : MonoBehaviour, IFood
 {
     [Range(0, 180)]
@@ -63,12 +65,14 @@ public class SFlockUnit : MonoBehaviour, IFood
     public LayerMask PredatorMask => _predatorMask;
     public LayerMask PreyMask => _preyMask;
 
-    public delegate void UnitEventSigniture(SFlockUnit unitToRemove);
+    public delegate void UnitEventSigniture(SFlockUnit thisUnit);
 
     private void Awake()
     {
         MyTransform = transform;
 
+        // calculate the possible sight directions vectors. Should not be done once per fish since these values
+        // are the same for all fish of that species. As is the performance cost is not to big
         if (Directions == null)
         {
             Directions = new Vector3[numViewDirections];
@@ -89,6 +93,7 @@ public class SFlockUnit : MonoBehaviour, IFood
             }
         }
 
+        // helps in biding the size of the fish to what it can eat
         _sizeToLayerDic = new Dictionary<int, string>(10)
         {
             {1, "Sise_1" },
@@ -118,15 +123,18 @@ public class SFlockUnit : MonoBehaviour, IFood
         _fishMat = GetComponentInChildren<MeshRenderer>().material;
         _matDefaultWigleSpeed = _fishMat.GetFloat("_TimeScale");
 
+        // all fish start at size one, on initialization their scale is then set to what the size variable as
+        // been assigned to
         SetScale(size);
     }
 
+    // the next for functions where made so the fish values cold be safely changed like in the UI by the player 
     public void SetLifeSapan(float newLifeSapwn)
     {
         initialLifespan = newLifeSapwn;
     }
 
-    // this two functions might need to run on the Initialize method
+    // these two functions might need to run on the Initialize method
     public void SetMaxSpeed(float newSpeed)
     {
         _maxSpeed = newSpeed;
@@ -148,9 +156,11 @@ public class SFlockUnit : MonoBehaviour, IFood
 
         size = newSise;
 
+        // get the correct scaling size based on the set size (the size variable should be between 1 and 10)
         float fishSize = fishScale[Size - 1];
         MyTransform.localScale = new Vector3(fishSize, fishSize, fishSize);
 
+        // change the fish animation wiggle speed based on size
         if (_fishMat)
         {
             float divisor;
@@ -164,6 +174,7 @@ public class SFlockUnit : MonoBehaviour, IFood
             _fishMat.SetFloat("_TimeScale", _matDefaultWigleSpeed / divisor);
         }
 
+        // update the fish predators and preys based on its new size
         int predatorMinSize = size + 1;
         int preyMinSize = size - 1;
         foreach (KeyValuePair<int, string> sizeToLayer in _sizeToLayerDic)
@@ -188,12 +199,14 @@ public class SFlockUnit : MonoBehaviour, IFood
         _predatorMask = LayerMask.GetMask(_predatorLayerNames.ToArray());
         _preyMask = LayerMask.GetMask(_preyLayerNames.ToArray());
 
+        // update mating urge based on new size 
         _currentMatingUrge = matingUrge * (1 + (float)(size / 10.0f));
 
         UpdateHungerThreshold();
         OnUnitTraitsValueChanged?.Invoke(this);
     }
 
+    // by the fish that is consuming on the consumed fish
     public void Consume()
     {
         OnUnitRemove?.Invoke(this);
@@ -216,6 +229,7 @@ public class SFlockUnit : MonoBehaviour, IFood
         return 0;
     }
 
+    // example on how to use an effect from the pooling system
     private IEnumerator ManageConsumableEffect()
     {
         if (!_consumablePool) yield break;

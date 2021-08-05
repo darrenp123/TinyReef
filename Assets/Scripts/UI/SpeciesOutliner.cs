@@ -1,3 +1,5 @@
+
+// this script controls how the species outliner works 
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -5,6 +7,7 @@ using UnityEngine.UI;
 
 public class SpeciesOutliner : MonoBehaviour
 {
+    // References to the necessary UI elements needed for display
     [SerializeField] private TMP_Dropdown dropdown;
     [SerializeField] private VerticalLayoutGroup verticalLayoutGroup;
     [SerializeField] private SpeciesFishButton spiciesButtonPrefab;
@@ -27,6 +30,7 @@ public class SpeciesOutliner : MonoBehaviour
             flockNames.Add(_allFlocks[i].FlockName);
         }
 
+        // set the dropdown menu with all the names off the species present in that tank
         if (dropdown)
         {
             dropdown.AddOptions(flockNames);
@@ -39,6 +43,10 @@ public class SpeciesOutliner : MonoBehaviour
         FillSpiciesConteiner(0);
     }
 
+    // update the container that displays all the fishes names from the selected type
+    // it tries to reuse buttons already created for the display, by just setting them on and of and updating
+    // them with the correct information. If the necessary buttons have not been created it makes new ones and
+    // stores them for later uses 
     private void FillSpiciesConteiner(int flockIndex)
     {
         if (flockIndex >= _allFlocks.Length) return;
@@ -71,6 +79,8 @@ public class SpeciesOutliner : MonoBehaviour
         }
     }
 
+    // updates the species confiner if the button clicked is invalid, if it isn't it tells the camera to follow 
+    // the selected fish
     private void ViewSelectedFish(int buttonIndex)
     {
         List<SFlockUnit> currentFlock = _allFlocks[dropdown.value].AllUnits;

@@ -1,3 +1,5 @@
+
+// UI class for the Objective UI
 using TMPro;
 using UnityEngine;
 
@@ -10,6 +12,7 @@ public class ObjevtiveUI : MonoBehaviour
     {
         _gameMode = FindObjectOfType<GameModeBase>();
 
+        // sets this UI behavior based on the state of the game mode 
         if (objectiveText && _gameMode)
         {
             if (_gameMode.State == GameModeBase.GameModeSate.SANDBOX)

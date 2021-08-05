@@ -1,3 +1,5 @@
+
+// UI class for the messages that show in the activity log
 using TMPro;
 using UnityEngine;
 
