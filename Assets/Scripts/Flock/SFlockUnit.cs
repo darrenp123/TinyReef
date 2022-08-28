@@ -15,7 +15,7 @@ public class SFlockUnit : MonoBehaviour, IFood
     [SerializeField] private string unitType;
     [SerializeField] private string unitName;
     [SerializeField] private float matingUrge;
-    [SerializeField] private int size;
+    [SerializeField] public int size;
     [SerializeField] private float[] fishScale = new float[10] { 1, 2.5f, 3.3f, 5.5f, 7.3f, 9.5f, 11.8f, 15.2f, 18, 21 };
     [SerializeField] private float seepIncumbrance;
     [SerializeField] private float sightIncumbrance;
@@ -231,4 +231,5 @@ public class SFlockUnit : MonoBehaviour, IFood
 
         _consumablePool.ReturnToPool(ItemPool.FOAM_BURST, consumeEffect.gameObject);
     }
+
 }

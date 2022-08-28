@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 4602450174552267799}
   m_Layer: 10
   m_Name: Banggai Cardinalfish
-  m_TagString: Untagged
+  m_TagString: Fish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

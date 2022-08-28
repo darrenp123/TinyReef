@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 8647624575762173716}
   m_Layer: 8
   m_Name: Bull Shark
-  m_TagString: Untagged
+  m_TagString: Fish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -1,0 +1,470 @@
+Cod(Clone) , 6.7 , 7
+Cod(Clone) , 6.7 , 7
+Cod(Clone) , 6.7 , 7
+Cod(Clone) , 6.7 , 7
+Cod(Clone) , 6.7 , 7
+Cod(Clone) , 6.7 , 7
+Cod(Clone) , 6.7 , 7
+Cod(Clone) , 6.7 , 7
+Cod(Clone) , 6.7 , 7
+Cod(Clone) , 6.7 , 7
+Cod(Clone) , 6.7 , 7
+Cod(Clone) , 6.7 , 7
+Cod(Clone) , 6.7 , 7
+Cod(Clone) , 6.7 , 7
+Cod(Clone) , 6.7 , 7
+Banggai Cardinalfish(Clone) , 6.7 , 1
+Banggai Cardinalfish(Clone) , 6.7 , 1
+Banggai Cardinalfish(Clone) , 6.7 , 1
+Banggai Cardinalfish(Clone) , 6.7 , 1
+Banggai Cardinalfish(Clone) , 6.7 , 1
+Banggai Cardinalfish(Clone) , 6.7 , 1
+Banggai Cardinalfish(Clone) , 6.7 , 1
+Banggai Cardinalfish(Clone) , 6.7 , 1
+Banggai Cardinalfish(Clone) , 6.7 , 1
+Banggai Cardinalfish(Clone) , 6.7 , 1
+Banggai Cardinalfish(Clone) , 6.7 , 1
+Banggai Cardinalfish(Clone) , 6.7 , 1
+Banggai Cardinalfish(Clone) , 6.7 , 1
+Banggai Cardinalfish(Clone) , 6.7 , 1
+Banggai Cardinalfish(Clone) , 6.7 , 1
+Banggai Cardinalfish(Clone) , 6.7 , 1
+Banggai Cardinalfish(Clone) , 6.7 , 1
+Banggai Cardinalfish(Clone) , 6.7 , 1
+Banggai Cardinalfish(Clone) , 6.7 , 1
+Banggai Cardinalfish(Clone) , 6.7 , 1
+Bull Shark(Clone) , 6.7 , 10
+Bull Shark(Clone) , 6.7 , 10
+Sand Tiger Shark(Clone) , 6.7 , 10
+Sand Tiger Shark(Clone) , 6.7 , 10
+Clown Fish(Clone) , 6.7 , 1
+Clown Fish(Clone) , 6.7 , 1
+Clown Fish(Clone) , 6.7 , 1
+Clown Fish(Clone) , 6.7 , 1
+Clown Fish(Clone) , 6.7 , 1
+Clown Fish(Clone) , 6.7 , 1
+Clown Fish(Clone) , 6.7 , 1
+Clown Fish(Clone) , 6.7 , 1
+Clown Fish(Clone) , 6.7 , 1
+Clown Fish(Clone) , 6.7 , 1
+Clown Fish(Clone) , 6.7 , 1
+Clown Fish(Clone) , 6.7 , 1
+Clown Fish(Clone) , 6.7 , 1
+Clown Fish(Clone) , 6.7 , 1
+Clown Fish(Clone) , 6.7 , 1
+Clown Fish(Clone) , 6.7 , 1
+Clown Fish(Clone) , 6.7 , 1
+Clown Fish(Clone) , 6.7 , 1
+Clown Fish(Clone) , 6.7 , 1
+Clown Fish(Clone) , 6.7 , 1
+Moorish Idol(Clone) , 6.7 , 2
+Moorish Idol(Clone) , 6.7 , 2
+Moorish Idol(Clone) , 6.7 , 2
+Moorish Idol(Clone) , 6.7 , 2
+Moorish Idol(Clone) , 6.7 , 2
+Moorish Idol(Clone) , 6.7 , 2
+Moorish Idol(Clone) , 6.7 , 2
+Moorish Idol(Clone) , 6.7 , 2
+Moorish Idol(Clone) , 6.7 , 2
+Moorish Idol(Clone) , 6.7 , 2
+Moorish Idol(Clone) , 6.7 , 2
+Moorish Idol(Clone) , 6.7 , 2
+Moorish Idol(Clone) , 6.7 , 2
+Moorish Idol(Clone) , 6.7 , 2
+Moorish Idol(Clone) , 6.7 , 2
+Blue Tang(Clone) , 6.7 , 2
+Blue Tang(Clone) , 6.7 , 2
+Blue Tang(Clone) , 6.7 , 2
+Blue Tang(Clone) , 6.7 , 2
+Blue Tang(Clone) , 6.7 , 2
+Blue Tang(Clone) , 6.7 , 2
+Blue Tang(Clone) , 6.7 , 2
+Blue Tang(Clone) , 6.7 , 2
+Blue Tang(Clone) , 6.7 , 2
+Blue Tang(Clone) , 6.7 , 2
+Blue Tang(Clone) , 6.7 , 2
+Blue Tang(Clone) , 6.7 , 2
+Blue Tang(Clone) , 6.7 , 2
+Blue Tang(Clone) , 6.7 , 2
+Blue Tang(Clone) , 6.7 , 2
+Parrot Fish(Clone) , 6.7 , 4
+Parrot Fish(Clone) , 6.7 , 4
+Parrot Fish(Clone) , 6.7 , 4
+Parrot Fish(Clone) , 6.7 , 4
+Parrot Fish(Clone) , 6.7 , 4
+Parrot Fish(Clone) , 6.7 , 4
+Parrot Fish(Clone) , 6.7 , 4
+Parrot Fish(Clone) , 6.7 , 4
+Parrot Fish(Clone) , 6.7 , 4
+Parrot Fish(Clone) , 6.7 , 4
+Emperor Angelfish(Clone) , 6.7 , 3
+Emperor Angelfish(Clone) , 6.7 , 3
+Emperor Angelfish(Clone) , 6.7 , 3
+Emperor Angelfish(Clone) , 6.7 , 3
+Emperor Angelfish(Clone) , 6.7 , 3
+Emperor Angelfish(Clone) , 6.7 , 3
+Emperor Angelfish(Clone) , 6.7 , 3
+Emperor Angelfish(Clone) , 6.7 , 3
+Emperor Angelfish(Clone) , 6.7 , 3
+Emperor Angelfish(Clone) , 6.7 , 3
+Lion Fish(Clone) , 6.7 , 4
+Lion Fish(Clone) , 6.7 , 4
+Lion Fish(Clone) , 6.7 , 4
+Lion Fish(Clone) , 6.7 , 4
+Lion Fish(Clone) , 6.7 , 4
+Cod(Clone) , 10.04 , 7
+Cod(Clone) , 10.04 , 7
+Cod(Clone) , 10.04 , 7
+Cod(Clone) , 10.04 , 7
+Cod(Clone) , 10.04 , 7
+Cod(Clone) , 10.04 , 7
+Cod(Clone) , 10.04 , 7
+Cod(Clone) , 10.04 , 7
+Cod(Clone) , 10.04 , 7
+Cod(Clone) , 10.04 , 7
+Cod(Clone) , 10.04 , 7
+Cod(Clone) , 10.04 , 7
+Cod(Clone) , 10.04 , 7
+Cod(Clone) , 10.04 , 7
+Cod(Clone) , 10.04 , 7
+Banggai Cardinalfish(Clone) , 10.04 , 1
+Banggai Cardinalfish(Clone) , 10.04 , 1
+Banggai Cardinalfish(Clone) , 10.04 , 1
+Banggai Cardinalfish(Clone) , 10.04 , 1
+Banggai Cardinalfish(Clone) , 10.04 , 1
+Banggai Cardinalfish(Clone) , 10.04 , 1
+Banggai Cardinalfish(Clone) , 10.04 , 1
+Banggai Cardinalfish(Clone) , 10.04 , 1
+Banggai Cardinalfish(Clone) , 10.04 , 1
+Banggai Cardinalfish(Clone) , 10.04 , 1
+Banggai Cardinalfish(Clone) , 10.04 , 1
+Banggai Cardinalfish(Clone) , 10.04 , 1
+Banggai Cardinalfish(Clone) , 10.04 , 1
+Banggai Cardinalfish(Clone) , 10.04 , 1
+Banggai Cardinalfish(Clone) , 10.04 , 1
+Banggai Cardinalfish(Clone) , 10.04 , 1
+Banggai Cardinalfish(Clone) , 10.04 , 1
+Banggai Cardinalfish(Clone) , 10.04 , 1
+Banggai Cardinalfish(Clone) , 10.04 , 1
+Banggai Cardinalfish(Clone) , 10.04 , 1
+Bull Shark(Clone) , 10.04 , 10
+Bull Shark(Clone) , 10.04 , 10
+Sand Tiger Shark(Clone) , 10.04 , 10
+Sand Tiger Shark(Clone) , 10.04 , 10
+Clown Fish(Clone) , 10.04 , 1
+Clown Fish(Clone) , 10.04 , 1
+Clown Fish(Clone) , 10.04 , 1
+Clown Fish(Clone) , 10.04 , 1
+Clown Fish(Clone) , 10.04 , 1
+Clown Fish(Clone) , 10.04 , 1
+Clown Fish(Clone) , 10.04 , 1
+Clown Fish(Clone) , 10.04 , 1
+Clown Fish(Clone) , 10.04 , 1
+Clown Fish(Clone) , 10.04 , 1
+Clown Fish(Clone) , 10.04 , 1
+Clown Fish(Clone) , 10.04 , 1
+Clown Fish(Clone) , 10.04 , 1
+Clown Fish(Clone) , 10.04 , 1
+Clown Fish(Clone) , 10.04 , 1
+Clown Fish(Clone) , 10.04 , 1
+Clown Fish(Clone) , 10.04 , 1
+Clown Fish(Clone) , 10.04 , 1
+Clown Fish(Clone) , 10.04 , 1
+Clown Fish(Clone) , 10.04 , 1
+Moorish Idol(Clone) , 10.04 , 2
+Moorish Idol(Clone) , 10.04 , 2
+Moorish Idol(Clone) , 10.04 , 2
+Moorish Idol(Clone) , 10.04 , 2
+Moorish Idol(Clone) , 10.04 , 2
+Moorish Idol(Clone) , 10.04 , 2
+Moorish Idol(Clone) , 10.04 , 2
+Moorish Idol(Clone) , 10.04 , 2
+Moorish Idol(Clone) , 10.04 , 2
+Moorish Idol(Clone) , 10.04 , 2
+Moorish Idol(Clone) , 10.04 , 2
+Moorish Idol(Clone) , 10.04 , 2
+Moorish Idol(Clone) , 10.04 , 2
+Moorish Idol(Clone) , 10.04 , 2
+Moorish Idol(Clone) , 10.04 , 2
+Blue Tang(Clone) , 10.04 , 2
+Blue Tang(Clone) , 10.04 , 2
+Blue Tang(Clone) , 10.04 , 2
+Blue Tang(Clone) , 10.04 , 2
+Blue Tang(Clone) , 10.04 , 2
+Blue Tang(Clone) , 10.04 , 2
+Blue Tang(Clone) , 10.04 , 2
+Blue Tang(Clone) , 10.04 , 2
+Blue Tang(Clone) , 10.04 , 2
+Blue Tang(Clone) , 10.04 , 2
+Blue Tang(Clone) , 10.04 , 2
+Blue Tang(Clone) , 10.04 , 2
+Blue Tang(Clone) , 10.04 , 2
+Blue Tang(Clone) , 10.04 , 2
+Blue Tang(Clone) , 10.04 , 2
+Parrot Fish(Clone) , 10.04 , 4
+Parrot Fish(Clone) , 10.04 , 4
+Parrot Fish(Clone) , 10.04 , 4
+Parrot Fish(Clone) , 10.04 , 4
+Parrot Fish(Clone) , 10.04 , 4
+Parrot Fish(Clone) , 10.04 , 4
+Parrot Fish(Clone) , 10.04 , 4
+Parrot Fish(Clone) , 10.04 , 4
+Parrot Fish(Clone) , 10.04 , 4
+Parrot Fish(Clone) , 10.04 , 4
+Emperor Angelfish(Clone) , 10.04 , 3
+Emperor Angelfish(Clone) , 10.04 , 3
+Emperor Angelfish(Clone) , 10.04 , 3
+Emperor Angelfish(Clone) , 10.04 , 3
+Emperor Angelfish(Clone) , 10.04 , 3
+Emperor Angelfish(Clone) , 10.04 , 3
+Emperor Angelfish(Clone) , 10.04 , 3
+Emperor Angelfish(Clone) , 10.04 , 3
+Emperor Angelfish(Clone) , 10.04 , 3
+Emperor Angelfish(Clone) , 10.04 , 3
+Lion Fish(Clone) , 10.04 , 4
+Lion Fish(Clone) , 10.04 , 4
+Lion Fish(Clone) , 10.04 , 4
+Lion Fish(Clone) , 10.04 , 4
+Lion Fish(Clone) , 10.04 , 4
+Cod(Clone) , 70.04 , 7
+Cod(Clone) , 70.04 , 7
+Cod(Clone) , 70.04 , 7
+Cod(Clone) , 70.04 , 7
+Cod(Clone) , 70.04 , 7
+Cod(Clone) , 70.04 , 7
+Cod(Clone) , 70.04 , 7
+Cod(Clone) , 70.04 , 7
+Cod(Clone) , 70.04 , 7
+Cod(Clone) , 70.04 , 7
+Cod(Clone) , 70.04 , 7
+Cod(Clone) , 70.04 , 7
+Cod(Clone) , 70.04 , 7
+Banggai Cardinalfish(Clone) , 70.04 , 1
+Banggai Cardinalfish(Clone) , 70.04 , 1
+Banggai Cardinalfish(Clone) , 70.04 , 1
+Banggai Cardinalfish(Clone) , 70.04 , 1
+Banggai Cardinalfish(Clone) , 70.04 , 1
+Banggai Cardinalfish(Clone) , 70.04 , 1
+Banggai Cardinalfish(Clone) , 70.04 , 1
+Banggai Cardinalfish(Clone) , 70.04 , 1
+Banggai Cardinalfish(Clone) , 70.04 , 1
+Banggai Cardinalfish(Clone) , 70.04 , 1
+Banggai Cardinalfish(Clone) , 70.04 , 1
+Banggai Cardinalfish(Clone) , 70.04 , 1
+Banggai Cardinalfish(Clone) , 70.04 , 1
+Banggai Cardinalfish(Clone) , 70.04 , 1
+Banggai Cardinalfish(Clone) , 70.04 , 1
+Banggai Cardinalfish(Clone) , 70.04 , 1
+Banggai Cardinalfish(Clone) , 70.04 , 1
+Banggai Cardinalfish(Clone) , 70.04 , 1
+Banggai Cardinalfish(Clone) , 70.04 , 1
+Banggai Cardinalfish(Clone) , 70.04 , 1
+Bull Shark(Clone) , 70.04 , 10
+Bull Shark(Clone) , 70.04 , 10
+Sand Tiger Shark(Clone) , 70.04 , 10
+Sand Tiger Shark(Clone) , 70.04 , 10
+Clown Fish(Clone) , 70.04 , 1
+Clown Fish(Clone) , 70.04 , 1
+Clown Fish(Clone) , 70.04 , 1
+Clown Fish(Clone) , 70.04 , 1
+Clown Fish(Clone) , 70.04 , 1
+Clown Fish(Clone) , 70.04 , 1
+Clown Fish(Clone) , 70.04 , 1
+Clown Fish(Clone) , 70.04 , 1
+Clown Fish(Clone) , 70.04 , 1
+Clown Fish(Clone) , 70.04 , 1
+Clown Fish(Clone) , 70.04 , 1
+Clown Fish(Clone) , 70.04 , 1
+Clown Fish(Clone) , 70.04 , 1
+Clown Fish(Clone) , 70.04 , 1
+Clown Fish(Clone) , 70.04 , 1
+Clown Fish(Clone) , 70.04 , 1
+Clown Fish(Clone) , 70.04 , 1
+Clown Fish(Clone) , 70.04 , 1
+Clown Fish(Clone) , 70.04 , 1
+Clown Fish(Clone) , 70.04 , 1
+Moorish Idol(Clone) , 70.04 , 2
+Moorish Idol(Clone) , 70.04 , 2
+Moorish Idol(Clone) , 70.04 , 2
+Moorish Idol(Clone) , 70.04 , 2
+Moorish Idol(Clone) , 70.04 , 2
+Moorish Idol(Clone) , 70.04 , 2
+Moorish Idol(Clone) , 70.04 , 2
+Moorish Idol(Clone) , 70.04 , 2
+Moorish Idol(Clone) , 70.04 , 2
+Moorish Idol(Clone) , 70.04 , 2
+Moorish Idol(Clone) , 70.04 , 2
+Moorish Idol(Clone) , 70.04 , 2
+Moorish Idol(Clone) , 70.04 , 2
+Moorish Idol(Clone) , 70.04 , 2
+Moorish Idol(Clone) , 70.04 , 2
+Blue Tang(Clone) , 70.04 , 2
+Blue Tang(Clone) , 70.04 , 2
+Blue Tang(Clone) , 70.04 , 2
+Blue Tang(Clone) , 70.04 , 2
+Blue Tang(Clone) , 70.04 , 2
+Blue Tang(Clone) , 70.04 , 2
+Blue Tang(Clone) , 70.04 , 2
+Blue Tang(Clone) , 70.04 , 2
+Blue Tang(Clone) , 70.04 , 2
+Blue Tang(Clone) , 70.04 , 2
+Blue Tang(Clone) , 70.04 , 2
+Blue Tang(Clone) , 70.04 , 2
+Blue Tang(Clone) , 70.04 , 2
+Blue Tang(Clone) , 70.04 , 2
+Blue Tang(Clone) , 70.04 , 2
+Parrot Fish(Clone) , 70.04 , 4
+Parrot Fish(Clone) , 70.04 , 4
+Parrot Fish(Clone) , 70.04 , 4
+Parrot Fish(Clone) , 70.04 , 4
+Parrot Fish(Clone) , 70.04 , 4
+Parrot Fish(Clone) , 70.04 , 4
+Parrot Fish(Clone) , 70.04 , 4
+Parrot Fish(Clone) , 70.04 , 4
+Parrot Fish(Clone) , 70.04 , 4
+Parrot Fish(Clone) , 70.04 , 4
+Emperor Angelfish(Clone) , 70.04 , 3
+Emperor Angelfish(Clone) , 70.04 , 3
+Emperor Angelfish(Clone) , 70.04 , 3
+Emperor Angelfish(Clone) , 70.04 , 3
+Emperor Angelfish(Clone) , 70.04 , 3
+Emperor Angelfish(Clone) , 70.04 , 3
+Emperor Angelfish(Clone) , 70.04 , 3
+Emperor Angelfish(Clone) , 70.04 , 3
+Emperor Angelfish(Clone) , 70.04 , 3
+Emperor Angelfish(Clone) , 70.04 , 3
+Lion Fish(Clone) , 70.04 , 4
+Lion Fish(Clone) , 70.04 , 4
+Lion Fish(Clone) , 70.04 , 4
+Lion Fish(Clone) , 70.04 , 4
+Cod(Clone) , 130.06 , 7
+Cod(Clone) , 130.06 , 7
+Cod(Clone) , 130.06 , 7
+Cod(Clone) , 130.06 , 7
+Cod(Clone) , 130.06 , 7
+Cod(Clone) , 130.06 , 7
+Cod(Clone) , 130.06 , 7
+Cod(Clone) , 130.06 , 7
+Cod(Clone) , 130.06 , 7
+Banggai Cardinalfish(Clone) , 130.06 , 1
+Banggai Cardinalfish(Clone) , 130.06 , 1
+Banggai Cardinalfish(Clone) , 130.06 , 1
+Banggai Cardinalfish(Clone) , 130.06 , 1
+Banggai Cardinalfish(Clone) , 130.06 , 1
+Banggai Cardinalfish(Clone) , 130.06 , 1
+Banggai Cardinalfish(Clone) , 130.06 , 1
+Banggai Cardinalfish(Clone) , 130.06 , 1
+Banggai Cardinalfish(Clone) , 130.06 , 1
+Banggai Cardinalfish(Clone) , 130.06 , 1
+Banggai Cardinalfish(Clone) , 130.06 , 1
+Bull Shark(Clone) , 130.06 , 10
+Bull Shark(Clone) , 130.06 , 10
+Sand Tiger Shark(Clone) , 130.06 , 10
+Sand Tiger Shark(Clone) , 130.06 , 10
+Clown Fish(Clone) , 130.06 , 1
+Clown Fish(Clone) , 130.06 , 1
+Clown Fish(Clone) , 130.06 , 1
+Clown Fish(Clone) , 130.06 , 1
+Clown Fish(Clone) , 130.06 , 1
+Clown Fish(Clone) , 130.06 , 1
+Clown Fish(Clone) , 130.06 , 1
+Clown Fish(Clone) , 130.06 , 1
+Clown Fish(Clone) , 130.06 , 1
+Clown Fish(Clone) , 130.06 , 1
+Clown Fish(Clone) , 130.06 , 1
+Clown Fish(Clone) , 130.06 , 1
+Clown Fish(Clone) , 130.06 , 1
+Clown Fish(Clone) , 130.06 , 1
+Clown Fish(Clone) , 130.06 , 1
+Clown Fish(Clone) , 130.06 , 1
+Clown Fish(Clone) , 130.06 , 1
+Clown Fish(Clone) , 130.06 , 1
+Moorish Idol(Clone) , 130.06 , 2
+Moorish Idol(Clone) , 130.06 , 2
+Moorish Idol(Clone) , 130.06 , 2
+Moorish Idol(Clone) , 130.06 , 2
+Moorish Idol(Clone) , 130.06 , 2
+Moorish Idol(Clone) , 130.06 , 2
+Moorish Idol(Clone) , 130.06 , 2
+Moorish Idol(Clone) , 130.06 , 2
+Moorish Idol(Clone) , 130.06 , 2
+Moorish Idol(Clone) , 130.06 , 2
+Moorish Idol(Clone) , 130.06 , 2
+Moorish Idol(Clone) , 130.06 , 2
+Moorish Idol(Clone) , 130.06 , 2
+Moorish Idol(Clone) , 130.06 , 2
+Moorish Idol(Clone) , 130.06 , 2
+Blue Tang(Clone) , 130.06 , 2
+Blue Tang(Clone) , 130.06 , 2
+Blue Tang(Clone) , 130.06 , 2
+Blue Tang(Clone) , 130.06 , 2
+Blue Tang(Clone) , 130.06 , 2
+Blue Tang(Clone) , 130.06 , 2
+Blue Tang(Clone) , 130.06 , 2
+Blue Tang(Clone) , 130.06 , 2
+Blue Tang(Clone) , 130.06 , 2
+Blue Tang(Clone) , 130.06 , 2
+Blue Tang(Clone) , 130.06 , 2
+Blue Tang(Clone) , 130.06 , 2
+Blue Tang(Clone) , 130.06 , 2
+Blue Tang(Clone) , 130.06 , 2
+Parrot Fish(Clone) , 130.06 , 4
+Parrot Fish(Clone) , 130.06 , 4
+Parrot Fish(Clone) , 130.06 , 4
+Parrot Fish(Clone) , 130.06 , 4
+Parrot Fish(Clone) , 130.06 , 4
+Parrot Fish(Clone) , 130.06 , 4
+Parrot Fish(Clone) , 130.06 , 4
+Parrot Fish(Clone) , 130.06 , 4
+Parrot Fish(Clone) , 130.06 , 4
+Emperor Angelfish(Clone) , 130.06 , 3
+Emperor Angelfish(Clone) , 130.06 , 3
+Emperor Angelfish(Clone) , 130.06 , 3
+Emperor Angelfish(Clone) , 130.06 , 3
+Emperor Angelfish(Clone) , 130.06 , 3
+Emperor Angelfish(Clone) , 130.06 , 3
+Emperor Angelfish(Clone) , 130.06 , 3
+Emperor Angelfish(Clone) , 130.06 , 3
+Emperor Angelfish(Clone) , 130.06 , 3
+Emperor Angelfish(Clone) , 130.06 , 3
+Banggai Cardinalfish(Clone) , 130.06 , 1
+Clown Fish(Clone) , 130.06 , 1
+Banggai Cardinalfish(Clone) , 130.06 , 1
+Clown Fish(Clone) , 130.06 , 1
+Banggai Cardinalfish(Clone) , 130.06 , 1
+Blue Tang(Clone) , 130.06 , 2
+Banggai Cardinalfish(Clone) , 130.06 , 1
+Moorish Idol(Clone) , 130.06 , 2
+Blue Tang(Clone) , 130.06 , 2
+Moorish Idol(Clone) , 130.06 , 2
+Blue Tang(Clone) , 130.06 , 2
+Moorish Idol(Clone) , 130.06 , 2
+Emperor Angelfish(Clone) , 130.06 , 3
+Clown Fish(Clone) , 130.06 , 1
+Blue Tang(Clone) , 130.06 , 2
+Banggai Cardinalfish(Clone) , 130.06 , 1
+Clown Fish(Clone) , 130.06 , 1
+Moorish Idol(Clone) , 130.06 , 2
+Blue Tang(Clone) , 130.06 , 2
+Clown Fish(Clone) , 130.06 , 1
+Parrot Fish(Clone) , 130.06 , 4
+Lion Fish(Clone) , 130.06 , 4
+Banggai Cardinalfish(Clone) , 130.06 , 1
+Blue Tang(Clone) , 130.06 , 2
+Parrot Fish(Clone) , 130.06 , 4
+Emperor Angelfish(Clone) , 130.06 , 3
+Banggai Cardinalfish(Clone) , 130.06 , 1
+Moorish Idol(Clone) , 130.06 , 2
+Blue Tang(Clone) , 130.06 , 2
+Parrot Fish(Clone) , 130.06 , 4
+Emperor Angelfish(Clone) , 130.06 , 3
+Clown Fish(Clone) , 130.06 , 1
+Moorish Idol(Clone) , 130.06 , 2
+Parrot Fish(Clone) , 130.06 , 4
+Emperor Angelfish(Clone) , 130.06 , 3
+Banggai Cardinalfish(Clone) , 130.06 , 1
+Emperor Angelfish(Clone) , 130.06 , 3
+Cod(Clone) , 130.06 , 7
+Cod(Clone) , 130.06 , 7
+Bull Shark(Clone) , 130.06 , 10
+Sand Tiger Shark(Clone) , 130.06 , 10
