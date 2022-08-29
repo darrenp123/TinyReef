@@ -158,12 +158,33 @@ public static class parser2
 
         if(currenttimecap < stepcounter)
         {
+            //set lists
+
+            foreach (var name in tempname)
+            {
+                //string actualname = name.Substring(0, name.Length - 4);
+
+                if (!fishavgsize.ContainsKey(name + " weight"))
+                {
+                    fishavgsize.Add(name + " weight", new List<int>());
+                }
+            }
+
+            foreach (var name in tempname)
+            {
+                if (!fishpop.ContainsKey(name + " pop"))
+                {
+                    fishpop.Add(name + " pop", new List<int>());
+                }
+            }
+
             foreach (var name in tempname)
             {
                 calledtime = tempdir[currenttimecap + "mins"];
                 
                 foreach (var entry in calledtime)
                 {
+
                     string actualname = entry.Substring(0, entry.Length - 4);
                     if (name == actualname)
                     {
@@ -171,19 +192,39 @@ public static class parser2
                         totalfishsize = totalfishsize + actualsize;
                         numberofsamefish++;
                     }
+
                 }
                 avgfishsize = totalfishsize / numberofsamefish;
                 string storedname = name.Substring(0, name.Length - 7);
-                Debug.Log(currenttimecap + "mins");
-                Debug.Log(storedname + " name");
-                Debug.Log(avgfishsize + " avg");
-                Debug.Log(numberofsamefish + "pop");
+                //Debug.Log(currenttimecap + "mins");
+                //Debug.Log(storedname + " name");
+                //Debug.Log(avgfishsize + " avg");
+                //fishavglist = fishavgsize[name + " weight"];
+                //fishavglist.Add(avgfishsize);
+                fishavgsize[name + " weight"].Add(avgfishsize);
+                //Debug.Log(numberofsamefish + "pop");
+                //fishpoplist = fishpop[name + " pop"];
+                //fishpoplist.Add(numberofsamefish);
+                //fishpop.Add(name + " pop", fishpoplist);
+                fishpop[name + " pop"].Add(numberofsamefish);
                 storedname = "";
                 avgfishsize = 0;
                 totalfishsize = 0;
                 numberofsamefish = 0;
+
             }
             currenttimecap++;
+            
+        }
+
+        foreach (var pair in fishavgsize) 
+        {
+            Debug.Log(pair.Key + string.Join(", ", pair.Value));
+        }
+
+        foreach (var pair in fishpop)
+        {
+            Debug.Log(pair.Key + string.Join(", ", pair.Value));
         }
 
         result4 = true;
