@@ -17,6 +17,9 @@ public class GameEndScreen : MonoBehaviour
     GameObject graph, statisticsMenu, victoryScreen, gameOverScreen;
 
     string currentSelectedSpecies, currentSelectedTrait;
+
+    private TRPauseMenu trPauseMenuScriptReference;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -46,11 +49,19 @@ public class GameEndScreen : MonoBehaviour
 
     public void ShowStatisticsScreen()
     {
+        trPauseMenuScriptReference = FindObjectOfType<TRPauseMenu>(); //my shitty workaround for getting the button activated when clicked hahaha quicker than trying to figure out the code already there...will make this better once shit is working as intended...
+
+        trPauseMenuScriptReference.PauseGame();
+        
         statisticsMenu.SetActive(true);
     }
 
     public void CloseStatisticsScreen()
     {
+        trPauseMenuScriptReference = FindObjectOfType<TRPauseMenu>();
+
+        trPauseMenuScriptReference.UnPauseGame();
+        
         statisticsMenu.SetActive(false);
     }
 
